@@ -1,24 +1,37 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the application for generating website of [https://kaigaiiju.ch](https://kaigaiiju.ch).
 
-Things you may want to cover:
+## requirement
 
-* Ruby version
+ * Ruby version: check .ruby_version
 
-* System dependencies
+### System dependencies
 
-* Configuration
+sqlite3
 
-* Database creation
+## setup
 
-* Database initialization
+```bash
+ $ bin/setup
+```
 
-* How to run the test suite
+## Configuration
 
-* Services (job queues, cache servers, search engines, etc.)
+check `.env` file and satisfy the requirements.
 
-* Deployment instructions
+## Database creation && Database initialization
 
-* ...
+not using yet
+
+## How to run the test suite
+
+(TBC)
+
+## Services (job queues, cache servers, search engines, etc.)
+
+(TBC)
+
+## Deployment instructions
+
+(TBD)
