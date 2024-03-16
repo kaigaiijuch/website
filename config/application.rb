@@ -23,5 +23,8 @@ module Website
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.x.website_title.base = ENV["WEBSITE_TITLE_BASE"]
+    config.x.website_title.separator = ENV["WEBSITE_TITLE_SEPARATOR"]
+    config.x.google_tag_manager_id = ENV["GOOGLE_TAG_MANAGER_ID"]
   end
 end

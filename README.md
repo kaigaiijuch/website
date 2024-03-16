@@ -18,7 +18,7 @@ sqlite3
 
 ## Configuration
 
-check `.env` file and satisfy the requirements, they are used in `config/environment.rb`.
+check `.env` file and satisfy the requirements, they are used in `config/application.rb`.
 
 ## Database creation && Database initialization
 
