@@ -18,7 +18,7 @@ sqlite3
 
 ## Configuration
 
-check `.env` file and satisfy the requirements.
+check `.env` file and satisfy the requirements, they are used in `config/environment.rb`.
 
 ## Database creation && Database initialization
 
@@ -26,7 +26,7 @@ not using yet
 
 ## How to run the test suite
 
-(TBC)
+`bin/rake`
 
 ## Services (job queues, cache servers, search engines, etc.)
 
