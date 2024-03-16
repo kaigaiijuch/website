@@ -1,11 +1,17 @@
 module ApplicationHelper
   def set_title(title)
-    @title = title
+    @_title = title
   end
 
   def title
-    @title.blank? ? BASE_TITLE : "#{BASE_TITLE}:#{@title}"
+    if @_title.blank?
+      Rails.application.config.x.website_title.base
+    else
+      Rails.application.config.x.website_title.base + Rails.application.config.x.website_title.separator + @_title
+    end
   end
 
-  BASE_TITLE = "海外移住channel"
+  def google_tag_manager_id
+    Rails.application.config.x.google_tag_manager_id
+  end
 end

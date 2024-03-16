@@ -1,11 +1,34 @@
 require 'test_helper'
 
-class ApplicationHelperTest < ActionView::TestCase
-  test 'title should return with base title' do
-    set_title('test')
-    assert_equal '海外移住channel:test', title
+module ApplicationHelperTest
+  class GoogleTagManagerIdHelperTest < ActionView::TestCase
+    def setup
+      Rails.application.config.x.google_tag_manager_id = 'GTM-XXXX'
+    end
 
-    set_title('')
-    assert_equal '海外移住channel', title
+    test 'google_tag_manager_id() should return tag id' do
+      assert_equal 'GTM-XXXX', google_tag_manager_id()
+    end
+  end
+
+  class TitleHelperTest < ActionView::TestCase
+    def setup
+      Rails.application.config.x.website_title.base = 'base_title'
+      Rails.application.config.x.website_title.separator = ' + '
+    end
+
+    test 'title() without call set_title() should return just base title' do
+      assert_equal 'base_title', title
+    end
+
+    test 'title() with call empty set_title() should return just base title' do
+      set_title('')
+      assert_equal 'base_title', title
+    end
+
+    test 'title() with call set_tile() should return with combined base title' do
+      set_title('test')
+      assert_equal 'base_title + test', title
+    end
   end
 end
