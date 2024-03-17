@@ -28,6 +28,7 @@ module Website
     config.x.website_title.base = ENV.fetch('WEBSITE_TITLE_BASE', nil)
     config.x.website_title.separator = ENV.fetch('WEBSITE_TITLE_SEPARATOR', nil)
     config.x.google_tag_manager_id = ENV.fetch('GOOGLE_TAG_MANAGER_ID', nil)
+    config.x.feedback_google_form_id = ENV.fetch('FEEDBACK_GOOGLE_FORM_ID', nil)
 
     # Default URL Options in Ruby on Rails - Team Qameta https://qameta.com/posts/default-url-options-in-ruby-on-rails/
     config.x.website_uri = URI.parse(ENV.fetch('WEBSITE_URI', nil))

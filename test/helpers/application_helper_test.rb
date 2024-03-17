@@ -13,6 +13,17 @@ module ApplicationHelperTest
     end
   end
 
+  class FeedbackGoogleFormURLHelperTest < ActionView::TestCase
+    def setup
+      Rails.application.config.x.feedback_google_form_id = '123456xxxxxxxx'
+    end
+
+    test 'google_tag_manager_id() should return tag id' do
+      assert_equal 'https://docs.google.com/forms/d/e/123456xxxxxxxx/viewform?embedded=true',
+                   feedback_google_form_url
+    end
+  end
+
   class TitleHelperTest < ActionView::TestCase
     def setup
       Rails.application.config.x.website_title.base = 'base_title'

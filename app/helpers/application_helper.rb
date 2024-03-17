@@ -13,4 +13,8 @@ module ApplicationHelper
   def google_tag_manager_id
     Rails.application.config.x.google_tag_manager_id
   end
+
+  def feedback_google_form_url
+    "https://docs.google.com/forms/d/e/#{Rails.application.config.x.feedback_google_form_id}/viewform?embedded=true"
+  end
 end
