@@ -12,3 +12,8 @@ require 'rubocop/rake_task'
 RuboCop::RakeTask.new do |task|
   task.requires << 'rubocop-rails'
 end
+
+task :default do
+  Rake::Task['test'].invoke
+  Rake::Task['rubocop'].invoke
+end

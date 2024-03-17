@@ -24,9 +24,11 @@ check `.env` file and satisfy the requirements, they are used in `config/applica
 
 not using yet
 
-## How to run the test suite
+## How to run the test suite and linter
 
-`bin/rake`
+```bash
+ $ bin/rake
+```
 
 ## Services (job queues, cache servers, search engines, etc.)
 
