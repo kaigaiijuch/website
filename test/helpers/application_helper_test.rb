@@ -7,7 +7,7 @@ module ApplicationHelperTest
     end
 
     test 'google_tag_manager_id() should return tag id' do
-      assert_equal 'GTM-XXXX', google_tag_manager_id()
+      assert_equal 'GTM-XXXX', google_tag_manager_id
     end
   end
 

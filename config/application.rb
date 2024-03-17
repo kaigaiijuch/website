@@ -23,14 +23,14 @@ module Website
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.x.website_title.base = ENV['WEBSITE_TITLE_BASE']
-    config.x.website_title.separator = ENV['WEBSITE_TITLE_SEPARATOR']
-    config.x.google_tag_manager_id = ENV['GOOGLE_TAG_MANAGER_ID']
+    config.x.website_title.base = ENV.fetch('WEBSITE_TITLE_BASE', nil)
+    config.x.website_title.separator = ENV.fetch('WEBSITE_TITLE_SEPARATOR', nil)
+    config.x.google_tag_manager_id = ENV.fetch('GOOGLE_TAG_MANAGER_ID', nil)
 
     # Default URL Options in Ruby on Rails - Team Qameta https://qameta.com/posts/default-url-options-in-ruby-on-rails/
     url_options = {
-      host: ENV['WEBSITE_HOST'],
-      protocol: ENV['WEBSITE_PROTOCOL']
+      host: ENV.fetch('WEBSITE_HOST', nil),
+      protocol: ENV.fetch('WEBSITE_PROTOCOL', nil)
     }
     # TODO: it does not work well with root_url in url_helpers
     Rails.application.routes.default_url_options = url_options
