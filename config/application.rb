@@ -30,9 +30,10 @@ module Website
     config.x.google_tag_manager_id = ENV.fetch('GOOGLE_TAG_MANAGER_ID', nil)
 
     # Default URL Options in Ruby on Rails - Team Qameta https://qameta.com/posts/default-url-options-in-ruby-on-rails/
+    config.x.website_uri = URI.parse(ENV.fetch('WEBSITE_URI', nil))
     url_options = {
-      host: ENV.fetch('WEBSITE_HOST', nil),
-      protocol: ENV.fetch('WEBSITE_PROTOCOL', nil)
+      host: config.x.website_uri.host,
+      protocol: config.x.website_uri.scheme
     }
     # TODO: it does not work well with root_url in url_helpers
     Rails.application.routes.default_url_options = url_options
