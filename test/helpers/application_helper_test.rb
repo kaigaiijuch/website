@@ -20,17 +20,21 @@ module ApplicationHelperTest
     end
 
     test 'title() without call set_title() should return just base title' do
-      assert_equal 'base_title', title
+      assert_equal 'base_title', yield_title
     end
 
     test 'title() with call empty set_title() should return just base title' do
-      set_title('')
-      assert_equal 'base_title', title
+      title('')
+      assert_equal 'base_title', yield_title
     end
 
     test 'title() with call set_tile() should return with combined base title' do
-      set_title('test')
-      assert_equal 'base_title + test', title
+      title('test')
+      assert_equal 'base_title + test', yield_title
+    end
+
+    test 'yield_title should return with passed base title' do
+      assert_equal 'test base title', yield_title(base_title: 'test base title')
     end
   end
 end

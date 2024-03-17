@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 module ApplicationHelper # rubocop: disable Style/Documentation
-  def set_title(title)
-    @_title = title
+  def title(title)
+    content_for :title, title
   end
 
-  def title
-    if @_title.blank?
-      Rails.application.config.x.website_title.base
+  def yield_title(base_title: Rails.application.config.x.website_title.base)
+    if content_for?(:title)
+      base_title + Rails.application.config.x.website_title.separator + content_for(:title)
     else
-      Rails.application.config.x.website_title.base + Rails.application.config.x.website_title.separator + @_title
+      base_title
     end
   end
 
