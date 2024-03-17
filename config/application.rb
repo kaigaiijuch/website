@@ -9,7 +9,7 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module Website
-  class Application < Rails::Application # rubocop: disable Style/Documentation
+  class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 

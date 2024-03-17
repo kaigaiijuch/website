@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ApplicationHelper # rubocop: disable Style/Documentation
+module ApplicationHelper
   def title(title)
     content_for :title, title
   end
