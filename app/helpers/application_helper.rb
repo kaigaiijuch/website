@@ -6,11 +6,7 @@ module ApplicationHelper # rubocop: disable Style/Documentation
   end
 
   def yield_title(base_title: Rails.application.config.x.website_title.base)
-    if content_for?(:title)
-      base_title + Rails.application.config.x.website_title.separator + content_for(:title)
-    else
-      base_title
-    end
+    [base_title, content_for(:title)].compact.join(Rails.application.config.x.website_title.separator)
   end
 
   def google_tag_manager_id
