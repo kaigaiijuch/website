@@ -3,9 +3,9 @@
 %>
 <header id="header">
   <nav>
-    <a href="https://kaigaiiju.ch">
+    <%= link_to(root_path) do %>
       <%= image_tag("logos/logo_kaigaiiju-channel.png", height: 70) %>
-    </a>
+    <%- end %>
     <ul>
       <li>Home</li>
       <li>
@@ -164,5 +164,7 @@
       </a>
     </div>
   </div>
-  <p class="align_center"><a href="https://kaigaiiju.ch">海外移住channel</a></p>
+  <p class="align_center">
+    <%= link_to(root_path) do %>海外移住channel<%- end %>
+  </p>
 </footer>

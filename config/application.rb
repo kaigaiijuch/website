@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -14,7 +14,7 @@ module Website
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w(assets tasks))
+    config.autoload_lib(ignore: %w[assets tasks])
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -23,8 +23,17 @@ module Website
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.x.website_title.base = ENV["WEBSITE_TITLE_BASE"]
-    config.x.website_title.separator = ENV["WEBSITE_TITLE_SEPARATOR"]
-    config.x.google_tag_manager_id = ENV["GOOGLE_TAG_MANAGER_ID"]
+    config.x.website_title.base = ENV['WEBSITE_TITLE_BASE']
+    config.x.website_title.separator = ENV['WEBSITE_TITLE_SEPARATOR']
+    config.x.google_tag_manager_id = ENV['GOOGLE_TAG_MANAGER_ID']
+
+    # Default URL Options in Ruby on Rails - Team Qameta https://qameta.com/posts/default-url-options-in-ruby-on-rails/
+    url_options = {
+      host: ENV['WEBSITE_HOST'],
+      protocol: ENV['WEBSITE_PROTOCOL']
+    }
+    # TODO: it does not work well with root_url in url_helpers
+    Rails.application.routes.default_url_options = url_options
+    Rails.application.default_url_options = url_options
   end
 end
