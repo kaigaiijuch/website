@@ -37,3 +37,10 @@ not using yet
 ## Deployment instructions
 
 (TBD)
+
+### Sitemap geenration
+
+```bash
+ $ bin/rake sitemap:refresh
+```
+
