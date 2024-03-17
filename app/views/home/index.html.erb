@@ -96,7 +96,9 @@
 
   <section id="feedback">
     <p>
-      <a href="./feedback" target="_blank" class="link"><b>フィードバックはこちら</b></a>
+      <%= link_to(new_feedback_path, class: "link", target: :_blank) do %>
+        <b>フィードバックはこちら</b>
+      <%- end %>
     </p>
   </section>
 
