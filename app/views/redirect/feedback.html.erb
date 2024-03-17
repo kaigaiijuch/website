@@ -1,0 +1,10 @@
+<%
+  title('フィードバックページへ転送')
+%>
+
+<% content_for :meta_tags do %>
+    <%= tag.meta 'name': "robots", content: "noindex" %>
+    <%= tag.meta 'http-equiv': "refresh", content: "0;URL='#{new_feedback_path}'" %>
+<% end %>
+
+<p>転送中です。もし表示されない場合はこの<%= link_to(new_feedback_path) do %>フィードバックページへのリンク<%- end %>をクリックしてください。</p>
