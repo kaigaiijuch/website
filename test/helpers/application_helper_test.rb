@@ -36,5 +36,10 @@ module ApplicationHelperTest
     test 'yield_title should return with passed base title' do
       assert_equal 'test base title', yield_title(base_title: 'test base title')
     end
+
+    test 'yield_title should return with passed separator title' do
+      title('test')
+      assert_equal 'base_title - test', yield_title(separator: ' - ')
+    end
   end
 end
