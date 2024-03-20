@@ -5,5 +5,5 @@ services:
     env_file:
       - .env.sample
     environment:
-      - RAILS_ENV=development
+      - RAILS_ENV=${RAILS_ENV:-development}
       - SECRET_KEY_BASE_DUMMY=1 # not using the secret key, ignore it
