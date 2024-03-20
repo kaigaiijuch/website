@@ -12,8 +12,19 @@ sqlite3
 
 ## setup
 
+### local
+
 ```bash
  $ bin/setup
+ $ bin/rails s
+ $ open http://localhost:3000
+```
+
+### docker
+
+```
+  $ docker-compose up
+  $ open http://localhost:3000
 ```
 
 ## Configuration
