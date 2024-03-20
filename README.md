@@ -17,14 +17,14 @@ sqlite3
 ```bash
  $ bin/setup
  $ bin/rails s
- $ open http://localhost:3000
+ $ open http://localhost:3000 # caution it's not HTTPS
 ```
 
 ### docker
 
 ```
   $ docker-compose up
-  $ open http://localhost:3000
+  $ open http://localhost:13000 # caution it's not HTTPS
 ```
 
 ## Configuration

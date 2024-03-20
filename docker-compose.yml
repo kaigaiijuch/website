@@ -3,12 +3,18 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
+      - "13000:3000"
     volumes:
       - .:/rails
-      - public_assets:/rails/public/assets
+      - tmp_pids:/rails/tmp/pids
+      # - public_assets:/rails/public/assets # use with RAILS_ENV=production
+    entrypoint: ["./bin/rails", "server", "-b", "0.0.0.0"]
     env_file:
       - .env
+    environment:
+      - RAILS_ENV=${RAILS_ENV:-development}
+      - SECRET_KEY_BASE_DUMMY=1 # not using the secret key, ignore it
 
 volumes:
   public_assets:
+  tmp_pids:
