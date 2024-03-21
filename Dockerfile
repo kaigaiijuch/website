@@ -59,4 +59,8 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
+
+# currently not using for master key, therefore not setting it
+ENV SECRET_KEY_BASE_DUMMY=1
+
 CMD ["./bin/rails", "server"]
