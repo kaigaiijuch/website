@@ -22,7 +22,7 @@ sqlite3
 
 ### docker
 
-```
+```bash
   $ docker-compose up
   $ open http://localhost:13000 # caution it's not HTTPS
 ```
