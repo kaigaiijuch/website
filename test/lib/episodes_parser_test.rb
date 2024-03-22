@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# this is the class that parse the podcast RSS feed and extract Episodes information to translate yaml file
-# to a json file
-# It is a test class that test the EpisodesGenerator class
 require 'test_helper'
 require 'episodes_parser'
 
@@ -66,5 +63,28 @@ class EpisodesParserTest < ActiveSupport::TestCase
       フィードバックは<a href="⁠⁠https://kaigaiiju.ch/feedback" target="_blank" rel="noopener noreferer">こちら</a>から！ <a href="⁠⁠https://kaigaiiju.ch/feedback" target="_blank" rel="noopener noreferer">⁠⁠</a>⁠
       ホスト: ⁠⁠⁠所 親宏⁠⁠⁠ - ドイツ・ベルリン在住 ソフトウェアエンジニア <a href="https://chikahirotokoro.com/" target="_blank" rel="noopener noreferer">https://chikahirotokoro.com/</a></p>
     DESCRIPTION
+  end
+
+  test 'episode should return yaml' do
+    episode = Episode.new(
+      title: '#2-1 アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん 前半 移住の経緯や仕事の話',
+      url: 'https://podcasters.spotify.com/pod/show/kaigaiijuch/episodes/2-1-e2gujk0',
+      image_url: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/39369574/39369574-1710787766777-e18c234d0961e.jpg',
+      pub_date: '2024-03-18T21:00:00+00:00',
+      description: "description\ntest\ntes\n"
+    )
+
+    assert_equal <<~YAML.strip, episode.to_yaml.strip
+      ---
+      2-1:
+        title: "#2-1 アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん 前半 移住の経緯や仕事の話"
+        url: https://podcasters.spotify.com/pod/show/kaigaiijuch/episodes/2-1-e2gujk0
+        image_url: https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/39369574/39369574-1710787766777-e18c234d0961e.jpg
+        pub_date: Mon, 18 Mar 2024 21:00:00 +0000
+        description: |
+          description
+          test
+          tes
+    YAML
   end
 end

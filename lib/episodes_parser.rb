@@ -27,4 +27,16 @@ class Episode
     @pub_date = Time.zone.parse(pub_date)
     @description = description
   end
+
+  def to_yaml(opts = {})
+    YAML.safe_load({
+      @number => {
+        'title' => @title,
+        'url' => @url.to_s,
+        'image_url' => @image_url.to_s,
+        'pub_date' => @pub_date.rfc2822,
+        'description' => @description
+      }
+    }.to_yaml).to_yaml(opts)
+  end
 end
