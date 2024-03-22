@@ -2,12 +2,12 @@
 # to a json file
 # It is a test class that test the EpisodesGenerator class
 require 'test_helper'
-require 'podcast_feed_parser'
+require 'episodes_parser'
 
-class PodcastFeedParserTest < ActiveSupport::TestCase
+class EpisodesParserTest < ActiveSupport::TestCase
   test 'should parse and return episodes' do
     file = open('test/fixtures/files/podcast_feed.rss')
-    episodes = PodcastFeedParser.parse(file.read)
+    episodes = EpisodesParser.from_podcast_rss_feed(file.read)
     assert_equal 4, episodes.size
     assert_equal '#2-1 アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん 前半 移住の経緯や仕事の話', episodes[0].title
     assert_equal 'https://podcasters.spotify.com/pod/show/kaigaiijuch/episodes/2-1-e2gujk0', episodes[0].url

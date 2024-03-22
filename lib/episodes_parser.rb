@@ -1,5 +1,7 @@
-class PodcastFeedParser
-  def self.parse(rss_feed)
+class EpisodesParser
+  require 'rexml'
+
+  def self.from_podcast_rss_feed(rss_feed)
     doc = REXML::Document.new(rss_feed)
     items = []
     doc.elements.each('rss/channel/item') do |item|
