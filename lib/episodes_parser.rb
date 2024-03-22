@@ -3,7 +3,7 @@
 class EpisodesParser
   require 'rexml'
 
-  def self.from_podcast_rss_feed(rss_feed)
+  def self.from_podcast_rss_feed(rss_feed) # rubocop:disable Metrics/AbcSize
     REXML::Document.new(rss_feed).elements.inject('rss/channel/item', []) do |items, item|
       items << Episode.new(
         title: item.elements['title'].text,
