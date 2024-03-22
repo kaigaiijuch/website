@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # this is the class that parse the podcast RSS feed and extract Episodes information to translate yaml file
 # to a json file
 # It is a test class that test the EpisodesGenerator class
