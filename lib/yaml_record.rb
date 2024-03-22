@@ -20,8 +20,11 @@ module YamlRecord
       private
 
       def datas
+        raise DataFileNotFound unless @data_file.exist?
+
         @datas ||= YAML.safe_load(@data_file.read)
       end
     end
+    class DataFileNotFound < StandardError; end
   end
 end

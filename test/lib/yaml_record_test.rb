@@ -28,5 +28,14 @@ module YamlRecord
       sample = Sample2.find('0')
       assert_equal '#0 イントロダクション', sample.title
     end
+
+    class NotFoundSample < YamlRecord::Base
+      data_file 'not_exist.yml'
+    end
+    test 'inherited YamlRecord::Base class can but no file' do
+      assert_raise(YamlRecord::Base::DataFileNotFound) do
+        NotFoundSample.all
+      end
+    end
   end
 end
