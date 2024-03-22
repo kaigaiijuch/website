@@ -17,9 +17,10 @@ class EpisodesParser
 end
 
 class Episode
-  attr_reader :title, :url, :pub_date, :image_url, :description
+  attr_reader :number, :title, :url, :pub_date, :image_url, :description
 
   def initialize(title:, url:, image_url:, pub_date:, description:)
+    @number = title.match(/#(\S+)/)[1]
     @title = title
     @url = URI.parse(url)
     @image_url = URI.parse(image_url)
