@@ -99,11 +99,11 @@ class EpisodesParserTest < ActiveSupport::TestCase
 
     expected_hash = {
       '2-1' => {
-        title: '#2-1 アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん 前半 移住の経緯や仕事の話',
-        url: 'https://podcasters.spotify.com/pod/show/kaigaiijuch/episodes/2-1-e2gujk0',
-        image_url: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/39369574/39369574-1710787766777-e18c234d0961e.jpg',
-        pub_date: 'Mon, 18 Mar 2024 21:00:00 +0000',
-        description: "description\ntest\ntes\n"
+        'title' => '#2-1 アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん 前半 移住の経緯や仕事の話',
+        'url' => 'https://podcasters.spotify.com/pod/show/kaigaiijuch/episodes/2-1-e2gujk0',
+        'image_url' => 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/39369574/39369574-1710787766777-e18c234d0961e.jpg',
+        'pub_date' => 'Mon, 18 Mar 2024 21:00:00 +0000',
+        'description' => "description\ntest\ntes\n"
       }
     }
     assert_equal expected_hash, episode.to_h
