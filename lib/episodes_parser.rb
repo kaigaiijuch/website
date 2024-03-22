@@ -4,9 +4,7 @@ class EpisodesParser
   require 'rexml'
 
   def self.from_podcast_rss_feed(rss_feed)
-    doc = REXML::Document.new(rss_feed)
-    items = []
-    doc.elements.each('rss/channel/item') do |item|
+    REXML::Document.new(rss_feed).elements.inject('rss/channel/item', []) do |items, item|
       items << Episode.new(
         title: item.elements['title'].text,
         url: item.elements['link'].text,
@@ -15,7 +13,6 @@ class EpisodesParser
         pub_date: item.elements['pubDate'].text
       )
     end
-    items
   end
 end
 
@@ -24,9 +21,9 @@ class Episode
 
   def initialize(title:, url:, image_url:, pub_date:, description:)
     @title = title
-    @url = url
-    @image_url = image_url
-    @pub_date = pub_date
+    @url = URI.parse(url)
+    @image_url = URI.parse(image_url)
+    @pub_date = Time.zone.parse(pub_date)
     @description = description
   end
 end
