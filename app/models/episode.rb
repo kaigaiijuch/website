@@ -12,4 +12,5 @@ class Episode < YamlRecord::Base
     @pub_date = Time.zone.parse(attributes['pub_date'])
     @description = attributes['description']
   end
+  alias id number
 end

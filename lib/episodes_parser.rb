@@ -26,6 +26,7 @@ class EpisodesParser
       @pub_date = Time.zone.parse(pub_date)
       @description = description
     end
+    alias id number
 
     def to_h
       {
