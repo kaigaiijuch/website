@@ -7,5 +7,9 @@ namespace :build do
 
     puts "Feed URL: #{args.feed_url}"
     puts "File Path: #{args.file_path}"
+
+    episodes = EpisodesParser.from_podcast_rss_feed(Net::HTTP.get(URI(args.feed_url)))
+    episodes = episodes.map(&:to_h).reduce({}, :merge)
+    File.write(args.file_path, episodes.to_yaml)
   end
 end
