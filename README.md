@@ -49,9 +49,16 @@ not using yet
 
 (TBD)
 
-### Sitemap geenration
+### Sitemap generation
 
 ```bash
  $ bin/rake sitemap:refresh
 ```
 
+### Generate Episodes data from RSS
+
+```bash
+ $ bin/rake "build:episodes_yml_from_rss[https://podcast.url/rss.xml]"
+```
+
+the data is stored in `data/episodes.yml`.

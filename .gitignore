@@ -106,3 +106,8 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 /public/uploads
+
+
+#### custom ignore
+# storing static data
+/data
