@@ -11,10 +11,14 @@ class BuildTaskTest < Minitest::Test
     @task = Rake::Task['build:episodes_yml_from_rss']
   end
 
-  def test_task_output
+  def test_task_output # rubocop:disable Metrics/MethodLength
     feed_url = 'http://example.com/rss'
     file_path = './tmp/data/episodes.yml'
-    expected_output = "Feed URL: #{feed_url}\nFile Path: #{file_path}\n"
+    expected_output = <<~OUTPUT
+      Feed URL: #{feed_url}
+      File Path: #{file_path}
+      Total episodes: 4
+    OUTPUT
 
     stub_request(:get, feed_url).to_return(body: File.read('test/fixtures/files/podcast_feed.rss'))
 

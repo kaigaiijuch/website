@@ -58,7 +58,11 @@ not using yet
 ### Generate Episodes data from RSS
 
 ```bash
- $ bin/rake "build:episodes_yml_from_rss[https://podcast.url/rss.xml]"
+ $ bin/rake build:episodes_yml_from_rss[https://podcast.url/rss.xml]
 ```
 
-the data is stored in `data/episodes.yml`.
+the data is stored default in `data/episodes.yml`.
+
+#### conventions of episode title
+
+title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
