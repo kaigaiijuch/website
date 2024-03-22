@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module YamlRecord
   class Base
-    def initialize(*_keyword_args)
+    def initialize(**attributes)
       raise NotImplementedError
     end
 
