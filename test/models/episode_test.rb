@@ -24,4 +24,17 @@ class EpisodeTest < ActiveSupport::TestCase
     assert_equal ActiveSupport::TimeWithZone, episode.pub_date.class
     assert_equal "description\ntest\ntes\n", episode.description
   end
+
+  class SampleEpisode < Episode
+    data_file 'test/fixtures/files/episodes.yml'
+  end
+  test 'episode can read all as flat Episode object' do
+    episodes = SampleEpisode.all
+
+    assert_equal Episode, episodes[0].class
+    assert_equal '#2-1 アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん 前半 移住の経緯や仕事の話', episodes[0].title
+
+    episode = SampleEpisode.find('0')
+    assert_equal '#0 イントロダクション', episode.title
+  end
 end

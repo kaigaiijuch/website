@@ -13,4 +13,13 @@ class Episode < YamlRecord::Base
     @description = attributes['description']
   end
   alias id number
+
+  class << self
+    def datas
+      super
+      @datas = @datas.map do |key, value|
+        Episode.new(number: key, **value)
+      end
+    end
+  end
 end
