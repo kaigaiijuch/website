@@ -1,10 +1,7 @@
 module YamlRecord
   class Base
-    def initialize(data)
-      data.each do |key, value|
-        instance_variable_set("@#{key}", value)
-        self.class.define_method(key) { instance_variable_get("@#{key}") }
-      end
+    def initialize(*_keyword_args)
+      raise NotImplementedError
     end
 
     class << self
@@ -15,7 +12,7 @@ module YamlRecord
       def all = datas
 
       def find(id)
-        new(datas[id])
+        new(**datas[id])
       end
 
       private

@@ -10,7 +10,8 @@ class EpisodesParserTest < ActiveSupport::TestCase
     end
 
     assert_equal 4, Sample.all.size
-    sample = Sample.find('1-1')
-    assert_equal '#1-1 ドイツ・ベルリン ソフトウェアエンジニア 奥田 一成さん 前半 移住の経緯・現地企業での仕事環境の話', sample.title
+    assert_raise(NotImplementedError) do
+      Sample.find('1-1')
+    end
   end
 end
