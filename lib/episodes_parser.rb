@@ -14,29 +14,29 @@ class EpisodesParser
       )
     end
   end
-end
 
-class Episode
-  attr_reader :number, :title, :url, :pub_date, :image_url, :description
+  class Episode
+    attr_reader :number, :title, :url, :pub_date, :image_url, :description
 
-  def initialize(title:, url:, image_url:, pub_date:, description:)
-    @number = title.match(/#(\S+)/)[1]
-    @title = title
-    @url = URI.parse(url)
-    @image_url = URI.parse(image_url)
-    @pub_date = Time.zone.parse(pub_date)
-    @description = description
-  end
+    def initialize(title:, url:, image_url:, pub_date:, description:)
+      @number = title.match(/#(\S+)/)[1]
+      @title = title
+      @url = URI.parse(url)
+      @image_url = URI.parse(image_url)
+      @pub_date = Time.zone.parse(pub_date)
+      @description = description
+    end
 
-  def to_h
-    {
-      @number => {
-        'title' => @title,
-        'url' => @url.to_s,
-        'image_url' => @image_url.to_s,
-        'pub_date' => @pub_date.rfc2822,
-        'description' => @description
+    def to_h
+      {
+        @number => {
+          'title' => @title,
+          'url' => @url.to_s,
+          'image_url' => @image_url.to_s,
+          'pub_date' => @pub_date.rfc2822,
+          'description' => @description
+        }
       }
-    }
+    end
   end
 end
