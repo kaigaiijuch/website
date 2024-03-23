@@ -31,6 +31,8 @@ sqlite3
 
 check `.env` file and satisfy the requirements, they are used in `config/application.rb`.
 
+`TZ` is used for setting timezone.
+
 ## Database creation && Database initialization
 
 not using yet
