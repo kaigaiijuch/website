@@ -24,7 +24,7 @@ sqlite3
 
 ### docker
 
-```
+```bash
   $ docker-compose up
   $ open http://localhost:13000 # caution it's not HTTPS
 ```
@@ -32,6 +32,8 @@ sqlite3
 ## Configuration
 
 check `.env` file and satisfy the requirements, they are used in `config/application.rb`.
+
+`TZ` is used for setting timezone.
 
 ## Database creation && Database initialization
 
@@ -51,9 +53,20 @@ not using yet
 
 (TBD)
 
-### Sitemap geenration
+### Sitemap generation
 
 ```bash
  $ bin/rake sitemap:refresh
 ```
 
+### Generate Episodes data from RSS
+
+```bash
+ $ bin/rake build:episodes_yml_from_rss[https://podcast.url/rss.xml]
+```
+
+the data is stored default in `data/episodes.yml`.
+
+#### conventions of episode title
+
+title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.

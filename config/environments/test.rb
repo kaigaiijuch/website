@@ -63,4 +63,7 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # default yaml directory path for ActiveYaml
+  config.x.yaml_base_directory = 'test/data'
 end

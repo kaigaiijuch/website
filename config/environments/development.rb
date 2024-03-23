@@ -83,4 +83,7 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
       system("bundle exec rubocop -A --fail-level=E #{parsable_files.shelljoin}", exception: true)
     end
   end
+
+  # default yaml directory path for ActiveYaml
+  config.x.yaml_base_directory = 'data'
 end
