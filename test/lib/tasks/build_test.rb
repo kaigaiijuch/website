@@ -27,6 +27,6 @@ class BuildTaskTest < Minitest::Test
     end
 
     assert_equal expected_output, out
-    assert_equal File.read(file_path), File.read('test/fixtures/files/episodes.yml')
+    assert_equal File.read(file_path), File.read('test/data/episodes.yml')
   end
 end
