@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class Episode < ActiveYaml::Base
-  set_root_path 'data'
+class Episode < ApplicationYamlRecord
   set_filename 'episodes'
 
   def image_url

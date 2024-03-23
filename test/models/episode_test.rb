@@ -4,15 +4,11 @@ require 'test_helper'
 require 'minitest/autorun'
 
 class EpisodeTest < ActiveSupport::TestCase
-  class SampleEpisode < Episode
-    set_root_path 'test/fixtures/files'
-  end
-
-  test 'episode can read all as flat Episode object' do
-    episodes = SampleEpisode.all
+  test 'episode can read all as flat Episode object' do # rubocop:disable Metrics/BlockLength
+    episodes = Episode.all
     assert_equal 4, episodes.size
 
-    episode = SampleEpisode.find_by_key('2-1')
+    episode = Episode.find_by(key: '2-1')
     assert_equal '#2-1 アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん 前半 移住の経緯や仕事の話', episode.title
     assert_equal URI('https://podcasters.spotify.com/pod/show/kaigaiijuch/episodes/2-1-e2gujk0'), episode.url
     assert_equal URI('https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/39369574/39369574-1710787766777-e18c234d0961e.jpg'),
