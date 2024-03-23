@@ -20,7 +20,7 @@ class BuildTaskTest < Minitest::Test
       Total episodes: 4
     OUTPUT
 
-    stub_request(:get, feed_url).to_return(body: File.read('test/fixtures/files/podcast_feed.rss'))
+    stub_request(:get, feed_url).to_return(body: File.read('test/files/podcast_feed.rss'))
 
     out, = capture_io do
       Rake.application.invoke_task "build:episodes_yml_from_rss[#{feed_url},#{file_path}]"

@@ -5,7 +5,7 @@ require 'episodes_parser'
 
 class EpisodesParserTest < ActiveSupport::TestCase
   test 'should parse and return episodes' do # rubocop:disable Metrics/BlockLength
-    file = open('test/fixtures/files/podcast_feed.rss')
+    file = open('test/files/podcast_feed.rss')
     episodes = EpisodesParser.from_podcast_rss_feed(file.read)
 
     assert_equal 4, episodes.size
