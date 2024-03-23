@@ -9,7 +9,6 @@ class BuildTaskTest < Minitest::Test
     Rake.application.rake_require 'tasks/build'
     Rake::Task.define_task(:environment)
     @task = Rake::Task['build:episodes_yml_from_rss']
-    FileUtils.touch('tmp/data/espiodes.yml') unless File.exist?('tmp/data/episodes.yml')
   end
 
   def test_task_output # rubocop:disable Metrics/MethodLength
