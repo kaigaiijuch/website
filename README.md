@@ -1,3 +1,5 @@
+![ci](https://github.com/kaigaiijuch/website/actions/workflows/ci.yml/badge.svg)
+
 # README
 
 This is the application for generating website of [https://kaigaiiju.ch](https://kaigaiiju.ch).
