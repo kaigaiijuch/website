@@ -1,25 +1,18 @@
 # frozen_string_literal: true
 
-class Episode < YamlRecord::Base
-  data_file 'data/episodes.yml'
-  attr_reader :number, :title, :url, :pub_date, :image_url, :description
+class Episode < ActiveYaml::Base
+  set_root_path 'data'
+  set_filename 'episodes'
 
-  def initialize(**attributes) # rubocop:disable Lint/MissingSuper
-    @number = attributes['title'].match(/#(\S+)/)[1]
-    @title = attributes['title']
-    @url = URI.parse(attributes['url'])
-    @image_url = URI.parse(attributes['image_url'])
-    @pub_date = Time.zone.parse(attributes['pub_date'])
-    @description = attributes['description']
+  def image_url
+    URI.parse(@attributes[:image_url])
   end
-  alias id number
 
-  class << self
-    def datas
-      super
-      @datas = @datas.map do |key, value|
-        Episode.new(number: key, **value)
-      end
-    end
+  def url
+    URI.parse(@attributes[:url])
+  end
+
+  def pub_date
+    Time.zone.parse(@attributes[:pub_date])
   end
 end
