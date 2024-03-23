@@ -35,3 +35,7 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 /public/assets
+
+# ignore data files, but keep the directory
+/tmp/data/*
+!/tmp/data/.keep
