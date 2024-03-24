@@ -70,3 +70,11 @@ the data is stored default in `data/episodes.yml`.
 #### conventions of episode title
 
 title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
+
+### Generate path list
+
+```bash
+ $ bin/rails r config/pages.rb
+```
+
+it will output the list of paths, maintain this config when adding new pages.
