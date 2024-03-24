@@ -52,10 +52,12 @@ not using yet
 ## Deployment instructions
 
 ```bash
- $ bin/build_static_pages
+ $ bin/pages/build
 ```
 
-this generates static pages in `public/` directory.
+it will generate the static pages in `public/` directory based on the path list in `bin/pages/list.rb`.
+
+NOTE: after generate in `public/` directory, the pages are served as static pages not by server. use `bin/pages/clean` to remove static pages.
 
 ### Sitemap generation
 
@@ -75,10 +77,3 @@ the data is stored default in `data/episodes.yml`.
 
 title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
 
-### Generate path list
-
-```bash
- $ bin/rails r bin/pages/list.rb
-```
-
-it will output the list of paths, maintain this config when adding new pages.
