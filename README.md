@@ -10,8 +10,6 @@ This is the application for generating website of [https://kaigaiiju.ch](https:/
 
 ### System dependencies
 
-sqlite3
-
 ## setup
 
 ### local
@@ -51,7 +49,13 @@ not using yet
 
 ## Deployment instructions
 
-(TBD)
+```bash
+ $ bin/build
+```
+
+it will generate the static pages in `public/` directory based on the path list in `bin/pages/list.rb`.
+
+NOTE: after generate in `public/` directory, the pages are served as static pages not by server. use `bin/clean` to remove static pages.
 
 ### Sitemap generation
 
@@ -70,3 +74,4 @@ the data is stored default in `data/episodes.yml`.
 #### conventions of episode title
 
 title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
+
