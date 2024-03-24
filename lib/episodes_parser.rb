@@ -34,7 +34,7 @@ class EpisodesParser
           'title' => @title,
           'url' => @url.to_s,
           'image_url' => @image_url.to_s,
-          'pub_date' => @pub_date.rfc2822,
+          'pub_date' => @pub_date.utc.strftime('%a, %d %b %Y %H:%M:%S %z'),
           'description' => @description
         }
       }
