@@ -26,9 +26,10 @@ main() {
   port=3333
   bind=0.0.0.0
   output_directory=${1:-public}
+  config_file=${2:-config/pages.rb}
 
   echo "# Building static pages for paths:"
-  paths=$(rails runner ../config/pages.rb)
+  paths=$(rails runner "../$config_file")
   echo "${paths[@]}"
   echo
 

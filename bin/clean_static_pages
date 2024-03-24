@@ -18,16 +18,22 @@ cd "$(dirname "$0")"
 
 main() {
   output_directory=${1:-public}
+  config_file=${2:-config/pages.rb}
 
   echo "# target static pages for paths:"
-  paths=$(rails runner ../config/pages.rb)
+  paths=$(rails runner "../$config_file")
   echo "${paths[@]}"
   echo
 
   echo "# clean static pages..."
   for path in $paths; do
-    echo "rm ../$output_directory$path.html"
-    rm ../$output_directory$path.html
+    file="../$output_directory$path.html"
+    if [[ -f $file ]]; then
+      echo "rm $file"
+      rm $file
+    else
+      echo "File does not exist: $file"
+    fi
   done
 }
 
