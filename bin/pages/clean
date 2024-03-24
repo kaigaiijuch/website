@@ -15,19 +15,21 @@ clean the built static pages in the output directory.
 fi
 
 cd "$(dirname "$0")"
+APP_ROOT=$(cd ../../; pwd)
+rails="$APP_ROOT/bin/rails"
 
 main() {
   output_directory=${1:-public}
   config_file=${2:-bin/pages/list.rb}
 
   echo "# target static pages for paths:"
-  paths=$(rails runner "../$config_file")
+  paths=$($rails runner "$APP_ROOT/$config_file")
   echo "${paths[@]}"
   echo
 
   echo "# clean static pages..."
   for path in $paths; do
-    file="../$output_directory$path.html"
+    file="$APP_ROOT/$output_directory$path.html"
     if [[ -f $file ]]; then
       echo "rm $file"
       rm $file
