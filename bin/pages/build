@@ -72,7 +72,11 @@ main() {
 
     echo "GET http://localhost:$port$path"
     tmp_suffix=.dl # workaround: if with public directory, file is served before curl finishes and it save empty file
-    curl -s http://localhost:$port$path > $file$tmp_suffix
+    if ! curl --fail -s http://localhost:$port$path > $file$tmp_suffix; then
+      echo "Failed to get: $path"
+      rm $file$tmp_suffix
+      exit 1
+    fi
     mv $file$tmp_suffix $file
     echo "Saved: $file"
     echo
