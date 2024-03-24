@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-namespace :build do # rubocop:disable Metrics/BlockLength
+namespace :build do
   namespace :data do
     desc 'Generate episodes.yml from podcast RSS feed'
     task :episodes_yml_from_rss, %i[feed_url file_path] => :environment do |_, args|
@@ -17,21 +17,5 @@ namespace :build do # rubocop:disable Metrics/BlockLength
       episodes = episodes.map(&:to_h).reduce({}, :merge)
       File.write(args.file_path, episodes.to_yaml)
     end
-  end
-
-  desc 'Build all artifacts for deployment'
-  task artifacts: :environment do
-    puts 'creating sitemap.xml ...'
-    Rake::Task['sitemap:create'].invoke
-    puts 'assets precompile ...'
-    Rake::Task['assets:precompile'].invoke
-  end
-
-  desc 'clean all artifacts for deployment'
-  task clean: :environment do
-    puts 'cleaning sitemap.xml ...'
-    Rake::Task['sitemap:clean'].invoke
-    puts 'cleaning assets precompile ...'
-    Rake::Task['assets:clobber'].invoke
   end
 end

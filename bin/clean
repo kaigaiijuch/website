@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+set -C # Prevent output redirection using ‘>’, ‘>&’, and ‘<>’ from overwriting existing files.
+
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -vx
+fi
+
+if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
+    echo 'Usage: ./clean output_directory config_file
+clean all neccesaary files for the site.
+
+ARGS:
+  output_directory as the output directory. (default: public)
+  config_file as the page config file. (default: bin/pages/list.rb)
+
+'
+    exit
+fi
+
+cd "$(dirname "$0")"
+
+main() {
+    echo 'clean sitemap.xml ...'
+    rake sitemap:clean
+
+    echo
+
+    echo 'clean assets precompile ...'
+    rake assets:clobber
+
+    echo
+
+    echo 'clean static pages ...'
+    pages/clean "$@"
+}
+
+main "$@"
+
+# styleguide | Style guides for Google-originated open-source projects https://google.github.io/styleguide/shellguide.html
+# Shell Script Best Practices — The Sharat's https://sharats.me/posts/shell-script-best-practices/

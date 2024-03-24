@@ -50,12 +50,12 @@ not using yet
 ## Deployment instructions
 
 ```bash
- $ bin/pages/build
+ $ bin/build
 ```
 
 it will generate the static pages in `public/` directory based on the path list in `bin/pages/list.rb`.
 
-NOTE: after generate in `public/` directory, the pages are served as static pages not by server. use `bin/pages/clean` to remove static pages.
+NOTE: after generate in `public/` directory, the pages are served as static pages not by server. use `bin/clean` to remove static pages.
 
 ### Sitemap generation
 
