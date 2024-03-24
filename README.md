@@ -10,8 +10,6 @@ This is the application for generating website of [https://kaigaiiju.ch](https:/
 
 ### System dependencies
 
-sqlite3
-
 ## setup
 
 ### local
