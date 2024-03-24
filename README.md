@@ -51,7 +51,11 @@ not using yet
 
 ## Deployment instructions
 
-(TBD)
+```bash
+ $ bin/build_static_pages
+```
+
+this generates static pages in `public/` directory.
 
 ### Sitemap generation
 

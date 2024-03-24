@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+# set -C # Prevent output redirection using ‘>’, ‘>&’, and ‘<>’ from overwriting existing files.
+
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -vx
+fi
+
+if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
+    echo 'Usage: ./clean output_directory config_file
+clean the built static pages in the output directory.
+'
+    exit
+fi
+
+cd "$(dirname "$0")"
+
+main() {
+  output_directory=${1:-public}
+
+  echo "# target static pages for paths:"
+  paths=$(rails runner ../config/pages.rb)
+  echo "${paths[@]}"
+  echo
+
+  echo "# clean static pages..."
+  for path in $paths; do
+    echo "rm ../$output_directory$path.html"
+    rm ../$output_directory$path.html
+  done
+}
+
+main "$@"
+
+# styleguide | Style guides for Google-originated open-source projects https://google.github.io/styleguide/shellguide.html
+# Shell Script Best Practices — The Sharat's https://sharats.me/posts/shell-script-best-practices/
