@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-namespace :build do
+namespace :build do # rubocop:disable Metrics/BlockLength
   desc 'Generate episodes.yml from podcast RSS feed'
   task :episodes_yml_from_rss, %i[feed_url file_path] => :environment do |_, args|
     require 'open-uri'
@@ -18,7 +18,7 @@ namespace :build do
   end
 
   desc 'Build all artifacts for deployment'
-  task :artifacts do
+  task artifacts: :environment do
     puts 'creating sitemap.xml ...'
     Rake::Task['sitemap:create'].invoke
     puts 'assets precompile ...'
@@ -26,7 +26,7 @@ namespace :build do
   end
 
   desc 'clean all artifacts for deployment'
-  task :clean do
+  task clean: :environment do
     puts 'cleaning sitemap.xml ...'
     Rake::Task['sitemap:clean'].invoke
     puts 'cleaning assets precompile ...'
