@@ -11,7 +11,7 @@ class BuildTaskTest < Minitest::Test
     @task = Rake::Task['build:data:episodes_yml_from_rss']
   end
 
-  def test_task_output # rubocop:disable Metrics/MethodLength
+  def test_data_data_episodes_yml_from_rss_output # rubocop:disable Metrics/MethodLength
     feed_url = 'http://example.com/rss'
     file_path = './tmp/data/episodes.yml'
     expected_output = <<~OUTPUT
