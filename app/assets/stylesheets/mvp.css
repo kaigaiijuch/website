@@ -698,7 +698,9 @@ header iframe{
   font-weight: normal;
 }
 
-
+.non_bold{
+  font-weight: normal;
+}
 
 @media (max-width: 840px) {
  /* 横幅が840px以下の場合に適用するスタイル */
@@ -779,6 +781,5 @@ main{
 #feedback{
   margin: 5% 0 15% 0;
 }
-
 
 }
