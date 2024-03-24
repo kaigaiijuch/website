@@ -12,7 +12,7 @@ if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
   Build static pages in the output directory.
 
   output_directory as the output directory. (default: public)
-  page_config_file as the page config file. (default: config/pages.rb)
+  page_config_file as the page config file. (default: bin/pages/list.rb)
 
   RAILS_ENV as rails server boot environment. (default: production)
   SERVER_OPTIONS as rails server options. (default: --daemon)
@@ -33,7 +33,7 @@ main() {
   server_options=${SERVER_OPTIONS:---daemon}
   port=${PORT:-3333}
   output_directory=${1:-public}
-  page_config_file=${2:-config/pages.rb}
+  page_config_file=${2:-bin/pages/list.rb}
 
   echo "# Building static pages for paths:"
   paths=$(rails runner "../$page_config_file")

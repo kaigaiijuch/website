@@ -18,7 +18,7 @@ cd "$(dirname "$0")"
 
 main() {
   output_directory=${1:-public}
-  config_file=${2:-config/pages.rb}
+  config_file=${2:-bin/pages/list.rb}
 
   echo "# target static pages for paths:"
   paths=$(rails runner "../$config_file")

@@ -78,7 +78,7 @@ title should be formatted as `#123-a title` where `123-a` is the episode number,
 ### Generate path list
 
 ```bash
- $ bin/rails r config/pages.rb
+ $ bin/rails r bin/pages/list.rb
 ```
 
 it will output the list of paths, maintain this config when adding new pages.
