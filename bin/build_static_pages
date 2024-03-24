@@ -66,7 +66,9 @@ main() {
     fi
 
     echo "GET http://localhost:$port$path"
-    curl -s http://localhost:$port$path > ../$output_directory$path.html
+    tmp_suffix=.dl # workaround: if with public directory, file is served before curl finishes and it save empty file
+    curl -s http://localhost:$port$path > $file$tmp_suffix
+    mv $file$tmp_suffix $file
   done
 }
 
