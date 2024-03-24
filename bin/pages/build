@@ -9,11 +9,13 @@ fi
 
 if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
     echo 'Usage: ./build output_directory config_file
-  Build static pages in the output directory.
+Build static pages in the output directory.
 
+ARGS:
   output_directory as the output directory. (default: public)
   config_file as the page config file. (default: bin/pages/list.rb)
 
+OPTOINS:
   RAILS_ENV as $rails server boot environment. (default: production)
   SERVER_OPTIONS as $rails server options. (default: --daemon)
   PORT as $rails server port. (default: 3333)

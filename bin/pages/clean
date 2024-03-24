@@ -10,6 +10,10 @@ fi
 if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
     echo 'Usage: ./clean output_directory config_file
 clean the built static pages in the output directory.
+
+ARGS:
+  output_directory as the output directory. (default: public)
+  config_file as the page config file. (default: bin/pages/list.rb)
 '
     exit
 fi
