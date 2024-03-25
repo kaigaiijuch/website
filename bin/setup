@@ -26,6 +26,15 @@ FileUtils.chdir APP_ROOT do
     FileUtils.cp ".env.sample", ".env"
   end
 
+  puts "\n== Setup Data directory =="
+  unless Dir.exist?("data")
+    if ENV.key?("DATA_REPO")
+      system! "git clone #{ENV.fetch('DATA_REPO')} data"
+    else
+      puts "skip: Please set DATA_REPO environment variable to clone data repository"
+    end
+  end
+
   puts "\n== Removing old logs and tempfiles =="
   system! "bin/rails log:clear tmp:clear"
 
