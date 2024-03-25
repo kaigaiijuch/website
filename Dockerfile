@@ -50,8 +50,9 @@ COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
 # Run and own only the runtime files as a non-root user for security
+## add public to chown to allow for setup build files
 RUN useradd rails --create-home --shell /bin/bash && \
-    chown -R rails:rails log tmp
+    chown -R rails:rails log tmp public
 USER rails:rails
 
 # Entrypoint prepares the database.

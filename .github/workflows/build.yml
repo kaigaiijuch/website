@@ -22,7 +22,7 @@ jobs:
         run: docker compose -f docker-compose-build.yml build
       - name: run test
         run: docker compose -f docker-compose-build.yml run web bin/rake
-      - name: build static html
+      - name: build static html files
         run: docker compose -f docker-compose-build.yml run web bin/build
       - name: Archive static html artifact
         uses: actions/upload-artifact@v4
