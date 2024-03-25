@@ -4,6 +4,6 @@ services:
     build: .
     volumes:
       - ./public:/rails/public
-    user: "root" # non-root user fail to write to /rails/public
+    user: "root" # non-root user fail to write to /rails/public in github actions
     env_file:
       - .env.build
