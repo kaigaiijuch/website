@@ -5,6 +5,18 @@
 
 This is the application for generating static website of [https://kaigaiiju.ch](https://kaigaiiju.ch).
 
+### with github workflow
+
+if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.com/kaigaiijuch/website/settings/variables/actions/RELEASE_TRRIGER_MESSAGE) then it will trigger the release workflow to build the website via [kaigaiijuch/release](https://github.com/kaigaiijuch/release/actions)
+
+```bash
+ # e.g. with RELEASE_TRRIGER_MESSAGE=release!
+ $ git commit --allow-empty -m 'release!'
+ $ git push origin main
+```
+
+it will trigger a build and make a pull-request on [kaigaiijuch/kaigaiijuch.github.io](https://github.com/kaigaiijuch/kaigaiijuch.github.io/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc)
+
 ## requirement
 
  * Ruby version: check [.ruby_version](.ruby-version)
@@ -57,10 +69,6 @@ it will generate the static pages in `public/` directory based on the path list 
 NOTE: after generate in `public/` directory, the pages are served as static pages not by server. use `bin/clean` to remove static pages.
 
 for github build workflow: it needs to set [DATA_REPO_TOKEN](.github/workflows/build.yml) as a secret.
-
-### with github workflow
-
-if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.com/kaigaiijuch/website/settings/variables/actions/RELEASE_TRRIGER_MESSAGE) then it will trigger the release workflow to build the website via (kaigaiijuch/release](https://github.com/kaigaiijuch/release/actions)
 
 ### Sitemap generation
 
