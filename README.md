@@ -58,6 +58,10 @@ NOTE: after generate in `public/` directory, the pages are served as static page
 
 for github build workflow: it needs to set [DATA_REPO_TOKEN](.github/workflows/build.yml) as a secret.
 
+### with github workflow
+
+if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.com/kaigaiijuch/kaigaiijuch.github.io/settings/variables/actions/RELEASE_TRRIGER_MESSAGE) then it will trigger the release workflow to build the website via (kaigaiijuch/release](https://github.com/kaigaiijuch/release)
+
 ### Sitemap generation
 
 ```bash
