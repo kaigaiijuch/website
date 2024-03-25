@@ -1,4 +1,5 @@
 ![ci](https://github.com/kaigaiijuch/website/actions/workflows/ci.yml/badge.svg)
+![build](https://github.com/kaigaiijuch/website/actions/workflows/build.yml/badge.svg)
 
 # Website
 
