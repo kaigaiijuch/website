@@ -60,7 +60,7 @@ for github build workflow: it needs to set [DATA_REPO_TOKEN](.github/workflows/b
 
 ### with github workflow
 
-if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.com/kaigaiijuch/website/settings/variables/actions/RELEASE_TRRIGER_MESSAGE) then it will trigger the release workflow to build the website via (kaigaiijuch/release](https://github.com/kaigaiijuch/release)
+if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.com/kaigaiijuch/website/settings/variables/actions/RELEASE_TRRIGER_MESSAGE) then it will trigger the release workflow to build the website via (kaigaiijuch/release](https://github.com/kaigaiijuch/release/actions)
 
 ### Sitemap generation
 
