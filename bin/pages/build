@@ -82,13 +82,19 @@ main() {
     echo
   done
 
-  echo "# save version..."
+  echo "# save version file..."
   if [[ -f $APP_ROOT/$output_directory/version ]]; then
     echo "rm: $APP_ROOT/$output_directory/version"
     rm $APP_ROOT/$output_directory/version
   fi
-  ./version > $APP_ROOT/$output_directory/version
-  echo "Saved: $APP_ROOT/$output_directory/version"
+
+  # check git command exists
+  if ! command -v git > /dev/null; then
+    echo "skip: save vesrion file, git command not found"
+  else
+    ./version > $APP_ROOT/$output_directory/version
+    echo "Saved: $APP_ROOT/$output_directory/version"
+  fi
 }
 
 main "$@"
