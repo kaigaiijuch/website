@@ -1,14 +1,12 @@
 ![ci](https://github.com/kaigaiijuch/website/actions/workflows/ci.yml/badge.svg)
 
-# README
+# Website
 
-This is the application for generating website of [https://kaigaiiju.ch](https://kaigaiiju.ch).
+This is the application for generating static website of [https://kaigaiiju.ch](https://kaigaiiju.ch).
 
 ## requirement
 
- * Ruby version: check .ruby_version
-
-### System dependencies
+ * Ruby version: check [.ruby_version](.ruby-version)
 
 ## setup
 
@@ -27,6 +25,10 @@ This is the application for generating website of [https://kaigaiiju.ch](https:/
   $ open http://localhost:13000 # caution it's not HTTPS
 ```
 
+## development instructions
+
+For adding new pages, be aware that it may needs to added for page list on [bin/pages/list.rb](bin/pages/list.rb) and site map on [config/sitemap.rb](config/sitemap.rb).
+
 ## Configuration
 
 check `.env` file and satisfy the requirements, they are used in `config/application.rb`.
@@ -35,17 +37,13 @@ check `.env` file and satisfy the requirements, they are used in `config/applica
 
 ## Database creation && Database initialization
 
-not using yet
+not using database!
 
 ## How to run the test suite and linter
 
 ```bash
  $ bin/rake
 ```
-
-## Services (job queues, cache servers, search engines, etc.)
-
-(TBC)
 
 ## Deployment instructions
 
