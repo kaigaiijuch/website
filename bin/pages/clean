@@ -41,6 +41,10 @@ main() {
       echo "File does not exist: $file"
     fi
   done
+
+  echo "# clean version file..."
+  echo "rm $APP_ROOT/$output_directory/version"
+  rm $APP_ROOT/$output_directory/version
 }
 
 main "$@"

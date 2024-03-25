@@ -81,6 +81,14 @@ main() {
     echo "Saved: $file"
     echo
   done
+
+  echo "# save version..."
+  if [[ -f $APP_ROOT/$output_directory/version ]]; then
+    echo "rm: $APP_ROOT/$output_directory/version"
+    rm $APP_ROOT/$output_directory/version
+  fi
+  ./version > $APP_ROOT/$output_directory/version
+  echo "Saved: $APP_ROOT/$output_directory/version"
 }
 
 main "$@"
