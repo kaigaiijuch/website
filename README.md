@@ -56,6 +56,8 @@ it will generate the static pages in `public/` directory based on the path list 
 
 NOTE: after generate in `public/` directory, the pages are served as static pages not by server. use `bin/clean` to remove static pages.
 
+for github build workflow: it needs to set [DATA_REPO_TOKEN](.github/workflows/build.yml) as a secret.
+
 ### Sitemap generation
 
 ```bash
