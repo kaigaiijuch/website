@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: kaigaiijuch/website_data
+          ref: main
           path: data
           token: ${{ github.token }}
       - name: setup docker
