@@ -2,7 +2,7 @@ name: "build"
 on:
   push:
     branches: [ "main" ]
-  pull-request: # temporary
+  pull_request: #teporary
 jobs:
   build:
     runs-on: ubuntu-latest
