@@ -2,6 +2,7 @@ version: '3.8'
 services:
   web:
     build: .
+    user: "rails:rails"
     volumes:
       - ./public:/rails/public
     environment:
