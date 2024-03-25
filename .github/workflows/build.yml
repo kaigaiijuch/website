@@ -2,6 +2,7 @@ name: "build"
 on:
   push:
     branches: [ "main" ]
+  pull-request: # temporary
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,10 +18,14 @@ jobs:
           repository: kaigaiijuch/website_data
           path: data
           token: ${{ env.DATA_REPO_TOKEN }}
+      - name: debug version
+        run: bin/version
       - name: setup docker
         run: docker compose -f docker-compose-build.yml build
       - name: build static html files
         run: docker compose -f docker-compose-build.yml run web bin/build && ls -lah public
+      - name: debug version
+        run: docker compose -f docker-compose-build.yml run web bin/version
       - name: upload static html files as a artifact
         uses: actions/upload-artifact@v4
         with:
