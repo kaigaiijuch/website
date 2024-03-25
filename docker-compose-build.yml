@@ -2,6 +2,8 @@ version: '3.8'
 services:
   web:
     build: .
+    volumes:
+      - .:/rails
     environment:
       - RAILS_ENV=production
       - WEBSITE_URI=https://kaigaiiju.ch
