@@ -14,7 +14,7 @@ This is the application for generating static website of [https://kaigaiiju.ch](
 ### local
 
 ```bash
- $ DATA_REPO=your_data_repo bin/setup # it needs to access right for data repository
+ $ bin/setup # with DATA_REPO=your_data_repo, it will clone the data repository
  $ bin/rails s
  $ open http://localhost:3000 # caution it's not HTTPS
 ```

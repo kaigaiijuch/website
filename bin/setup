@@ -31,7 +31,8 @@ FileUtils.chdir APP_ROOT do
     if ENV.key?("DATA_REPO")
       system! "git clone #{ENV.fetch('DATA_REPO')} data"
     else
-      puts "skip: Please set DATA_REPO environment variable to clone data repository"
+      Dir.mkdir("data")
+      puts "setup local data directory"
     end
   end
 
