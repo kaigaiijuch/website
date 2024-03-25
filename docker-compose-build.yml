@@ -3,8 +3,8 @@ services:
   web:
     build: .
     user: "rails:rails"
-    # volumes:
-    #   - ./public:/rails/public
+    volumes:
+      - ./public:/rails/public
     environment:
       - RAILS_ENV=production
       - WEBSITE_URI=https://kaigaiiju.ch
