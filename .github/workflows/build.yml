@@ -4,17 +4,17 @@ on:
     branches: [ "main" ]
   pull_request: # temporary
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     env:
-      RAILS_ENV: test
+      RAILS_ENV: production
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Checkout data repo
         uses: actions/checkout@v4
         with:
-          name: kaigaiijuch/website_data
+          repository: kaigaiijuch/website_data
           path: data
           token: ${{ github.token }}
       - name: setup docker
