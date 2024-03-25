@@ -34,7 +34,7 @@ jobs:
         id: check_message
         run: |
           message=$(git log --format=%B -n 1 HEAD)
-          if [[ "$message" == *"${{ vars.RELEASE_TRRIGER_MESSEGE }}"* ]]; then
+          if [[ echo $message | grep "${{ vars.RELEASE_TRRIGER_MESSAGE }}" ]]; then
             echo "::set-output name=run_release::true"
           else
             echo "::set-output name=run_release::false"
