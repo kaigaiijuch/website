@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    environment:
+      - RAILS_ENV=production
+      - WEBSITE_URI='https://kaigaiiju.ch'
+      - WEBSITE_TITLE_BASE='海外移住channel'
+      - WEBSITE_TITLE_SEPARATOR=' | '
+      - GOOGLE_TAG_MANAGER_ID=GTM-WV5SHPTC
+      - FEEDBACK_GOOGLE_FORM_ID=1FAIpQLSeXD8lkAQTHPCu6QfQ1n16PJXqRAw4vJDbR4_9ZrIgifRbc5Q
+      - TZ=Japan
+
