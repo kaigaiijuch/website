@@ -29,7 +29,7 @@ jobs:
       - name: debug3
         run: docker compose -f docker-compose-build.yml run web ls -lah public/ && touch public/aaa && ls -lah public/
       - name: build static html files
-        run: docker compose -f docker-compose-build.yml run web bin/build
+        run: docker compose -f docker-compose-build.yml run web bin/build && ls -lah public
       - name: upload static html files as a artifact
         uses: actions/upload-artifact@v4
         with:
