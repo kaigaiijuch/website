@@ -22,9 +22,9 @@ jobs:
       ## no test for build artifact
       # - name: run test
       #   run: docker compose -f docker-compose-build.yml run web bin/rake
-      - name: test
+      - name: debug
         run: touch public/hote
-        - name: test
+      - name: debug2
         run: ls -lah public
       - name: build static html files
         run: docker compose -f docker-compose-build.yml run web bin/build
