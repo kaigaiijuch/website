@@ -21,9 +21,34 @@ jobs:
         run: docker compose -f docker-compose-build.yml build
       - name: build static html files
         run: docker compose -f docker-compose-build.yml run web bin/build && ls -lah public
+      - name: save version file
+        run: |
+          echo "website: ${{github.event.after}}" > public/version
+          echo "website_date: $(cd data && git show -s --format=%H)" >> public/version
+          cat public/version
       - name: upload static html files as a artifact
         uses: actions/upload-artifact@v4
         with:
           name: public_files
           path: |
             public
+      - name: Check commit message
+        id: check_message
+        # note: github.event.head_commit.message looks only available in push event
+        run: |
+          message="${{ github.event.head_commit.message }}" && echo "message: $message"
+          if echo "$message" | grep -q "${{ vars.RELEASE_TRRIGER_MESSAGE }}"; then
+            echo "run_release=true" >> "$GITHUB_ENV"
+          else
+            echo "run_release=false" >> "$GITHUB_ENV"
+          fi
+      - name: ping release trigger
+        if: env.run_release == 'true'
+        run: |
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.DEPLOY_BOT_TOKEN }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/kaigaiijuch/release/dispatches \
+            -d '{"event_type":"run_release"}'
