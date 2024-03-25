@@ -23,7 +23,8 @@ jobs:
       - name: build static html files
         run: docker compose -f docker-compose-build.yml run web bin/build && ls -lah public
       - name: save version file
-        run:  bin/pages/version && bin/pages/version > public/version
+        run: |
+          echo "website: ${{github.event.after}}\nwebsite_date: $(cd data && git show -s --format=%H)" > public/version && cat public/version
       - name: upload static html files as a artifact
         uses: actions/upload-artifact@v4
         with:
@@ -33,7 +34,7 @@ jobs:
       - name: Check commit message
         id: check_message
         run: |
-          message=$(git log --format=%B -n 1 ${{github.event.after}})
+          message=$(git log --format=%B -n 1 HEAD)
           if [[ echo $message | grep "${{ vars.RELEASE_TRRIGER_MESSAGE }}" ]]; then
             echo "run_release=true" >> "$GITHUB_ENV"
           else
