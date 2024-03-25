@@ -1,4 +1,5 @@
-![ci](https://github.com/kaigaiijuch/website/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/kaigaiijuch/website/actions/workflows/ci.yml/badge.svg)](https://github.com/kaigaiijuch/website/actions/workflows/ci.yml)
+[![build](https://github.com/kaigaiijuch/website/actions/workflows/build.yml/badge.svg)](https://github.com/kaigaiijuch/website/actions/workflows/build.yml)
 
 # Website
 
@@ -13,7 +14,7 @@ This is the application for generating static website of [https://kaigaiiju.ch](
 ### local
 
 ```bash
- $ bin/setup
+ $ DATA_REPO=your_data_repo bin/setup # it needs to access right for data repository
  $ bin/rails s
  $ open http://localhost:3000 # caution it's not HTTPS
 ```
@@ -54,6 +55,8 @@ not using database!
 it will generate the static pages in `public/` directory based on the path list in `bin/pages/list.rb`.
 
 NOTE: after generate in `public/` directory, the pages are served as static pages not by server. use `bin/clean` to remove static pages.
+
+for github build workflow: it needs to set [DATA_REPO_TOKEN](.github/workflows/build.yml) as a secret.
 
 ### Sitemap generation
 

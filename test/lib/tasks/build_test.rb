@@ -4,14 +4,14 @@ require 'rake'
 require 'minitest/autorun'
 require 'webmock/minitest'
 
-class BuildTaskTest < Minitest::Test
-  def setup
+class BuildTaskTest < ActiveSupport::TestCase
+  setup do
     Rake.application.rake_require 'tasks/build'
     Rake::Task.define_task(:environment)
     @task = Rake::Task['build:data:episodes_yml_from_rss']
   end
 
-  def test_data_data_episodes_yml_from_rss_output # rubocop:disable Metrics/MethodLength
+  test 'data_data_episodes_yml_from_rss_output' do
     feed_url = 'http://example.com/rss'
     file_path = './tmp/data/episodes.yml'
     expected_output = <<~OUTPUT

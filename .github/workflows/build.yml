@@ -1,0 +1,28 @@
+name: "build"
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: production
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Checkout data repo
+        uses: actions/checkout@v4
+        with:
+          repository: kaigaiijuch/website_data
+          path: data
+          token: ${{ secrets.DATA_REPO_TOKEN }}
+      - name: setup docker
+        run: docker compose -f docker-compose-build.yml build
+      - name: build static html files
+        run: docker compose -f docker-compose-build.yml run web bin/build && ls -lah public
+      - name: upload static html files as a artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: public_files
+          path: |
+            public
