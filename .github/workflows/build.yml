@@ -22,10 +22,8 @@ jobs:
         run: docker compose -f docker-compose-build.yml build
       - name: build static html files
         run: docker compose -f docker-compose-build.yml run web bin/build && ls -lah public
-      - name: debug version
-        run: bin/pages/version
       - name: save version file
-        run: bin/pages/version > public/version
+        run:  bin/pages/version && bin/pages/version > public/version
       - name: upload static html files as a artifact
         uses: actions/upload-artifact@v4
         with:
