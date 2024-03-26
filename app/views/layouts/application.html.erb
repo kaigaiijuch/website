@@ -24,8 +24,8 @@
     <%#= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", media: "all" %>
-    <%= content_for(:stylesheets) %>
-    <%= content_for(:meta_tags) %>
+    <%= yield(:stylesheets) %>
+    <%= yield(:meta_tags) %>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -59,7 +59,7 @@
           </ul>
             </li> -->
         </nav>
-        <%= content_for(:header_contents) %>
+        <%= yield(:header_contents) %>
       </header>
     <% end %>
 
