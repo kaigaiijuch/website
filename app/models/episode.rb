@@ -2,6 +2,8 @@
 
 class Episode < ApplicationYamlRecord
   set_filename 'episodes'
+  # ActiveDecorator::Decorator.decorate EpisodeDecorator
+
   def number = key
   def id = key
 

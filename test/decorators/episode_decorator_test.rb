@@ -3,11 +3,11 @@
 require 'test_helper'
 
 class EpisodeDecoratorTest < ActiveSupport::TestCase
-  def setup
-    @episode = Episode.new.extend EpisodeDecorator
+  setup do
+    @episode = Episode.find_by(key: '1-1').extend EpisodeDecorator
   end
 
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'pub_date_s will return the formatted date' do
+    assert '2024.3.5', @episode.pub_date_s
+  end
 end
