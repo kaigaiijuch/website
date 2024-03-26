@@ -1,5 +1,8 @@
 <%-
   title ''
+  content_for(:stylesheets) do
+    stylesheet_link_tag 'mvp', media: 'all'
+  end
 %>
 <header id="header">
   <nav>
