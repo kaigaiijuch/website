@@ -2,6 +2,8 @@
 
 class Episode < ApplicationYamlRecord
   set_filename 'episodes'
+  def number = key
+  def id = key
 
   def image_url
     URI.parse(@attributes[:image_url])

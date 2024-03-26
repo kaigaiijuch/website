@@ -9,6 +9,9 @@ class EpisodeTest < ActiveSupport::TestCase
     assert_equal 4, episodes.size
 
     episode = Episode.find_by(key: '2-1')
+    assert_equal '2-1', episode.key
+    assert_equal '2-1', episode.number
+    assert_equal '2-1', episode.id
     assert_equal '#2-1 アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん 前半 移住の経緯や仕事の話', episode.title
     assert_equal URI('https://podcasters.spotify.com/pod/show/kaigaiijuch/episodes/2-1-e2gujk0'), episode.url
     assert_equal URI('https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/39369574/39369574-1710787766777-e18c234d0961e.jpg'),
