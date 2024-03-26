@@ -66,13 +66,7 @@
     </header>
   </section>
 
-  <section id="feedback">
-    <p>
-      <%= link_to(new_feedback_path, class: "link", target: :_blank) do %>
-        <b>フィードバックはこちら</b>
-      <%- end %>
-    </p>
-  </section>
+  <%= render "layouts/feedback" %>
 
   <!-- <section > -->
     <!-- <header>
