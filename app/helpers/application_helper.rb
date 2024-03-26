@@ -17,4 +17,12 @@ module ApplicationHelper
   def feedback_google_form_url
     "https://docs.google.com/forms/d/e/#{Rails.application.config.x.feedback_google_form_id}/viewform?embedded=true"
   end
+
+  def disable_header
+    content_for(:header, tag.header)
+  end
+
+  def disable_footer
+    content_for(:footer, tag.footer)
+  end
 end

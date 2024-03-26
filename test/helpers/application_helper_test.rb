@@ -53,4 +53,16 @@ module ApplicationHelperTest
       assert_equal 'base_title - test', yield_title(separator: ' - ')
     end
   end
+
+  class DisableHelperTest < ActionView::TestCase
+    test 'after disable_header() then content_for(:header) should return just simple header' do
+      disable_header
+      assert_equal content_for(:header), '<header></header>'
+    end
+
+    test 'after disable_footer() then content_for(:footer) should return just simple header' do
+      disable_footer
+      assert_equal content_for(:footer), '<footer></footer>'
+    end
+  end
 end
