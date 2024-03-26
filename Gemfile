@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '3.3.0'
 
+gem 'active_decorator'
 gem 'active_hash'
 gem 'bootsnap', require: false
 gem 'puma', '>= 5.0'

@@ -6,14 +6,14 @@ class Episode < ApplicationYamlRecord
   def id = key
 
   def image_url
-    URI.parse(@attributes[:image_url])
+    @image_url ||= URI.parse(@attributes[:image_url])
   end
 
   def url
-    URI.parse(@attributes[:url])
+    @url ||= URI.parse(@attributes[:url])
   end
 
   def pub_date
-    Time.zone.parse(@attributes[:pub_date])
+    @pub_date ||= Time.zone.parse(@attributes[:pub_date])
   end
 end
