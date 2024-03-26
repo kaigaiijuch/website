@@ -4,29 +4,8 @@
     stylesheet_link_tag 'home_index', media: 'all'
   end
 %>
-<header id="header">
-  <nav>
-    <%= link_to(root_path) do %>
-      <%= image_tag("logos/logo_kaigaiiju-channel.png", height: 70) %>
-    <%- end %>
-    <ul>
-      <li>Home</li>
-      <li>
-        <a href="#section-1">配信中</a>
-      </li>
-    </ul>
-      <!-- <li>
-        <a href="#">Dropdown Menu Item</a>
-    <ul>
-      <li>
-        <a href="#">Sublink with a long name</a>
-      </li>
-      <li>
-        <a href="#">Short sublink</a>
-      </li>
-    </ul>
-      </li> -->
-  </nav>
+
+<% content_for(:header_contents) do %>
   <h1>海外移住channel</h1>
   <p>海外移住Channel は海外移住の経験者をゲストに招き、彼らのインタビューを中心に展開するポッドキャストです</p>
   <p>主に海外での生活・仕事・子育てに関するトピックを取り上げています</p>
@@ -36,7 +15,8 @@
   <p>
     <a href="#section-1"><b>もっと聴く</b></a>
   </p>
-</header>
+<% end %>
+
 <main>
   <section id="Available_on">
     <header>
@@ -135,30 +115,3 @@
     <!-- </section> -->
 
 </main>
-<footer id="Follow_us">
-  <div id="footer_contents">
-    <header>
-      <h2>Follow us</h2>
-    </header>
-    <div class="align_center PC_width_60">
-      <a class="btn_link_sns" href="https://podcasters.spotify.com/pod/show/kaigaiijuch" target="_blank">
-        <%= image_tag("logos/Icon_Spotify_White.png", alt: "Follow Spotify") %>
-      </a>
-      <a class="btn_link_sns" href="https://www.facebook.com/profile.php?id=61556571762598" target="_blank">
-        <%= image_tag("logos/Facebook_Logo_Secondary.png", alt: "facebook Logo") %>
-      </a>
-      <a class="btn_link_sns logo_x" href="https://twitter.com/kaigaiijuch" target="_blank">
-        <%= image_tag("logos/x_logo-white.png", alt: "X Logo") %>
-      </a>
-      <a class="btn_link_sns sp_line2" href="https://www.instagram.com/kaigaiiju.ch/" target="_blank">
-        <%= image_tag("logos/Instagram_Glyph_White.png", alt: "Instagram Logo") %>
-      </a>
-      <a class="btn_link_sns sp_line2" href="https://www.linkedin.com/company/kaigaiijuch" target="_blank">
-        <%= image_tag("logos/LinkedIn-White.png", alt: "Linkedin Logo") %>
-      </a>
-    </div>
-  </div>
-  <p class="align_center">
-    <%= link_to(root_path) do %>海外移住channel<%- end %>
-  </p>
-</footer>

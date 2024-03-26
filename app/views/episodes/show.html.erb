@@ -6,28 +6,12 @@
 %>
 
 
-<header id="header_top">
-    <nav>
-        <a href="/"><img alt="Logo" src="images/logo_kaigaiiju-channel.png" height="70"></a>
-        <ul>
-            <li>Home</li>
-            <li><a href="#section-1">配信中</a></li>
-            <!-- <li><a href="#">Dropdown Menu Item</a>
-                <ul>
-                    <li><a href="#">Sublink with a long name</a></li>
-                    <li><a href="#">Short sublink</a></li>
-                </ul>
-            </li> -->
-        </ul>
-    </nav>
-    <h2>#1-1 ドイツ・ベルリン　ソフトウェアエンジニア　奥田一成さん　前半　移住の経緯・現地企業での仕事環境の話</h2>
-    <p>ゲスト：ドイツ・ベルリン在住 ソフトウェアエンジニア/Software Engineer 奥田一成さん</p>
+<% content_for(:header_contents) do %>
+  <h2>#1-1 ドイツ・ベルリン　ソフトウェアエンジニア　奥田一成さん　前半　移住の経緯・現地企業での仕事環境の話</h2>
+  <p>ゲスト：ドイツ・ベルリン在住 ソフトウェアエンジニア/Software Engineer 奥田一成さん</p>
+  <iframe src="https://podcasters.spotify.com/pod/show/kaigaiijuch/embed" height="auto" width="100%" frameborder="0" scrolling="no"></iframe>
+<% end %>
 
-
-      <iframe src="https://podcasters.spotify.com/pod/show/kaigaiijuch/embed" height="auto" width="100%" frameborder="0" scrolling="no">
-  </iframe>
-
-</header>
 <main>
   <hr>
   <section id="summary">
@@ -167,28 +151,3 @@
   </section>
 
 </main>
-<footer id="Follow_us">
-  <div id="footer_contents">
-    <header>
-      <h2>Follow us</h2>
-    </header>
-    <div class="align_center PC_width_60">
-      <a class="btn_link_sns" href="https://podcasters.spotify.com/pod/show/kaigaiijuch" target="_blank">
-        <img src="images/Icon_Spotify_White.png" alt="Follow Spotify">
-      </a>
-      <a class="btn_link_sns" href="https://www.facebook.com/profile.php?id=61556571762598" target="_blank">
-        <img src="images/Facebook_Logo_Secondary.png" alt="facebook Logo">
-      </a>
-      <a class="btn_link_sns logo_x" href="https://twitter.com/kaigaiijuch" target="_blank">
-        <img src="images/x_logo-white.png" alt="X Logo">
-      </a>
-      <a class="btn_link_sns sp_line2" href="https://www.instagram.com/kaigaiiju.ch/" target="_blank">
-        <img src="images/Instagram_Glyph_White.png" alt="Instagram Logo">
-      </a>
-      <a class="btn_link_sns sp_line2" href="https://www.linkedin.com/company/kaigaiijuch" target="_blank">
-        <img src="images/LinkedIn-White.png" alt="Linkedin Logo">
-      </a>
-    </div>
-  </div>
-  <p class="align_center"><a href="https://kaigaiiju.ch">海外移住channel</a></p>
-</footer>
