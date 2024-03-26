@@ -43,8 +43,8 @@ main() {
   done
 
   echo "# clean version file..."
-  echo "rm $APP_ROOT/$output_directory/version"
-  rm $APP_ROOT/$output_directory/version
+  echo "rm $APP_ROOT/$output_directory/version.txt"
+  rm $APP_ROOT/$output_directory/version.txt
 }
 
 main "$@"

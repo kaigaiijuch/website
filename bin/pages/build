@@ -84,8 +84,8 @@ main() {
 
   echo "# save version file..."
   if [[ -f $APP_ROOT/$output_directory/version ]]; then
-    echo "rm: $APP_ROOT/$output_directory/version"
-    rm $APP_ROOT/$output_directory/version
+    echo "rm: $APP_ROOT/$output_directory/version.txt"
+    rm $APP_ROOT/$output_directory/version.txt
   fi
 
   # check git command exists
