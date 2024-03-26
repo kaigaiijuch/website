@@ -35,7 +35,9 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <% unless content_for?(:header) %>
+    <% if content_for?(:header) %>
+      <%= yield(:header) %>
+    <% else %>
       <header id="header">
         <nav>
           <%= link_to(root_path) do %>
@@ -63,10 +65,11 @@
       </header>
     <% end %>
 
-
     <%= yield %>
 
-    <% unless content_for?(:footer) %>
+    <% if content_for?(:footer) %>
+      <%= yield(:footer) %>
+    <% else %>
       <footer id="Follow_us">
         <div id="footer_contents">
           <header>

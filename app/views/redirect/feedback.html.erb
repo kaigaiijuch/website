@@ -4,6 +4,8 @@
     tag.meta 'name': "robots", content: "noindex"
     tag.meta 'http-equiv': "refresh", content: "0;URL='#{new_feedback_path}'"
   end
+  content_for(:header) { ''}
+  content_for(:footer) { '' }
 %>
 
 <p>転送中です。もし表示されない場合はこの<%= link_to(new_feedback_path) do %>フィードバックページへのリンク<%- end %>をクリックしてください。</p>
