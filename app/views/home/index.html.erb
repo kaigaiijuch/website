@@ -44,16 +44,38 @@
     </div>
   </section>
 
-  <section id="section-1">
+  <section id="story_list">
     <header>
       <h2>配信リスト</h2>
     </header>
-    <% @episodes.each do |episode| %>
-      <p>
-        <span><%= episode.pub_date.strftime('%Y.%-m.%-d') %> </span>
-        <%= link_to(episode.title, episode.url.to_s, target: :_blank) %>
-      </p>
-    <% end %>
+
+    <ul class="card_items">
+      <% @episodes.to_a[0..2].each do |episode| %>
+        <li>
+          <a class="card_item" href="<%= episode.url %>" target="_blank">
+            <article>
+              <figure class="card_item_imgWrapper">
+                <%= image_tag(episode.image_url.to_s, alt: episode.title) %>
+            </figure>
+              <div class="card_item_body">
+                <time datetime="<%= episode.pub_date.strftime('%Y.%-m.%-d') %>" class="card_item_time">
+                  <%= episode.pub_date.strftime('%Y.%-m.%-d') %>
+                </time>
+                <h3 class="card_item_ttl">
+                  <%= truncate episode.title %>
+                </h3>
+                <p class="card_item_txt">
+                  <%= truncate(episode.description) %>
+                </p>
+              </div>
+            </article>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+    <p class="btn_listen_more">
+      <a href="https://podcasters.spotify.com/pod/show/kaigaiijuch" target="_blank"><b>もっと聴く</b></a>
+    </p>
   </section>
   <hr>
   <section >
