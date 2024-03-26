@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/feedback', to: 'redirect#feedback'
   get '/feedback.html', to: 'redirect#feedback'
   resources :feedbacks, only: %i[new]
+  resources :episodes, obly: %i[show]
 end
