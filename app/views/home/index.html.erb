@@ -52,7 +52,7 @@
     <ul class="card_items">
       <% @episodes.to_a[0..2].each do |episode| %>
         <li>
-          <a class="card_item" href="<%= episode.url %>" target="_blank">
+          <a class="card_item" href="<%= episode_path(episode) %>" target="_blank">
             <article>
               <figure class="card_item_imgWrapper">
                 <%= image_tag(episode.image_url.to_s, alt: episode.title) %>
@@ -62,10 +62,11 @@
                   <%= episode.pub_date_s %>
                 </time>
                 <h3 class="card_item_ttl">
-                  <%= truncate episode.title %>
+                  <%= truncate(episode.title, length: 18) %>
                 </h3>
                 <p class="card_item_txt">
-                  <%= truncate(episode.description) %>
+                  <%# truncate(episode.title[15..], length: 36) %>
+                  <%= truncate(strip_tags episode.description) %>
                 </p>
               </div>
             </article>
