@@ -58,8 +58,8 @@
                 <%= image_tag(episode.image_url.to_s, alt: episode.title) %>
             </figure>
               <div class="card_item_body">
-                <time datetime="<%= episode.pub_date_s %>" class="card_item_time">
-                  <%= episode.pub_date_s %>
+                <time datetime="<%= episode.pub_date.strftime('%Y.%-m.%-d') %>" class="card_item_time">
+                  <%= episode.pub_date.strftime('%Y.%-m.%-d') %>
                 </time>
                 <h3 class="card_item_ttl">
                   <%= truncate(episode.title, length: 18) %>

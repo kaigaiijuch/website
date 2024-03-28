@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    @episodes = Episode.all.map { |episode| episode.extend(EpisodeDecorator) } # workaround
+    @episodes = Episode.all
   end
 end
