@@ -65,4 +65,11 @@ module ApplicationHelperTest
       assert_equal content_for(:footer), '<footer></footer>'
     end
   end
+
+  class DateFormatHelperTest < ActionView::TestCase
+    test 'format_date_to_ymd(time) should return the formatted date string' do
+      time = Time.new(2022, 12, 31)
+      assert_equal '2022.12.31', format_date_to_ymd(time)
+    end
+  end
 end

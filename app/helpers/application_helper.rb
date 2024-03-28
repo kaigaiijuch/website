@@ -25,4 +25,8 @@ module ApplicationHelper
   def disable_footer
     content_for(:footer, tag.footer)
   end
+
+  def format_date_to_ymd(time)
+    time.strftime('%Y.%m.%d')
+  end
 end
