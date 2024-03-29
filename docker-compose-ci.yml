@@ -4,7 +4,5 @@ services:
     build: .
     env_file:
       - .env.sample
-    volumes:
-      - ./storage:/rails/storage
     environment:
       - RAILS_ENV=${RAILS_ENV:-development}
