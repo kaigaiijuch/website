@@ -5,7 +5,7 @@ require 'test_helper'
 module EpisodesHelperTest
   class EmbedUrlHelperTest < ActionView::TestCase
     setup do
-      @episode = Episode.find_by(key: '2-1')
+      @episode = EpisodeYml.find_by(key: '2-1')
     end
 
     test 'embed_url() should return embed url' do

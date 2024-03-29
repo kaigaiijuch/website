@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Episode < ApplicationYamlRecord
+class EpisodeYml < ApplicationYamlRecord
   set_filename 'episodes'
   def number = key
   def id = key

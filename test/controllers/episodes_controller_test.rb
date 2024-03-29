@@ -4,7 +4,7 @@ require 'test_helper'
 
 class EpisodesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @episode = Episode.first
+    @episode = EpisodeYml.first
   end
 
   test 'should get show' do

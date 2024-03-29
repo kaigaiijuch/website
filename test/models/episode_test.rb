@@ -5,10 +5,10 @@ require 'minitest/autorun'
 
 class EpisodeTest < ActiveSupport::TestCase
   test 'episode can read all as flat Episode object' do # rubocop:disable Metrics/BlockLength
-    episodes = Episode.all
+    episodes = EpisodeYml.all
     assert_equal 4, episodes.size
 
-    episode = Episode.find_by(key: '2-1')
+    episode = EpisodeYml.find_by(key: '2-1')
     assert_equal '2-1', episode.key
     assert_equal '2-1', episode.number
     assert_equal '2-1', episode.id
