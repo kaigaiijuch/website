@@ -21,6 +21,8 @@ it will trigger a build and make a pull-request on [kaigaiijuch/kaigaiijuch.gith
 
  * Ruby version: check [.ruby_version](.ruby-version)
 
+sqlite3
+
 ## setup
 
 ### local
