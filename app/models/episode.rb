@@ -10,7 +10,7 @@ class Episode < ApplicationYamlRecord
   end
 
   def url
-    @uri ||= URI.parse(@attributes[:url])
+    @url ||= URI.parse(@attributes[:url])
   end
 
   def pub_date
