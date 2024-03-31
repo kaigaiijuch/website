@@ -7,7 +7,7 @@ ruby '3.3.0'
 gem 'active_hash'
 gem 'bootsnap', require: false
 gem 'puma', '>= 5.0'
-gem 'rails', github: 'rails/rails', branch: 'main'
+gem 'rails', github: 'rails/rails', branch: 'main' # edge rails
 gem 'sitemap_generator'
 gem 'sprockets-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
