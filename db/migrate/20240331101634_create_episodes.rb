@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 class CreateEpisodes < ActiveRecord::Migration[7.1]
-  def change
-    create_table :episodes, id: :string do |t|
-      t.string :key
+  def change # rubocop:disable Metrics/MethodLength
+    create_table :episodes, id: false, primary_key: :key do |t|
+      t.primary_key :key, null: false
+      t.string :title, null: false, limit: 200
+      t.text :short_summary, null: false
+      t.text :long_summary, null: false
+      t.text :subtitle, null: false
       t.integer :season
       t.integer :number
-      t.string :title, limit: 200
-      t.text :long_summary
-      t.text :short_summary
-      t.text :subtitle
 
       t.timestamps
     end
