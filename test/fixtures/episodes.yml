@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  key: MyString
+  season: 1
+  number: 1
+  title: MyString
+  long_summary: MyText
+  short_summary: MyText
+  subtitle: MyText
+
+two:
+  key: MyString
+  season: 1
+  number: 1
+  title: MyString
+  long_summary: MyText
+  short_summary: MyText
+  subtitle: MyText
