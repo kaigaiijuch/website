@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: episode_types
+#
+#  id         :integer          not null, primary key
+#  name       :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_episode_types_on_name  (name) UNIQUE
+#
+
+one:
+  id: 1
+  name: full
+
+two:
+  id: 2
+  name: trailer
+
+three:
+  id: 3
+  name: bonus

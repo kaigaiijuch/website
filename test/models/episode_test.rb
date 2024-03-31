@@ -11,10 +11,16 @@
 #  title         :string(200)      not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  type_id       :integer          not null
 #
 # Indexes
 #
-#  index_episodes_on_number  (number) UNIQUE
+#  index_episodes_on_number   (number) UNIQUE
+#  index_episodes_on_type_id  (type_id)
+#
+# Foreign Keys
+#
+#  type_id  (type_id => episode_types.id)
 #
 require 'test_helper'
 require 'minitest/autorun'
@@ -38,10 +44,15 @@ class EpisodeTest < ActiveSupport::TestCase
       番組の3本柱として、海外移住、仕事、子育ての話題を中心に取り上げる予定であり、ゲストの属性に合わせて柔軟にコンテンツを提供する考えです。リスナーからのフィードバックも重視し、リクエストに応じてさまざまな企画を検討しています。現在はウェブサイトの制作も進行中であり、配信スケジュールは月2から4回を目指し、火曜日の日本時間の朝に配信予定です。
       第1回エピソードでは、ベルリン在住のソフトウェアエンジニアをゲストに迎え、子育てや仕事についての経験談を聞いています。今後は映画監督やダンサー、研究者など、さまざまなバックグラウンドを持つゲストを招いて、リスナーに興味深いトークを届ける予定です。海外移住チャンネルをフォローして、フィードバックをお寄せいただければ幸いです。
     LONG_SUMMARY
+    assert_equal episode.type_id, 1
+    assert_equal episode.type, EpisodeType.find_by(name: 'full')
 
     episode = Episode.find('1-1')
     assert_equal '#1-1 ドイツ・ベルリン ソフトウェアエンジニア 奥田 一成さん 前半 移住の経緯・現地企業での仕事環境の話', episode.title
     assert_equal '1-1', episode.number
+
+    assert_equal Episode.all,
+                 EpisodeType.find_by(name: 'full').episodes
   end
   # rubocop:enable Layout/LineLength
 end

@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_31_101634) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_31_165930) do
+  create_table "episode_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_episode_types_on_name", unique: true
+  end
+
   create_table "episodes", primary_key: "number", id: :string, force: :cascade do |t|
     t.string "title", limit: 200, null: false
     t.text "short_summary", null: false
@@ -18,7 +25,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_31_101634) do
     t.text "subtitle", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "type_id", null: false
     t.index ["number"], name: "index_episodes_on_number", unique: true
+    t.index ["type_id"], name: "index_episodes_on_type_id"
   end
 
+  add_foreign_key "episodes", "episode_types", column: "type_id"
 end
