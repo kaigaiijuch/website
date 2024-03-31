@@ -9,7 +9,14 @@ FOREIGN KEY ("type_id")
 );
 CREATE UNIQUE INDEX "index_episodes_on_number" ON "episodes" ("number");
 CREATE INDEX "index_episodes_on_type_id" ON "episodes" ("type_id");
+CREATE TABLE IF NOT EXISTS "feeds_spotify_for_podcasters" ("episode_number" varchar NOT NULL PRIMARY KEY, "source_url" varchar NOT NULL, "title" varchar NOT NULL, "url" varchar NOT NULL, "audio_file_url" varchar NOT NULL, "image_url" varchar NOT NULL, "published_at" datetime(6) NOT NULL, "description" text NOT NULL, "duration" varchar NOT NULL, "explicit" boolean NOT NULL, "season_number" varchar, "story_number" varchar, "episode_type" varchar NOT NULL, "guid" varchar NOT NULL, "creator" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_fac382d39c"
+FOREIGN KEY ("episode_number")
+  REFERENCES "episodes" ("number")
+);
+CREATE UNIQUE INDEX "index_feeds_spotify_for_podcasters_on_episode_number" ON "feeds_spotify_for_podcasters" ("episode_number");
+CREATE INDEX "index_feeds_spotify_for_podcasters_on_published_at" ON "feeds_spotify_for_podcasters" ("published_at");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240331210116'),
 ('20240331165930'),
 ('20240331101634');
 

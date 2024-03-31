@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_31_165930) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_31_210116) do
   create_table "episode_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -30,5 +30,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_31_165930) do
     t.index ["type_id"], name: "index_episodes_on_type_id"
   end
 
+  create_table "feeds_spotify_for_podcasters", primary_key: "episode_number", id: :string, force: :cascade do |t|
+    t.string "source_url", null: false
+    t.string "title", null: false
+    t.string "url", null: false
+    t.string "audio_file_url", null: false
+    t.string "image_url", null: false
+    t.datetime "published_at", null: false
+    t.text "description", null: false
+    t.string "duration", null: false
+    t.boolean "explicit", null: false
+    t.string "season_number"
+    t.string "story_number"
+    t.string "episode_type", null: false
+    t.string "guid", null: false
+    t.string "creator", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_number"], name: "index_feeds_spotify_for_podcasters_on_episode_number", unique: true
+    t.index ["published_at"], name: "index_feeds_spotify_for_podcasters_on_published_at"
+  end
+
   add_foreign_key "episodes", "episode_types", column: "type_id"
+  add_foreign_key "feeds_spotify_for_podcasters", "episodes", column: "episode_number", primary_key: "number"
 end

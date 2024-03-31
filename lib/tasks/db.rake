@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ## extend the db:migrate task to dump the schema after each migration
 
 # pick the code from https://github.com/ctran/annotate_models/blob/develop/lib/tasks/annotate_models_migrate.rake
