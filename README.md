@@ -3,7 +3,7 @@
 
 # Website
 
-This is the application for generating static website of [https://kaigaiiju.ch](https://kaigaiiju.ch).
+This is the application for generating a static website for podcasts. it's currently used for [https://kaigaiiju.ch](https://kaigaiiju.ch).
 
 ### with github workflow
 
