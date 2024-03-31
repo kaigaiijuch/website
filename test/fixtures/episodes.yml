@@ -2,10 +2,8 @@
 #
 # Table name: episodes
 #
-#  key           :integer          not null, primary key
 #  long_summary  :text             not null
-#  number        :integer
-#  season        :integer
+#  number        :string           not null, primary key
 #  short_summary :text             not null
 #  subtitle      :text             not null
 #  title         :string(200)      not null
@@ -14,16 +12,12 @@
 #
 # Indexes
 #
-#  index_episodes_on_key     (key) UNIQUE
-#  index_episodes_on_number  (number)
-#  index_episodes_on_season  (season)
+#  index_episodes_on_number  (number) UNIQUE
 #
 
 
 one:
-  key: '0'
-  season: nil
-  number: nil
+  number: '0'
   title: "#0 イントロダクション"
   short_summary:
     海外移住チャンネルの第0回エピソードでは、チャンネルのイントロダクションとして、海外移住チャンネルの発起人でありメインホストのちかひろが自己紹介を行います。ポッドキャストのコンセプトや番組の3本柱についても紹介され、今後の展開に期待が高まります。第1回エピソードではベルリン在住のソフトウェアエンジニアをゲストに迎え、興味深い話題が期待されます。海外移住に興味がある方やすでに移住経験者にとって、貴重な情報が得られることでしょう。
@@ -35,9 +29,7 @@ one:
   subtitle: 海外移住channelの第0回エピソードでは、ちかひろが自己紹介し、ポッドキャストのコンセプトや3本柱を紹介。第1回ではベルリン在住のソフトウェアエンジニアをゲストに招き、興味深い話題が期待される。海外移住に興味がある人や経験者に価値ある情報。
 
 two:
-  key: '1-1'
-  season: 1
-  number: 1
+  number: '1-1'
   title: "#1-1 ドイツ・ベルリン ソフトウェアエンジニア 奥田 一成さん 前半 移住の経緯・現地企業での仕事環境の話"
   long_summary: |
     奥田一成さんとの初回ゲストとの会話が始まります。奥田さんはドイツ・ベルリン在住のソフトエンジニアで、8年前に移住した経緯を説明します。初対面のきっかけや移住先の決定方法など、共通する経験について話し合います。ベルリンを選んだ理由や働き方について考察し、オフィス環境やワーキングスタイルについても話し合います。フルリモートワークの利点や課題、コミュニケーションの大切さについても意見を交換します。また、アメリカの会社での勤務経験や職場環境についても触れます。ドイツでの仕事経験に基づき、英語との苦労や日本との違いについて語ります。英語のアクセントやワークライフバランスについて意見を交換し、仕事の変遷や転職にも言及します。次回では子育てについて話す予定であり、リスナーからのフィードバックを待ち望むことを伝えます。

@@ -4,10 +4,8 @@
 #
 # Table name: episodes
 #
-#  key           :integer          not null, primary key
 #  long_summary  :text             not null
-#  number        :integer
-#  season        :integer
+#  number        :string           not null, primary key
 #  short_summary :text             not null
 #  subtitle      :text             not null
 #  title         :string(200)      not null
@@ -16,9 +14,7 @@
 #
 # Indexes
 #
-#  index_episodes_on_key     (key) UNIQUE
-#  index_episodes_on_number  (number)
-#  index_episodes_on_season  (season)
+#  index_episodes_on_number  (number) UNIQUE
 #
 class Episode < ApplicationRecord
 end

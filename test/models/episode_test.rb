@@ -1,5 +1,21 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: episodes
+#
+#  long_summary  :text             not null
+#  number        :string           not null, primary key
+#  short_summary :text             not null
+#  subtitle      :text             not null
+#  title         :string(200)      not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+# Indexes
+#
+#  index_episodes_on_number  (number) UNIQUE
+#
 require 'test_helper'
 require 'minitest/autorun'
 
@@ -11,6 +27,7 @@ class EpisodeTest < ActiveSupport::TestCase
 
     episode = Episode.find('0')
     assert_equal '#0 イントロダクション', episode.title
+    assert_equal '0', episode.number
     assert_equal '海外移住channelの第0回エピソードでは、ちかひろが自己紹介し、ポッドキャストのコンセプトや3本柱を紹介。第1回ではベルリン在住のソフトウェアエンジニアをゲストに招き、興味深い話題が期待される。海外移住に興味がある人や経験者に価値ある情報。',
                  episode.subtitle
     assert_equal '海外移住チャンネルの第0回エピソードでは、チャンネルのイントロダクションとして、海外移住チャンネルの発起人でありメインホストのちかひろが自己紹介を行います。ポッドキャストのコンセプトや番組の3本柱についても紹介され、今後の展開に期待が高まります。第1回エピソードではベルリン在住のソフトウェアエンジニアをゲストに迎え、興味深い話題が期待されます。海外移住に興味がある方やすでに移住経験者にとって、貴重な情報が得られることでしょう。',
@@ -21,6 +38,10 @@ class EpisodeTest < ActiveSupport::TestCase
       番組の3本柱として、海外移住、仕事、子育ての話題を中心に取り上げる予定であり、ゲストの属性に合わせて柔軟にコンテンツを提供する考えです。リスナーからのフィードバックも重視し、リクエストに応じてさまざまな企画を検討しています。現在はウェブサイトの制作も進行中であり、配信スケジュールは月2から4回を目指し、火曜日の日本時間の朝に配信予定です。
       第1回エピソードでは、ベルリン在住のソフトウェアエンジニアをゲストに迎え、子育てや仕事についての経験談を聞いています。今後は映画監督やダンサー、研究者など、さまざまなバックグラウンドを持つゲストを招いて、リスナーに興味深いトークを届ける予定です。海外移住チャンネルをフォローして、フィードバックをお寄せいただければ幸いです。
     LONG_SUMMARY
+
+    episode = Episode.find('1-1')
+    assert_equal '#1-1 ドイツ・ベルリン ソフトウェアエンジニア 奥田 一成さん 前半 移住の経緯・現地企業での仕事環境の話', episode.title
+    assert_equal '1-1', episode.number
   end
   # rubocop:enable Layout/LineLength
 end

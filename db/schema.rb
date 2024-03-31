@@ -11,18 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_03_31_101634) do
-  create_table "episodes", primary_key: "key", force: :cascade do |t|
+  create_table "episodes", primary_key: "number", id: :string, force: :cascade do |t|
     t.string "title", limit: 200, null: false
     t.text "short_summary", null: false
     t.text "long_summary", null: false
     t.text "subtitle", null: false
-    t.integer "season"
-    t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["key"], name: "index_episodes_on_key", unique: true
-    t.index ["number"], name: "index_episodes_on_number"
-    t.index ["season"], name: "index_episodes_on_season"
+    t.index ["number"], name: "index_episodes_on_number", unique: true
   end
 
 end
