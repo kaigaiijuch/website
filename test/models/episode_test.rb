@@ -28,8 +28,7 @@ require 'minitest/autorun'
 class EpisodeTest < ActiveSupport::TestCase
   # rubocop:disable Layout/LineLength
   test 'episode can read all as flat Episode object' do
-    episodes = Episode.all
-    assert_equal 2, episodes.size
+    assert_equal 2, Episode.count
 
     episode = Episode.find('0')
     assert_equal '#0 イントロダクション', episode.title
