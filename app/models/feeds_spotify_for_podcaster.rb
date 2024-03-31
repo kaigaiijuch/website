@@ -32,5 +32,6 @@
 #  episode_number  (episode_number => episodes.number)
 #
 class FeedsSpotifyForPodcaster < ApplicationRecord
-  belongs_to :episode, foreign_key: :episode_number, class_name: 'Episode', primary_key: :number, inverse_of: :episode
+  belongs_to :episode, foreign_key: :episode_number, class_name: 'Episode', primary_key: :number,
+                       inverse_of: :feed_spotify_for_podcasters
 end

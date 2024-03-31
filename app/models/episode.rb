@@ -24,4 +24,6 @@
 #
 class Episode < ApplicationRecord
   belongs_to :type, class_name: 'EpisodeType', inverse_of: :episodes
+  has_one :feed_spotify_for_podcasters, foreign_key: :episode_number, class_name: 'FeedsSpotifyForPodcaster', # rubocop:disable Rails/HasManyOrHasOneDependent
+                                        primary_key: :number, inverse_of: :episode
 end

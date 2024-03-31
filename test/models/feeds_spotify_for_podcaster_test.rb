@@ -34,7 +34,7 @@
 require 'test_helper'
 
 class FeedsSpotifyForPodcasterTest < ActiveSupport::TestCase
-  test 'episode can read all as flat Episode object' do
+  test 'episode can read all as flat Episode object' do # rubocop:disable Metrics/BlockLength
     assert_equal 2, FeedsSpotifyForPodcaster.count
 
     feed = FeedsSpotifyForPodcaster.find('0')
@@ -63,5 +63,6 @@ class FeedsSpotifyForPodcasterTest < ActiveSupport::TestCase
     assert_equal '596d26ee-c803-41fd-bc91-6e3828e851c5', feed.guid
     assert_equal 'https://anchor.fm/s/eb41ca58/podcast/rss', feed.source_url
     assert_equal 'メインホスト: 所 親宏', feed.creator
+    assert_equal feed.episode, Episode.find('0')
   end
 end
