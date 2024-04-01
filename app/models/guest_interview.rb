@@ -18,7 +18,7 @@
 #  guest_info_id   (guest_info_id => guest_infos.id)
 #
 class GuestInterview < ApplicationRecord
-  belongs_to :episode, primary_key: :number, foreign_key: :episode_number
+  belongs_to :episode, primary_key: :number, foreign_key: :episode_number, inverse_of: :guest_interviews
   belongs_to :guest_info
   has_one :guest, through: :guest_info
 end

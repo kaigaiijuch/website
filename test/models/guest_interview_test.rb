@@ -26,5 +26,14 @@ class GuestInterviewTest < ActiveSupport::TestCase
     assert_equal Episode.find('1-1'), guest_interview.episode
     assert_equal GuestInfo.find(1), guest_interview.guest_info
     assert_equal Guest.find(1), guest_interview.guest
+
+    assert_equal 1, Episode.find('1-1').guest_interviews.count
+    assert_equal 1, Episode.find('1-1').guest_infos.count
+    assert_equal GuestInfo.find(1), Episode.find('1-1').guest_infos.first
+    assert_equal 1, Episode.find('1-1').guests.count
+    assert_equal Guest.find(1), Episode.find('1-1').guests.first
+
+    assert_equal 0, Episode.find('0').guest_infos.count
+    assert_equal 0, Episode.find('0').guests.count
   end
 end
