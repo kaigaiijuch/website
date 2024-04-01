@@ -17,8 +17,14 @@
 #  episode_number  (episode_number => episodes.number)
 #  guest_info_id   (guest_info_id => guest_infos.id)
 #
-class GuestInterview < ApplicationRecord
-  belongs_to :episode, primary_key: :number, foreign_key: :episode_number
-  belongs_to :guest_info
-  has_one :guest, through: :guest_info
+require 'test_helper'
+
+class GuestInterviewTest < ActiveSupport::TestCase
+  test 'should have guests and guest_infos with interview episode' do
+    guest_interview = GuestInterview.first
+
+    assert_equal Episode.find('1-1'), guest_interview.episode
+    assert_equal GuestInfo.find(1), guest_interview.guest_info
+    assert_equal Guest.find(1), guest_interview.guest
+  end
 end
