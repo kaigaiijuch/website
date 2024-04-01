@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_01_123049) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_01_131711) do
   create_table "episode_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -49,6 +49,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_123049) do
     t.datetime "updated_at", null: false
     t.index ["episode_number"], name: "index_feeds_spotify_for_podcasters_on_episode_number", unique: true
     t.index ["published_at"], name: "index_feeds_spotify_for_podcasters_on_published_at"
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.string "nickname", null: false
+    t.string "name", null: false
+    t.string "english_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nickname"], name: "index_guests_on_nickname", unique: true
   end
 
   add_foreign_key "episodes", "episode_types", column: "type_id"
