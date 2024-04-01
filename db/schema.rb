@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_01_154222) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_01_183433) do
   create_table "episode_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_154222) do
   create_table "guest_interviews", id: false, force: :cascade do |t|
     t.string "episode_number", null: false
     t.integer "guest_info_id", null: false
+    t.integer "display_order", default: 1, null: false
     t.index ["episode_number", "guest_info_id"], name: "index_guest_interviews_on_episode_number_and_guest_info_id", unique: true
     t.index ["guest_info_id"], name: "index_guest_interviews_on_guest_info_id"
   end

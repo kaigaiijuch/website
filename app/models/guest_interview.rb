@@ -4,6 +4,7 @@
 #
 # Table name: guest_interviews
 #
+#  display_order  :integer          default(1), not null
 #  episode_number :string           not null
 #  guest_info_id  :integer          not null
 #
@@ -21,4 +22,5 @@ class GuestInterview < ApplicationRecord
   belongs_to :episode, primary_key: :number, foreign_key: :episode_number, inverse_of: :guest_interviews
   belongs_to :guest_info
   has_one :guest, through: :guest_info
+  default_scope { order(display_order: :asc) }
 end

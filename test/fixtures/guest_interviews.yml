@@ -2,6 +2,7 @@
 #
 # Table name: guest_interviews
 #
+#  display_order  :integer          default(1), not null
 #  episode_number :string           not null
 #  guest_info_id  :integer          not null
 #
@@ -19,11 +20,14 @@
 one:
   guest_info_id: 1
   episode_number: '1-1'
+  display_order: 1
 
 yoga:
   guest_info_id: 2
   episode_number: '108'
+  display_order: 2
 
 yoga2:
   guest_info_id: 4
   episode_number: '108'
+  display_order: 1

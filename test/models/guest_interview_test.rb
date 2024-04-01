@@ -4,6 +4,7 @@
 #
 # Table name: guest_interviews
 #
+#  display_order  :integer          default(1), not null
 #  episode_number :string           not null
 #  guest_info_id  :integer          not null
 #
@@ -42,7 +43,11 @@ class GuestInterviewTest < ActiveSupport::TestCase
     assert_equal 2, episode_yoga.guest_interviews.count
     assert_equal 2, episode_yoga.guest_infos.count
     assert_equal 2, episode_yoga.guests.count
-    assert_equal Guest.find_by(nickname: 'yosuke-san'), episode_yoga.guests.first
-    assert_equal Guest.find_by(nickname: 'chikahiro'), episode_yoga.guests.second
+
+    # check the order of guests
+    assert_equal Guest.find_by(nickname: 'chikahiro'), episode_yoga.guests.first
+    assert_equal 1, episode_yoga.guest_interviews.first.display_order
+    assert_equal Guest.find_by(nickname: 'yosuke-san'), episode_yoga.guests.second
+    assert_equal 2, episode_yoga.guest_interviews.second.display_order
   end
 end
