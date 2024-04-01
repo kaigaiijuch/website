@@ -78,13 +78,13 @@ for github build workflow: it needs to set [DATA_REPO_TOKEN](.github/workflows/b
  $ bin/rake sitemap:refresh
 ```
 
-### Generate Episodes data from RSS
+### Fetch podcast feed data from [Spotify for podcasters](https://podcasters.spotify.com/) RSS
 
 ```bash
- $ bin/rake build:episodes_yml_from_rss[https://podcast.url/rss.xml]
+ $ bin/rake data:fetch_feeds_spotify_for_podcasters[https://podcast.url/rss.xml]
 ```
 
-the data is stored default in `data/episodes.yml`.
+the data is stored default in `FeedsSpotifyForPodcaster`.
 
 #### conventions of episode title
 
