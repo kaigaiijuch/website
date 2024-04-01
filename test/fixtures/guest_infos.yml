@@ -1,0 +1,45 @@
+# == Schema Information
+#
+# Table name: guest_infos
+#
+#  id                    :integer          not null, primary key
+#  abroad_living_summary :string           not null
+#  introduction          :text             not null
+#  job_title             :string           not null
+#  tagline               :string           not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  guest_id              :integer          not null
+#
+# Indexes
+#
+#  index_guest_infos_on_guest_id  (guest_id)
+#
+# Foreign Keys
+#
+#  guest_id  (guest_id => guests.id)
+#
+
+one:
+  guest_id: 1
+  tagline: ドイツ・ベルリン ソフトウェアエンジニア 奥田 一成さん
+  job_title: ソフトウェアエンジニア
+  introduction: |
+    子育てやクラブミュージックに興味があります。
+    最近はMTG Arena と日本茶や中国茶を飲むことにハマっています。
+  abroad_living_summary: ドイツ・ベルリン在住 8年目
+
+two:
+  guest_id: 2
+  tagline: アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん
+  job_title: 映像ディレクター
+  introduction: ベルリン在住映像ディレクター
+  abroad_living_summary: アメリカ・ロサンゼルス/ニューヨーク 8年 ドイツ・ベルリン在住 8年目
+
+three:
+  guest_id: 1
+  tagline: ドイツ・ベルリン イギリス・ロンドン(予定) ソフトウェアエンジニア 奥田 一成さん
+  job_title: スーパーソフトウェアエンジニア
+  introduction: |
+     ロンドンに引っ越しを考えています。
+  abroad_living_summary: ドイツ・ベルリン 8年 イギリス・ロンドン(予定)

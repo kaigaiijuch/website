@@ -15,11 +15,13 @@
 #
 
 one:
+  id: 1
   name: 奥田 一成
   nickname: kaz
   english_name: Kazunari Okuda
 
 two:
+  id: 2
   name: 細井 洋介
   nickname: yosuke-san
   english_name: Yosuke Hosoda

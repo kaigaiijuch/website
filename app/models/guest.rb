@@ -16,4 +16,5 @@
 #  index_guests_on_nickname  (nickname) UNIQUE
 #
 class Guest < ApplicationRecord
+  has_many :guest_infos
 end

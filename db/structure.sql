@@ -22,7 +22,13 @@ JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number
 /* published_episodes(number,title,short_summary,long_summary,subtitle,created_at,updated_at,type_id,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,season_number,story_number,episode_type,guid,creator,"created_at:1","updated_at:1") */;
 CREATE TABLE IF NOT EXISTS "guests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar NOT NULL, "name" varchar NOT NULL, "english_name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE UNIQUE INDEX "index_guests_on_nickname" ON "guests" ("nickname");
+CREATE TABLE IF NOT EXISTS "guest_infos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "guest_id" integer NOT NULL, "tagline" varchar NOT NULL, "job_title" varchar NOT NULL, "introduction" text NOT NULL, "abroad_living_summary" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_633b51a24c"
+FOREIGN KEY ("guest_id")
+  REFERENCES "guests" ("id")
+);
+CREATE INDEX "index_guest_infos_on_guest_id" ON "guest_infos" ("guest_id");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240401140043'),
 ('20240401131711'),
 ('20240401123049'),
 ('20240331210116'),

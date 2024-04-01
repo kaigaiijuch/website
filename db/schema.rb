@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_01_131711) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_01_140043) do
   create_table "episode_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -51,6 +51,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_131711) do
     t.index ["published_at"], name: "index_feeds_spotify_for_podcasters_on_published_at"
   end
 
+  create_table "guest_infos", force: :cascade do |t|
+    t.integer "guest_id", null: false
+    t.string "tagline", null: false
+    t.string "job_title", null: false
+    t.text "introduction", null: false
+    t.string "abroad_living_summary", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_guest_infos_on_guest_id"
+  end
+
   create_table "guests", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "name", null: false
@@ -62,6 +73,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_131711) do
 
   add_foreign_key "episodes", "episode_types", column: "type_id"
   add_foreign_key "feeds_spotify_for_podcasters", "episodes", column: "episode_number", primary_key: "number"
+  add_foreign_key "guest_infos", "guests"
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
