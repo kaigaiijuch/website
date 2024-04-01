@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_31_210116) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_01_123049) do
   create_table "episode_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -53,4 +53,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_31_210116) do
 
   add_foreign_key "episodes", "episode_types", column: "type_id"
   add_foreign_key "feeds_spotify_for_podcasters", "episodes", column: "episode_number", primary_key: "number"
+
+  create_view "published_episodes", sql_definition: <<-SQL
+      SELECT
+   *
+  FROM episodes
+  JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+  SQL
 end

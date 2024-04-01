@@ -15,7 +15,13 @@ FOREIGN KEY ("episode_number")
 );
 CREATE UNIQUE INDEX "index_feeds_spotify_for_podcasters_on_episode_number" ON "feeds_spotify_for_podcasters" ("episode_number");
 CREATE INDEX "index_feeds_spotify_for_podcasters_on_published_at" ON "feeds_spotify_for_podcasters" ("published_at");
+CREATE VIEW "published_episodes" AS SELECT
+ *
+FROM episodes
+JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+/* published_episodes(number,title,short_summary,long_summary,subtitle,created_at,updated_at,type_id,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,season_number,story_number,episode_type,guid,creator,"created_at:1","updated_at:1") */;
 INSERT INTO "schema_migrations" (version) VALUES
+('20240401123049'),
 ('20240331210116'),
 ('20240331165930'),
 ('20240331101634');
