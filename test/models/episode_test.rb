@@ -28,7 +28,7 @@ require 'minitest/autorun'
 class EpisodeTest < ActiveSupport::TestCase
   # rubocop:disable Layout/LineLength
   test 'episode can read all as flat Episode object' do
-    assert_equal 2, Episode.count
+    assert_equal 4, Episode.count
 
     episode = Episode.find('0')
     assert_equal '#0 イントロダクション', episode.title
@@ -43,14 +43,14 @@ class EpisodeTest < ActiveSupport::TestCase
       番組の3本柱として、海外移住、仕事、子育ての話題を中心に取り上げる予定であり、ゲストの属性に合わせて柔軟にコンテンツを提供する考えです。リスナーからのフィードバックも重視し、リクエストに応じてさまざまな企画を検討しています。現在はウェブサイトの制作も進行中であり、配信スケジュールは月2から4回を目指し、火曜日の日本時間の朝に配信予定です。
       第1回エピソードでは、ベルリン在住のソフトウェアエンジニアをゲストに迎え、子育てや仕事についての経験談を聞いています。今後は映画監督やダンサー、研究者など、さまざまなバックグラウンドを持つゲストを招いて、リスナーに興味深いトークを届ける予定です。海外移住チャンネルをフォローして、フィードバックをお寄せいただければ幸いです。
     LONG_SUMMARY
-    assert_equal episode.type_id, 1
-    assert_equal episode.type, EpisodeType.find_by(name: 'full')
+    assert_equal episode.type_id, 2
+    assert_equal episode.type, EpisodeType.find_by(name: 'trailer')
 
     episode = Episode.find('1-1')
     assert_equal '#1-1 ドイツ・ベルリン ソフトウェアエンジニア 奥田 一成さん 前半 移住の経緯・現地企業での仕事環境の話', episode.title
     assert_equal '1-1', episode.number
 
-    assert_equal Episode.all,
+    assert_equal Episode.where(type_id: 1).all,
                  EpisodeType.find_by(name: 'full').episodes
     assert_equal episode.feed_spotify_for_podcasters, FeedsSpotifyForPodcaster.find('1-1')
   end
