@@ -52,7 +52,7 @@
     <ul class="card_items">
       <% @episodes.each do |episode| %>
         <li>
-          <a class="card_item" href="<%= episode_path(episode) %>" target="_blank">
+          <a class="card_item" href="<%= episode_path(episode) %>">
             <article>
               <figure class="card_item_imgWrapper">
                 <%= image_tag(episode.image_url.to_s, alt: episode.title) %>
