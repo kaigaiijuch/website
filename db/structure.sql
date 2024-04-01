@@ -28,7 +28,17 @@ FOREIGN KEY ("type_id")
 CREATE UNIQUE INDEX "index_episodes_on_number" ON "episodes" ("number");
 CREATE INDEX "index_episodes_on_type_id" ON "episodes" ("type_id");
 CREATE UNIQUE INDEX "index_episodes_on_season_number_and_story_number" ON "episodes" ("season_number", "story_number");
+CREATE TABLE IF NOT EXISTS "guest_interviews" ("episode_number" varchar NOT NULL, "guest_info_id" integer NOT NULL, CONSTRAINT "fk_rails_c2329fd873"
+FOREIGN KEY ("guest_info_id")
+  REFERENCES "guest_infos" ("id")
+, CONSTRAINT "fk_rails_6e428d54d7"
+FOREIGN KEY ("episode_number")
+  REFERENCES "episodes" ("number")
+);
+CREATE INDEX "index_guest_interviews_on_guest_info_id" ON "guest_interviews" ("guest_info_id");
+CREATE UNIQUE INDEX "index_guest_interviews_on_episode_number_and_guest_info_id" ON "guest_interviews" ("episode_number", "guest_info_id");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240401154222'),
 ('20240401152744'),
 ('20240401140043'),
 ('20240401131711'),
