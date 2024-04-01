@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    @episodes = EpisodeYml.all
+    @episodes = PublishedEpisode.all
   end
 end

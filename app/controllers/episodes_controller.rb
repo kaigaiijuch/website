@@ -8,6 +8,6 @@ class EpisodesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_episode
-    @episode = EpisodeYml.find_by(key: params[:id])
+    @episode = PublishedEpisode.find(params[:id])
   end
 end

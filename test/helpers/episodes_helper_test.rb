@@ -5,12 +5,11 @@ require 'test_helper'
 module EpisodesHelperTest
   class EmbedUrlHelperTest < ActionView::TestCase
     setup do
-      flunk 'change to PublishedEpisodes'
-      @episode = EpisodeYml.find_by(key: '2-1')
+      @episode = PublishedEpisode.find('0')
     end
 
     test 'embed_url() should return embed url' do
-      assert_equal 'https://podcasters.spotify.com/pod/show/kaigaiijuch/embed/episodes/2-1-e2gujk0', embed_url(@episode)
+      assert_equal 'https://podcasters.spotify.com/pod/show/kaigaiijuch/embed/episodes/0-e2ghlp7', embed_url(@episode)
     end
   end
 end
