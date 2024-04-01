@@ -5,6 +5,10 @@
 
 This is the application for generating a static website for podcasts. it's currently used for [https://kaigaiiju.ch](https://kaigaiiju.ch).
 
+## ERD (Entity Relationship Diagram)
+
+check [wiki page](https://github.com/kaigaiijuch/website/wiki/ERD)
+
 ### with github workflow
 
 if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.com/kaigaiijuch/website/settings/variables/actions/RELEASE_TRRIGER_MESSAGE) then it will trigger the release workflow to build the website via [kaigaiijuch/release](https://github.com/kaigaiijuch/release/actions)
