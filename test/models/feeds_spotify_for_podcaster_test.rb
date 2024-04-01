@@ -34,7 +34,7 @@
 require 'test_helper'
 
 class FeedsSpotifyForPodcasterTest < ActiveSupport::TestCase
-  test 'episode can read all as flat Episode object' do # rubocop:disable Metrics/BlockLength
+  test 'should has right attrbutes' do # rubocop:disable Metrics/BlockLength
     assert_equal 2, FeedsSpotifyForPodcaster.count
 
     feed = FeedsSpotifyForPodcaster.find('0')
@@ -54,8 +54,9 @@ class FeedsSpotifyForPodcasterTest < ActiveSupport::TestCase
       00:02:36 ゲストやフィードバックについて
       00:03:59 配信開始と今後の展望
     DESCRIPTION
-    assert_equal feed.episode_type, 'trailer'
+    assert_equal 'trailer', feed.episode_type
     assert_equal Time.new(2024, 3, 2, 8, 15, 18, '+00:00'), feed.published_at
+    assert_equal 'JST', feed.published_at.zone
     assert_equal '00:04:53', feed.duration
     assert_equal false, feed.explicit
     assert_nil feed.story_number
@@ -64,5 +65,12 @@ class FeedsSpotifyForPodcasterTest < ActiveSupport::TestCase
     assert_equal 'https://anchor.fm/s/eb41ca58/podcast/rss', feed.source_url
     assert_equal 'メインホスト: 所 親宏', feed.creator
     assert_equal feed.episode, Episode.find('0')
+  end
+
+  test 'timezone should be saved in utc on database' do
+    feed = feeds_spotify_for_podcasters(:one)
+    feed.update!(published_at: Time.new(2024, 4, 1, 10, 0, 0, '+09:00'))
+    assert_equal '2024-04-01 01:00:00',
+                 feed.reload.read_attribute_before_type_cast(:published_at)
   end
 end

@@ -36,6 +36,8 @@ module Website
     # in config/environments, which are processed later.
     #
     config.time_zone = ENV.fetch('TZ', 'UTC')
+    config.active_record.default_timezone = :utc
+
     # config.eager_load_paths << Rails.root.join("extras")
     config.x.website_title.base = ENV.fetch('WEBSITE_TITLE_BASE', nil)
     config.x.website_title.separator = ENV.fetch('WEBSITE_TITLE_SEPARATOR', nil)
