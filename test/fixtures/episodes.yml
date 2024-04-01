@@ -4,7 +4,9 @@
 #
 #  long_summary  :text             not null
 #  number        :string           not null, primary key
+#  season_number :integer
 #  short_summary :text             not null
+#  story_number  :integer
 #  subtitle      :text             not null
 #  title         :string(200)      not null
 #  created_at    :datetime         not null
@@ -13,8 +15,9 @@
 #
 # Indexes
 #
-#  index_episodes_on_number   (number) UNIQUE
-#  index_episodes_on_type_id  (type_id)
+#  index_episodes_on_number                          (number) UNIQUE
+#  index_episodes_on_season_number_and_story_number  (season_number,story_number) UNIQUE
+#  index_episodes_on_type_id                         (type_id)
 #
 # Foreign Keys
 #
@@ -44,6 +47,8 @@ two:
     奥田一成さんとの初回ゲストとの会話が始まります。ベルリン在住のソフトエンジニアである奥田さんは、移住した経緯やベルリンでの働き方について語ります。フルリモートワークの利点や課題、コミュニケーションの大切さに触れつつ、アメリカでの勤務経験や日本との違いについても話します。英語のアクセントやワークライフバランスにも言及し、次回は子育てについて話す予定です。
   subtitle: ベルリン在住奥田一成氏との会話。移住経緯や働き方、フルリモートワーク利点と課題、アメリカとの違い、英語アクセント、ワークライフバランスに触れ、次回は子育てに焦点。
   type_id: 1
+  season_number: 1
+  story_number: 1
 
 three:
   number: '1-2'

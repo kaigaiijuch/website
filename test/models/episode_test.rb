@@ -6,7 +6,9 @@
 #
 #  long_summary  :text             not null
 #  number        :string           not null, primary key
+#  season_number :integer
 #  short_summary :text             not null
+#  story_number  :integer
 #  subtitle      :text             not null
 #  title         :string(200)      not null
 #  created_at    :datetime         not null
@@ -15,8 +17,9 @@
 #
 # Indexes
 #
-#  index_episodes_on_number   (number) UNIQUE
-#  index_episodes_on_type_id  (type_id)
+#  index_episodes_on_number                          (number) UNIQUE
+#  index_episodes_on_season_number_and_story_number  (season_number,story_number) UNIQUE
+#  index_episodes_on_type_id                         (type_id)
 #
 # Foreign Keys
 #
@@ -49,10 +52,28 @@ class EpisodeTest < ActiveSupport::TestCase
     episode = Episode.find('1-1')
     assert_equal '#1-1 ドイツ・ベルリン ソフトウェアエンジニア 奥田 一成さん 前半 移住の経緯・現地企業での仕事環境の話', episode.title
     assert_equal '1-1', episode.number
+    assert_equal 1, episode.season_number
+    assert_equal 1, episode.story_number
 
     assert_equal Episode.where(type_id: 1).all,
                  EpisodeType.find_by(name: 'full').episodes
     assert_equal episode.feed_spotify_for_podcasters, FeedsSpotifyForPodcaster.find('1-1')
   end
   # rubocop:enable Layout/LineLength
+
+  test 'the pair of season_number and story_number cannot be duplicated' do
+    dummy_value = 'Duplicated Season and Story Numbers'
+    assert_raises(ActiveRecord::RecordNotUnique) do
+      Episode.create!(
+        number: 'duplicated_season_story_numbers',
+        season_number: 1,
+        story_number: 1,
+        type_id: 1,
+        title: dummy_value,
+        short_summary: dummy_value,
+        long_summary: dummy_value,
+        subtitle: dummy_value
+      )
+    end
+  end
 end
