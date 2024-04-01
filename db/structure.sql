@@ -27,13 +27,7 @@ FOREIGN KEY ("guest_id")
   REFERENCES "guests" ("id")
 );
 CREATE INDEX "index_guest_infos_on_guest_id" ON "guest_infos" ("guest_id");
-CREATE TABLE IF NOT EXISTS "interview_episodes" ("episode_number" varchar NOT NULL PRIMARY KEY, "season_number" integer NOT NULL, "story_number" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c650bfc4bb"
-FOREIGN KEY ("episode_number")
-  REFERENCES "episodes" ("number")
-);
-CREATE UNIQUE INDEX "index_interview_episodes_on_season_number_and_story_number" ON "interview_episodes" ("season_number", "story_number");
 INSERT INTO "schema_migrations" (version) VALUES
-('20240401144737'),
 ('20240401140043'),
 ('20240401131711'),
 ('20240401123049'),
