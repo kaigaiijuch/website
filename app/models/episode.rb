@@ -30,6 +30,6 @@ class Episode < ApplicationRecord
   has_one :feed_spotify_for_podcasters, foreign_key: :episode_number, class_name: 'FeedsSpotifyForPodcaster',
                                         primary_key: :number, inverse_of: :episode
   has_many :guest_interviews, foreign_key: :episode_number, primary_key: :number, inverse_of: :episode
-  has_many :guest_interview_infos, through: :guest_interviews
+  has_many :guest_interview_profiles, through: :guest_interviews
   has_many :guests, through: :guest_interviews
 end
