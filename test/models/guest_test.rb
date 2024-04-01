@@ -19,10 +19,10 @@ require 'test_helper'
 
 class GuestTest < ActiveSupport::TestCase
   test 'should have correct attributes' do
-    assert_equal 2, Guest.count
+    assert_equal 3, Guest.count
 
     guests = Guest.order(:nickname)
-    assert_equal '奥田 一成', guests.first.name
-    assert_equal 'Yosuke Hosoda', guests.second.english_name
+    assert_equal '所 親宏', guests.first.name
+    assert_equal 'Kazunari Okuda', guests.second.english_name
   end
 end

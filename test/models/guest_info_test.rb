@@ -25,7 +25,7 @@ require 'test_helper'
 
 class GuestInfoTest < ActiveSupport::TestCase
   test 'should have correct attributes and relations' do
-    assert_equal 3, GuestInfo.count
+    assert_equal 4, GuestInfo.count
 
     guest_info = GuestInfo.where(guest: Guest.find_by(nickname: 'kaz')).order(:created_at).last
     assert_equal 'ドイツ・ベルリン 8年 イギリス・ロンドン(予定)', guest_info.abroad_living_summary

@@ -19,3 +19,11 @@
 one:
   guest_info_id: 1
   episode_number: '1-1'
+
+yoga:
+  guest_info_id: 2
+  episode_number: '108'
+
+yoga2:
+  guest_info_id: 4
+  episode_number: '108'

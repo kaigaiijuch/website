@@ -25,3 +25,9 @@ two:
   name: 細井 洋介
   nickname: yosuke-san
   english_name: Yosuke Hosoda
+
+three:
+  id: 3
+  name: 所 親宏
+  nickname: chikahiro
+  english_name: Chikahiro Tokoro
