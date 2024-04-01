@@ -15,7 +15,7 @@ class FeedsParser
         creator: item.elements['dc:creator'].text,
         duration: item.elements['itunes:duration'].text,
         explicit: item.elements['itunes:explicit'].text,
-        episode_number: item.elements['itunes:episode']&.text,
+        story_number: item.elements['itunes:episode']&.text,
         season_number: item.elements['itunes:season']&.text,
         episode_type: item.elements['itunes:episodeType'].text,
         guid: item.elements['guid'].text,
@@ -25,26 +25,32 @@ class FeedsParser
   end
 
   class Feed
-    attr_reader :number, :title, :url, :pub_date, :image_url, :description, :audio_file_url, :creator, :duration,
-                :explicit, :episode_number, :season_number, :episode_type, :guid, :source_url
+    attr_reader :episode_number, :title, :url, :published_at, :image_url, :description, :audio_file_url, :creator, :duration,
+                :explicit, :story_number, :season_number, :episode_type, :guid, :source_url
 
     def initialize(title:, url:, image_url:, pub_date:, description:, audio_file_url:, creator:, duration:, explicit:,
-                   episode_number:, season_number:, episode_type:, guid:, source_url:)
-      @number = title.match(/#(\S+)/)[1]
+                   story_number:, season_number:, episode_type:, guid:, source_url:)
+      @episode_number = title.match(/#(\S+)/)[1]
       @title = title
       @url = URI.parse(url)
       @image_url = URI.parse(image_url)
-      @pub_date = Time.zone.parse(pub_date)
+      @published_at = Time.zone.parse(pub_date)
       @description = description
       @audio_file_url = URI.parse(audio_file_url)
       @creator = creator
       @duration = duration
       @explicit = (explicit == 'yes')
-      @episode_number = episode_number
+      @story_number = story_number
       @season_number = season_number
       @episode_type = episode_type
       @guid = guid
       @source_url = source_url
+    end
+
+    def to_h
+      instance_variables.inject({}) do |hash, var|
+        hash.merge!(var.to_s.delete('@').to_sym => instance_variable_get(var))
+      end
     end
   end
 end

@@ -4,20 +4,60 @@ require 'test_helper'
 require 'feeds_parser'
 
 class FeedsParserTest < ActiveSupport::TestCase
-  test 'should parse and return feeds' do # rubocop:disable Metrics/BlockLength
-    file = open('test/files/feed_spotify_for_podcasters.rss')
-    feeds = FeedsParser.from_podcast_rss_feed(source_url: 'https://example.com/rss', rss_feed: file.read)
+  setup do
+    @rss_feed = open('test/files/feed_spotify_for_podcasters.rss').read
+  end
+
+  test 'should parse and return feeds' do
+    feeds = FeedsParser.from_podcast_rss_feed(source_url: 'https://example.com/rss', rss_feed: @rss_feed)
     assert_equal 4, feeds.size
 
     feed = feeds.first
-    assert_equal '2-1', feed.number
+    assert_equal '2-1', feed.episode_number
     assert_equal '#2-1 アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん 前半 移住の経緯や仕事の話', feed.title
     assert_equal URI('https://podcasters.spotify.com/pod/show/kaigaiijuch/episodes/2-1-e2gujk0'), feed.url
     assert_equal URI('https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/39369574/39369574-1710787766777-e18c234d0961e.jpg'),
                  feed.image_url
-    assert_equal Time.new(2024, 3, 18, 21, 0, 0, '+00:00'), feed.pub_date
-    assert_equal ActiveSupport::TimeWithZone, feed.pub_date.class
-    assert_equal <<~DESCRIPTION, feed.description
+    assert_equal Time.new(2024, 3, 18, 21, 0, 0, '+00:00'), feed.published_at
+    assert_equal ActiveSupport::TimeWithZone, feed.published_at.class
+    assert_equal episode_description, feed.description
+    assert_equal URI('https://anchor.fm/s/eb41ca58/podcast/play/83889216/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-2-18%2F2ced774b-d8ce-2216-983d-dcdd428c599b.mp3'),
+                 feed.audio_file_url
+    assert_equal 'メインホスト: 所 親宏', feed.creator
+    assert_equal '00:39:39', feed.duration
+    assert_equal false, feed.explicit
+    assert_equal '2', feed.season_number
+    assert_equal '1', feed.story_number
+    assert_equal 'full', feed.episode_type
+    assert_equal '77022728-edbe-4f05-976b-296736561661', feed.guid
+    assert_equal 'https://example.com/rss', feed.source_url
+  end
+
+  test '#to_h should convert to hash' do
+    feed = FeedsParser.from_podcast_rss_feed(source_url: 'https://example.com/rss', rss_feed: @rss_feed).first
+    expected_hash = {
+      episode_number: '2-1',
+      title: '#2-1 アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん 前半 移住の経緯や仕事の話',
+      url: URI('https://podcasters.spotify.com/pod/show/kaigaiijuch/episodes/2-1-e2gujk0'),
+      image_url: URI('https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/39369574/39369574-1710787766777-e18c234d0961e.jpg'),
+      published_at: Time.new(2024, 3, 18, 21, 0, 0, '+00:00'),
+      description: episode_description,
+      audio_file_url: URI('https://anchor.fm/s/eb41ca58/podcast/play/83889216/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-2-18%2F2ced774b-d8ce-2216-983d-dcdd428c599b.mp3'),
+      creator: 'メインホスト: 所 親宏',
+      duration: '00:39:39',
+      explicit: false,
+      season_number: '2',
+      story_number: '1',
+      episode_type: 'full',
+      guid: '77022728-edbe-4f05-976b-296736561661',
+      source_url: 'https://example.com/rss'
+    }
+
+    assert_equal expected_hash, feed.to_h
+  end
+
+  def episode_description
+    <<~DESCRIPTION
       <p>ゲスト: アメリカ・ロサンゼルス/ニューヨーク 8年 ドイツ・ベルリン在住 8年目 映像ディレクター 細井 洋介さん
       自己紹介:
       ベルリン在住映像ディレクター
@@ -64,16 +104,5 @@ class FeedsParserTest < ActiveSupport::TestCase
       フィードバックは<a href="⁠⁠https://kaigaiiju.ch/feedback" target="_blank" rel="noopener noreferer">こちら</a>から！ <a href="⁠⁠https://kaigaiiju.ch/feedback" target="_blank" rel="noopener noreferer">⁠⁠</a>⁠
       ホスト: ⁠⁠⁠所 親宏⁠⁠⁠ - ドイツ・ベルリン在住 ソフトウェアエンジニア <a href="https://chikahirotokoro.com/" target="_blank" rel="noopener noreferer">https://chikahirotokoro.com/</a></p>
     DESCRIPTION
-
-    assert_equal URI('https://anchor.fm/s/eb41ca58/podcast/play/83889216/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-2-18%2F2ced774b-d8ce-2216-983d-dcdd428c599b.mp3'),
-                 feed.audio_file_url
-    assert_equal 'メインホスト: 所 親宏', feed.creator
-    assert_equal '00:39:39', feed.duration
-    assert_equal false, feed.explicit
-    assert_equal '2', feed.season_number
-    assert_equal '1', feed.episode_number
-    assert_equal 'full', feed.episode_type
-    assert_equal '77022728-edbe-4f05-976b-296736561661', feed.guid
-    assert_equal 'https://example.com/rss', feed.source_url
   end
 end
