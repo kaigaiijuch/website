@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_01_140043) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_01_144737) do
   create_table "episode_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -71,9 +71,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_140043) do
     t.index ["nickname"], name: "index_guests_on_nickname", unique: true
   end
 
+  create_table "interview_episodes", primary_key: "episode_number", id: :string, force: :cascade do |t|
+    t.integer "season_number", null: false
+    t.integer "story_number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["season_number", "story_number"], name: "index_interview_episodes_on_season_number_and_story_number", unique: true
+  end
+
   add_foreign_key "episodes", "episode_types", column: "type_id"
   add_foreign_key "feeds_spotify_for_podcasters", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "guest_infos", "guests"
+  add_foreign_key "interview_episodes", "episodes", column: "episode_number", primary_key: "number"
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
