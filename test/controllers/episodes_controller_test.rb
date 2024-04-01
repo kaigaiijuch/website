@@ -4,6 +4,8 @@ require 'test_helper'
 
 class EpisodesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    flunk 'change to PublishedEpisodes'
+
     @episode = EpisodeYml.first
   end
 

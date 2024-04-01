@@ -5,6 +5,7 @@ require 'test_helper'
 module EpisodesHelperTest
   class EmbedUrlHelperTest < ActionView::TestCase
     setup do
+      flunk 'change to PublishedEpisodes'
       @episode = EpisodeYml.find_by(key: '2-1')
     end
 
