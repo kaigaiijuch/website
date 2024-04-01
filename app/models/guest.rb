@@ -16,5 +16,5 @@
 #  index_guests_on_nickname  (nickname) UNIQUE
 #
 class Guest < ApplicationRecord
-  has_many :infos, class_name: 'GuestInfo', inverse_of: :guest
+  has_many :infos, class_name: 'GuestInterviewInfo', inverse_of: :guest
 end
