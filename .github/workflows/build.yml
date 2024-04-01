@@ -24,7 +24,7 @@ jobs:
       - name: save version file
         run: |
           echo "website: ${{github.event.after}}" > public/version.txt
-          echo "website_date: $(cd data && git show -s --format=%H)" >> public/version.txt
+          echo "website_data: $(cd data && git show -s --format=%H)" >> public/version.txt
           cat public/version.txt
       - name: upload static html files as a artifact
         uses: actions/upload-artifact@v4
