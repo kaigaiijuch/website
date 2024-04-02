@@ -44,6 +44,30 @@ sqlite3
   $ open http://localhost:13000 # caution it's not HTTPS
 ```
 
+## Prepare data
+
+### Import data from csv
+
+(this is temporary solution)
+
+```bash
+ $ bin/data/import_from_csv csv/directory
+```
+
+import data from csv files in the directory, it is compatible with google sheets csv format.
+
+### Fetch podcast feed data from [Spotify for podcasters](https://podcasters.spotify.com/) RSS
+
+```bash
+ $ bin/rake data:fetch_feeds_spotify_for_podcasters[https://podcast.url/rss.xml]
+```
+
+the data is stored default in `FeedsSpotifyForPodcaster`.
+
+#### conventions of episode title
+
+title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
+
 ## development instructions
 
 For adding new pages, be aware that it may needs to added for page list on [bin/pages/list.rb](bin/pages/list.rb) and site map on [config/sitemap.rb](config/sitemap.rb).
@@ -56,7 +80,10 @@ check `.env` file and satisfy the requirements, they are used in `config/applica
 
 ## Database creation && Database initialization
 
-not using database!
+
+```bash
+  $ bin/rake db:create db:migrate db:seed
+```
 
 ## How to run the test suite and linter
 
@@ -81,16 +108,3 @@ for github build workflow: it needs to set [DATA_REPO_TOKEN](.github/workflows/b
 ```bash
  $ bin/rake sitemap:refresh
 ```
-
-### Fetch podcast feed data from [Spotify for podcasters](https://podcasters.spotify.com/) RSS
-
-```bash
- $ bin/rake data:fetch_feeds_spotify_for_podcasters[https://podcast.url/rss.xml]
-```
-
-the data is stored default in `FeedsSpotifyForPodcaster`.
-
-#### conventions of episode title
-
-title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
-
