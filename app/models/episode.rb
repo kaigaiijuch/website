@@ -28,7 +28,5 @@ class Episode < ApplicationRecord
   belongs_to :type, class_name: 'EpisodeType', foreign_key: :type_name, primary_key: :name, inverse_of: :episodes
   has_one :feed_spotify_for_podcasters, foreign_key: :episode_number, class_name: 'FeedsSpotifyForPodcaster',
                                         primary_key: :number, inverse_of: :episode
-  has_many :guest_interviews, foreign_key: :episode_number, primary_key: :number, inverse_of: :episode
-  has_many :guest_interview_profiles, through: :guest_interviews
-  has_many :guests, through: :guest_interviews
+  include HasGuests
 end

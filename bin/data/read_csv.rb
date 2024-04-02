@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
-require "csv"
+# frozen_string_literal: true
+
+require 'csv'
 
 file_path = ARGV[0]
 table_name = File.basename(file_path.split.last, '.csv')

@@ -34,6 +34,7 @@
 #
 class PublishedEpisode < ApplicationRecord
   self.primary_key = 'number'
+  include HasGuests
 
   def readonly?
     true
