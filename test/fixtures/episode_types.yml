@@ -2,8 +2,7 @@
 #
 # Table name: episode_types
 #
-#  id         :integer          not null, primary key
-#  name       :string           not null
+#  name       :string           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -13,13 +12,10 @@
 #
 
 one:
-  id: 1
   name: full
 
 two:
-  id: 2
   name: trailer
 
 three:
-  id: 3
   name: bonus

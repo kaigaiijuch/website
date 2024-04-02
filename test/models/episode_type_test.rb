@@ -4,8 +4,7 @@
 #
 # Table name: episode_types
 #
-#  id         :integer          not null, primary key
-#  name       :string           not null
+#  name       :string           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -17,9 +16,7 @@ require 'test_helper'
 
 class EpisodeTypeTest < ActiveSupport::TestCase
   test 'it has 3 types in the records' do
-    episode_types = EpisodeType.order(:id).all
-
-    assert_equal %w[full trailer bonus], episode_types.map(&:name)
+    assert_equal %w[bonus full trailer], EpisodeType.order(:name).pluck(:name)
   end
 
   test 'it cannot create duplicate name' do

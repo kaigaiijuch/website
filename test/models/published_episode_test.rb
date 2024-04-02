@@ -26,11 +26,11 @@
 #  subtitle        :text
 #  title           :string(200)
 #  title:1         :string
+#  type_name       :string
 #  updated_at:1    :datetime
 #  url             :string
 #  created_at      :datetime
 #  updated_at      :datetime
-#  type_id         :integer
 #
 require 'test_helper'
 

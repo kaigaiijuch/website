@@ -10,9 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_01_201847) do
-  create_table "episode_types", force: :cascade do |t|
-    t.string "name", null: false
+ActiveRecord::Schema[7.1].define(version: 2024_04_02_074804) do
+  create_table "episode_types", primary_key: "name", id: :string, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_episode_types_on_name", unique: true
@@ -25,12 +24,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_201847) do
     t.text "subtitle", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "type_id", null: false
     t.integer "season_number"
     t.integer "story_number"
+    t.string "type_name", null: false
     t.index ["number"], name: "index_episodes_on_number", unique: true
     t.index ["season_number", "story_number"], name: "index_episodes_on_season_number_and_story_number", unique: true
-    t.index ["type_id"], name: "index_episodes_on_type_id"
   end
 
   create_table "feeds_spotify_for_podcasters", primary_key: "episode_number", id: :string, force: :cascade do |t|
@@ -82,7 +80,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_201847) do
     t.index ["nickname"], name: "index_guests_on_nickname", unique: true
   end
 
-  add_foreign_key "episodes", "episode_types", column: "type_id"
+  add_foreign_key "episodes", "episode_types", column: "type_name", primary_key: "name"
   add_foreign_key "feeds_spotify_for_podcasters", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "guest_interview_profiles", "guests"
   add_foreign_key "guest_interviews", "episodes", column: "episode_number", primary_key: "number"
@@ -90,8 +88,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_201847) do
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
-   *
-  FROM episodes
-  JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+     *
+    FROM episodes
+    JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
   SQL
 end
