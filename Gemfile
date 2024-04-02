@@ -15,6 +15,7 @@ gem 'sqlite3', '~> 1.4'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
 group :development, :test do
+  gem 'bullet'
   gem 'debug', platforms: %i[mri windows]
   gem 'dotenv-rails'
   gem 'rubocop-rails', require: false
