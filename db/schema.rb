@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_02_082545) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_02_082719) do
   create_table "episode_types", primary_key: "name", id: :string, force: :cascade do |t|
     t.index ["name"], name: "index_episode_types_on_name", unique: true
   end
 
   create_table "episodes", primary_key: "number", id: :string, force: :cascade do |t|
     t.string "title", limit: 200, null: false
-    t.text "short_summary", null: false
+    t.text "summary", null: false
     t.text "long_summary", null: false
     t.text "subtitle", null: false
     t.datetime "created_at", null: false

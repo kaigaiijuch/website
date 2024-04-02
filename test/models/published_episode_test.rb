@@ -19,11 +19,11 @@
 #  published_at    :datetime
 #  season_number   :integer
 #  season_number:1 :string
-#  short_summary   :text
 #  source_url      :string
 #  story_number    :integer
 #  story_number:1  :string
 #  subtitle        :text
+#  summary         :text
 #  title           :string(200)
 #  title:1         :string
 #  type_name       :string

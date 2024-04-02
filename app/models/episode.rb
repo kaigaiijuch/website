@@ -7,9 +7,9 @@
 #  long_summary  :text             not null
 #  number        :string           not null, primary key
 #  season_number :integer
-#  short_summary :text             not null
 #  story_number  :integer
 #  subtitle      :text             not null
+#  summary       :text             not null
 #  title         :string(200)      not null
 #  type_name     :string           not null
 #  created_at    :datetime         not null
