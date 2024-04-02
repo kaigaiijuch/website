@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module HasGuests
+module HasGuestInterviews
   extend ActiveSupport::Concern
 
   included do
