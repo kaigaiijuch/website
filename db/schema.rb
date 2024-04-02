@@ -10,10 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_02_074804) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_02_082545) do
   create_table "episode_types", primary_key: "name", id: :string, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_episode_types_on_name", unique: true
   end
 

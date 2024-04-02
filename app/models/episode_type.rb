@@ -4,9 +4,7 @@
 #
 # Table name: episode_types
 #
-#  name       :string           not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  name :string           not null, primary key
 #
 # Indexes
 #
