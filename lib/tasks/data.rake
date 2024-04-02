@@ -15,7 +15,11 @@ namespace :data do
     result = []
     FeedsSpotifyForPodcaster.transaction do
       feeds.each do |feed|
-        result << FeedsSpotifyForPodcaster.create!(feed.to_h)
+        puts "  episode number: #{feed.episode_number}"
+        result << FeedsSpotifyForPodcaster.find_or_initialize_by(episode_number: feed.episode_number).tap do |record|
+          record.assign_attributes(feed.to_h)
+          record.save!
+        end
       end
     end
 
