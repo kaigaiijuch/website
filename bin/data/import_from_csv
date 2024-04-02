@@ -20,7 +20,18 @@ cd ../..
 
 main() {
     csv_dir=$1
-    for csv_file in "$csv_dir"/*.csv; do
+    base_csv_file_names=(
+        episodes.csv
+        guests.csv
+        guest_interview_profiles.csv
+        guest_interviews.csv
+    )
+    for csv_file_name in "${base_csv_file_names[@]}"; do
+        csv_file=$(ls "$csv_dir"/*"$csv_file_name" 2> /dev/null || true)
+        if [[ ! -f "$csv_file" ]]; then
+            echo "File $csv_file not found. Skip processing."
+            continue
+        fi
         echo "Processing file $csv_file"
         bin/rails runner bin/data/read_csv.rb "$csv_file"
         echo ""
