@@ -47,4 +47,31 @@ class EpisodeReferenceTest < ActiveSupport::TestCase
     assert_equal episode_references(:one).episode, episodes(:two)
     assert_equal episodes(:two).references, [episode_references(:one), episode_references(:two)]
   end
+
+  test 'the display_order and episode_number should not be dupilicated' do
+    episode_reference = EpisodeReference.new(
+      episode_number: episode_references(:one).episode_number,
+      caption: 'aaa',
+      link: 'https://test.link',
+      display_order: episode_references(:one).display_order
+    )
+
+    assert_raises(ActiveRecord::RecordNotUnique) do
+      episode_reference.save!(validate: false)
+    end
+    assert_not episode_reference.valid?
+  end
+  test 'the display_order should be positive value and greater than zero' do
+    episode_reference = EpisodeReference.new(
+      episode_number: episode_references(:one).episode_number,
+      caption: 'aaa',
+      link: 'https://test.link',
+      display_order: 0
+    )
+
+    assert_not episode_reference.valid?
+    assert_raises(ActiveRecord::StatementInvalid) do
+      episode_reference.save!(validate: false)
+    end
+  end
 end
