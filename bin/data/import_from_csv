@@ -22,6 +22,7 @@ main() {
     csv_dir=$1
     base_csv_file_names=(
         episodes.csv
+        episode_references.csv
         guests.csv
         guest_interview_profiles.csv
         guest_interviews.csv

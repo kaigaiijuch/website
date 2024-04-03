@@ -23,9 +23,9 @@ class GuestInterview < ApplicationRecord
   belongs_to :episode, primary_key: :number, foreign_key: :episode_number, inverse_of: :guest_interviews
   belongs_to :guest_interview_profile
   has_one :guest, through: :guest_interview_profile
-  default_scope { order(display_order: :asc) }
 
   validates :episode_number, uniqueness: { scope: :guest_interview_profile_id }
   validates :episode_number, uniqueness: { scope: :display_order }
   validates :display_order, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  default_scope { order(display_order: :asc) }
 end

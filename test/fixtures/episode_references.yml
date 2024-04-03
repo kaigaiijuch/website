@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: episode_references
+#
+#  id             :integer          not null, primary key
+#  caption        :text             not null
+#  display_order  :integer          default(1), not null
+#  episode_number :string           not null
+#  link           :string           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+# Indexes
+#
+#  index_episode_references_on_episode_number_and_display_order  (episode_number,display_order) UNIQUE
+#
+# Foreign Keys
+#
+#  episode_number  (episode_number => episodes.number)
+#
+
+one:
+  episode_number: 1-1
+  link: https://www.rug-b.de/
+  caption: "出会ったミートアップ: RUG::B - Ruby User Group Berlin"
+  display_order: 1
+
+two:
+  episode_number: 1-1
+  link: https://www.artsy.net/
+  caption: "Artsy — Discover, Buy, and Sell Fine Art"
+  display_order: 2

@@ -5,11 +5,6 @@
 
 This is the application for generating a static website for podcasts. it's currently used for [https://kaigaiiju.ch](https://kaigaiiju.ch).
 
-## Design
-
- * Architecture: check [wiki page](https://github.com/kaigaiijuch/website/wiki)
- * ERD: check [wiki page](https://github.com/kaigaiijuch/website/wiki/ERD)
-
 ### with github workflow
 
 if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.com/kaigaiijuch/website/settings/variables/actions/RELEASE_TRRIGER_MESSAGE) then it will trigger the release workflow to build the website via [kaigaiijuch/release](https://github.com/kaigaiijuch/release/actions)
@@ -84,6 +79,14 @@ check `.env` file and satisfy the requirements, they are used in `config/applica
 ```bash
   $ bin/rake db:create db:migrate db:seed
 ```
+
+## Design
+
+ * Architecture: check [wiki page](https://github.com/kaigaiijuch/website/wiki)
+
+### ERD
+
+![ERD](docs/erd.png)
 
 ## How to run the test suite and linter
 

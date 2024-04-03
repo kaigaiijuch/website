@@ -30,4 +30,5 @@ class Episode < ApplicationRecord
                                         primary_key: :number, inverse_of: :episode
   delegate :published_at, to: :feed_spotify_for_podcasters
   include HasGuestInterviews
+  include HasReferences
 end
