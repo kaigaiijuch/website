@@ -30,7 +30,7 @@ jobs:
       - name: upload static html files as a artifact
         uses: actions/upload-artifact@v4
         with:
-          name: public_files_${{ github.ref_name }}
+          name: public_files_${{ github.ref }}
           path: |
             public
       - name: Check commit message
