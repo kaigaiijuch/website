@@ -2,6 +2,7 @@
 
 class EpisodesController < ApplicationController
   before_action :set_episode, only: %i[show]
+  def index; end
   def show; end
 
   private
