@@ -4,15 +4,10 @@
   </header>
 
     <ul>
-      <li><a href=""><small>00時間</small>　現地企業での仕事環境の話</a></li>
-      <li><a href=""><small>00時間</small>　ドイツ・ベルリン在住</a></li>
-      <li><a href=""><small>00時間</small>　奥田一成さん</a></li>
-      <li><a href=""><small>00時間</small>　現地企業での仕事環境の話</a></li>
-      <li><a href=""><small>00時間</small>　ドイツ・ベルリン在住</a></li>
-      <li><a href=""><small>00時間</small>　現地企業での仕事環境の話</a></li>
-      <li><a href=""><small>00時間</small>　ドイツ・ベルリン在住</a></li>
-      <li><a href=""><small>00時間</small>　現地企業での仕事環境の話</a></li>
-      <li><a href=""><small>00時間</small>　ドイツ・ベルリン在住</a></li>
+      <% File.readlines("data/episodes/1-1 okuda1.chapters.txt").each do |line| %>
+        <% time, name = line.split %>
+        <li><a href=""><small><%= time %>時間</small><%= name %></a></li>
+      <% end %>
     </ul>
 </section>
 
