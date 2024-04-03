@@ -21,10 +21,14 @@ SPOTIFY_FOR_PODCASTERS_RSS_URL=${1}
 CSV_DIR=${2:-tmp/website_data_sheet}
 
 main() {
-  echo "## importing csv to database..."
-  ./import_from_csv "$CSV_DIR"
-  echo "## Fetching RSS feed data..."
-  ../rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL"]
+    echo "## Prepare database..."
+    ../rake db:prepare
+
+    echo "## Importing csv to database..."
+    ./import_from_csv "$CSV_DIR"
+
+    echo "## Fetching RSS feed data..."
+    ../rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL"]
 }
 
 main "$@"

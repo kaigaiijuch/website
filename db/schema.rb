@@ -102,8 +102,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
-       *
-      FROM episodes
-      JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+         *
+        FROM episodes
+        JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
   SQL
 end
