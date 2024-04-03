@@ -2,7 +2,10 @@
 
 class EpisodesController < ApplicationController
   before_action :set_episode, only: %i[show]
-  def index; end
+  def index
+    @episodes = PublishedEpisode.order(published_at: :desc).all
+  end
+
   def show; end
 
   private
