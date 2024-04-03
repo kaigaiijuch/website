@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_02_082719) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_03_090050) do
   create_table "episode_types", primary_key: "name", id: :string, force: :cascade do |t|
     t.index ["name"], name: "index_episode_types_on_name", unique: true
   end
@@ -65,6 +65,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_02_082719) do
     t.string "episode_number", null: false
     t.integer "guest_interview_profile_id", null: false
     t.integer "display_order", default: 1, null: false
+    t.index ["episode_number", "display_order"], name: "index_guest_interviews_on_episode_number_and_display_order", unique: true
     t.index ["episode_number", "guest_interview_profile_id"], name: "idx_on_episode_number_guest_interview_profile_id_967e3dfe76", unique: true
     t.index ["guest_interview_profile_id"], name: "index_guest_interviews_on_guest_interview_profile_id"
   end

@@ -11,6 +11,7 @@
 # Indexes
 #
 #  idx_on_episode_number_guest_interview_profile_id_967e3dfe76  (episode_number,guest_interview_profile_id) UNIQUE
+#  index_guest_interviews_on_episode_number_and_display_order   (episode_number,display_order) UNIQUE
 #  index_guest_interviews_on_guest_interview_profile_id         (guest_interview_profile_id)
 #
 # Foreign Keys
@@ -21,7 +22,7 @@
 require 'test_helper'
 
 class GuestInterviewTest < ActiveSupport::TestCase
-  test 'should have guests and guest_interview_infos with interview episode' do
+  test 'should have guests and guest_interview_profiles with interview episode' do
     guest_interview = GuestInterview.first
 
     episode_one = Episode.find('1-1')
@@ -43,11 +44,26 @@ class GuestInterviewTest < ActiveSupport::TestCase
     assert_equal 2, episode_yoga.guest_interviews.count
     assert_equal 2, episode_yoga.guest_interview_profiles.count
     assert_equal 2, episode_yoga.guests.count
+  end
 
-    # check the order of guests
+  test 'the order of guests and guest_interviews should be correct' do
+    episode_yoga = Episode.find('108')
     assert_equal Guest.find_by(nickname: 'chikahiro'), episode_yoga.guests.first
     assert_equal 1, episode_yoga.guest_interviews.first.display_order
     assert_equal Guest.find_by(nickname: 'yosuke-san'), episode_yoga.guests.second
     assert_equal 2, episode_yoga.guest_interviews.second.display_order
+  end
+
+  test 'the display_order and episode_number should not be dupilicated' do
+    guest_interview = GuestInterview.new(
+      episode_number: guest_interviews(:yoga).episode_number,
+      guest_interview_profile_id: 3,
+      display_order: guest_interviews(:yoga).display_order
+    )
+
+    assert_not guest_interview.valid?
+    assert_raises(ActiveRecord::RecordNotUnique) do
+      guest_interview.save!(validate: false)
+    end
   end
 end
