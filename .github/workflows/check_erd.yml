@@ -11,8 +11,6 @@ jobs:
         fetch-depth: 0
     - name: Check that ERD is up-to-dated
       run: |
-        git fetch origin master:refs/remotes/origin/master
-        git diff --name-only "feature/my-branch..origin/master"
         if [[ $(git diff remotes/origin/${{ github.base_ref }} --name-only | grep db/schema.rb) ]]; then
           git diff remotes/origin/${{ github.base_ref }} --name-only | grep docs/erd.png || exit 1
         fi
