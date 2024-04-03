@@ -2,12 +2,15 @@
   <p>
     <%= simple_format_with_link_new auto_link_url(episode.long_summary) %>
   </p>
-  <div>
-    <ul>
-      <% episode.references.each do |reference| %>
-        <li><%= link_to reference.caption, reference.link, target: :_blank %></li>
-      <% end %>
-    </ul>
-  </div>
+  <% if episode.references.present? %>
+    <div>
+      リファレンス:
+      <ul>
+        <% episode.references.each do |reference| %>
+          <li><%= link_to reference.caption, reference.link, target: :_blank %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </section>
 <hr>
