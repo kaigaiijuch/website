@@ -11,7 +11,7 @@
   <div id="guest_introduction">
   <p>
     <br class='sma'>
-    <%= auto_link(guest_interview_profile.introduction, html: { :target => '_blank' }, link: :urls) { |text| simple_format text } %>
+    <%= simple_format_with_link_new auto_link_url(guest_interview_profile.introduction) %>
   </p>
   </div>
 </div>

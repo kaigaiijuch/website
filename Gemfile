@@ -4,10 +4,10 @@ source 'https://rubygems.org'
 
 ruby '3.3.0'
 
-gem 'rails_autolink' # for linking URLs
 gem 'bootsnap', require: false
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
+gem 'rails_autolink' # for linking URLs
 gem 'scenic' # for database views
 gem 'scenic_sqlite_adapter' # for database views sqlite support
 gem 'sitemap_generator' # for sitemap.xml
