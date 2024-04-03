@@ -4,7 +4,6 @@
 #
 # Table name: episodes
 #
-#  label         :string           not null
 #  long_summary  :text             not null
 #  number        :string           not null, primary key
 #  season_number :integer
@@ -18,7 +17,6 @@
 #
 # Indexes
 #
-#  index_episodes_on_label                           (label) UNIQUE
 #  index_episodes_on_number                          (number) UNIQUE
 #  index_episodes_on_season_number_and_story_number  (season_number,story_number) UNIQUE
 #
@@ -75,8 +73,7 @@ class EpisodeTest < ActiveSupport::TestCase
         title: dummy_value,
         summary: dummy_value,
         long_summary: dummy_value,
-        subtitle: dummy_value,
-        label: dummy_value
+        subtitle: dummy_value
       )
     end
   end
