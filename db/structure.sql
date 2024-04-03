@@ -37,7 +37,13 @@ FOREIGN KEY ("guest_id")
   REFERENCES "guests" ("id")
 );
 CREATE INDEX "index_guest_interview_profiles_on_guest_id" ON "guest_interview_profiles" ("guest_id");
+CREATE TABLE IF NOT EXISTS "episode_references" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "episode_number" varchar NOT NULL, "link" varchar NOT NULL, "caption" text NOT NULL, "display_order" integer DEFAULT 1 NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_2f98112f52"
+FOREIGN KEY ("episode_number")
+  REFERENCES "episodes" ("number")
+, CONSTRAINT chk_rails_f3946b04e3 CHECK (display_order > 0));
+CREATE UNIQUE INDEX "index_episode_references_on_episode_number_and_display_order" ON "episode_references" ("episode_number", "display_order");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240403155225'),
 ('20240403102446'),
 ('20240403095620'),
 ('20240403090919'),

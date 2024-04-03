@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_03_102446) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
+  create_table "episode_references", force: :cascade do |t|
+    t.string "episode_number", null: false
+    t.string "link", null: false
+    t.text "caption", null: false
+    t.integer "display_order", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_number", "display_order"], name: "index_episode_references_on_episode_number_and_display_order", unique: true
+    t.check_constraint "display_order > 0"
+  end
+
   create_table "episode_types", primary_key: "name", id: :string, force: :cascade do |t|
     t.index ["name"], name: "index_episode_types_on_name", unique: true
   end
@@ -82,6 +93,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_102446) do
     t.index ["nickname"], name: "index_guests_on_nickname", unique: true
   end
 
+  add_foreign_key "episode_references", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "episodes", "episode_types", column: "type_name", primary_key: "name"
   add_foreign_key "feeds_spotify_for_podcasters", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "guest_interview_profiles", "guests"
