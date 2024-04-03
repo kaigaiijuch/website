@@ -27,6 +27,6 @@ module ApplicationHelper
   end
 
   def format_date_to_ymd(time)
-    time.strftime('%Y.%m.%d')
+    time.strftime('%Y-%m-%d')
   end
 end
