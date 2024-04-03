@@ -57,6 +57,8 @@ class EpisodeTest < ActiveSupport::TestCase
     assert_equal Episode.where(type_name: 'full').all,
                  EpisodeType.find('full').episodes
     assert_equal episode.feed_spotify_for_podcasters, FeedsSpotifyForPodcaster.find('1-1')
+
+    assert_equal episode.published_at, FeedsSpotifyForPodcaster.find('1-1').published_at
   end
   # rubocop:enable Layout/LineLength
 

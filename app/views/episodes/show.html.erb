@@ -9,6 +9,7 @@
 <% content_for(:header_contents) do %>
   <h2><%= @episode.title %></h2>
   <%= render partial: 'guest_tagline', locals: { guest_interview_profiles: @episode.guest_interview_profiles } if @episode.guest_interview_profiles.present? %>
+  <p><%= format_date_to_ymd @episode.published_at %></p>
   <iframe src="<%= embed_url(@episode) %>" height="auto" width="100%" frameborder="0" scrolling="no"></iframe>
 <% end %>
 
