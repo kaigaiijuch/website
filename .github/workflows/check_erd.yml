@@ -9,5 +9,6 @@ jobs:
     - uses: actions/checkout@v4
     - name: Check that ERD is up-to-dated
       run: |
-        git diff remotes/origin/${{ github.base_ref }} --name-only | grep db/schema.rb &&
-        git diff remotes/origin/${{ github.base_ref }} --name-only | grep docs/erd.png
+        if [[ $(git diff remotes/origin/${{ github.base_ref }} --name-only | grep db/schema.rb) ]]; then
+          git diff remotes/origin/${{ github.base_ref }} --name-only | grep docs/erd.png || exit 1
+        fi
