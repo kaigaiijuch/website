@@ -12,5 +12,5 @@ jobs:
     - name: Check that ERD is up-to-dated
       run: |
         if [[ $(git diff remotes/origin/${{ github.base_ref }} --name-only | grep db/schema.rb) ]]; then
-          git diff remotes/origin/${{ github.base_ref }} --name-only | grep docs/erd.png || exit 1
+          git diff remotes/origin/${{ github.base_ref }} --name-only | grep docs/erd.png || echo "update docs/erd.png" && exit 1
         fi
