@@ -1,21 +1,21 @@
 <% episode = episode_card %>
 <li>
-  <%= link_to episode_path(episode), class: 'card_item' do %>
+  <a class="card_item" href="<%= episode_path(episode) %>">
     <article>
       <figure class="card_item_imgWrapper">
         <%= image_tag(episode.image_url.to_s, alt: episode.title) %>
-      </figure>
+    </figure>
       <div class="card_item_body">
         <time datetime="<%= format_date_to_ymd episode.published_at %>" class="card_item_time">
-          <%=  format_date_to_ymd episode.published_at %>
+          <%= format_date_to_ymd episode.published_at %>
         </time>
         <h3 class="card_item_ttl">
-          <%= episode.title %>
+          <%= truncate(episode.title, length: 18) %>
         </h3>
         <p class="card_item_txt">
-          <%= truncate episode.subtitle %>
+          <%= truncate(episode.subtitle) %>
         </p>
       </div>
     </article>
-  <% end %>
+  </a>
 </li>

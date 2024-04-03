@@ -50,29 +50,7 @@
     </header>
 
     <ul class="card_items">
-      <% @episodes.each do |episode| %>
-        <li>
-          <a class="card_item" href="<%= episode_path(episode) %>">
-            <article>
-              <figure class="card_item_imgWrapper">
-                <%= image_tag(episode.image_url.to_s, alt: episode.title) %>
-            </figure>
-              <div class="card_item_body">
-                <time datetime="<%= format_date_to_ymd episode.published_at %>" class="card_item_time">
-                  <%= format_date_to_ymd episode.published_at %>
-                </time>
-                <h3 class="card_item_ttl">
-                  <%= truncate(episode.title, length: 18) %>
-                </h3>
-                <p class="card_item_txt">
-                  <%# truncate(episode.title[15..], length: 36) %>
-                  <%= truncate(strip_tags episode.description) %>
-                </p>
-              </div>
-            </article>
-          </a>
-        </li>
-      <% end %>
+      <%= render partial: "episode_card", collection: @episodes %>
     </ul>
     <p class="btn_listen_more">
       <%= link_to episodes_path do %>
