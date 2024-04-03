@@ -4,6 +4,7 @@
 #
 #  id                    :integer          not null, primary key
 #  abroad_living_summary :string           not null
+#  guest_name            :string           not null
 #  introduction          :text             not null
 #  job_title             :string           not null
 #  tagline               :string           not null
@@ -23,7 +24,8 @@
 one:
   id: 1
   guest_id: 1
-  tagline: ドイツ・ベルリン ソフトウェアエンジニア 奥田 一成さん
+  guest_name: 奥田 一成
+  tagline: ドイツ・ベルリン ソフトウェアエンジニア
   job_title: ソフトウェアエンジニア
   introduction: |
     子育てやクラブミュージックに興味があります。
@@ -34,7 +36,8 @@ one:
 two:
   id: 2
   guest_id: 2
-  tagline: アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん
+  guest_name: 細井 洋介
+  tagline: アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター
   job_title: 映像ディレクター
   introduction: ベルリン在住映像ディレクター
   abroad_living_summary: アメリカ・ロサンゼルス/ニューヨーク 8年 ドイツ・ベルリン在住 8年目
@@ -42,7 +45,8 @@ two:
 one_second:
   id: 3
   guest_id: 1
-  tagline: ドイツ・ベルリン イギリス・ロンドン(予定) ソフトウェアエンジニア 奥田 一成さん
+  guest_name: 奥田 一成
+  tagline: ドイツ・ベルリン イギリス・ロンドン(予定) ソフトウェアエンジニア
   job_title: スーパーソフトウェアエンジニア
   introduction: |
      ロンドンに引っ越しを考えています。
@@ -52,7 +56,8 @@ one_second:
 three:
   id: 4
   guest_id: 3
-  tagline: インド ヨガの先生 所親宏
+  guest_name: 所 親宏
+  tagline: インド ヨガの先生
   job_title: ヨガの先生
   introduction: ヨガの先生をしています
   abroad_living_summary: インド 9回目 ヨガの先生 所親宏

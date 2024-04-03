@@ -6,6 +6,7 @@
 #
 #  id                    :integer          not null, primary key
 #  abroad_living_summary :string           not null
+#  guest_name            :string           not null
 #  introduction          :text             not null
 #  job_title             :string           not null
 #  tagline               :string           not null

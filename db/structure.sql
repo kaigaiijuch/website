@@ -15,11 +15,6 @@ FOREIGN KEY ("episode_number")
 );
 CREATE UNIQUE INDEX "index_feeds_spotify_for_podcasters_on_episode_number" ON "feeds_spotify_for_podcasters" ("episode_number");
 CREATE INDEX "index_feeds_spotify_for_podcasters_on_published_at" ON "feeds_spotify_for_podcasters" ("published_at");
-CREATE TABLE IF NOT EXISTS "guest_interview_profiles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "guest_id" integer NOT NULL, "tagline" varchar NOT NULL, "job_title" varchar NOT NULL, "introduction" text NOT NULL, "abroad_living_summary" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f9437323b7"
-FOREIGN KEY ("guest_id")
-  REFERENCES "guests" ("id")
-);
-CREATE INDEX "index_guest_interview_profiles_on_guest_id" ON "guest_interview_profiles" ("guest_id");
 CREATE VIEW "published_episodes" AS       SELECT
      *
     FROM episodes
@@ -37,7 +32,13 @@ FOREIGN KEY ("episode_number")
 CREATE UNIQUE INDEX "idx_on_episode_number_guest_interview_profile_id_967e3dfe76" ON "guest_interviews" ("episode_number", "guest_interview_profile_id");
 CREATE INDEX "index_guest_interviews_on_guest_interview_profile_id" ON "guest_interviews" ("guest_interview_profile_id");
 CREATE UNIQUE INDEX "index_guest_interviews_on_episode_number_and_display_order" ON "guest_interviews" ("episode_number", "display_order");
+CREATE TABLE IF NOT EXISTS "guest_interview_profiles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "guest_id" integer NOT NULL, "tagline" varchar NOT NULL, "job_title" varchar NOT NULL, "introduction" text NOT NULL, "abroad_living_summary" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "guest_name" varchar NOT NULL, CONSTRAINT "fk_rails_f9437323b7"
+FOREIGN KEY ("guest_id")
+  REFERENCES "guests" ("id")
+);
+CREATE INDEX "index_guest_interview_profiles_on_guest_id" ON "guest_interview_profiles" ("guest_id");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240403095620'),
 ('20240403090919'),
 ('20240403090050'),
 ('20240402082719'),

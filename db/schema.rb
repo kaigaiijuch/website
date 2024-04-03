@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_03_090919) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_03_095620) do
   create_table "episode_types", primary_key: "name", id: :string, force: :cascade do |t|
     t.index ["name"], name: "index_episode_types_on_name", unique: true
   end
@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_090919) do
     t.string "abroad_living_summary", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "guest_name", null: false
     t.index ["guest_id"], name: "index_guest_interview_profiles_on_guest_id"
   end
 
