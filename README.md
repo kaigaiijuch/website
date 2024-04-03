@@ -47,27 +47,26 @@ sqlite3
 
 ## Prepare data
 
-### Import data from csv
-
-(this is temporary solution)
+### fetch
 
 ```bash
- $ bin/data/import_from_csv csv/directory
+ $ bin/data/fetch_all https://podcast.url/rss.xml csv/directory
 ```
 
-import data from csv files in the directory, it is compatible with google sheets csv format.
+[Spotify for podcasters](https://podcasters.spotify.com/) RSS feed is supported, it fetches the feeds data the data is stored default in `FeedsSpotifyForPodcaster`.
 
-### Fetch podcast feed data from [Spotify for podcasters](https://podcasters.spotify.com/) RSS
+**important convention**: the title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
+
+Import data from csv files in the directory, it is compatible with google sheets exported csv format. (this is temporary solution)
+
+### commit data
 
 ```bash
- $ bin/rake data:fetch_feeds_spotify_for_podcasters[https://podcast.url/rss.xml]
+ $ bin/data/commit
 ```
 
-the data is stored default in `FeedsSpotifyForPodcaster`.
+this will commit the data to the data repository.
 
-#### conventions of episode title
-
-title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
 
 ## development instructions
 
