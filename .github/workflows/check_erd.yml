@@ -3,7 +3,7 @@ name: Check ERD
 on: [pull_request]
 
 jobs:
-  build:
+  check_erd:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
