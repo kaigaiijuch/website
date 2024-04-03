@@ -14,4 +14,9 @@ class EpisodesControllerTest < ActionDispatch::IntegrationTest
       assert_equal "/episodes/#{episode.number}", episode_path(episode)
     end
   end
+
+  test 'should get index' do
+    get episodes_path
+    assert_response :success
+  end
 end

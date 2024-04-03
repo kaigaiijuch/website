@@ -1,0 +1,24 @@
+<%-
+  title "エピソード一覧"
+  content_for(:stylesheets) do
+    stylesheet_link_tag 'episodes_index', media: 'all'
+  end
+%>
+
+<main>
+  <section id="story_list">
+    <header>
+      <h2>エピソード一覧</h2>
+    </header>
+
+    <ul class="card_items">
+      <%= render partial: 'episode_card', collection: @episodes %>
+    </ul>
+  </section>
+
+  <section id="feedback">
+    <p>
+      <a href="<%= home_path %>" class="link"><b>戻る</b></a>
+    </p>
+  </section>
+</main>

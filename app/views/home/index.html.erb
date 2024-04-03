@@ -45,37 +45,17 @@
   </section>
 
   <section id="story_list">
-    <header>
+    <header id="section-1">
       <h2>配信リスト</h2>
     </header>
 
     <ul class="card_items">
-      <% @episodes.each do |episode| %>
-        <li>
-          <a class="card_item" href="<%= episode_path(episode) %>">
-            <article>
-              <figure class="card_item_imgWrapper">
-                <%= image_tag(episode.image_url.to_s, alt: episode.title) %>
-            </figure>
-              <div class="card_item_body">
-                <time datetime="<%= format_date_to_ymd episode.published_at %>" class="card_item_time">
-                  <%= format_date_to_ymd episode.published_at %>
-                </time>
-                <h3 class="card_item_ttl">
-                  <%= truncate(episode.title, length: 18) %>
-                </h3>
-                <p class="card_item_txt">
-                  <%# truncate(episode.title[15..], length: 36) %>
-                  <%= truncate(strip_tags episode.description) %>
-                </p>
-              </div>
-            </article>
-          </a>
-        </li>
-      <% end %>
+      <%= render partial: "episode_card", collection: @episodes %>
     </ul>
     <p class="btn_listen_more">
-      <a href="https://podcasters.spotify.com/pod/show/kaigaiijuch" target="_blank"><b>もっと聴く</b></a>
+      <%= link_to episodes_path do %>
+        <b>もっと聴く</b>
+      <% end %>
     </p>
   </section>
   <hr>
@@ -90,45 +70,4 @@
   </section>
 
   <%= render "layouts/feedback" %>
-
-  <!-- <section > -->
-    <!-- <header>
-      <h2>Follow us</h2>
-    </header> -->
-        <!-- <aside>
-            <h3><a href="https://www.facebook.com/profile.php?id=61556571762598" target="_blank">Facebook</a></h3>
-            <p>Card content*</p>
-        </aside>
-        <aside>
-            <h3><a href="https://twitter.com/kaigaiijuch" target="_blank">X(Twitter)</a></h3>
-            <p>Card content</p>
-        </aside>
-        <aside>
-            <h3><a href="https://www.instagram.com/kaigaiiju.ch/" target="_blank">Instagram</a></h3>
-            <p>Card content</p>
-        </aside>
-        <aside>
-            <h3><a href="https://www.linkedin.com/company/kaigaiijuch" target="_blank">LinkedIn</a></h3>
-            <p>Card content</p>
-        </aside> -->
-
-          <!-- <div class="align_center PC_width_54">
-
-            <a class="btn_link_sns" href="https://kaigaiiju.ch" target="_blank">
-              <img src="images/Facebook_Logo_Secondary.png" alt="facebook Logo">
-            </a>
-            <a class="btn_link_sns logo_x" href="https://twitter.com/kaigaiijuch" target="_blank">
-              <img src="images/x_logo-white.png" alt="X Logo">
-            </a>
-            <a class="btn_link_sns" href="https://www.instagram.com/kaigaiiju.ch/" target="_blank">
-              <img src="images/Instagram_Glyph_White.png" alt="Instagram Logo">
-            </a>
-            <a class="btn_link_sns" href="https://www.linkedin.com/company/kaigaiijuch" target="_blank">
-              <img src="images/LinkedIn-White.png" alt="Linkedin Logo">
-            </a>
-
-          </div>
-          -->
-    <!-- </section> -->
-
 </main>
