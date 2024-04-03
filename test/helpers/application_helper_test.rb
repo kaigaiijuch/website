@@ -74,8 +74,6 @@ module ApplicationHelperTest
   end
 
   class AutoLinkUrlHelperTest < ActionView::TestCase
-    require 'rails_autolink' # for freaky test
-
     test 'auto_link_url() should return a link with target _blank' do
       assert_equal '<a target="_blank" href="http://example.com">http://example.com</a>', auto_link_url('http://example.com')
     end

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  require 'rails_autolink'
-
   def title(title)
     content_for :title, title
   end
