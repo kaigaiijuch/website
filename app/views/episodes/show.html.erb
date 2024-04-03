@@ -13,9 +13,7 @@
 <% end %>
 
 <main>
-  <hr>
   <%= render partial: 'summary', locals: {episode: @episode } %>
-  <hr>
 
   <%= render partial: 'guest_interview_profile', collection: @episode.guest_interview_profiles %>
 
