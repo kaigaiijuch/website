@@ -5,9 +5,10 @@
 
 This is the application for generating a static website for podcasts. it's currently used for [https://kaigaiiju.ch](https://kaigaiiju.ch).
 
-## ERD (Entity Relationship Diagram)
+## Design
 
-check [wiki page](https://github.com/kaigaiijuch/website/wiki/ERD)
+ * Architecture: check [wiki page](https://github.com/kaigaiijuch/website/wiki)
+ * ERD: check [wiki page](https://github.com/kaigaiijuch/website/wiki/ERD)
 
 ### with github workflow
 
