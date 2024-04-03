@@ -25,5 +25,6 @@ class GuestInterview < ApplicationRecord
   has_one :guest, through: :guest_interview_profile
   default_scope { order(display_order: :asc) }
 
+  validates :episode_number, uniqueness: { scope: :guest_interview_profile_id }
   validates :episode_number, uniqueness: { scope: :display_order }
 end

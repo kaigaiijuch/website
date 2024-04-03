@@ -54,6 +54,19 @@ class GuestInterviewTest < ActiveSupport::TestCase
     assert_equal 2, episode_yoga.guest_interviews.second.display_order
   end
 
+  test 'the episode_number and guest_interview_profile_id should not be dupilicated' do
+    guest_interview = GuestInterview.new(
+      episode_number: guest_interviews(:yoga).episode_number,
+      guest_interview_profile_id: guest_interviews(:yoga).guest_interview_profile_id,
+      display_order: (guest_interviews(:yoga).display_order + 1)
+    )
+
+    assert_not guest_interview.valid?
+    assert_raises(ActiveRecord::RecordNotUnique) do
+      guest_interview.save!(validate: false)
+    end
+  end
+
   test 'the display_order and episode_number should not be dupilicated' do
     guest_interview = GuestInterview.new(
       episode_number: guest_interviews(:yoga).episode_number,
