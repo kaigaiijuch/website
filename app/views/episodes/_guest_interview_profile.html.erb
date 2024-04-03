@@ -1,0 +1,20 @@
+<section id="guest">
+  <div class="guest_img">
+    <%= image_tag(guest_interview_profile.image_path, alt: guest_interview_profile.tagline) %>
+  </div>
+
+<div class="PC_width_60">
+  <div id="guest_title">
+    <p>ゲスト: <span id="guest_name"><br class='sma'><%= guest_interview_profile.tagline %> <%= guest_interview_profile.guest_name %></span></p>
+  </div>
+
+  <div id="guest_introduction">
+  <p>
+    <br class='sma'>
+    <%= simple_format_with_link_new auto_link_url(guest_interview_profile.introduction) %>
+  </p>
+  </div>
+</div>
+</section>
+
+<hr>

@@ -23,8 +23,9 @@
     <%#= csrf_meta_tags %>
     <%#= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
-    <%= content_for(:meta_tags) %>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= yield(:stylesheets) %>
+    <%= yield(:meta_tags) %>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -33,6 +34,69 @@
       </iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <% if content_for?(:header) %>
+      <%= yield(:header) %>
+    <% else %>
+      <header id="header">
+        <nav>
+          <%= link_to(root_path) do %>
+            <%= image_tag("logos/logo_kaigaiiju-channel.png", height: 70) %>
+          <%- end %>
+          <ul>
+            <li>Home</li>
+            <li>
+              <a href="#section-1">配信中</a>
+            </li>
+          </ul>
+            <!-- <li>
+              <a href="#">Dropdown Menu Item</a>
+          <ul>
+            <li>
+              <a href="#">Sublink with a long name</a>
+            </li>
+            <li>
+              <a href="#">Short sublink</a>
+            </li>
+          </ul>
+            </li> -->
+        </nav>
+        <%= yield(:header_contents) %>
+      </header>
+    <% end %>
+
     <%= yield %>
+
+    <% if content_for?(:footer) %>
+      <%= yield(:footer) %>
+    <% else %>
+      <footer id="Follow_us">
+        <div id="footer_contents">
+          <header>
+            <h2>Follow us</h2>
+          </header>
+          <div class="align_center PC_width_60">
+            <a class="btn_link_sns" href="https://podcasters.spotify.com/pod/show/kaigaiijuch" target="_blank">
+              <%= image_tag("logos/Icon_Spotify_White.png", alt: "Follow Spotify") %>
+            </a>
+            <a class="btn_link_sns" href="https://www.facebook.com/profile.php?id=61556571762598" target="_blank">
+              <%= image_tag("logos/Facebook_Logo_Secondary.png", alt: "facebook Logo") %>
+            </a>
+            <a class="btn_link_sns logo_x" href="https://twitter.com/kaigaiijuch" target="_blank">
+              <%= image_tag("logos/x_logo-white.png", alt: "X Logo") %>
+            </a>
+            <a class="btn_link_sns sp_line2" href="https://www.instagram.com/kaigaiiju.ch/" target="_blank">
+              <%= image_tag("logos/Instagram_Glyph_White.png", alt: "Instagram Logo") %>
+            </a>
+            <a class="btn_link_sns sp_line2" href="https://www.linkedin.com/company/kaigaiijuch" target="_blank">
+              <%= image_tag("logos/LinkedIn-White.png", alt: "Linkedin Logo") %>
+            </a>
+          </div>
+        </div>
+        <p class="align_center">
+          <%= link_to(root_path) do %>海外移住channel<%- end %>
+        </p>
+      </footer>
+    <% end %>
   </body>
 </html>

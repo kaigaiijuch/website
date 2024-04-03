@@ -53,4 +53,69 @@ module ApplicationHelperTest
       assert_equal 'base_title - test', yield_title(separator: ' - ')
     end
   end
+
+  class DisableHelperTest < ActionView::TestCase
+    test 'after disable_header() then content_for(:header) should return just simple header' do
+      disable_header
+      assert_equal content_for(:header), '<header></header>'
+    end
+
+    test 'after disable_footer() then content_for(:footer) should return just simple header' do
+      disable_footer
+      assert_equal content_for(:footer), '<footer></footer>'
+    end
+  end
+
+  class DateFormatHelperTest < ActionView::TestCase
+    test 'format_date_to_ymd(time) should return the formatted date string' do
+      time = Time.zone.local(2022, 1, 31)
+      assert_equal '2022-01-31', format_date_to_ymd(time)
+    end
+  end
+
+  class AutoLinkUrlHelperTest < ActionView::TestCase
+    require 'rails_autolink/helpers' # for freaky test
+
+    test 'auto_link_url() should return a link with target _blank' do
+      assert_equal '<a target="_blank" href="http://example.com">http://example.com</a>', auto_link_url('http://example.com')
+    end
+
+    test 'auto_link_url() should return a link with target _blank for https' do
+      assert_equal '<a target="_blank" href="https://example.com">https://example.com</a>', auto_link_url('https://example.com')
+    end
+
+    test 'auto_link_url() should return a link with target _blank for www' do
+      assert_equal '<a target="_blank" href="http://www.example.com">www.example.com</a>',
+                   auto_link_url('www.example.com')
+    end
+
+    test 'auto_link_url() should return a link with target _blank for multiple urls' do
+      assert_equal 'Visit <a target="_blank" href="http://example.com">http://example.com</a> or <a target="_blank" href="http://example.org">http://example.org</a>', # rubocop:disable Layout/LineLength
+                   auto_link_url('Visit http://example.com or http://example.org')
+    end
+
+    test 'auto_link_url() should return original text if no url' do
+      assert_equal 'No url here', auto_link_url('No url here')
+    end
+  end
+
+  class SimpleFormatWithLinkNewHelperTest < ActionView::TestCase
+    test 'simple_format_with_link_new() should return formatted text' do
+      text = "Hello\nWorld"
+      expected_output = "<p>Hello\n<br />World</p>"
+      assert_equal expected_output, simple_format_with_link_new(text)
+    end
+
+    test 'simple_format_with_link_new() should sanitize attributes' do
+      text = '<a href="http://example.com" target="_blank" onclick="alert(\'XSS\')">Link</a>'
+      expected_output = '<p><a href="http://example.com" target="_blank">Link</a></p>'
+      assert_equal expected_output, simple_format_with_link_new(text)
+    end
+
+    test 'simple_format_with_link_new() should not sanitize allowed attributes' do
+      text = '<a href="http://example.com" target="_blank">Link</a>'
+      expected_output = '<p><a href="http://example.com" target="_blank">Link</a></p>'
+      assert_equal expected_output, simple_format_with_link_new(text)
+    end
+  end
 end

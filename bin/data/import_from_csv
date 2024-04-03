@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+set -C # Prevent output redirection using ‘>’, ‘>&’, and ‘<>’ from overwriting existing files.
+
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -vx
+fi
+
+if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
+    echo 'Usage: ./import_from_csv csv/directory
+Import data from CSV files in the directory. the csv file name should follow this pattern: "(anyname) - table_name.csv"
+this will be suit when google spreadsheet is exported to csv format with sheet name is "table_name" and first row is "the column names".
+'
+    exit
+fi
+
+cd "$(dirname "$0")"
+cd ../..
+
+main() {
+    csv_dir=$1
+    base_csv_file_names=(
+        episodes.csv
+        guests.csv
+        guest_interview_profiles.csv
+        guest_interviews.csv
+    )
+    for csv_file_name in "${base_csv_file_names[@]}"; do
+        csv_file=$(ls "$csv_dir"/*"$csv_file_name" 2> /dev/null || true)
+        if [[ ! -f "$csv_file" ]]; then
+            echo "File $csv_file not found. Skip processing."
+            continue
+        fi
+        echo "Processing file $csv_file"
+        bin/rails runner bin/data/read_csv.rb "$csv_file"
+        echo ""
+    done
+}
+
+main "$@"
+
+# styleguide | Style guides for Google-originated open-source projects https://google.github.io/styleguide/shellguide.html
+# Shell Script Best Practices — The Sharat's https://sharats.me/posts/shell-script-best-practices/

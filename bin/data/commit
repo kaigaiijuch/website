@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+set -C # Prevent output redirection using ‘>’, ‘>&’, and ‘<>’ from overwriting existing files.
+
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -vx
+fi
+
+if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
+    echo 'Usage: ./commit
+
+with sqlite3
+ * dump database to datafile
+ * commit the datafile to /data git repository
+ * push to remote repository
+
+'
+    exit
+fi
+
+cd "$(dirname "$0")"
+
+BRANCH_NAME=${BRANCH_NAME:-main}
+DATA_DIR=${DATA_DIR:-data}
+SQLITE_DATA_FILE_NAME=${SQLITE_DATA_FILE_NAME:-production.sqlite3}
+
+main() {
+  cd ../../"$DATA_DIR"
+
+  echo "## Fetch the git repository..."
+
+  git checkout "$BRANCH_NAME"
+  if [[ $(git status --short --untracked-files=no | wc -l) -gt 0 ]]; then
+    git stash
+    git pull --rebase
+    git stash pop
+  else
+    git pull --rebase
+  fi
+
+  echo "## Dumping database to datafile..."
+  if [[ -f "$SQLITE_DATA_FILE_NAME".sql ]]; then
+    echo "delete old dump file..."
+    rm "$SQLITE_DATA_FILE_NAME".sql
+  fi
+  sqlite3 "$SQLITE_DATA_FILE_NAME" .dump > "$SQLITE_DATA_FILE_NAME".sql
+
+  echo "## Check changes..."
+  git add "$SQLITE_DATA_FILE_NAME" "$SQLITE_DATA_FILE_NAME".sql
+  git status
+  git diff --cached
+  ask 'Do you want to commit these changes?'
+
+  echo "## Commit changes and push to repository..."
+  git commit -m "update on $(date "+%Y-%m-%d %H:%M:%S")"
+  git push origin "$BRANCH_NAME"
+}
+
+ask() {
+  printf "%s [y/n] " "$*"
+  local answer
+  read -r answer
+
+  case $answer in
+    "yes" ) return 0 ;;
+    "y" )   return 0 ;;
+    * )     return 1 ;;
+  esac
+}
+
+main "$@"
+
+# styleguide | Style guides for Google-originated open-source projects https://google.github.io/styleguide/shellguide.html
+# Shell Script Best Practices — The Sharat's https://sharats.me/posts/shell-script-best-practices/

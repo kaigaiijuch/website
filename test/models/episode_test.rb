@@ -1,66 +1,80 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: episodes
+#
+#  long_summary  :text             not null
+#  number        :string           not null, primary key
+#  season_number :integer
+#  story_number  :integer
+#  subtitle      :text             not null
+#  summary       :text             not null
+#  title         :string(200)      not null
+#  type_name     :string           not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+# Indexes
+#
+#  index_episodes_on_number                          (number) UNIQUE
+#  index_episodes_on_season_number_and_story_number  (season_number,story_number) UNIQUE
+#
+# Foreign Keys
+#
+#  type_name  (type_name => episode_types.name)
+#
 require 'test_helper'
 require 'minitest/autorun'
 
 class EpisodeTest < ActiveSupport::TestCase
-  test 'episode can read all as flat Episode object' do # rubocop:disable Metrics/BlockLength
-    episodes = Episode.all
-    assert_equal 4, episodes.size
+  # rubocop:disable Layout/LineLength
+  test 'episode can read all as flat Episode object' do
+    assert_equal 5, Episode.count
 
-    episode = Episode.find_by(key: '2-1')
-    assert_equal '#2-1 アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん 前半 移住の経緯や仕事の話', episode.title
-    assert_equal URI('https://podcasters.spotify.com/pod/show/kaigaiijuch/episodes/2-1-e2gujk0'), episode.url
-    assert_equal URI('https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/39369574/39369574-1710787766777-e18c234d0961e.jpg'),
-                 episode.image_url
-    assert_equal Time.new(2024, 3, 18, 21, 0, 0, '+00:00'), episode.pub_date
-    assert_equal ActiveSupport::TimeWithZone, episode.pub_date.class
-    assert_equal <<~DESCRIPTION, episode.description
-      <p>ゲスト: アメリカ・ロサンゼルス/ニューヨーク 8年 ドイツ・ベルリン在住 8年目 映像ディレクター 細井 洋介さん
-      自己紹介:
-      ベルリン在住映像ディレクター
-      <a href="http://yosukehosoi.com/" target="_blank" rel="noopener noreferer">http://yosukehosoi.com/</a> <br />
-      <a href="https://www.instagram.com/yosuke_eddie_hosoi/" target="_blank" rel="noopener noreferer">https://www.instagram.com/yosuke_eddie_hosoi/</a>
+    episode = Episode.find('0')
+    assert_equal '#0 イントロダクション', episode.title
+    assert_equal '0', episode.number
+    assert_equal '海外移住channelの第0回エピソードでは、ちかひろが自己紹介し、ポッドキャストのコンセプトや3本柱を紹介。第1回ではベルリン在住のソフトウェアエンジニアをゲストに招き、興味深い話題が期待される。海外移住に興味がある人や経験者に価値ある情報。',
+                 episode.subtitle
+    assert_equal '海外移住チャンネルの第0回エピソードでは、チャンネルのイントロダクションとして、海外移住チャンネルの発起人でありメインホストのちかひろが自己紹介を行います。ポッドキャストのコンセプトや番組の3本柱についても紹介され、今後の展開に期待が高まります。第1回エピソードではベルリン在住のソフトウェアエンジニアをゲストに迎え、興味深い話題が期待されます。海外移住に興味がある方やすでに移住経験者にとって、貴重な情報が得られることでしょう。',
+                 episode.summary
+    assert_equal <<~LONG_SUMMARY, episode.long_summary
+      海外移住チャンネルの第0回エピソードでは、チャンネルのイントロダクションとして、海外移住チャンネルの発起人でありメインホストのちかひろが自己紹介を行います。ちかひろは7年前に妻とともにドイツベルリンに移住し、現地のスタートアップでソフトエンジニアとして働いています。また、子育ても経験したちかひろは、現在2人の子供の父親として、育休を取得し復帰を検討しています。
+      ポッドキャストのコンセプトは、海外移住経験者をゲストに招き、インタビューを通じて様々な話題を取り上げることです。海外移住に興味があるリスナーだけでなく、すでに海外に移住している方にも興味深い内容を提供したいと考えています。ちかひろは、海外生活の良い面だけでなく、困難な側面もリアルに伝えたいと述べています。
+      番組の3本柱として、海外移住、仕事、子育ての話題を中心に取り上げる予定であり、ゲストの属性に合わせて柔軟にコンテンツを提供する考えです。リスナーからのフィードバックも重視し、リクエストに応じてさまざまな企画を検討しています。現在はウェブサイトの制作も進行中であり、配信スケジュールは月2から4回を目指し、火曜日の日本時間の朝に配信予定です。
+      第1回エピソードでは、ベルリン在住のソフトウェアエンジニアをゲストに迎え、子育てや仕事についての経験談を聞いています。今後は映画監督やダンサー、研究者など、さまざまなバックグラウンドを持つゲストを招いて、リスナーに興味深いトークを届ける予定です。海外移住チャンネルをフォローして、フィードバックをお寄せいただければ幸いです。
+    LONG_SUMMARY
+    assert_equal 'trailer', episode.type_name
+    assert_equal EpisodeType.find('trailer'), episode.type
 
-      国際パラリンピック委員会とWOWOWによるパラリンピック・ドキュメンタリー「WHO I AM 」演出作品で国際エミー賞ノミネートやミラノ国際スポーツ映像祭にて優秀賞を受賞。
-      俳優としてはジョニーデップ主演映画「Minamata」に出演し、ベルリン国際映画祭に招待された。また通訳として、キアヌリーブス主演映画「John Wick 4」に参加。
+    episode = Episode.find('1-1')
+    assert_equal '#1-1 ドイツ・ベルリン ソフトウェアエンジニア 奥田 一成さん 前半 移住の経緯・現地企業での仕事環境の話', episode.title
+    assert_equal '1-1', episode.number
+    assert_equal 1, episode.season_number
+    assert_equal 1, episode.story_number
 
-      概要:
-      2人目のゲスト、ベルリン在住の映像ディレクターで俳優の細井洋介さんが参加してくれました。映画監督やカメラマンとして活躍しながら、アメリカやヨーロッパでのキャリアを築いてきた経験を共有しています。高校卒業後から映画の世界に興味を持ち、アメリカで俳優学校に通った経験もあります。映画の勉強を続け、夢である映画監督としてのキャリアを築いていく中で、アメリカに戻ることができなくなった経験を振り返ります。この出来事が彼の人生に大きな影響を与え、再び将来を見つめ直す機会となりました。新たな方向性を模索し、日本に戻ってからは旅番組やドキュメンタリー制作など、映像制作と旅を組み合わせた仕事に挑戦。
-      洋介さんの経験は、挫折や困難に直面しながらも、自分を見つめ直し新たな一歩を踏み出す姿勢に勇気をもらうとともに、海外での生活や仕事を考える上での貴重な示唆を提供してくれます。
-      日本で新たなプロデューサーや映像制作者との出会いを経てコンテンツを制作し始め、世界中を旅する楽しさを発見し、またある感動のシーンの撮影で初めて涙が出た経験を振り返ります。
-      ディレクターとして、様々な国のアスリートを追うドキュメンタリー制作に携わり、世界中で多くの人々に出会い、交流することの喜びを語ります。人とのつながりやコミュニケーションの重要性、相手との関係性の構築を築くことが重要視されます。
-      映像作家としてのアプローチや、社会的な問題や力強いメッセージを映像を通じて伝えることへの情熱が語られます。ベルリンでの生活環境や異文化交流が創作活動やアイデアにどう影響を与えるかについても触れられ、独自の映像作品を通じて社会的な課題に焦点を当てる制作姿勢が示されます。次回は、ベルリンでの生活面についても触れていきたいと思います。
+    assert_equal Episode.where(type_name: 'full').all,
+                 EpisodeType.find('full').episodes
+    assert_equal episode.feed_spotify_for_podcasters, FeedsSpotifyForPodcaster.find('1-1')
 
-      </p>
-      <p>
-      リファレンス </p>
-      <ul>
-       <li>⁠<a href="https://corporate.wowow.co.jp/whoiam/" target="_blank">WHO I AM | 株式会社WOWOW</a></li>
-       <li>⁠<a href="https://www.youtube.com/playlist?list=PLaBzzOA-v6UlZO2ZMxfSzUb7urG6YSdoP" target="_blank">WOWOW WHO I AM PROJECT</a></li>
-      </ul>
-      <p><br></p>
-      <p>
-      0:01:42 海外移住の動機
-      0:03:11 アメリカの大学にて映画の勉強
-      0:06:16 ビザ取得の失敗
-      0:07:21 ビザの問題
-      0:10:51 新たな方向性
-      0:12:36 未来への展望
-      0:14:45 旅番組制作の始まり
-      0:17:05 映像制作者の多様性
-      0:18:38 映像の力
-      0:22:18 感動の瞬間
-      0:23:50 ドキュメンタリーシリーズ
-      0:29:37 ビジュアルの世界
-      0:31:13 映画祭の舞台
-      0:34:37 社会的な問題
-      0:38:09 日本食への愛
-      0:38:26 仕事と生活
-      </p>
-      <p>web site: ⁠⁠<a href="https://kaigaiiju.ch/" target="_blank" rel="noopener noreferer">海外移住channel</a> ⁠⁠
-      フィードバックは<a href="⁠⁠https://kaigaiiju.ch/feedback" target="_blank" rel="noopener noreferer">こちら</a>から！ <a href="⁠⁠https://kaigaiiju.ch/feedback" target="_blank" rel="noopener noreferer">⁠⁠</a>⁠
-      ホスト: ⁠⁠⁠所 親宏⁠⁠⁠ - ドイツ・ベルリン在住 ソフトウェアエンジニア <a href="https://chikahirotokoro.com/" target="_blank" rel="noopener noreferer">https://chikahirotokoro.com/</a></p>
-    DESCRIPTION
+    assert_equal episode.published_at, FeedsSpotifyForPodcaster.find('1-1').published_at
+  end
+  # rubocop:enable Layout/LineLength
+
+  test 'the pair of season_number and story_number cannot be duplicated' do
+    dummy_value = 'Duplicated Season and Story Numbers'
+    assert_raises(ActiveRecord::RecordNotUnique) do
+      Episode.create!(
+        number: 'duplicated_season_story_numbers',
+        season_number: 1,
+        story_number: 1,
+        type_name: 'full',
+        title: dummy_value,
+        summary: dummy_value,
+        long_summary: dummy_value,
+        subtitle: dummy_value
+      )
+    end
   end
 end

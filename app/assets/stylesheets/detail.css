@@ -1,0 +1,1070 @@
+/* MVP.css v1.14 - https://github.com/andybrewer/mvp */
+
+:root {
+    --active-brightness: 0.85;
+    --border-radius: 5px;
+    --box-shadow: 2px 2px 10px;
+    --color-accent: #118bee15;
+    --color-bg: #fff;
+    --color-bg-secondary: #e9e9e9;
+    --color-link: #118bee;
+    --color-secondary: #920de9;
+    --color-secondary-accent: #920de90b;
+    --color-shadow: #f4f4f4;
+    --color-table: #118bee;
+    --color-text: #000;
+    --color-text-secondary: #999;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --hover-brightness: 1.2;
+    --justify-important: center;
+    --justify-normal: left;
+    --line-height: 1.5;
+    --width-card: 10%;
+    --width-card-medium: 460px;
+    --width-card-wide: 800px;
+    --width-content: 1080px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root[color-mode="user"] {
+        --color-accent: #0097fc4f;
+        --color-bg: #333;
+        --color-bg-secondary: #555;
+        --color-link: #0097fc;
+        --color-secondary: #e20de9;
+        --color-secondary-accent: #e20de94f;
+        --color-shadow: #bbbbbb20;
+        --color-table: #0097fc;
+        --color-text: #f7f7f7;
+        --color-text-secondary: #aaa;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Layout */
+article aside {
+    background: var(--color-secondary-accent);
+    border-left: 4px solid var(--color-secondary);
+    padding: 0.01rem 0.8rem;
+}
+
+body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-family);
+    line-height: var(--line-height);
+    margin: 0;
+    overflow-x: hidden;
+    padding: 0;
+}
+
+
+header {
+    margin: 0 auto;
+    max-width: var(--width-content);
+    padding: 2em 1em;
+}
+
+footer{
+    margin: 0 auto;
+/*    max-width: var(--width-content);*/
+    padding:1rem ;
+}
+
+nav{
+     max-width: var(--width-content);
+     margin: 0 auto;
+}
+
+
+
+main{
+    margin: 0 auto;
+/*    max-width: var(--width-content);*/
+}
+
+
+
+hr {
+    background-color: var(--color-bg-secondary);
+    border: none;
+    height: 1px;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: var(--justify-important);
+}
+
+section img,
+article img {
+    max-width: 100%;
+}
+
+section pre {
+    overflow: auto;
+}
+
+section aside {
+    border: 1px solid var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow) var(--color-shadow);
+    margin: 1rem;
+    padding: 1.25rem;
+    width: var(--width-card);
+}
+
+section aside:hover {
+    box-shadow: var(--box-shadow) var(--color-bg-secondary);
+}
+
+[hidden] {
+    display: none;
+}
+
+/* Headers */
+article header,
+div header,
+main header {
+    padding-top: 0;
+}
+
+header {
+    text-align: var(--justify-important);
+}
+
+header a b,
+header a em,
+header a i,
+header a strong {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+header nav img {
+    margin: 1rem 0;
+}
+
+section header {
+    padding-top: 0;
+    width: 100%;
+}
+
+/* Nav */
+nav {
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 0.5rem;
+    position: relative;
+    text-align: left;
+}
+
+/* Nav Dropdown */
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li ul {
+    background: var(--color-bg);
+    border: 1px solid var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow) var(--color-shadow);
+    display: none;
+    height: auto;
+    left: -2px;
+    padding: .5rem 1rem;
+    position: absolute;
+    top: 1.7rem;
+    white-space: nowrap;
+    width: auto;
+    z-index: 1;
+}
+
+nav ul li ul::before {
+    /* fill gap above to make mousing over them easier */
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -0.5rem;
+    height: 0.5rem;
+}
+
+nav ul li ul li,
+nav ul li ul li a {
+    display: block;
+}
+
+/* Typography */
+code,
+samp {
+    background-color: var(--color-accent);
+    border-radius: var(--border-radius);
+    color: var(--color-text);
+    display: inline-block;
+    margin: 0 0.1rem;
+    padding: 0 0.5rem;
+}
+
+details {
+    margin: 1.3rem 0;
+}
+
+details summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: var(--line-height);
+    text-wrap: balance;
+}
+
+mark {
+    padding: 0.1rem;
+}
+
+ol li,
+ul li {
+    padding: 0.2rem 0;
+}
+
+p {
+    margin: 0.75rem 0;
+    padding: 0;
+    width: 100%;
+}
+
+pre {
+    margin: 1rem 0;
+    max-width: var(--width-card-wide);
+    padding: 1rem 0;
+}
+
+pre code,
+pre samp {
+    display: block;
+    max-width: var(--width-card-wide);
+    padding: 0.5rem 2rem;
+    white-space: pre-wrap;
+}
+
+small {
+    color: var(--color-text-secondary);
+}
+
+sup {
+    background-color: var(--color-secondary);
+    border-radius: var(--border-radius);
+    color: var(--color-bg);
+    font-size: xx-small;
+    font-weight: bold;
+    margin: 0.2rem;
+    padding: 0.2rem 0.3rem;
+    position: relative;
+    top: -2px;
+}
+
+/* Links */
+a {
+    color: var(--color-link);
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    filter: brightness(var(--hover-brightness));
+}
+
+a:active {
+    filter: brightness(var(--active-brightness));
+}
+
+a b,
+a em,
+a i,
+a strong,
+button,
+input[type="submit"] {
+    border-radius: var(--border-radius);
+    display: inline-block;
+    font-size: medium;
+    font-weight: bold;
+    line-height: var(--line-height);
+    margin: 0.5rem 0;
+    padding: 1rem 2rem;
+}
+
+button,
+input[type="submit"] {
+    font-family: var(--font-family);
+}
+
+button:hover,
+input[type="submit"]:hover {
+    cursor: pointer;
+    filter: brightness(var(--hover-brightness));
+}
+
+button:active,
+input[type="submit"]:active {
+    filter: brightness(var(--active-brightness));
+}
+
+a b,
+a strong,
+button,
+input[type="submit"] {
+    background-color: var(--color-link);
+    border: 2px solid var(--color-link);
+    color: var(--color-bg);
+}
+
+a em,
+a i {
+    border: 2px solid var(--color-link);
+    border-radius: var(--border-radius);
+    color: var(--color-link);
+    display: inline-block;
+    padding: 1rem 2rem;
+}
+
+article aside a {
+    color: var(--color-secondary);
+}
+
+/* Images */
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+figure img {
+    max-width: 100%;
+}
+
+figure figcaption {
+    color: var(--color-text-secondary);
+}
+
+/* Forms */
+button:disabled,
+input:disabled {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+    cursor: not-allowed;
+}
+
+button[disabled]:hover,
+input[type="submit"][disabled]:hover {
+    filter: none;
+}
+
+form {
+    border: 1px solid var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow) var(--color-shadow);
+    display: block;
+    max-width: var(--width-card-wide);
+    min-width: var(--width-card);
+    padding: 1.5rem;
+    text-align: var(--justify-normal);
+}
+
+form header {
+    margin: 1.5rem 0;
+    padding: 1.5rem 0;
+}
+
+input,
+label,
+select,
+textarea {
+    display: block;
+    font-size: inherit;
+    max-width: var(--width-card-wide);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: inline-block;
+}
+
+input[type="checkbox"]+label,
+input[type="radio"]+label {
+    display: inline-block;
+    font-weight: normal;
+    position: relative;
+    top: 1px;
+}
+
+input[type="range"] {
+    padding: 0.4rem 0;
+}
+
+input,
+select,
+textarea {
+    border: 1px solid var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    padding: 0.4rem 0.8rem;
+}
+
+input[type="text"],
+textarea {
+    width: calc(100% - 1.6rem);
+}
+
+input[readonly],
+textarea[readonly] {
+    background-color: var(--color-bg-secondary);
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+/* Popups */
+dialog {
+    border: 1px solid var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow) var(--color-shadow);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    z-index: 999;
+}
+
+/* Tables */
+table {
+    border: 1px solid var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    border-spacing: 0;
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 0;
+    white-space: nowrap;
+}
+
+table td,
+table th,
+table tr {
+    padding: 0.4rem 0.8rem;
+    text-align: var(--justify-important);
+}
+
+table thead {
+    background-color: var(--color-table);
+    border-collapse: collapse;
+    border-radius: var(--border-radius);
+    color: var(--color-bg);
+    margin: 0;
+    padding: 0;
+}
+
+table thead tr:first-child th:first-child {
+    border-top-left-radius: var(--border-radius);
+}
+
+table thead tr:first-child th:last-child {
+    border-top-right-radius: var(--border-radius);
+}
+
+table thead th:first-child,
+table tr td:first-child {
+    text-align: var(--justify-normal);
+}
+
+table tr:nth-child(even) {
+    background-color: var(--color-accent);
+}
+
+/* Quotes */
+blockquote {
+    display: block;
+    font-size: x-large;
+    line-height: var(--line-height);
+    margin: 1rem auto;
+    max-width: var(--width-card-medium);
+    padding: 1.5rem 1rem;
+    text-align: var(--justify-important);
+}
+
+blockquote footer {
+    color: var(--color-text-secondary);
+    display: block;
+    font-size: small;
+    line-height: var(--line-height);
+    padding: 1.5rem 0;
+}
+
+/* Scrollbars */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(202, 202, 232) auto;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(202, 202, 232);
+    border-radius: 10px;
+}
+
+
+
+
+/* 追加書き込み */
+
+/*PCでは無効（改行しない）*/
+.sma{
+    display: none;
+}
+
+#header_top{
+    max-width: var(--width-content);
+    padding: 1rem;
+}
+
+.align_center{
+    margin: 0 auto;
+    text-align: center;
+}
+
+header b{
+    margin-top: 3rem;
+    text-spacing: 0.08em;
+}
+
+
+.right{
+    text-align: right;
+}
+
+
+#summary {
+    max-width: var(--width-content);
+    margin: 1em auto;
+    width: 60%;
+}
+
+
+
+#guest {
+    padding: 0em;
+    max-width: var(--width-content);
+    margin: 2em auto 1em auto;
+
+}
+
+#guest .guest_img{
+    width: 23%;
+    margin-right: 5%;
+}
+
+#guest img{
+
+    display: inline-block;
+
+}
+
+
+
+#guest .PC_width_60{
+    width: 55%;
+    display: inline-block;
+}
+
+#guest .PC_width_60 p{
+    margin-top: 0;
+}
+
+#guest_introduction{
+    margin-top: 2em;
+
+}
+
+
+#guest_introduction a{
+    font-weight: normal;
+}
+
+#guest_info {
+    display: inline-block;
+    flex-wrap: wrap;
+    margin: 0 auto 2rem auto;
+    justify-content: var(--justify-important);
+    max-width: var(--width-content);
+     width: 62%;
+}
+
+
+
+
+#guest_info h2{
+    text-align: center;
+
+}
+
+#guest_info h4{
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 0;
+}
+
+
+
+#guest_name{
+    margin-left: 1rem;
+}
+
+
+
+/*ここからQ&Aのデコレーション*/
+
+.cp_qa *, .cp_qa *:after, .cp_qa *:before {
+    font-family: 'FontAwesome', sans-serif;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.cp_qa dt {
+    position: relative;
+    margin: 0 0 0.5em 0;
+}
+.cp_qa dd {
+    position: relative;
+    margin: 0 0 0.5em 0;
+    padding: 0 0 0.5em 2em;
+    border-bottom: 1px dotted #999999;
+}
+.cp_qa dt::before, .cp_qa dd::before {
+    font-size: 1.2em;
+    margin: 0 0.4em 0 0;
+    color: #ffffff;
+    border-radius: 50%;
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    line-height: 1em;
+}
+.cp_qa dt::before {
+    padding: 0.15em 0.5em 0.5rem 0.25rem;
+    content: 'Q';
+    font-size: 1rem;
+/*    background: #f57c00;*/
+    background: #d264b6;
+}
+.cp_qa dd::before {
+    padding: 0.1em 1em 0.8em 0.3em;
+    content: 'A';
+    font-size: 1rem;
+/*    background: #0097a7;*/
+    background-color: var(--color-link);
+}
+.cp_qa dt::after, .cp_qa dd::after {
+    position: absolute;
+    top: 0.5em;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    content: '';
+    border-width: 5px 0 5px 5px;
+    border-style: solid;
+}
+.cp_qa dt::after {
+    left: 1.2em;
+    top: 0.4em;
+    border-color: transparent transparent transparent #d264b6;
+}
+.cp_qa dd::after {
+    left: 3.22em;
+    top: 0.48em;
+    border-color: transparent transparent transparent var(--color-link);
+}
+
+/*ここまでQ&Aのデコレーション*/
+
+
+/*「続きを読む」以下をグラデーションで隠すボタン*/
+
+.cp_box input, .cp_box label, .cp_box select, textarea {
+
+     max-width: initial;
+     margin-bottom: 0;
+}
+
+
+
+.cp_box input[type="checkbox"]+label,
+input[type="radio"]+label {
+    position: absolute;
+    font-weight: normal;
+    top: initial;
+}
+
+.cp_box *, .cp_box *:before, .cp_box *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.cp_box {
+    position: relative;
+}
+.cp_box label {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+    height: 80px; /* グラデーションの高さ */
+    cursor: pointer;
+    text-align: center;
+    /* 以下グラデーションは背景を自身のサイトに合わせて設定してください */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, #fff 100%);
+}
+.cp_box input:checked + label {
+    background: inherit; /* 開いた時にグラデーションを消す */
+}
+
+
+.cp_box label:after {
+    line-height: var(--line-height);
+/*    line-height: 2.5rem;*/
+    position: absolute;
+    z-index: 2;
+    bottom: 50%;
+    left: 96%;
+    width: 16rem;
+    font-family: FontAwesome;
+    content: ' 続きを読む';
+    transform: translate(-50%, 0);
+    letter-spacing: 0.05em;
+/*    background-color: var(--color-link);*/
+/*    border: 1.5px solid var(--color-link);*/
+/*    color: var(--color-bg);*/
+    background-color:var(--color-bg) ;
+    color: var(--color-link);
+    border-radius: 5px;
+    font-size: medium;
+    padding: 0.5rem 2rem;
+/*    font-weight: bold;*/
+}
+
+
+.cp_box input {
+    display: none;
+}
+.cp_box .cp_container {
+    overflow: hidden;
+    height: 95px; /* 開く前に見えている部分の高さ */
+    transition: all 0.5s;
+}
+.cp_box input:checked + label {
+    /* display: none ; 閉じるボタンを消す場合解放 */
+}
+.cp_box input:checked + label:after {
+    font-family: FontAwesome;
+    content: ' 閉じる';
+}
+.cp_box input:checked ~ .cp_container {
+    height: auto;
+    padding-bottom: 80px; /* 閉じるボタンのbottomからの位置 */
+    transition: all 0.5s;
+}
+
+/*ここまで 続きを読む」以下をグラデーションで隠すボタン*/
+
+
+#table_contents{
+    width: 80%;
+    margin: 1rem auto 0 auto;
+}
+
+#table_contents header{
+    padding-bottom: 0rem;
+}
+
+
+#table_contents ul{
+    list-style-type: none;
+    padding-inline-start: 20px;
+}
+
+#table_contentsul span{
+    margin-right: 1rem;
+}
+
+
+
+#writing_detail{
+    max-width: var(--width-content);
+    width: 72%;
+    margin:  0 auto 2rem auto;
+}
+
+#writing_detail p {
+    margin: 0.2rem 0;
+}
+
+
+
+#writing_detail p span{
+    font-weight: semi-bold;
+    margin-right: 0.3em;
+}
+
+#writing_detail p small{
+    position: relative;
+    top: -0.4em;
+    text-spacing: 0.08em;
+    margin-right: 0.3em;
+}
+
+
+#writing_detail .icon_talking{
+    height: 1.7em;
+    position: relative;
+    top: 0.4em;
+    margin-right: 0.5%;
+    border-radius: 50%;
+}
+
+#writing_detail #footnote{
+    font-size: small;
+    margin-top: 5em;
+}
+
+
+
+
+
+
+
+
+
+header iframe{
+    width: 70%;
+    margin-top: 80px;
+}
+
+
+/*PCでは無効（改行しない）*/
+.sma{
+    display: none;
+}
+
+
+
+@media (max-width: 840px) {
+   /* 横幅が840px以下の場合に適用するスタイル */
+
+   /*スマートフォンでは有効（改行する）*/
+   .sma{
+        display: block;
+    }
+
+nav{
+    margin-bottom: 2rem;
+}
+
+
+#header{
+   padding-top: 1rem;
+
+}
+
+#header_top{
+    width: 90%;
+    padding: 1rem;
+    padding-bottom: 0;
+}
+
+header iframe {
+    width: 75%;
+    margin-top: 1.5em;
+}
+
+#summary{
+    width: 90%;
+}
+
+#guest{
+    width: 90%;
+}
+
+
+#guest .guest_img{
+    width: 100%;
+    margin-right: 0%;
+}
+
+
+
+#guest img{
+    width: 30%;
+    display: block;
+   margin: 0 auto;
+
+}
+
+#guest_name{
+    line-height: 2;
+}
+
+#guest .PC_width_60{
+    margin-top: 1rem;
+    width: 95%;
+    display: inline-block;
+    position: relative;
+}
+
+
+#guest .guest_title{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+
+#guest #guest_introduction{
+    width: 100%;
+}
+
+
+
+
+
+
+
+#guest .PC_width_60 p{
+    margin-top: 0;
+}
+
+#guest_info {
+    width: 90%;
+}
+
+.cp_box label:after {
+    line-height: var(--line-height);
+/*    line-height: 2.5rem;*/
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    font-family: FontAwesome;
+    content: ' 続きを読む';
+    transform: translate(-50%, 0);
+    letter-spacing: 0.05em;
+/*    background-color: var(--color-link);*/
+/*    border: 1.5px solid var(--color-link);*/
+/*    color: var(--color-bg);*/
+    background-color:var(--color-bg) ;
+    color: var(--color-link);
+    border-radius: 5px;
+    font-size: 0.95em;
+    padding: 0.1rem 2rem;
+/*    font-weight: bold;*/
+}
+
+
+
+.cp_box label {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* グラデーションの高さ */
+    cursor: pointer;
+    text-align: center;
+    /* 以下グラデーションは背景を自身のサイトに合わせて設定してください */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, #fff 100%);
+}
+
+.cp_box .cp_container {
+    overflow: hidden;
+    height: 90px; /* 開く前に見えている部分の高さ */
+    transition: all 0.5s;
+}
+
+.cp_box input:checked ~ .cp_container {
+    height: auto;
+    padding-bottom: 40px; /* 閉じるボタンのbottomからの位置 */
+    transition: all 0.5s;
+}
+
+
+#table_contents ul {
+    padding-inline-start: 0px;
+
+}
+
+
+
+.PC_width_40, .PC_width_60{
+    width: 85%;
+}
+
+
+#writing_detail{
+    max-width: var(--width-content);
+    width: 90%;
+    margin:  0 auto 2rem auto;
+}
+
+#writing_detail #footnote{
+    margin-top: 2rem;
+}
+
+/*スマートフォンでは有効（改行する）*/
+   .sma{
+        display: block;
+    }
+
+
+
+}
+
+

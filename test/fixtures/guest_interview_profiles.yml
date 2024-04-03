@@ -1,0 +1,68 @@
+# == Schema Information
+#
+# Table name: guest_interview_profiles
+#
+#  id                    :integer          not null, primary key
+#  abroad_living_summary :string           not null
+#  guest_name            :string           not null
+#  image_path            :string           not null
+#  introduction          :text             not null
+#  job_title             :string           not null
+#  tagline               :string           not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  guest_id              :integer          not null
+#
+# Indexes
+#
+#  index_guest_interview_profiles_on_guest_id  (guest_id)
+#
+# Foreign Keys
+#
+#  guest_id  (guest_id => guests.id)
+#
+
+one:
+  id: 1
+  guest_id: 1
+  guest_name: 奥田 一成
+  tagline: ドイツ・ベルリン ソフトウェアエンジニア
+  job_title: ソフトウェアエンジニア
+  introduction: |
+    子育てやクラブミュージックに興味があります。
+    最近はMTG Arena と日本茶や中国茶を飲むことにハマっています。
+  abroad_living_summary: ドイツ・ベルリン在住 8年目
+  created_at: 2024-04-01 16:00:00
+  image_path: guest_interview_profiles/1_Kazunari_Okuda.png
+
+two:
+  id: 2
+  guest_id: 2
+  guest_name: 細井 洋介
+  tagline: アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター
+  job_title: 映像ディレクター
+  introduction: ベルリン在住映像ディレクター
+  abroad_living_summary: アメリカ・ロサンゼルス/ニューヨーク 8年 ドイツ・ベルリン在住 8年目
+  image_path: guest_interview_profiles/2_Yosuke Hosoi.JPG
+
+one_second:
+  id: 3
+  guest_id: 1
+  guest_name: 奥田 一成
+  tagline: ドイツ・ベルリン イギリス・ロンドン(予定) ソフトウェアエンジニア
+  job_title: スーパーソフトウェアエンジニア
+  introduction: |
+     ロンドンに引っ越しを考えています。
+  abroad_living_summary: ドイツ・ベルリン 8年 イギリス・ロンドン(予定)
+  created_at: 2024-04-02 20:00:00
+  image_path: guest_interview_profiles/1_Kazunari_Okuda.png
+
+three:
+  id: 4
+  guest_id: 3
+  guest_name: 所 親宏
+  tagline: インド ヨガの先生
+  job_title: ヨガの先生
+  introduction: ヨガの先生をしています
+  abroad_living_summary: インド 9回目 ヨガの先生 所親宏
+  image_path: https://chikahirotokoro.com/image/logo_chika.png

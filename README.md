@@ -5,6 +5,11 @@
 
 This is the application for generating a static website for podcasts. it's currently used for [https://kaigaiiju.ch](https://kaigaiiju.ch).
 
+## Design
+
+ * Architecture: check [wiki page](https://github.com/kaigaiijuch/website/wiki)
+ * ERD: check [wiki page](https://github.com/kaigaiijuch/website/wiki/ERD)
+
 ### with github workflow
 
 if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.com/kaigaiijuch/website/settings/variables/actions/RELEASE_TRRIGER_MESSAGE) then it will trigger the release workflow to build the website via [kaigaiijuch/release](https://github.com/kaigaiijuch/release/actions)
@@ -20,6 +25,8 @@ it will trigger a build and make a pull-request on [kaigaiijuch/kaigaiijuch.gith
 ## requirement
 
  * Ruby version: check [.ruby_version](.ruby-version)
+
+sqlite3
 
 ## setup
 
@@ -38,6 +45,29 @@ it will trigger a build and make a pull-request on [kaigaiijuch/kaigaiijuch.gith
   $ open http://localhost:13000 # caution it's not HTTPS
 ```
 
+## Prepare data
+
+### fetch
+
+```bash
+ $ bin/data/fetch_all https://podcast.url/rss.xml csv/directory
+```
+
+[Spotify for podcasters](https://podcasters.spotify.com/) RSS feed is supported, it fetches the feeds data the data is stored default in `FeedsSpotifyForPodcaster`.
+
+**important convention**: the title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
+
+Import data from csv files in the directory, it is compatible with google sheets exported csv format. (this is temporary solution)
+
+### commit data
+
+```bash
+ $ bin/data/commit
+```
+
+this will commit the data to the data repository.
+
+
 ## development instructions
 
 For adding new pages, be aware that it may needs to added for page list on [bin/pages/list.rb](bin/pages/list.rb) and site map on [config/sitemap.rb](config/sitemap.rb).
@@ -50,7 +80,10 @@ check `.env` file and satisfy the requirements, they are used in `config/applica
 
 ## Database creation && Database initialization
 
-not using database!
+
+```bash
+  $ bin/rake db:create db:migrate db:seed
+```
 
 ## How to run the test suite and linter
 
@@ -75,16 +108,3 @@ for github build workflow: it needs to set [DATA_REPO_TOKEN](.github/workflows/b
 ```bash
  $ bin/rake sitemap:refresh
 ```
-
-### Generate Episodes data from RSS
-
-```bash
- $ bin/rake build:episodes_yml_from_rss[https://podcast.url/rss.xml]
-```
-
-the data is stored default in `data/episodes.yml`.
-
-#### conventions of episode title
-
-title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
-

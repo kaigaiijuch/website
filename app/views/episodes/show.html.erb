@@ -1,0 +1,27 @@
+<%-
+  title "エピソード #{@episode.title}"
+  content_for(:stylesheets) do
+    stylesheet_link_tag 'detail', media: 'all'
+  end
+%>
+
+
+<% content_for(:header_contents) do %>
+  <h2><%= @episode.title %></h2>
+  <p>配信日: <%= format_date_to_ymd @episode.published_at %></p>
+  <iframe src="<%= embed_url(@episode) %>" height="auto" width="100%" frameborder="0" scrolling="no"></iframe>
+<% end %>
+
+<main>
+  <%= render partial: 'summary', locals: {episode: @episode } %>
+
+  <%= render partial: 'guest_interview_profile', collection: @episode.guest_interview_profiles %>
+
+  <%= render partial: "questions_and_answers" if false %>
+
+  <%= render partial: "chapters" if false %>
+
+  <%= render partial: "transcriptions" if false %>
+
+  <%= render partial: "layouts/feedback" %>
+</main>

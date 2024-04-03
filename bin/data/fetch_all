@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+set -C # Prevent output redirection using ‘>’, ‘>&’, and ‘<>’ from overwriting existing files.
+
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -vx
+fi
+
+if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
+    echo 'Usage: ./fetch_all [SPOTIFY_FOR_PODCASTERS_RSS_URL] [CSV_DIR]
+
+Fetches all data from the given RSS feed and imports it into the database and commit changes
+'
+    exit
+fi
+
+cd "$(dirname "$0")"
+
+SPOTIFY_FOR_PODCASTERS_RSS_URL=${1}
+CSV_DIR=${2:-tmp/website_data_sheet}
+
+main() {
+  echo "## importing csv to database..."
+  ./import_from_csv "$CSV_DIR"
+  echo "## Fetching RSS feed data..."
+  ../rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL"]
+}
+
+main "$@"
+
+# styleguide | Style guides for Google-originated open-source projects https://google.github.io/styleguide/shellguide.html
+# Shell Script Best Practices — The Sharat's https://sharats.me/posts/shell-script-best-practices/

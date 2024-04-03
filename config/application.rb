@@ -6,7 +6,7 @@ require_relative 'boot'
 require 'rails'
 require 'active_model/railtie'
 # require 'active_job/railtie'
-# require 'active_record/railtie'
+require 'active_record/railtie'
 # require 'active_storage/engine'
 require 'action_controller/railtie'
 # require 'action_mailer/railtie'
@@ -36,6 +36,8 @@ module Website
     # in config/environments, which are processed later.
     #
     config.time_zone = ENV.fetch('TZ', 'UTC')
+    config.active_record.default_timezone = :utc
+
     # config.eager_load_paths << Rails.root.join("extras")
     config.x.website_title.base = ENV.fetch('WEBSITE_TITLE_BASE', nil)
     config.x.website_title.separator = ENV.fetch('WEBSITE_TITLE_SEPARATOR', nil)

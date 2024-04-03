@@ -1,0 +1,34 @@
+# == Schema Information
+#
+# Table name: guest_interviews
+#
+#  display_order              :integer          default(1), not null
+#  episode_number             :string           not null
+#  guest_interview_profile_id :integer          not null
+#
+# Indexes
+#
+#  idx_on_episode_number_guest_interview_profile_id_967e3dfe76  (episode_number,guest_interview_profile_id) UNIQUE
+#  index_guest_interviews_on_episode_number_and_display_order   (episode_number,display_order) UNIQUE
+#  index_guest_interviews_on_guest_interview_profile_id         (guest_interview_profile_id)
+#
+# Foreign Keys
+#
+#  episode_number              (episode_number => episodes.number)
+#  guest_interview_profile_id  (guest_interview_profile_id => guest_interview_profiles.id)
+#
+
+one:
+  guest_interview_profile_id: 1
+  episode_number: '1-1'
+  display_order: 1
+
+yoga:
+  guest_interview_profile_id: 2
+  episode_number: '108'
+  display_order: 2
+
+yoga2:
+  guest_interview_profile_id: 4
+  episode_number: '108'
+  display_order: 1

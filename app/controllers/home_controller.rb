@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    @episodes = Episode.all
+    @episodes = PublishedEpisode.order(published_at: :desc).limit(3)
   end
 end
