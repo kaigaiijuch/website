@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_03_205240) do
   create_table "episode_references", force: :cascade do |t|
     t.string "episode_number", null: false
     t.string "link", null: false
@@ -36,6 +36,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
     t.integer "season_number"
     t.integer "story_number"
     t.string "type_name", null: false
+    t.string "label", null: false
+    t.index ["label"], name: "index_episodes_on_label", unique: true
     t.index ["number"], name: "index_episodes_on_number", unique: true
     t.index ["season_number", "story_number"], name: "index_episodes_on_season_number_and_story_number", unique: true
   end
@@ -102,8 +104,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
-         *
-        FROM episodes
-        JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+       *
+      FROM episodes
+      JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
   SQL
 end
