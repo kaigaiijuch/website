@@ -27,4 +27,5 @@ class GuestInterview < ApplicationRecord
 
   validates :episode_number, uniqueness: { scope: :guest_interview_profile_id }
   validates :episode_number, uniqueness: { scope: :display_order }
+  validates :display_order, presence: true, numericality: { only_integer: true, greater_than: 0 }
 end

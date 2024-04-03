@@ -79,4 +79,16 @@ class GuestInterviewTest < ActiveSupport::TestCase
       guest_interview.save!(validate: false)
     end
   end
+  test 'the display_order should be positive value and greater than zero' do
+    guest_interview = GuestInterview.new(
+      episode_number: guest_interviews(:yoga).episode_number,
+      guest_interview_profile_id: 3,
+      display_order: 0
+    )
+
+    assert_not guest_interview.valid?
+    assert_raises(ActiveRecord::StatementInvalid) do
+      guest_interview.save!(validate: false)
+    end
+  end
 end

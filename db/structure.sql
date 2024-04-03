@@ -20,15 +20,6 @@ FOREIGN KEY ("guest_id")
   REFERENCES "guests" ("id")
 );
 CREATE INDEX "index_guest_interview_profiles_on_guest_id" ON "guest_interview_profiles" ("guest_id");
-CREATE TABLE IF NOT EXISTS "guest_interviews" ("episode_number" varchar NOT NULL, "guest_interview_profile_id" integer NOT NULL, "display_order" integer DEFAULT 1 NOT NULL, CONSTRAINT "fk_rails_6e428d54d7"
-FOREIGN KEY ("episode_number")
-  REFERENCES "episodes" ("number")
-, CONSTRAINT "fk_rails_8df479fb6d"
-FOREIGN KEY ("guest_interview_profile_id")
-  REFERENCES "guest_interview_profiles" ("id")
-);
-CREATE UNIQUE INDEX "idx_on_episode_number_guest_interview_profile_id_967e3dfe76" ON "guest_interviews" ("episode_number", "guest_interview_profile_id");
-CREATE INDEX "index_guest_interviews_on_guest_interview_profile_id" ON "guest_interviews" ("guest_interview_profile_id");
 CREATE VIEW "published_episodes" AS       SELECT
      *
     FROM episodes
@@ -36,8 +27,18 @@ CREATE VIEW "published_episodes" AS       SELECT
 /* published_episodes(number,title,summary,long_summary,subtitle,created_at,updated_at,season_number,story_number,type_name,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator,"created_at:1","updated_at:1") */;
 CREATE TABLE IF NOT EXISTS "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
+CREATE TABLE IF NOT EXISTS "guest_interviews" ("episode_number" varchar NOT NULL, "guest_interview_profile_id" integer NOT NULL, "display_order" integer DEFAULT 1 NOT NULL, CONSTRAINT "fk_rails_8df479fb6d"
+FOREIGN KEY ("guest_interview_profile_id")
+  REFERENCES "guest_interview_profiles" ("id")
+, CONSTRAINT "fk_rails_6e428d54d7"
+FOREIGN KEY ("episode_number")
+  REFERENCES "episodes" ("number")
+, CONSTRAINT check_display_order_positive CHECK (display_order > 0));
+CREATE UNIQUE INDEX "idx_on_episode_number_guest_interview_profile_id_967e3dfe76" ON "guest_interviews" ("episode_number", "guest_interview_profile_id");
+CREATE INDEX "index_guest_interviews_on_guest_interview_profile_id" ON "guest_interviews" ("guest_interview_profile_id");
 CREATE UNIQUE INDEX "index_guest_interviews_on_episode_number_and_display_order" ON "guest_interviews" ("episode_number", "display_order");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240403090919'),
 ('20240403090050'),
 ('20240402082719'),
 ('20240402082545'),
