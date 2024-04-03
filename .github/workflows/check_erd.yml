@@ -1,0 +1,13 @@
+name: Check ERD
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Check that ERD is up-to-dated
+      run: |
+        git diff remotes/origin/${{ github.base_ref }} --name-only | grep db/schema.rb &&
+        git diff remotes/origin/${{ github.base_ref }} --name-only | grep docs/erd.png
