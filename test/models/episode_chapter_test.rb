@@ -4,13 +4,21 @@ require 'test_helper'
 
 class EpisodeChapterTest < ActiveSupport::TestCase
   test 'it should have right attributes' do
-    episode_chapter = EpisodeChapter.new(time: '00:00:00.123', title: 'test chapter')
-    assert_equal 'test chapter', episode_chapter.title
-    assert_equal '00:00:00.123', episode_chapter.time
+    episode_chapter = EpisodeChapter.where(episode_number: '0').all[0]
+
+    assert_equal '海外移住チャンネル始動', episode_chapter.title
+    assert_equal '00:00:00.998', episode_chapter.time
     assert_equal episodes(:one), episode_chapter.episode
   end
 
   test 'it should have right associations' do
-    assert_equal EpisodeChapter.all, episodes(:one).chapters
+    episode_chapters = EpisodeChapter.where(episode_number: '0').all
+
+    assert_equal episode_chapters, episodes(:one).chapters
+    assert_equal episodes(:one), episode_chapters[0].episode
+  end
+
+  test 'it should return nil array if the file not exists' do
+    assert_equal [], EpisodeChapter.where(episode_number: 'not-exists').all
   end
 end
