@@ -62,6 +62,10 @@ Import data from csv files in the directory, it is compatible with google sheets
 
 this will commit the data to the data repository.
 
+### static data
+
+* `data/episodes/#{episode_number}.chapters.txt` - chapter data for the episode. the data format is `HH:MM:SS.mmm title`. sample file is [here](test/data/episodes/0.chapters.txt)
+
 
 ## development instructions
 

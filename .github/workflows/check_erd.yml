@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Check that ERD is up-to-dated
+      with:
+        fetch-depth: 0
+    - name: Check that docs/erd.png is up-to-dated
       run: |
         if [[ $(git diff remotes/origin/${{ github.base_ref }} --name-only | grep db/schema.rb) ]]; then
           git diff remotes/origin/${{ github.base_ref }} --name-only | grep docs/erd.png || exit 1

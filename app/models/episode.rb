@@ -31,4 +31,5 @@ class Episode < ApplicationRecord
   delegate :published_at, to: :feed_spotify_for_podcasters
   include HasGuestInterviews
   include HasReferences
+  include HasChapters
 end
