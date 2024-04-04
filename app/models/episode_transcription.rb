@@ -5,6 +5,12 @@ class EpisodeTranscription
 
   def initialize(data)
     @data = data
+
+    data.each_key do |key|
+      self.class.define_method(key) do
+        @data.fetch(key)
+      end
+    end
   end
 
   def episode
@@ -13,22 +19,6 @@ class EpisodeTranscription
 
   def episode_number
     data.fetch(:episode_number)
-  end
-
-  def start_time
-    data.fetch(:start_time)
-  end
-
-  def end_time
-    data.fetch(:end_time)
-  end
-
-  def speaker
-    data.fetch(:speaker)
-  end
-
-  def text
-    data.fetch(:text)
   end
 
   def ==(other)

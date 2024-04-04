@@ -5,14 +5,12 @@ class EpisodeChapter
 
   def initialize(data)
     @data = data
-  end
 
-  def time
-    data[:time]
-  end
-
-  def title
-    data[:title]
+    data.each_key do |key|
+      self.class.define_method(key) do
+        @data.fetch(key)
+      end
+    end
   end
 
   def episode_number
@@ -24,7 +22,10 @@ class EpisodeChapter
   end
 
   def ==(other)
-    time == other.time && title == other.title && episode_number == other.episode_number
+    data.each_key do |key|
+      return false if data.fetch(key) != other.public_send(key)
+    end
+    true
   end
 
   class << self
