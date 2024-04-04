@@ -44,8 +44,8 @@ class EpisodeReferenceTest < ActiveSupport::TestCase
   end
 
   test 'episode reference should have a valid episode' do
-    assert_equal episode_references(:one).episode, episodes(:two)
-    assert_equal episodes(:two).references, [episode_references(:one), episode_references(:two)]
+    assert_equal episode_references(:one).episode, episodes(:one)
+    assert_equal episodes(:one).references, [episode_references(:one), episode_references(:two)]
   end
 
   test 'the display_order and episode_number should not be dupilicated' do

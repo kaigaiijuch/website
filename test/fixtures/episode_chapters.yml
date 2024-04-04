@@ -1,0 +1,49 @@
+# == Schema Information
+#
+# Table name: episode_chapters
+#
+#  id             :integer          not null, primary key
+#  episode_number :string           not null
+#  time           :string           not null
+#  title          :string           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+# Indexes
+#
+#  index_episode_chapters_on_episode_number  (episode_number)
+#
+# Foreign Keys
+#
+#  episode_number  (episode_number => episodes.number)
+#
+
+zero_one:
+  episode_number: 0
+  title: 海外移住channel始動
+  time: "00:00:00.998"
+
+zero_two:
+  episode_number: 0
+  title: ポッドキャストのコンセプト
+  time: "00:01:07.818"
+
+zero_three:
+  episode_number: 0
+  title: ゲストやフィードバックについて
+  time: "00:02:36.578"
+
+zero_four:
+  episode_number: 0
+  title: 配信開始と今後の展望
+  time: "00:03:59.773"
+
+one_one:
+  episode_number: 1-1
+  title: ゲスト紹介と初めての出会い
+  time: "00:00:00.000"
+
+one_two:
+  episode_number: 1-1
+  title: 海外移住の選択肢とワーキングホリデー
+  time: "00:03:56.704"

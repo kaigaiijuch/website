@@ -39,10 +39,17 @@ class PublishedEpisodeTest < ActiveSupport::TestCase
     assert_equal 2, PublishedEpisode.count
 
     published_episodes = PublishedEpisode.order(:published_at).all
-    assert_equal published_episodes[0].number, episodes(:one).number
-    assert_equal published_episodes[1].number, episodes(:two).number
+    assert_equal published_episodes[0].number, episodes(:zero).number
+    assert_equal published_episodes[1].number, episodes(:one).number
 
     assert_equal published_episodes[0].url, feeds_spotify_for_podcasters(:two).url
     assert_equal published_episodes[1].url, feeds_spotify_for_podcasters(:one).url
+
+    assert_equal [
+      episode_chapters(:zero_one),
+      episode_chapters(:zero_two),
+      episode_chapters(:zero_three),
+      episode_chapters(:zero_four)
+    ], published_episodes[0].chapters
   end
 end

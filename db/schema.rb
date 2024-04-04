@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_04_102645) do
+  create_table "episode_chapters", force: :cascade do |t|
+    t.string "episode_number", null: false
+    t.string "title", null: false
+    t.string "time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_number"], name: "index_episode_chapters_on_episode_number"
+  end
+
   create_table "episode_references", force: :cascade do |t|
     t.string "episode_number", null: false
     t.string "link", null: false
@@ -93,6 +102,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
     t.index ["nickname"], name: "index_guests_on_nickname", unique: true
   end
 
+  add_foreign_key "episode_chapters", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "episode_references", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "episodes", "episode_types", column: "type_name", primary_key: "name"
   add_foreign_key "feeds_spotify_for_podcasters", "episodes", column: "episode_number", primary_key: "number"
@@ -102,8 +112,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
-         *
-        FROM episodes
-        JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+       *
+      FROM episodes
+      JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
   SQL
 end
