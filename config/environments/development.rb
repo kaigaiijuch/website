@@ -80,6 +80,6 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
     end
   end
 
-  # default static file directory path for ActiveFile
-  config.x.static_file_root_directory = 'data'
+  # default yaml directory path for ActiveYaml
+  config.x.yaml_base_directory = 'data'
 end
