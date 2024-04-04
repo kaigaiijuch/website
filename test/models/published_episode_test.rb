@@ -14,7 +14,6 @@
 #  explicit        :boolean
 #  guid            :string
 #  image_url       :string
-#  label           :string
 #  long_summary    :text
 #  number          :string           primary key
 #  published_at    :datetime
