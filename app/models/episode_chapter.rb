@@ -15,7 +15,7 @@ class EpisodeChapter
       return [] unless file_path.exist?
 
       CSV.read(file_path, col_sep: ' ', headers: %i[time title])
-         .map { |row| row.to_h.merge(episode_number: @episode_number) }
+         .map { |row| row.to_h.symbolize_keys.merge(episode_number: @episode_number) }
          .inject([]) { |result, data| result << EpisodeChapter.new(data) }
          .sort_by(&:time)
     end

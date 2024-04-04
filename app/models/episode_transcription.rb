@@ -17,6 +17,7 @@ class EpisodeTranscription
       CSV.read(file_path, headers: true)
          .map { |row| row.to_h.symbolize_keys.merge(episode_number: @episode_number) }
          .inject([]) { |result, data| result << EpisodeTranscription.new(data) }
+         .sort_by(&:start_time)
     end
 
     private
