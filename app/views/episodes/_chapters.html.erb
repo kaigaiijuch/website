@@ -3,11 +3,10 @@
     <h2>Contents</h2>
   </header>
 
-    <ul>
-      <% File.readlines("data/episodes/1-1 okuda1.chapters.txt").each do |line| %>
-        <% time, name = line.split %>
-        <li><a href=""><small><%= time %>時間</small><%= name %></a></li>
-      <% end %>
+  <ul>
+    <% chapters.each do |chapter| %>
+      <li><a><small><%= chapter.time.split('.').first %></small> <%= chapter.title %></a></li>
+    <% end %>
     </ul>
 </section>
 
