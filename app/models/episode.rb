@@ -32,4 +32,5 @@ class Episode < ApplicationRecord
   include HasGuestInterviews
   include HasReferences
   include HasChapters
+  include HasTranscriptions
 end

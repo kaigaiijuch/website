@@ -37,6 +37,7 @@ class PublishedEpisode < ApplicationRecord
   include HasGuestInterviews
   include HasReferences
   include HasChapters
+  include HasTranscriptions
 
   def readonly?
     true

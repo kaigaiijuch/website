@@ -66,6 +66,7 @@ this will commit the data to the data repository.
 
 * `data/episodes/#{episode_number}.chapters.txt` - chapter data for the episode. the data format is `HH:MM:SS.mmm title`. sample file is [here](test/data/episodes/0.chapters.txt)
 
+* `data/episodes/#{episode_number}.transcription.csv` - transcription data for the episode. sample file is [here](test/data/episodes/1-1.transcription.csv)
 
 ## development instructions
 
