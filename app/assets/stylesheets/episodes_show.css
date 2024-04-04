@@ -820,16 +820,24 @@ input[type="radio"]+label {
 #table_contents{
     width: 80%;
     margin: 1rem auto 0 auto;
+    display: inline-block;
 }
 
 #table_contents header{
     padding-bottom: 0rem;
+    width: 100%;
 }
 
 
 #table_contents ul{
     list-style-type: none;
     padding-inline-start: 20px;
+    margin: 0 auto;
+    display: flexbox;
+}
+
+#table_contents li{
+    margin: 0 50%;
 }
 
 #table_contentsul span{
