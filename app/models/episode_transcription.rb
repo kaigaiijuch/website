@@ -1,38 +1,7 @@
 # frozen_string_literal: true
 
 class EpisodeTranscription
-  attr_reader :data
-
-  def initialize(data)
-    @data = data
-
-    data.each_key do |key|
-      self.class.define_method(key) do
-        @data.fetch(key)
-      end
-    end
-  end
-
-  def episode
-    @episode ||= Episode.find_by(number: episode_number)
-  end
-
-  def episode_number
-    data.fetch(:episode_number)
-  end
-
-  def ==(other)
-    data.each_key do |key|
-      return false if data.fetch(key) != other.public_send(key)
-    end
-    true
-  end
-
-  class << self
-    def where(episode_number:)
-      Relation.new(episode_number:)
-    end
-  end
+  include StaticFileable
 
   class Relation
     require 'csv'
@@ -56,4 +25,5 @@ class EpisodeTranscription
       Pathname(BASE_PATH + "episodes/#{@episode_number}.transcription.csv")
     end
   end
+  relation_class Relation
 end
