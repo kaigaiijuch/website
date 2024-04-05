@@ -6,6 +6,7 @@
 #
 #  display_order              :integer          default(1), not null
 #  episode_number             :string           not null
+#  interviewed_on             :date             not null
 #  guest_interview_profile_id :integer          not null
 #
 # Indexes
