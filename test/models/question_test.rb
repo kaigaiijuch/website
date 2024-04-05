@@ -30,4 +30,11 @@ class QuestionTest < ActiveSupport::TestCase
   test 'should default sorted by topic_code and display order accordingly' do
     assert_equal Question.all, [questions(:one_one), questions(:one_two), questions(:two_one)]
   end
+
+  test 'should not duplicate the topic_code and display_order pair' do
+    question = Question.new(topic_code: 'general', display_order: 1, text: 'New question', number: '1')
+
+    assert_not question.valid?
+    assert_raises(ActiveRecord::RecordNotUnique) { question.save!(validate: false) }
+  end
 end
