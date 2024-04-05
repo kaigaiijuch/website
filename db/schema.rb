@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_05_105326) do
   create_table "episode_references", force: :cascade do |t|
     t.string "episode_number", null: false
     t.string "link", null: false
@@ -71,6 +71,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
     t.datetime "updated_at", null: false
     t.string "guest_name", null: false
     t.string "image_path", null: false
+    t.date "interviewed_on", null: false
     t.index ["guest_id"], name: "index_guest_interview_profiles_on_guest_id"
   end
 
@@ -102,8 +103,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
-         *
-        FROM episodes
-        JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+       *
+      FROM episodes
+      JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
   SQL
 end

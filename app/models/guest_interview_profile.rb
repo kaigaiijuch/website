@@ -8,6 +8,7 @@
 #  abroad_living_summary :string           not null
 #  guest_name            :string           not null
 #  image_path            :string           not null
+#  interviewed_on        :date             not null
 #  introduction          :text             not null
 #  job_title             :string           not null
 #  tagline               :string           not null
