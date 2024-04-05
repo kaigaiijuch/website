@@ -26,6 +26,7 @@ main() {
         guests.csv
         guest_interview_profiles.csv
         guest_interviews.csv
+        questions.csv
     )
     for csv_file_name in "${base_csv_file_names[@]}"; do
         csv_file=$(ls "$csv_dir"/*"$csv_file_name" 2> /dev/null || true)
