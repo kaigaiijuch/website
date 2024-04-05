@@ -2,67 +2,18 @@
   <hr>
   <div id="guest_info">
     <h2>ゲストQ＆A</h2>
-    <h4>移住全般について</h4>
+
+    <h4>生活全般について</h4>
     <div class="cp_box">
       <input id="cp01" type="checkbox">
       <label for="cp01"></label>
       <div class="cp_container">
         <div class="cp_qa">
           <dl>
-            <dt>年代を教えてください</dt>
-            <dd>30代後半</dd>
-            <dt>性別を教えてください</dt>
-            <dd>男性</dd>
-            <dt>移住先はどこですか</dt>
-            <dd>ドイツ、ベルリン</dd>
-            <dt>その場所を選んだ理由はなんですか？</dt>
-            <dd>ワーキングビザ（EU blue card）の取りやすさと趣味のクラブミュージックが盛んな地域だったため。</dd>
-            <dt>いつから海外に住んでいますか？</dt>
-            <dd>2016.09.01</dd>
-            <dt>いままでの海外遍歴を教えてください</dt>
-            <dd>海外に住むことはこれが初めてで、海外旅行はそれまでに5,6回ありました。</dd>
-            <dt>なぜ海外に移住したかったんですか？</dt>
-            <dd>日本の生活に飽きたため</dd>
-            <dt>どうやって移住を実現しましたか？（駐在・ビザなど）</dt>
-            <dd>ワーホリで現地に来て、就活をしてワーキングビザをサポートしてくれる仕事をみつけました。</dd>
-            <dt>海外移住してよかったことはなんですか？</dt>
-            <dd>色々な文化の人と交流できること。ワークライフバランスが日本に比べて良いこと。</dd>
-            <dt>海外移住して大変なことはなんですか？</dt>
-            <dd> 言語。</dd>
-            <dt>海外移住について、今後の展望があれば教えてください</dt>
-            <dd>今年中にロンドンへの移住を考えています。</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-    <h4>仕事について</h4>
-    <div class="cp_box">
-      <input id="cp02" type="checkbox">
-      <label for="cp02"></label>
-      <div class="cp_container">
-        <div class="cp_qa">
-          <dl>
-            <dt>いまの職業は何ですか？</dt>
-            <dd>ソフトウェアエンジニア</dd>
-            <dt>どうやってその仕事を見つけましたか？</dt>
-            <dd>Honeypot というソフトウェアエンジニア向けの求人サイト</dd>
-            <dt>海外で働いてみてよかったことはなんですか？</dt>
-            <dd>ワークライフバランスが日本よりよい。給料が日本より高い。</dd>
-            <dt>海外で働いてみて大変なことはなんですか？</dt>
-            <dd>英語でのコミュニケーションが最初は苦労しました。</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-    <h4>子育てついて</h4>
-    <div class="cp_box">
-      <input id="cp03" type="checkbox">
-      <label for="cp03"></label>
-      <div class="cp_container">
-        <div class="cp_qa">
-          <dl>
-            <dt>海外での子育てについて、どのように感じていますか？（該当者のみ）</dt>
-            <dd>ベルリンは日本に比べて子育てしやすいのかなと思っています。ただ両親のサポートを受けれないのは日本で子育てするより大変かなと思います。</dd>
+            <% questions_and_answers.each do |questions_and_answer| %>
+              <dt><%= questions_and_answer.question_text %></dt>
+              <dd><%= questions_and_answer.text %></dd>
+            <% end %>
           </dl>
         </div>
       </div>
