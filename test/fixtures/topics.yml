@@ -14,7 +14,7 @@
 
 life:
   code: life
-  name: 生活
+  name: 移住全般
   display_order: 1
 
 work:
