@@ -2,19 +2,27 @@
 #
 # Table name: topics
 #
-#  code :string           not null, primary key
-#  name :string           not null
+#  code          :string           not null, primary key
+#  display_order :integer          not null
+#  name          :string           not null
+#
+# Indexes
+#
+#  index_topics_on_display_order  (display_order) UNIQUE
 #
 
 
 life:
   code: life
   name: 生活
+  display_order: 1
 
 work:
   code: work
   name: 仕事
+  display_order: 2
 
 kids:
   code: kids
   name: 子育て
+  display_order: 3

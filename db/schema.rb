@@ -122,6 +122,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_140159) do
 
   create_table "topics", primary_key: "code", id: :string, force: :cascade do |t|
     t.string "name", null: false
+    t.integer "display_order", null: false
+    t.index ["display_order"], name: "index_topics_on_display_order", unique: true
+    t.check_constraint "display_order > 0"
   end
 
   add_foreign_key "answers", "guest_interview_profiles"

@@ -15,9 +15,9 @@
 end
 
 [
-  { code: 'life', name: '生活' },
-  { code: 'work', name: '仕事' },
-  { code: 'kids', name: '子育て' }
+  { code: 'life', name: '生活', display_order: 1 },
+  { code: 'work', name: '仕事', display_order: 2 },
+  { code: 'kids', name: '子育て', display_order: 3 }
 ].each do |topic_attrs|
   Topic.find_or_create_by!(topic_attrs)
 end
