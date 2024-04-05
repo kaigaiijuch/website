@@ -59,7 +59,8 @@ class GuestInterviewTest < ActiveSupport::TestCase
     guest_interview = GuestInterview.new(
       episode_number: guest_interviews(:yoga).episode_number,
       guest_interview_profile_id: guest_interviews(:yoga).guest_interview_profile_id,
-      display_order: (guest_interviews(:yoga).display_order + 1)
+      display_order: (guest_interviews(:yoga).display_order + 1),
+      interviewed_on: Time.zone.today
     )
 
     assert_not guest_interview.valid?
@@ -72,7 +73,8 @@ class GuestInterviewTest < ActiveSupport::TestCase
     guest_interview = GuestInterview.new(
       episode_number: guest_interviews(:yoga).episode_number,
       guest_interview_profile_id: 3,
-      display_order: guest_interviews(:yoga).display_order
+      display_order: guest_interviews(:yoga).display_order,
+      interviewed_on: Time.zone.today
     )
 
     assert_not guest_interview.valid?
@@ -84,7 +86,8 @@ class GuestInterviewTest < ActiveSupport::TestCase
     guest_interview = GuestInterview.new(
       episode_number: guest_interviews(:yoga).episode_number,
       guest_interview_profile_id: 3,
-      display_order: 0
+      display_order: 0,
+      interviewed_on: Time.zone.today
     )
 
     assert_not guest_interview.valid?
