@@ -23,7 +23,11 @@ require 'test_helper'
 class QuestionTest < ActiveSupport::TestCase
   # Test case to check if the question belongs to a topic
   test 'should belong to a topic' do
-    assert_equal questions(:one).topic, topics(:general)
-    assert_equal topics(:general).questions.all, [questions(:one), questions(:two)]
+    assert_equal questions(:one_one).topic, topics(:general)
+    assert_equal topics(:general).questions.all, [questions(:one_one), questions(:one_two)]
+  end
+
+  test 'should default sorted by topic_code and display order accordingly' do
+    assert_equal Question.all, [questions(:one_one), questions(:one_two), questions(:two_one)]
   end
 end
