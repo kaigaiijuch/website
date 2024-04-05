@@ -2,6 +2,7 @@
 #
 # Table name: questions
 #
+#  about         :string           not null
 #  display_order :integer          not null
 #  number        :string           not null, primary key
 #  text          :text             not null
@@ -21,17 +22,20 @@
 one_two:
   number: 1-2
   text: 自己紹介をお願いします
+  about: introduction
   display_order: 2
   topic_code: general
 
 two_one:
   number: 2-1
   text: どこに移住しましたか？
+  about: place
   display_order: 1
   topic_code: life
 
 one_one:
   number: 1-1
   text: 年代は？
+  about: age
   display_order: 1
   topic_code: general

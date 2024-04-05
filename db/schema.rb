@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_05_131030) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_05_140159) do
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
     t.date "answered_on", null: false
@@ -115,6 +115,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_131030) do
     t.string "topic_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "about", null: false
     t.index ["topic_code", "display_order"], name: "index_questions_on_topic_code_and_display_order", unique: true
     t.check_constraint "display_order > 0"
   end

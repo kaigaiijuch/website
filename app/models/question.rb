@@ -4,6 +4,7 @@
 #
 # Table name: questions
 #
+#  about         :string           not null
 #  display_order :integer          not null
 #  number        :string           not null, primary key
 #  text          :text             not null

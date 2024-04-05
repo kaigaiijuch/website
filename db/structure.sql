@@ -43,11 +43,6 @@ CREATE UNIQUE INDEX "idx_on_episode_number_guest_interview_profile_id_967e3dfe76
 CREATE INDEX "index_guest_interviews_on_guest_interview_profile_id" ON "guest_interviews" ("guest_interview_profile_id");
 CREATE UNIQUE INDEX "index_guest_interviews_on_episode_number_and_display_order" ON "guest_interviews" ("episode_number", "display_order");
 CREATE TABLE IF NOT EXISTS "topics" ("code" varchar NOT NULL PRIMARY KEY, "name" varchar NOT NULL);
-CREATE TABLE IF NOT EXISTS "questions" ("number" varchar NOT NULL PRIMARY KEY, "text" text NOT NULL, "display_order" integer NOT NULL, "topic_code" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_251e626c71"
-FOREIGN KEY ("topic_code")
-  REFERENCES "topics" ("code")
-, CONSTRAINT chk_rails_3b193a7e50 CHECK (display_order > 0));
-CREATE UNIQUE INDEX "index_questions_on_topic_code_and_display_order" ON "questions" ("topic_code", "display_order");
 CREATE TABLE IF NOT EXISTS "answers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text NOT NULL, "answered_on" date NOT NULL, "question_number" varchar NOT NULL, "question_text" text NOT NULL, "guest_interview_profile_id" integer NOT NULL, "guest_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f5c924b3a5"
 FOREIGN KEY ("question_number")
   REFERENCES "questions" ("number")
@@ -61,7 +56,13 @@ FOREIGN KEY ("guest_id")
 CREATE INDEX "index_answers_on_question_number" ON "answers" ("question_number");
 CREATE INDEX "index_answers_on_guest_interview_profile_id" ON "answers" ("guest_interview_profile_id");
 CREATE INDEX "index_answers_on_guest_id" ON "answers" ("guest_id");
+CREATE TABLE IF NOT EXISTS "questions" ("number" varchar NOT NULL PRIMARY KEY, "text" text NOT NULL, "display_order" integer NOT NULL, "topic_code" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "about" varchar NOT NULL, CONSTRAINT "fk_rails_251e626c71"
+FOREIGN KEY ("topic_code")
+  REFERENCES "topics" ("code")
+, CONSTRAINT chk_rails_3b193a7e50 CHECK (display_order > 0));
+CREATE UNIQUE INDEX "index_questions_on_topic_code_and_display_order" ON "questions" ("topic_code", "display_order");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240405140159'),
 ('20240405131030'),
 ('20240405121007'),
 ('20240405112025'),

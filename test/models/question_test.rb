@@ -4,6 +4,7 @@
 #
 # Table name: questions
 #
+#  about         :string           not null
 #  display_order :integer          not null
 #  number        :string           not null, primary key
 #  text          :text             not null
@@ -34,7 +35,13 @@ class QuestionTest < ActiveSupport::TestCase
   end
 
   test 'should not duplicate the topic_code and display_order pair' do
-    question = Question.new(topic_code: 'general', display_order: 1, text: 'New question', number: '1')
+    question = Question.new(
+      topic_code: 'general',
+      display_order: 1,
+      text: 'New question',
+      number: '1',
+      about: 'new'
+    )
 
     assert_not question.valid?
     assert_raises(ActiveRecord::RecordNotUnique) { question.save!(validate: false) }
@@ -45,7 +52,8 @@ class QuestionTest < ActiveSupport::TestCase
       number: '1',
       text: 'New question',
       display_order: 0,
-      topic: topics(:general)
+      topic: topics(:general),
+      about: 'new'
     )
 
     assert_not question.valid?
