@@ -34,7 +34,7 @@ main() {
             continue
         fi
         echo "Processing file $csv_file"
-        bin/rails runner bin/data/read_csv.rb "$csv_file"
+        bin/rails runner bin/data/upsert_csv.rb "$csv_file"
         echo ""
     done
 }
