@@ -18,7 +18,8 @@ fi
 cd "$(dirname "$0")"
 
 SPOTIFY_FOR_PODCASTERS_RSS_URL=${1}
-CSV_DIR=${2:-tmp/website_data_sheet}
+CSV_DIR=${2}
+ANSWER_CSV=${3}
 
 main() {
     echo "## Prepare database..."
@@ -26,6 +27,9 @@ main() {
 
     echo "## Importing csv to database..."
     ./import_from_csv "$CSV_DIR"
+
+    echo "## Importing answer csv to database..."
+    ../rails runner ./import_answers.rb ../../"$ANSWER_CSV"
 
     echo "## Fetching RSS feed data..."
     ../rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL"]
