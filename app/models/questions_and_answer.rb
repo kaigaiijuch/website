@@ -25,6 +25,7 @@
 #  guest_interview_profile_id :integer
 #
 class QuestionsAndAnswer < ApplicationRecord
+  self.primary_key = :id
   belongs_to :guest_interview_profile
   belongs_to :guest
 

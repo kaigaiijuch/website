@@ -40,4 +40,12 @@ class QuestionAndAnswerTest < ActiveSupport::TestCase
     assert_equal QuestionsAndAnswer.where(guest: guests(:three)).all,
                  guests(:three).questions_and_answers
   end
+
+  test 'questions_and_answer should be sorted default by topic_code and display_orde of qustions' do
+    assert_equal [
+      QuestionsAndAnswer.find(answers(:guest1_one_one).id),
+      QuestionsAndAnswer.find(answers(:guest1_one_two).id),
+      QuestionsAndAnswer.find(answers(:guest1_two_one).id)
+    ], guest_interview_profiles(:one).questions_and_answers.all
+  end
 end

@@ -45,12 +45,4 @@ class AnswerTest < ActiveSupport::TestCase
     assert_equal guest_interview_profiles(:three), answers(:guest3_one_one).guest_interview_profile
     assert_equal [answers(:guest3_one_one)], guest_interview_profiles(:three).answers.all
   end
-
-  test 'answers should be sorted default by topic_code and display_orde of qustions' do
-    skip [
-      answers(:guest1_one_one),
-      answers(:guest1_one_two),
-      answers(:guest1_two_one)
-    ], guest_interview_profiles(:one).answers.all
-  end
 end
