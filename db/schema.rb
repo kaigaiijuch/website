@@ -145,7 +145,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_145217) do
       JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
   SQL
   create_view "questions_and_answers", sql_definition: <<-SQL
-      SELECT *
+      SELECT *, answers.text AS answer_text, topics.name AS topic_name
   FROM answers
   JOIN questions ON answers.question_number = questions.number
   JOIN topics ON questions.topic_code = topics.code

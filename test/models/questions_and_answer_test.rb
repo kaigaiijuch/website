@@ -4,8 +4,9 @@
 #
 # Table name: questions_and_answers
 #
-#  id                         :integer
+#  id                         :integer          primary key
 #  about                      :string
+#  answer_text                :text
 #  answered_on                :date
 #  code                       :string
 #  created_at:1               :datetime
@@ -18,6 +19,7 @@
 #  text                       :text
 #  text:1                     :text
 #  topic_code                 :string
+#  topic_name                 :string
 #  updated_at:1               :datetime
 #  created_at                 :datetime
 #  updated_at                 :datetime
@@ -27,6 +29,11 @@
 require 'test_helper'
 
 class QuestionAndAnswerTest < ActiveSupport::TestCase
+  test 'alias name can be right' do
+    assert_equal QuestionsAndAnswer.first.topic.name, QuestionsAndAnswer.first.topic_name
+    assert_equal QuestionsAndAnswer.first.answer_text, QuestionsAndAnswer.first.text
+  end
+
   test 'questions_and_answer association of guest_interview_profiles should have correct relation and inverse' do
     assert_equal QuestionsAndAnswer.first.guest_interview_profile,
                  guest_interview_profiles(:one)
