@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_05_121007) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_05_131030) do
+  create_table "answers", force: :cascade do |t|
+    t.text "text", null: false
+    t.date "answered_on", null: false
+    t.string "question_number", null: false
+    t.text "question_text", null: false
+    t.integer "guest_interview_profile_id", null: false
+    t.integer "guest_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_answers_on_guest_id"
+    t.index ["guest_interview_profile_id"], name: "index_answers_on_guest_interview_profile_id"
+    t.index ["question_number"], name: "index_answers_on_question_number"
+  end
+
   create_table "episode_references", force: :cascade do |t|
     t.string "episode_number", null: false
     t.string "link", null: false
@@ -109,6 +123,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_121007) do
     t.string "name", null: false
   end
 
+  add_foreign_key "answers", "guest_interview_profiles"
+  add_foreign_key "answers", "guests"
+  add_foreign_key "answers", "questions", column: "question_number", primary_key: "number"
   add_foreign_key "episode_references", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "episodes", "episode_types", column: "type_name", primary_key: "name"
   add_foreign_key "feeds_spotify_for_podcasters", "episodes", column: "episode_number", primary_key: "number"
