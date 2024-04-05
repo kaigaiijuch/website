@@ -23,7 +23,7 @@ ANSWER_CSV=${3}
 
 main() {
     echo "## Prepare database..."
-    ../rake db:prepare
+    ../rake db:prepare db:seed
 
     echo "## Importing csv to database..."
     ./import_from_csv "$CSV_DIR"
