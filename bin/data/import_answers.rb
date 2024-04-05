@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'csv'
 
 file_path = ARGV[0]
-table_name = File.basename(file_path.split.last, '.csv')
 
 puts "Importing to answers from #{file_path}"
 
@@ -31,12 +31,14 @@ csv.each.with_index do |row, index|
   puts "Start importing row index: #{index}"
 
   question_numbers.each do |question_number, question_text|
+    answer_info =
+      "number: #{question_number}, guest_id: #{guest_id}, guest_interview_profile_id: #{guest_interview_profile_id}"
     if row[question_number].blank?
-      puts "  Skiping(empty text) number: #{question_number}, guest_id: #{guest_id}, guest_interview_profile_id: #{guest_interview_profile_id}"
+      puts "  Skiping(empty text) #{answer_info}"
       next
     end
 
-    puts "  Importing number: #{question_number}, guest_id: #{guest_id}, guest_interview_profile_id: #{guest_interview_profile_id}"
+    puts "  Importing  #{answer_info}"
 
     answer = Answer.find_or_initialize_by(question_number:, guest_id:,
                                           guest_interview_profile_id:)
