@@ -62,7 +62,14 @@ FOREIGN KEY ("topic_code")
   REFERENCES "topics" ("code")
 , CONSTRAINT chk_rails_3b193a7e50 CHECK (display_order > 0));
 CREATE UNIQUE INDEX "index_questions_on_topic_code_and_display_order" ON "questions" ("topic_code", "display_order");
+CREATE VIEW "questions_and_answers" AS SELECT *
+FROM answers
+JOIN questions ON answers.question_number = questions.number
+JOIN topics ON questions.topic_code = topics.code
+ORDER BY topics.display_order ASC, questions.display_order ASC
+/* questions_and_answers(id,text,answered_on,question_number,question_text,guest_interview_profile_id,guest_id,created_at,updated_at,number,"text:1",display_order,topic_code,"created_at:1","updated_at:1",about,code,name,"display_order:1") */;
 INSERT INTO "schema_migrations" (version) VALUES
+('20240405145217'),
 ('20240405140159'),
 ('20240405131030'),
 ('20240405121007'),
