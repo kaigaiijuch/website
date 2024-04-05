@@ -51,14 +51,14 @@ class QuestionAndAnswerTest < ActiveSupport::TestCase
 
   test 'questions_and_answer.topcs should be sorted default by topic_code and display_orde of qustions' do
     hash = {
-      topics(:life).code => [
+      topics(:life).name => [
         QuestionsAndAnswer.find(answers(:guest1_one_one).id),
         QuestionsAndAnswer.find(answers(:guest1_one_two).id)
       ],
-      topics(:work).code => [
+      topics(:work).name => [
         QuestionsAndAnswer.find(answers(:guest1_two_one).id)
       ]
     }
-    assert_equal hash, guest_interview_profiles(:one).questions_and_answers.topics
+    assert_equal hash, guest_interview_profiles(:one).questions_and_answers.by_topic
   end
 end

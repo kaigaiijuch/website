@@ -28,7 +28,7 @@ class QuestionsAndAnswer < ApplicationRecord
   self.primary_key = :id
   belongs_to :guest_interview_profile
   belongs_to :guest
-  scope :topics, -> { group_by(&:topic_code) }
+  scope :by_topic, -> { group_by(&:name) }
 
   def readonly?
     true

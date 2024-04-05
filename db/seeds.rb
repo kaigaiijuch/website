@@ -15,7 +15,7 @@
 end
 
 [
-  { code: 'life', name: '生活', display_order: 1 },
+  { code: 'life', name: '移住全般', display_order: 1 },
   { code: 'work', name: '仕事', display_order: 2 },
   { code: 'kids', name: '子育て', display_order: 3 }
 ].each do |topic_attrs|
