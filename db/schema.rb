@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_145217) do
     t.text "text", null: false
     t.date "answered_on", null: false
     t.string "question_number", null: false
-    t.text "question_text", null: false
+    t.text "original_question_text", null: false
     t.integer "guest_interview_profile_id", null: false
     t.integer "guest_id", null: false
     t.datetime "created_at", null: false
@@ -140,12 +140,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_145217) do
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
-       *
-      FROM episodes
-      JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+         *
+        FROM episodes
+        JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
   SQL
   create_view "questions_and_answers", sql_definition: <<-SQL
-      SELECT *, answers.text AS answer_text, topics.name AS topic_name
+      SELECT *, answers.text AS answer_text, topics.name AS topic_name, questions.text AS question_text
   FROM answers
   JOIN questions ON answers.question_number = questions.number
   JOIN topics ON questions.topic_code = topics.code

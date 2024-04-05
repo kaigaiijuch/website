@@ -14,6 +14,7 @@
 #  display_order:1            :integer
 #  name                       :string
 #  number                     :string
+#  original_question_text     :text
 #  question_number            :string
 #  question_text              :text
 #  text                       :text
@@ -32,6 +33,7 @@ class QuestionAndAnswerTest < ActiveSupport::TestCase
   test 'alias name can be right' do
     assert_equal QuestionsAndAnswer.first.topic.name, QuestionsAndAnswer.first.topic_name
     assert_equal QuestionsAndAnswer.first.answer_text, QuestionsAndAnswer.first.text
+    assert_equal QuestionsAndAnswer.first.question.text, QuestionsAndAnswer.first.question_text
   end
 
   test 'questions_and_answer association of guest_interview_profiles should have correct relation and inverse' do

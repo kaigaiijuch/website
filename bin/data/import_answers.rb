@@ -40,7 +40,7 @@ csv.each.with_index do |row, index|
 
     answer = Answer.find_or_initialize_by(question_number:, guest_id:,
                                           guest_interview_profile_id:)
-    answer.question_text = question_text
+    answer.original_question_text = question_text
     answer.answered_on = row['Timestamp']
     answer.guest_id = guest_id
     answer.guest_interview_profile_id = guest_interview_profile_id

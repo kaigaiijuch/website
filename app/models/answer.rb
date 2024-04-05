@@ -6,8 +6,8 @@
 #
 #  id                         :integer          not null, primary key
 #  answered_on                :date             not null
+#  original_question_text     :text             not null
 #  question_number            :string           not null
-#  question_text              :text             not null
 #  text                       :text             not null
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
