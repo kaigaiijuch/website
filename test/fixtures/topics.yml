@@ -1,0 +1,15 @@
+# == Schema Information
+#
+# Table name: topics
+#
+#  code :string           not null, primary key
+#  name :string           not null
+#
+
+one:
+  code: general
+  name: 一般
+
+two:
+  code: work
+  name: 仕事

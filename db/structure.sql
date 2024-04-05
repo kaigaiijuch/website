@@ -42,7 +42,9 @@ FOREIGN KEY ("guest_interview_profile_id")
 CREATE UNIQUE INDEX "idx_on_episode_number_guest_interview_profile_id_967e3dfe76" ON "guest_interviews" ("episode_number", "guest_interview_profile_id");
 CREATE INDEX "index_guest_interviews_on_guest_interview_profile_id" ON "guest_interviews" ("guest_interview_profile_id");
 CREATE UNIQUE INDEX "index_guest_interviews_on_episode_number_and_display_order" ON "guest_interviews" ("episode_number", "display_order");
+CREATE TABLE IF NOT EXISTS "topics" ("code" varchar NOT NULL PRIMARY KEY, "name" varchar NOT NULL);
 INSERT INTO "schema_migrations" (version) VALUES
+('20240405112025'),
 ('20240405111039'),
 ('20240405105326'),
 ('20240403155225'),
