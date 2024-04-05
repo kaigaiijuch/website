@@ -26,8 +26,8 @@ require 'test_helper'
 class QuestionTest < ActiveSupport::TestCase
   # Test case to check if the question belongs to a topic
   test 'should belong to a topic' do
-    assert_equal questions(:one_one).topic, topics(:general)
-    assert_equal topics(:general).questions.all, [questions(:one_one), questions(:one_two)]
+    assert_equal questions(:one_one).topic, topics(:life)
+    assert_equal topics(:life).questions.all, [questions(:one_one), questions(:one_two)]
   end
 
   test 'should default sorted by topic_code and display order accordingly' do
@@ -36,7 +36,7 @@ class QuestionTest < ActiveSupport::TestCase
 
   test 'should not duplicate the topic_code and display_order pair' do
     question = Question.new(
-      topic_code: 'general',
+      topic_code: 'life',
       display_order: 1,
       text: 'New question',
       number: '1',
@@ -52,7 +52,7 @@ class QuestionTest < ActiveSupport::TestCase
       number: '1',
       text: 'New question',
       display_order: 0,
-      topic: topics(:general),
+      topic: topics(:life),
       about: 'new'
     )
 

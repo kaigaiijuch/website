@@ -33,7 +33,7 @@ class TopicTest < ActiveSupport::TestCase
   end
 
   test 'code should be unique' do
-    duplicate_topic = Topic.new(code: topics(:general).code, name: 'Duplicate Topic')
+    duplicate_topic = Topic.new(code: topics(:life).code, name: 'Duplicate Topic')
 
     assert_not duplicate_topic.valid?
     assert_raise ActiveRecord::RecordNotUnique do

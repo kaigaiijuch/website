@@ -24,18 +24,18 @@ one_two:
   text: 自己紹介をお願いします
   about: introduction
   display_order: 2
-  topic_code: general
+  topic_code: life
 
 two_one:
   number: 2-1
   text: どこに移住しましたか？
   about: place
   display_order: 1
-  topic_code: life
+  topic_code: work
 
 one_one:
   number: 1-1
   text: 年代は？
   about: age
   display_order: 1
-  topic_code: general
+  topic_code: life

@@ -6,10 +6,15 @@
 #  name :string           not null
 #
 
-general:
-  code: general
-  name: 一般
 
 life:
   code: life
   name: 生活
+
+work:
+  code: work
+  name: 仕事
+
+kids:
+  code: kids
+  name: 子育て
