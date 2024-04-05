@@ -27,5 +27,4 @@
 class GuestInterviewProfile < ApplicationRecord
   belongs_to :guest
   has_many :answers, inverse_of: :guest_interview_profile
-  has_many :questions_and_answers_for_lives, inverse_of: :guest_interview_profile
 end
