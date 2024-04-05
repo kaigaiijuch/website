@@ -43,7 +43,13 @@ CREATE UNIQUE INDEX "idx_on_episode_number_guest_interview_profile_id_967e3dfe76
 CREATE INDEX "index_guest_interviews_on_guest_interview_profile_id" ON "guest_interviews" ("guest_interview_profile_id");
 CREATE UNIQUE INDEX "index_guest_interviews_on_episode_number_and_display_order" ON "guest_interviews" ("episode_number", "display_order");
 CREATE TABLE IF NOT EXISTS "topics" ("code" varchar NOT NULL PRIMARY KEY, "name" varchar NOT NULL);
+CREATE TABLE IF NOT EXISTS "questions" ("number" varchar NOT NULL PRIMARY KEY, "text" text NOT NULL, "display_order" integer NOT NULL, "topic_code" varchar NOT NULL, CONSTRAINT "fk_rails_251e626c71"
+FOREIGN KEY ("topic_code")
+  REFERENCES "topics" ("code")
+);
+CREATE UNIQUE INDEX "index_questions_on_topic_code_and_display_order" ON "questions" ("topic_code", "display_order");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240405121007'),
 ('20240405112025'),
 ('20240405111039'),
 ('20240405105326'),

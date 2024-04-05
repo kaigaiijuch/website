@@ -8,6 +8,8 @@
 #  name :string           not null
 #
 class Topic < ApplicationRecord
+  has_many :questions, foreign_key: :topic_code, primary_key: :code, inverse_of: :topic
+
   validates :code, presence: true, uniqueness: true
   validates :name, presence: true
 end

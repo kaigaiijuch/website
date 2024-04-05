@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_05_112025) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_05_121007) do
   create_table "episode_references", force: :cascade do |t|
     t.string "episode_number", null: false
     t.string "link", null: false
@@ -95,6 +95,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_112025) do
     t.index ["nickname"], name: "index_guests_on_nickname", unique: true
   end
 
+  create_table "questions", primary_key: "number", id: :string, force: :cascade do |t|
+    t.text "text", null: false
+    t.integer "display_order", null: false
+    t.string "topic_code", null: false
+    t.index ["topic_code", "display_order"], name: "index_questions_on_topic_code_and_display_order", unique: true
+  end
+
   create_table "topics", primary_key: "code", id: :string, force: :cascade do |t|
     t.string "name", null: false
   end
@@ -105,6 +112,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_112025) do
   add_foreign_key "guest_interview_profiles", "guests"
   add_foreign_key "guest_interviews", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "guest_interviews", "guest_interview_profiles"
+  add_foreign_key "questions", "topics", column: "topic_code", primary_key: "code"
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT

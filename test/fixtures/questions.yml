@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  display_order :integer          not null
+#  number        :string           not null, primary key
+#  text          :text             not null
+#  topic_code    :string           not null
+#
+# Indexes
+#
+#  index_questions_on_topic_code_and_display_order  (topic_code,display_order) UNIQUE
+#
+# Foreign Keys
+#
+#  topic_code  (topic_code => topics.code)
+#
+
+one:
+  number: 1-1
+  text: 年代は？
+  display_order: 1
+  topic_code: general
+
+two:
+  number: 1-2
+  text: 自己紹介をお願いします
+  display_order: 2
+  topic_code: general
+
+three:
+  number: 2-1
+  text: どこに移住しましたか？
+  display_order: 1
+  topic_code: life
