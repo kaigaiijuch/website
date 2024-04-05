@@ -21,5 +21,6 @@ class Question < ApplicationRecord
   belongs_to :topic, foreign_key: :topic_code, primary_key: :code, inverse_of: :questions
   default_scope { order(:topic_code, :display_order) }
 
-  validates :display_order, presence: true, uniqueness: { scope: :topic_code }
+  validates :display_order, presence: true, uniqueness: { scope: :topic_code },
+                            numericality: { only_integer: true, greater_than: 0 }
 end

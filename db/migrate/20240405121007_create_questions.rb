@@ -10,6 +10,7 @@ class CreateQuestions < ActiveRecord::Migration[7.1]
 
       t.index %i[topic_code display_order], unique: true
       t.foreign_key :topics, column: :topic_code, primary_key: :code
+      t.check_constraint 'display_order > 0'
     end
   end
 end

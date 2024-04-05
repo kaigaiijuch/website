@@ -37,4 +37,18 @@ class QuestionTest < ActiveSupport::TestCase
     assert_not question.valid?
     assert_raises(ActiveRecord::RecordNotUnique) { question.save!(validate: false) }
   end
+
+  test 'the display_order should be positive value and greater than zero' do
+    question = Question.new(
+      number: '1',
+      text: 'New question',
+      display_order: 0,
+      topic: topics(:general)
+    )
+
+    assert_not question.valid?
+    assert_raises(ActiveRecord::StatementInvalid) do
+      question.save!(validate: false)
+    end
+  end
 end

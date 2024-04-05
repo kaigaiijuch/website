@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS "topics" ("code" varchar NOT NULL PRIMARY KEY, "name"
 CREATE TABLE IF NOT EXISTS "questions" ("number" varchar NOT NULL PRIMARY KEY, "text" text NOT NULL, "display_order" integer NOT NULL, "topic_code" varchar NOT NULL, CONSTRAINT "fk_rails_251e626c71"
 FOREIGN KEY ("topic_code")
   REFERENCES "topics" ("code")
-);
+, CONSTRAINT chk_rails_3b193a7e50 CHECK (display_order > 0));
 CREATE UNIQUE INDEX "index_questions_on_topic_code_and_display_order" ON "questions" ("topic_code", "display_order");
 INSERT INTO "schema_migrations" (version) VALUES
 ('20240405121007'),
