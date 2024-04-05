@@ -7,6 +7,7 @@ class CreateQuestions < ActiveRecord::Migration[7.1]
       t.text :text, null: false
       t.integer :display_order, null: false
       t.string :topic_code, null: false
+      t.timestamps
 
       t.index %i[topic_code display_order], unique: true
       t.foreign_key :topics, column: :topic_code, primary_key: :code

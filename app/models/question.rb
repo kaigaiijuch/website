@@ -8,6 +8,8 @@
 #  number        :string           not null, primary key
 #  text          :text             not null
 #  topic_code    :string           not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 # Indexes
 #
