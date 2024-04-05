@@ -4,6 +4,7 @@
 #
 # Table name: guest_interviews
 #
+#  id                         :integer          not null, primary key
 #  display_order              :integer          default(1), not null
 #  episode_number             :string           not null
 #  interviewed_on             :date             not null
@@ -24,12 +25,10 @@ require 'test_helper'
 
 class GuestInterviewTest < ActiveSupport::TestCase
   test 'should have guests and guest_interview_profiles with interview episode' do
-    guest_interview = GuestInterview.first
-
     episode_one = Episode.find('1-1')
-    assert_equal episode_one, guest_interview.episode
-    assert_equal GuestInterviewProfile.find(1), guest_interview.guest_interview_profile
-    assert_equal Guest.find(1), guest_interview.guest
+    assert_equal episode_one, guest_interviews(:one).episode
+    assert_equal GuestInterviewProfile.find(1), guest_interviews(:one).guest_interview_profile
+    assert_equal Guest.find(1), guest_interviews(:one).guest
 
     assert_equal 1, episode_one.guest_interviews.count
     assert_equal 1, episode_one.guest_interview_profiles.count

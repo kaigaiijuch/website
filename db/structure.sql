@@ -27,16 +27,6 @@ FOREIGN KEY ("guest_id")
   REFERENCES "guests" ("id")
 );
 CREATE INDEX "index_guest_interview_profiles_on_guest_id" ON "guest_interview_profiles" ("guest_id");
-CREATE TABLE IF NOT EXISTS "guest_interviews" ("episode_number" varchar NOT NULL, "guest_interview_profile_id" integer NOT NULL, "display_order" integer DEFAULT 1 NOT NULL, "interviewed_on" date NOT NULL, CONSTRAINT "fk_rails_6e428d54d7"
-FOREIGN KEY ("episode_number")
-  REFERENCES "episodes" ("number")
-, CONSTRAINT "fk_rails_8df479fb6d"
-FOREIGN KEY ("guest_interview_profile_id")
-  REFERENCES "guest_interview_profiles" ("id")
-, CONSTRAINT check_display_order_positive CHECK (display_order > 0));
-CREATE UNIQUE INDEX "index_guest_interviews_on_episode_number_and_display_order" ON "guest_interviews" ("episode_number", "display_order");
-CREATE UNIQUE INDEX "idx_on_episode_number_guest_interview_profile_id_967e3dfe76" ON "guest_interviews" ("episode_number", "guest_interview_profile_id");
-CREATE INDEX "index_guest_interviews_on_guest_interview_profile_id" ON "guest_interviews" ("guest_interview_profile_id");
 CREATE VIEW "published_episodes" AS       SELECT
        *
       FROM episodes
@@ -68,7 +58,18 @@ JOIN questions ON answers.question_number = questions.number
 JOIN topics ON questions.topic_code = topics.code
 ORDER BY topics.display_order ASC, questions.display_order ASC
 /* questions_and_answers(id,text,answered_on,question_number,original_question_text,guest_interview_profile_id,guest_id,created_at,updated_at,number,"text:1",display_order,topic_code,"created_at:1","updated_at:1",about,code,name,"display_order:1",answer_text,topic_name,question_text) */;
+CREATE TABLE IF NOT EXISTS "guest_interviews" ("episode_number" varchar NOT NULL, "guest_interview_profile_id" integer NOT NULL, "display_order" integer DEFAULT 1 NOT NULL, "interviewed_on" date NOT NULL, "id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, CONSTRAINT "fk_rails_8df479fb6d"
+FOREIGN KEY ("guest_interview_profile_id")
+  REFERENCES "guest_interview_profiles" ("id")
+, CONSTRAINT "fk_rails_6e428d54d7"
+FOREIGN KEY ("episode_number")
+  REFERENCES "episodes" ("number")
+, CONSTRAINT check_display_order_positive CHECK (display_order > 0));
+CREATE UNIQUE INDEX "index_guest_interviews_on_episode_number_and_display_order" ON "guest_interviews" ("episode_number", "display_order");
+CREATE UNIQUE INDEX "idx_on_episode_number_guest_interview_profile_id_967e3dfe76" ON "guest_interviews" ("episode_number", "guest_interview_profile_id");
+CREATE INDEX "index_guest_interviews_on_guest_interview_profile_id" ON "guest_interviews" ("guest_interview_profile_id");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240405215143'),
 ('20240405145217'),
 ('20240405140159'),
 ('20240405131030'),
