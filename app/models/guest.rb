@@ -18,4 +18,5 @@
 class Guest < ApplicationRecord
   has_many :interview_profiles, class_name: 'GuestInterviewProfile', inverse_of: :guest
   has_many :answers, inverse_of: :guest
+  has_many :questions_and_answers_for_lives, inverse_of: :guest
 end

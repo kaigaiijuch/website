@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_05_140159) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_05_142723) do
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
     t.date "answered_on", null: false
@@ -140,5 +140,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_140159) do
        *
       FROM episodes
       JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+  SQL
+  create_view "questions_and_answers_for_lives", sql_definition: <<-SQL
+      SELECT *
+  FROM answers
+  JOIN questions ON answers.question_number = questions.number
+  JOIN topics ON questions.topic_code = topics.code
+  WHERE topic_code = 'life'
+  ORDER BY display_order
   SQL
 end
