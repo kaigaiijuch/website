@@ -90,7 +90,7 @@ check `.env` file and satisfy the requirements, they are used in `config/applica
 
 ### ERD
 
-![ERD](docs/erd.png)
+![ERD](docs/erd.pdf)
 
 ## How to run the test suite and linter
 
