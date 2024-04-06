@@ -44,9 +44,11 @@
             <%= image_tag("logos/logo_kaigaiiju-channel.png", height: 70) %>
           <%- end %>
           <ul>
-            <li>Home</li>
             <li>
-              <a href="#section-1">配信中</a>
+              <a href="<%= root_path %>">Home</a>
+            </li>
+            <li>
+              <a href="<%= episodes_path %>">配信中</a>
             </li>
           </ul>
         </nav>
