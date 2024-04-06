@@ -8,6 +8,7 @@
 #  abroad_living_summary :string           not null
 #  guest_name            :string           not null
 #  image_path            :string           not null
+#  interviewed_on        :date             not null
 #  introduction          :text             not null
 #  job_title             :string           not null
 #  tagline               :string           not null
@@ -25,4 +26,6 @@
 #
 class GuestInterviewProfile < ApplicationRecord
   belongs_to :guest
+  has_many :answers, inverse_of: :guest_interview_profile
+  has_many :questions_and_answers, inverse_of: :guest
 end

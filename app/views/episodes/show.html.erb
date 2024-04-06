@@ -17,8 +17,6 @@
 
   <%= render partial: 'guest_interview_profile', collection: @episode.guest_interview_profiles %>
 
-  <%= render partial: "questions_and_answers" if false %>
-
   <%= render partial: "chapters", locals: { chapters: @episode.chapters } if @episode.chapters.present? %>
 
   <%= render partial: "transcriptions" if false %>

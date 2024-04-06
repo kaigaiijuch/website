@@ -27,7 +27,8 @@ class GuestInterviewProfilesTest < ActiveSupport::TestCase
   test 'should have correct attributes and relations' do
     assert_equal 4, GuestInterviewProfile.count
 
-    guest_interview_profile = GuestInterviewProfile.where(guest: Guest.find_by(nickname: 'kaz')).order(:created_at).last
+    guest_interview_profile =
+      GuestInterviewProfile.where(guest: Guest.find_by(nickname: 'kaz')).order(:interviewed_on).last
     assert_equal 'ドイツ・ベルリン 8年 イギリス・ロンドン(予定)', guest_interview_profile.abroad_living_summary
     assert_equal '奥田 一成', guest_interview_profile.guest_name
 

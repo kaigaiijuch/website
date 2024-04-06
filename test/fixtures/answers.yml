@@ -1,0 +1,74 @@
+# == Schema Information
+#
+# Table name: answers
+#
+#  id                         :integer          not null, primary key
+#  answered_on                :date             not null
+#  original_question_text     :text             not null
+#  question_number            :string           not null
+#  text                       :text             not null
+#  created_at                 :datetime         not null
+#  updated_at                 :datetime         not null
+#  guest_id                   :integer          not null
+#  guest_interview_profile_id :integer          not null
+#
+# Indexes
+#
+#  index_answers_on_guest_id                    (guest_id)
+#  index_answers_on_guest_interview_profile_id  (guest_interview_profile_id)
+#  index_answers_on_question_number             (question_number)
+#
+# Foreign Keys
+#
+#  guest_id                    (guest_id => guests.id)
+#  guest_interview_profile_id  (guest_interview_profile_id => guest_interview_profiles.id)
+#  question_number             (question_number => questions.number)
+#
+
+guest1_one_one:
+  question_number: 1-1
+  original_question_text: 年代は？
+  text: 20代です
+  answered_on: 2024-04-05
+  guest_interview_profile_id: 1
+  guest_id: 1
+
+guest1_one_two:
+  question_number: 1-2
+  original_question_text: 自己紹介してください
+  text: こんにちは！
+  answered_on: 2024-04-05
+  guest_interview_profile_id: 1
+  guest_id: 1
+
+guest1_two_one:
+  question_number: 2-1
+  original_question_text: どこに住んでいますか？
+  text: ドイツです
+  answered_on: 2024-04-05
+  guest_interview_profile_id: 1
+  guest_id: 1
+
+guest2_one_one:
+  question_number: 1-1
+  original_question_text: 年代は？
+  text: 10代です
+  answered_on: 2024-03-05
+  guest_interview_profile_id: 2
+  guest_id: 2
+
+guest2_two_one:
+  question_number: 2-1
+  original_question_text: どこに移住しましたか？
+  text: アメリカ
+  answered_on: 2024-03-05
+  guest_interview_profile_id: 2
+  guest_id: 2
+
+guest3_one_one:
+  question_number: 1-1
+  original_question_text: 年代は？
+  text: 若いです！
+  answered_on: 2024-02-05
+  guest_interview_profile_id: 4
+  guest_id: 3

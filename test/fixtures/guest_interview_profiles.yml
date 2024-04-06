@@ -6,6 +6,7 @@
 #  abroad_living_summary :string           not null
 #  guest_name            :string           not null
 #  image_path            :string           not null
+#  interviewed_on        :date             not null
 #  introduction          :text             not null
 #  job_title             :string           not null
 #  tagline               :string           not null
@@ -32,7 +33,7 @@ one:
     子育てやクラブミュージックに興味があります。
     最近はMTG Arena と日本茶や中国茶を飲むことにハマっています。
   abroad_living_summary: ドイツ・ベルリン在住 8年目
-  created_at: 2024-04-01 16:00:00
+  interviewed_on: 2024-01-01
   image_path: guest_interview_profiles/1_Kazunari_Okuda.png
 
 two:
@@ -43,6 +44,7 @@ two:
   job_title: 映像ディレクター
   introduction: ベルリン在住映像ディレクター
   abroad_living_summary: アメリカ・ロサンゼルス/ニューヨーク 8年 ドイツ・ベルリン在住 8年目
+  interviewed_on: 2024-02-01
   image_path: guest_interview_profiles/2_Yosuke Hosoi.JPG
 
 one_second:
@@ -54,7 +56,7 @@ one_second:
   introduction: |
      ロンドンに引っ越しを考えています。
   abroad_living_summary: ドイツ・ベルリン 8年 イギリス・ロンドン(予定)
-  created_at: 2024-04-02 20:00:00
+  interviewed_on: 2024-03-01
   image_path: guest_interview_profiles/1_Kazunari_Okuda.png
 
 three:
@@ -65,4 +67,5 @@ three:
   job_title: ヨガの先生
   introduction: ヨガの先生をしています
   abroad_living_summary: インド 9回目 ヨガの先生 所親宏
+  interviewed_on: 2024-04-01
   image_path: https://chikahirotokoro.com/image/logo_chika.png

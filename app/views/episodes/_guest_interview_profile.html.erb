@@ -18,3 +18,5 @@
 </section>
 
 <hr>
+
+<%= render partial: "questions_and_answers", locals: { questions_and_answers: guest_interview_profile.questions_and_answers } if guest_interview_profile.questions_and_answers.present? %>

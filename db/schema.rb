@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_05_215143) do
+  create_table "answers", force: :cascade do |t|
+    t.text "text", null: false
+    t.date "answered_on", null: false
+    t.string "question_number", null: false
+    t.text "original_question_text", null: false
+    t.integer "guest_interview_profile_id", null: false
+    t.integer "guest_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_answers_on_guest_id"
+    t.index ["guest_interview_profile_id"], name: "index_answers_on_guest_interview_profile_id"
+    t.index ["question_number"], name: "index_answers_on_question_number"
+  end
+
   create_table "episode_references", force: :cascade do |t|
     t.string "episode_number", null: false
     t.string "link", null: false
@@ -71,13 +85,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
     t.datetime "updated_at", null: false
     t.string "guest_name", null: false
     t.string "image_path", null: false
+    t.date "interviewed_on", null: false
     t.index ["guest_id"], name: "index_guest_interview_profiles_on_guest_id"
   end
 
-  create_table "guest_interviews", id: false, force: :cascade do |t|
+  create_table "guest_interviews", force: :cascade do |t|
     t.string "episode_number", null: false
     t.integer "guest_interview_profile_id", null: false
     t.integer "display_order", default: 1, null: false
+    t.date "interviewed_on", null: false
     t.index ["episode_number", "display_order"], name: "index_guest_interviews_on_episode_number_and_display_order", unique: true
     t.index ["episode_number", "guest_interview_profile_id"], name: "idx_on_episode_number_guest_interview_profile_id_967e3dfe76", unique: true
     t.index ["guest_interview_profile_id"], name: "index_guest_interviews_on_guest_interview_profile_id"
@@ -93,17 +109,46 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_155225) do
     t.index ["nickname"], name: "index_guests_on_nickname", unique: true
   end
 
+  create_table "questions", primary_key: "number", id: :string, force: :cascade do |t|
+    t.text "text", null: false
+    t.integer "display_order", null: false
+    t.string "topic_code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "about", null: false
+    t.index ["topic_code", "display_order"], name: "index_questions_on_topic_code_and_display_order", unique: true
+    t.check_constraint "display_order > 0"
+  end
+
+  create_table "topics", primary_key: "code", id: :string, force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "display_order", null: false
+    t.index ["display_order"], name: "index_topics_on_display_order", unique: true
+    t.check_constraint "display_order > 0"
+  end
+
+  add_foreign_key "answers", "guest_interview_profiles"
+  add_foreign_key "answers", "guests"
+  add_foreign_key "answers", "questions", column: "question_number", primary_key: "number"
   add_foreign_key "episode_references", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "episodes", "episode_types", column: "type_name", primary_key: "name"
   add_foreign_key "feeds_spotify_for_podcasters", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "guest_interview_profiles", "guests"
   add_foreign_key "guest_interviews", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "guest_interviews", "guest_interview_profiles"
+  add_foreign_key "questions", "topics", column: "topic_code", primary_key: "code"
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
          *
         FROM episodes
         JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+  SQL
+  create_view "questions_and_answers", sql_definition: <<-SQL
+      SELECT *, answers.text AS answer_text, topics.name AS topic_name, questions.text AS question_text
+  FROM answers
+  JOIN questions ON answers.question_number = questions.number
+  JOIN topics ON questions.topic_code = topics.code
+  ORDER BY topics.display_order ASC, questions.display_order ASC
   SQL
 end
