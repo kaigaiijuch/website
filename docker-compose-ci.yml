@@ -3,6 +3,6 @@ services:
   web:
     build: .
     env_file:
-      - .env.sample
+      - .env.test
     environment:
       - RAILS_ENV=${RAILS_ENV:-development}

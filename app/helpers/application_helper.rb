@@ -18,6 +18,13 @@ module ApplicationHelper
     "https://docs.google.com/forms/d/e/#{Rails.application.config.x.feedback_google_form_id}/viewform?embedded=true"
   end
 
+  def feedback_typeform_embed_tag
+    [
+      tag.div(data: { tf_live: Rails.application.config.x.feedback_typeform_id }),
+      tag.script(src: '//embed.typeform.com/next/embed.js')
+    ].join
+  end
+
   def disable_header
     content_for(:header, tag.header)
   end
