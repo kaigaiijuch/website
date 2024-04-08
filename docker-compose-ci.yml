@@ -2,5 +2,7 @@ version: '3.8'
 services:
   web:
     build: .
+    env_file:
+      - .env.test
     environment:
       - RAILS_ENV=${RAILS_ENV:-development}
