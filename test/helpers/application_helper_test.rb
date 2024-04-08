@@ -4,23 +4,20 @@ require 'test_helper'
 
 module ApplicationHelperTest
   class GoogleTagManagerIdHelperTest < ActionView::TestCase
-    def setup
-      Rails.application.config.x.google_tag_manager_id = 'GTM-XXXX'
-    end
-
     test 'google_tag_manager_id() should return tag id' do
       assert_equal 'GTM-XXXX', google_tag_manager_id
     end
   end
 
   class FeedbackGoogleFormURLHelperTest < ActionView::TestCase
-    def setup
-      Rails.application.config.x.feedback_google_form_id = '123456xxxxxxxx'
-    end
-
     test 'google_tag_manager_id() should return tag id' do
       assert_equal 'https://docs.google.com/forms/d/e/123456xxxxxxxx/viewform?embedded=true',
                    feedback_google_form_url
+    end
+
+    test 'feedback_typeform_embed_tag() should return tag id' do
+      assert_equal '<div data-tf-live="xxxbbbbb"></div><script src="//embed.typeform.com/next/embed.js"></script>',
+                   feedback_typeform_embed_tag
     end
   end
 
