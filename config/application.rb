@@ -39,8 +39,7 @@ module Website
     config.active_record.default_timezone = :utc
 
     # config.eager_load_paths << Rails.root.join("extras")
-    config.x.website_title.base = ENV.fetch('WEBSITE_TITLE_BASE', nil)
-    config.x.website_title.separator = ENV.fetch('WEBSITE_TITLE_SEPARATOR', nil)
+    config.x.site_name = ENV.fetch('SITE_NAME', nil)
     config.x.google_tag_manager_id = ENV.fetch('GOOGLE_TAG_MANAGER_ID', nil)
     config.x.feedback_google_form_id = ENV.fetch('FEEDBACK_GOOGLE_FORM_ID', nil)
     config.x.feedback_typeform_id = ENV.fetch('FEEDBACK_TYPEFORM_ID', nil)

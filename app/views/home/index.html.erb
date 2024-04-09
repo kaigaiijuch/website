@@ -4,18 +4,18 @@
   end
   set_meta_tags image_src: image_path("logos/logo_kaigaiiju-channel.png"),
                 og: {
-                  title: "海外移住channel",
+                  title: site_name,
                   description: "海外移住Channel は海外移住の経験者をゲストに招き、彼らのインタビューを中心に展開するポッドキャストです",
                   type: "website",
-                  url: "https://kaigaiiju.ch/",
+                  url: "https://kaigaiiju.ch/", # TODO: use hostname
                   image: image_path("logos/logo_kaigaiiju-channel.png"),
-                  site_name: "海外移住channel",
+                  site_name: site_name,
                   locale: "ja_JP"
                 }
 %>
 
 <% content_for(:header_contents) do %>
-  <h1>海外移住channel</h1>
+  <h1><%=  site_name %></h1>
   <p>海外移住Channel は海外移住の経験者をゲストに招き、彼らのインタビューを中心に展開するポッドキャストです</p>
   <p>主に海外での生活・仕事・子育てに関するトピックを取り上げています</p>
   <br>
