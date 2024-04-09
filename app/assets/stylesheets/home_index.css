@@ -593,9 +593,9 @@ blockquote footer {
 
 /*コンテンツ幅やセクション見出しのスタイリング*/
 
-  
 
-  
+
+
 /*ここから3カラム記事エリアのスタイリング*/
 .card_items {
   display: -webkit-box;
@@ -604,7 +604,7 @@ blockquote footer {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-  
+
 .card_items > li {
   width: 31%;
   margin-right: 3.5%;
@@ -612,23 +612,23 @@ blockquote footer {
   list-style: none;
 
 }
-  
+
 .card_items > li:nth-of-type(3n) {
   margin-right: 0;
 }
-  
+
 .card_item {
   position: relative;
   display: block;
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
-  
+
 /*画像エリアのスタイリング*/
 .card_item:hover .card_item_imgWrapper::before {
   opacity: 1;
 }
-  
+
 .card_item:hover .card_item_imgWrapper::after {
   content: "check the detail";
   display: -webkit-box;
@@ -643,13 +643,13 @@ blockquote footer {
   opacity: 1;
   font-size: 1.5em;
 }
-  
+
 .card_item_imgWrapper {
   position: relative;
   padding-top: 56.25%;
   overflow: hidden;
 }
-  
+
 .card_item_imgWrapper::before, .card_item_imgWrapper::after {
   content: "";
   display: block;
@@ -665,7 +665,7 @@ blockquote footer {
   transition: opacity .5s;
   opacity: 0;
 }
-  
+
 .card_item_imgWrapper > img {
   position: absolute;
   top: 50%;
@@ -675,8 +675,9 @@ blockquote footer {
   transform: translateY(-50%);
   -o-object-fit: cover;
   object-fit: cover;
+  object-position: center top;
 }
-  
+
 /*日時、タイトル、抜粋文テキスト部分のスタイリング*/
 .card_item_body {
   padding: 15px;
@@ -684,14 +685,14 @@ blockquote footer {
 }
 
 
-  
+
 .card_item_body > .card_item_time {
   font-weight: normal;
   display: block;
   color: #666666;
 
 }
-  
+
 .card_item_body > .card_item_ttl {
   color: #333;
   line-height: 1.3;
@@ -701,7 +702,7 @@ blockquote footer {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-  
+
 .card_item_body > .card_item_txt {
     margin-top: 0;
    margin-bottom: 0.3em;
@@ -776,8 +777,8 @@ header iframe{
 
 
 #story_list header{
-   padding-top: 3rem; 
-   padding-bottom: 1em;   
+   padding-top: 3rem;
+   padding-bottom: 1em;
 
 }
 
@@ -805,7 +806,7 @@ header iframe{
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-  
+
 .card_items > li {
   width: 100%;
   margin-right: 0;
@@ -813,11 +814,11 @@ header iframe{
   list-style: none;
   position: relative;
 }
-  
+
 .card_items > li:nth-of-type(3n) {
   margin-right: 0;
 }
-  
+
 .card_item {
   position: relative;
   display: block;
@@ -826,12 +827,12 @@ header iframe{
   -webkit-box-shadow: initial;
   box-shadow: initial;
 }
-  
+
 /*画像エリアのスタイリング*/
 .card_item:hover .card_item_imgWrapper::before {
   opacity: 1;
 }
-  
+
 .card_item:hover .card_item_imgWrapper::after {
   content: "";
   display: -webkit-box;
@@ -846,7 +847,7 @@ header iframe{
   opacity: 1;
   font-size: 1.5em;
 }
-  
+
 .card_item_imgWrapper {
   position: relative;
   width: 20%;
@@ -854,7 +855,7 @@ header iframe{
   overflow: hidden;
   display: inline-block;
 }
-  
+
 .card_item_imgWrapper::before, .card_item_imgWrapper::after {
   content: "";
   display: inline-block;
@@ -870,7 +871,7 @@ header iframe{
   transition: opacity .5s;
   opacity: 0;
 }
-  
+
 .card_item_imgWrapper > img {
   position: absolute;
   margin-right: 3%;
@@ -884,7 +885,7 @@ header iframe{
   -o-object-fit: cover;
   object-fit: cover;
 }
-  
+
 /*日時、タイトル、抜粋文テキスト部分のスタイリング*/
 .card_item_body {
   padding: 1% 3%;
@@ -894,7 +895,7 @@ header iframe{
     width: 72%;
 }
 
-  
+
 .card_item_body > .card_item_time {
   font-weight: normal;
   display: block;
@@ -903,7 +904,7 @@ header iframe{
   font-size: 0.8em;
 
 }
-  
+
 .card_item_body > .card_item_ttl {
   color: #333;
   line-height: 1.3;
@@ -914,7 +915,7 @@ header iframe{
   text-overflow: ellipsis;
   font-size: 0.9em;
 }
-  
+
 .card_item_body > .card_item_txt {
     margin-top: 0;
    margin-bottom: 0.3em;
@@ -934,7 +935,7 @@ header iframe{
 
 
 
-#story_list ul li a{   
+#story_list ul li a{
     position: relative;
 }
 

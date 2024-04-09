@@ -680,6 +680,7 @@ height: 100%;
 transform: translateY(-50%);
 -o-object-fit: cover;
 object-fit: cover;
+object-position: center top;
 }
 
 /*日時、タイトル、抜粋文テキスト部分のスタイリング*/
