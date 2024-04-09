@@ -71,7 +71,7 @@ body {
 header {
     margin: 0 auto;
     max-width: var(--width-content);
-    padding: 2em 1em;
+    padding: 2em 1em 0em 1em;
 }
 
 footer{
@@ -155,6 +155,16 @@ header a strong {
 
 header nav img {
     margin: 1rem 0;
+}
+
+header p.related_link {
+    position: relative;
+    top: -44px;
+    left: 22%;
+}
+
+header p.related_link a {
+    font-weight: normal;
 }
 
 section header {
@@ -924,6 +934,10 @@ nav{
 header iframe {
     width: 75%;
     margin-top: 1.5em;
+}
+
+header p.related_link {
+    left: 10%;
 }
 
 #summary{
