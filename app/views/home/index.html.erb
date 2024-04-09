@@ -2,6 +2,16 @@
   content_for(:stylesheets) do
     stylesheet_link_tag 'home_index', media: 'all'
   end
+  set_meta_tags image_src: image_path("logos/logo_kaigaiiju-channel.png"),
+                og: {
+                  title: "海外移住channel",
+                  description: "海外移住Channel は海外移住の経験者をゲストに招き、彼らのインタビューを中心に展開するポッドキャストです",
+                  type: "website",
+                  url: "https://kaigaiiju.ch/",
+                  image: image_path("logos/logo_kaigaiiju-channel.png"),
+                  site_name: "海外移住channel",
+                  locale: "ja_JP"
+                }
 %>
 
 <% content_for(:header_contents) do %>
