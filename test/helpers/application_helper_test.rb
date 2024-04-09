@@ -21,36 +21,6 @@ module ApplicationHelperTest
     end
   end
 
-  class TitleHelperTest < ActionView::TestCase
-    def setup
-      Rails.application.config.x.website_title.base = 'base_title'
-      Rails.application.config.x.website_title.separator = ' + '
-    end
-
-    test 'title() without call set_title() should return just base title' do
-      assert_equal 'base_title', yield_title
-    end
-
-    test 'title() with call empty set_title() should return just base title' do
-      title('')
-      assert_equal 'base_title', yield_title
-    end
-
-    test 'title() with call set_tile() should return with combined base title' do
-      title('test')
-      assert_equal 'base_title + test', yield_title
-    end
-
-    test 'yield_title should return with passed base title' do
-      assert_equal 'test base title', yield_title(base_title: 'test base title')
-    end
-
-    test 'yield_title should return with passed separator title' do
-      title('test')
-      assert_equal 'base_title - test', yield_title(separator: ' - ')
-    end
-  end
-
   class DisableHelperTest < ActionView::TestCase
     test 'after disable_header() then content_for(:header) should return just simple header' do
       disable_header

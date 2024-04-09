@@ -8,7 +8,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','<%= google_tag_manager_id %>');</script>
     <!-- End Google Tag Manager -->
-    <title><%= yield_title %></title>
+    <%= display_meta_tags site: Rails.application.config.x.website_title.base %>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
