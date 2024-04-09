@@ -937,7 +937,7 @@ header iframe {
 }
 
 header p.related_link {
-    left: 10%;
+    position: initial;
 }
 
 #summary{
