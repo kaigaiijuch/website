@@ -157,6 +157,16 @@ header nav img {
     margin: 1rem 0;
 }
 
+header p.related_link {
+    position: relative;
+    top: -44px;
+    left: 22%;
+}
+
+header p.related_link a {
+    font-weight: normal;
+}
+
 section header {
     padding-top: 0;
     width: 100%;
@@ -924,6 +934,10 @@ nav{
 header iframe {
     width: 75%;
     margin-top: 1.5em;
+}
+
+header p.related_link {
+    left: 10%;
 }
 
 #summary{

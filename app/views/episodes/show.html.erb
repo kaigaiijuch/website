@@ -9,7 +9,9 @@
 <% content_for(:header_contents) do %>
   <h2><%= @episode.title %></h2>
   <p>配信日: <%= format_date_to_ymd @episode.published_at %></p>
-  <iframe src="<%= embed_url(@episode) %>" height="auto" width="100%" frameborder="0" scrolling="no"></iframe>
+  <iframe src="<%= embed_url(@episode) %>" height="auto" width="100%" frameborder="0" scrolling="no">
+  </iframe>
+  <p class="related_link"><%= link_to 'Apple Podcasts / Spotify などで聴く', @episode.url, target: :_blank %></p>
 <% end %>
 
 <main>
