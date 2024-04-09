@@ -1,9 +1,7 @@
 <%
   title 'フィードバックページへ転送'
-  content_for(:meta_tags) do
-    tag.meta 'name': "robots", content: "noindex"
-    tag.meta 'http-equiv': "refresh", content: "0;URL='#{new_feedback_path}'"
-  end
+  noindex
+  refresh "0;#{new_feedback_path}"
   disable_header
   disable_footer
 %>

@@ -7,7 +7,7 @@
 
 
 <% content_for(:header_contents) do %>
-  <h2><%= @episode.title %></h2>
+  <h1><%= @episode.title %></h1>
   <p>配信日: <%= format_date_to_ymd @episode.published_at %></p>
   <iframe src="<%= embed_url(@episode) %>" height="auto" width="100%" frameborder="0" scrolling="no"></iframe>
 <% end %>
