@@ -71,7 +71,7 @@ body {
 header {
     margin: 0 auto;
     max-width: var(--width-content);
-    padding: 2em 1em;
+    padding: 2em 1em 0em 1em;
 }
 
 footer{
