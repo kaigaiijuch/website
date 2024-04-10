@@ -10,13 +10,13 @@
 #
 
 host:
-  name: Host
+  name: host
 
 co_host:
-  name: Co-host
+  name: co-host
 
 guest:
-  name: Guest
+  name: guest
 
 guest_two:
-  name: Guest2
+  name: guest2

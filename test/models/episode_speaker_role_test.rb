@@ -14,10 +14,10 @@ require 'test_helper'
 
 class EpisodeSpeakerRoleTest < ActiveSupport::TestCase
   test 'it has 4 types in the records' do
-    assert_equal %w[Co-host Guest Guest2 Host], EpisodeSpeakerRole.order(:name).pluck(:name)
+    assert_equal %w[co-host guest guest2 host], EpisodeSpeakerRole.order(:name).pluck(:name)
   end
 
   test 'it cannot create duplicate name' do
-    assert_raises(ActiveRecord::RecordNotUnique) { EpisodeSpeakerRole.create(name: 'Host') }
+    assert_raises(ActiveRecord::RecordNotUnique) { EpisodeSpeakerRole.create(name: 'host') }
   end
 end

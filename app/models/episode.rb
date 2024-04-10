@@ -29,6 +29,8 @@ class Episode < ApplicationRecord
   has_one :feed_spotify_for_podcasters, foreign_key: :episode_number, class_name: 'FeedsSpotifyForPodcaster',
                                         primary_key: :number, inverse_of: :episode
   delegate :published_at, to: :feed_spotify_for_podcasters
+  has_many :speakers, class_name: 'EpisodeSpeaker', foreign_key: :episode_number, primary_key: :number,
+                      inverse_of: :episode
   include HasGuestInterviews
   include HasReferences
   include HasChapters
