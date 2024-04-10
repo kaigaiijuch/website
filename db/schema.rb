@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_05_215143) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_10_140850) do
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
     t.date "answered_on", null: false
@@ -107,6 +107,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_215143) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["nickname"], name: "index_guests_on_nickname", unique: true
+  end
+
+  create_table "hosts", force: :cascade do |t|
+    t.string "nickname", null: false
+    t.string "name", null: false
+    t.string "english_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nickname"], name: "index_hosts_on_nickname", unique: true
   end
 
   create_table "questions", primary_key: "number", id: :string, force: :cascade do |t|
