@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: speaker_roles
+#
+#  name :string           not null
+#
+# Indexes
+#
+#  index_speaker_roles_on_name  (name) UNIQUE
+#
+
+host:
+  name: Host
+
+co_host:
+  name: Co-host
+
+guest:
+  name: Guest
+
+guest_two:
+  name: Guest2
