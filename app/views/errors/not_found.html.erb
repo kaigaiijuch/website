@@ -1,0 +1,16 @@
+<%-
+  title "ページが見つかりませんでした"
+%>
+
+
+<% content_for(:header_contents) do %>
+  <h1>ページが見つかりませんでした</h1>
+<% end %>
+
+<main>
+  <section id="feedback">
+    <p>
+      <%= link_to '戻る', :back %>
+    </p>
+  </section>
+</main>
