@@ -70,7 +70,15 @@ CREATE UNIQUE INDEX "idx_on_episode_number_guest_interview_profile_id_967e3dfe76
 CREATE INDEX "index_guest_interviews_on_guest_interview_profile_id" ON "guest_interviews" ("guest_interview_profile_id");
 CREATE TABLE IF NOT EXISTS "hosts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar NOT NULL, "name" varchar NOT NULL, "english_name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE UNIQUE INDEX "index_hosts_on_nickname" ON "hosts" ("nickname");
+CREATE TABLE IF NOT EXISTS "speaker_roles" ("name" varchar NOT NULL);
+CREATE UNIQUE INDEX "index_speaker_roles_on_name" ON "speaker_roles" ("name");
+CREATE TABLE IF NOT EXISTS "speakers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "image_path" varchar NOT NULL, "global_id" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
+CREATE TABLE IF NOT EXISTS "episode_speaker_roles" ("name" varchar NOT NULL);
+CREATE UNIQUE INDEX "index_episode_speaker_roles_on_name" ON "episode_speaker_roles" ("name");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240410143909'),
+('20240410142149'),
+('20240410141304'),
 ('20240410140850'),
 ('20240405215143'),
 ('20240405145217'),

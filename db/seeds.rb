@@ -21,3 +21,7 @@ end
 ].each do |topic_attrs|
   Topic.find_or_create_by!(topic_attrs)
 end
+
+%w[host co-host guest guest2].each do |type_name|
+  EpisodeSpeakerRole.find_or_create_by!(name: type_name)
+end
