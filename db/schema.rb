@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_10_154517) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_11_113410) do
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
     t.date "answered_on", null: false
@@ -41,6 +41,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_154517) do
     t.index ["name"], name: "index_episode_speaker_roles_on_name", unique: true
   end
 
+  create_table "episode_speaker_transcriptions", force: :cascade do |t|
+    t.integer "episode_speaker_id", null: false
+    t.text "text", null: false
+    t.string "start_at", null: false
+    t.string "end_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_speaker_id"], name: "index_episode_speaker_transcriptions_on_episode_speaker_id"
+  end
+
   create_table "episode_speakers", force: :cascade do |t|
     t.string "episode_number", null: false
     t.integer "speaker_id", null: false
@@ -49,16 +59,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_154517) do
     t.datetime "updated_at", null: false
     t.index ["episode_number", "speaker_id", "role_name"], name: "idx_on_episode_number_speaker_id_role_name_ac8e577519", unique: true
     t.index ["speaker_id"], name: "index_episode_speakers_on_speaker_id"
-  end
-
-  create_table "episode_transcriptions", force: :cascade do |t|
-    t.integer "episode_speaker_id", null: false
-    t.text "text", null: false
-    t.time "start_at", null: false
-    t.time "end_at", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["episode_speaker_id"], name: "index_episode_transcriptions_on_episode_speaker_id"
   end
 
   create_table "episode_types", primary_key: "name", id: :string, force: :cascade do |t|
@@ -178,10 +178,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_154517) do
   add_foreign_key "answers", "guests"
   add_foreign_key "answers", "questions", column: "question_number", primary_key: "number"
   add_foreign_key "episode_references", "episodes", column: "episode_number", primary_key: "number"
+  add_foreign_key "episode_speaker_transcriptions", "episode_speakers"
   add_foreign_key "episode_speakers", "episode_speaker_roles", column: "role_name", primary_key: "name"
   add_foreign_key "episode_speakers", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "episode_speakers", "speakers"
-  add_foreign_key "episode_transcriptions", "episode_speakers"
   add_foreign_key "episodes", "episode_types", column: "type_name", primary_key: "name"
   add_foreign_key "feeds_spotify_for_podcasters", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "guest_interview_profiles", "guests"

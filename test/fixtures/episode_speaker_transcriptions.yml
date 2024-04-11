@@ -1,10 +1,10 @@
 # == Schema Information
 #
-# Table name: episode_transcriptions
+# Table name: episode_speaker_transcriptions
 #
 #  id                 :integer          not null, primary key
-#  end_at             :time             not null
-#  start_at           :time             not null
+#  end_at             :string           not null
+#  start_at           :string           not null
 #  text               :text             not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
@@ -12,7 +12,7 @@
 #
 # Indexes
 #
-#  index_episode_transcriptions_on_episode_speaker_id  (episode_speaker_id)
+#  index_episode_speaker_transcriptions_on_episode_speaker_id  (episode_speaker_id)
 #
 # Foreign Keys
 #
@@ -25,7 +25,7 @@ one:
   start_at: '00:00:17.111'
   end_at: '00:01:20.234'
 
-one:
+two:
   episode_speaker: zero_host
   text: 文字起こし途中
   start_at: '00:03:10.000'

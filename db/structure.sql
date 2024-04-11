@@ -87,13 +87,13 @@ FOREIGN KEY ("role_name")
 );
 CREATE INDEX "index_episode_speakers_on_speaker_id" ON "episode_speakers" ("speaker_id");
 CREATE UNIQUE INDEX "idx_on_episode_number_speaker_id_role_name_ac8e577519" ON "episode_speakers" ("episode_number", "speaker_id", "role_name");
-CREATE TABLE IF NOT EXISTS "episode_transcriptions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "episode_speaker_id" integer NOT NULL, "text" text NOT NULL, "start_at" time NOT NULL, "end_at" time NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_0aa6ea6736"
+CREATE TABLE IF NOT EXISTS "episode_speaker_transcriptions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "episode_speaker_id" integer NOT NULL, "text" text NOT NULL, "start_at" varchar NOT NULL, "end_at" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_a0096161e0"
 FOREIGN KEY ("episode_speaker_id")
   REFERENCES "episode_speakers" ("id")
 );
-CREATE INDEX "index_episode_transcriptions_on_episode_speaker_id" ON "episode_transcriptions" ("episode_speaker_id");
+CREATE INDEX "index_episode_speaker_transcriptions_on_episode_speaker_id" ON "episode_speaker_transcriptions" ("episode_speaker_id");
 INSERT INTO "schema_migrations" (version) VALUES
-('20240410154517'),
+('20240411113410'),
 ('20240410151544'),
 ('20240410143909'),
 ('20240410142149'),
