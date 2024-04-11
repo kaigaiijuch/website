@@ -3,9 +3,29 @@
 
 # Website
 
-This is the application for generating a static website for podcasts. it's currently used for [https://kaigaiiju.ch](https://kaigaiiju.ch).
+This is the application for generating a **static website** for podcasts, which means output HTML/assets and can be served by just a web server.
+it's currently used for [https://kaigaiiju.ch](https://kaigaiiju.ch).
 
-### with github workflow
+## Design Concept
+
+ * dependencies as little as possible
+
+Try to make fewer external libraries and use a more standard solution of Ruby/Rails which is a lot of maintenance. for instance, not necessary to use RSpec.
+
+ * Try to follow Rails way architecture
+
+more discussion can be found here [on wiki](https://github.com/kaigaiijuch/website/wiki)
+
+ * Use Database modeling with a DDD perspective
+
+use database constraints and modeling effectively, [ERD can be found here](docs/erd.pdf).
+
+ * (experimental) CQRS
+
+Write operation and Read Operation have different requirements, try not to mix it up.
+
+
+## Deployment pipeline with Github Action
 
 if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.com/kaigaiijuch/website/settings/variables/actions/RELEASE_TRRIGER_MESSAGE) then it will trigger the release workflow to build the website via [kaigaiijuch/release](https://github.com/kaigaiijuch/release/actions)
 
@@ -17,13 +37,12 @@ if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.c
 
 it will trigger a build and make a pull-request on [kaigaiijuch/kaigaiijuch.github.io](https://github.com/kaigaiijuch/kaigaiijuch.github.io/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc)
 
-## requirement
+## development requirement
 
  * Ruby version: check [.ruby_version](.ruby-version)
+ * sqlite3
 
-sqlite3
-
-## setup
+### setup
 
 ### local
 
@@ -86,14 +105,6 @@ check `.env` file and satisfy the requirements, they are used in `config/applica
 ```bash
   $ bin/rake db:create db:migrate db:seed
 ```
-
-## Design
-
- * Architecture: check [wiki page](https://github.com/kaigaiijuch/website/wiki)
-
-### ERD
-
-[ERD](docs/erd.pdf)
 
 ## How to run the test suite and linter
 
