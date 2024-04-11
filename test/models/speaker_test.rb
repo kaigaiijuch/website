@@ -19,11 +19,25 @@ class SpeakerTest < ActiveSupport::TestCase
     assert_equal speakers(:test1).who, guests(:one)
 
     guest_speaker = Speaker.new(name: 'Guest Speaker', image_path: 'guest.jpg',
-                                global_id: guests(:one).to_global_id.to_s)
+                                global_id: guests(:one).to_global_id)
     assert_equal guest_speaker.who, guests(:one)
     guest_speaker.save!
 
     assert_equal 'gid://website/Guest/1', guest_speaker.global_id
     assert_equal 'gid://website/Guest/1', guest_speaker.read_attribute_before_type_cast(:global_id)
+
+    host_speaker = Speaker.new(name: 'Guest Speaker', image_path: 'guest.jpg',
+                               who: hosts(:chikahiro))
+    assert_equal host_speaker.who, hosts(:chikahiro)
+    host_speaker.save!
+
+    assert_equal 'gid://website/Host/1', host_speaker.global_id
+    assert_equal 'gid://website/Host/1', host_speaker.read_attribute_before_type_cast(:global_id)
+  end
+
+  test 'it allows only Host or Guest in who' do
+    invalid_speaker = Speaker.new(name: 'In valid Speaker', image_path: 'guest.jpg',
+                                  who: episodes(:one))
+    assert_not invalid_speaker.valid?
   end
 end

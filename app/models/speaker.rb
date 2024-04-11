@@ -12,6 +12,11 @@
 #  global_id  :string           not null
 #
 class Speaker < ApplicationRecord
+  ALLOWED_WHO_TYPE = [Host, Guest].freeze
+  validates_each :who do |record, attr, value|
+    record.errors.add attr, 'it allows only Host or Guest' if ALLOWED_WHO_TYPE.map { |type| value.is_a?(type) }.none?
+  end
+
   def who
     @who ||= ::GlobalID::Locator.locate global_id
   end
