@@ -23,6 +23,7 @@ class SpeakerTest < ActiveSupport::TestCase
     assert_equal guest_speaker.who, guests(:one)
     guest_speaker.save!
 
-    assert_equal guest_speaker.global_id, 'gid://website/Guest/1'
+    assert_equal 'gid://website/Guest/1', guest_speaker.global_id
+    assert_equal 'gid://website/Guest/1', guest_speaker.read_attribute_before_type_cast(:global_id)
   end
 end
