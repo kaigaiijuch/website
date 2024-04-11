@@ -24,10 +24,22 @@ require 'test_helper'
 
 class EpisodeTranscriptionTest < ActiveSupport::TestCase
   test 'check attributes' do
+    episode_transcription = EpisodeTranscription.create(
+      start_at: '00:00:17.111',
+      end_at: '00:01:20.234',
+      episode_speaker: episode_speakers(:zero_host),
+      text: 'テスト'
+    )
+
+    assert_equal '00:00:17.111', episode_transcription.read_attribute_before_type_cast(:start_at)
+    assert_equal '00:01:20.234', episode_transcription.read_attribute_before_type_cast(:end_at)
+    assert_equal '文字起こし始め', episode_transcription.text
+    assert_equal episode_speakers(:chikahiro), episode_transcription.speaker
+
     episode_transcription = episode_transcriptions(:one)
 
-    assert_equal '00:00:17.111', episode_transcription.start_at.strftime('%T')
-    assert_equal '00:01:20.234', episode_transcription.end_at.strftime('%T')
+    assert_equal '00:00:17.111', episode_transcription.read_attribute_before_type_cast(:start_at)
+    assert_equal '00:01:20.234', episode_transcription.read_attribute_before_type_cast(:end_at)
     assert_equal '文字起こし始め', episode_transcription.text
     assert_equal episode_speakers(:chikahiro), episode_transcription.speaker
   end
