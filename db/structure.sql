@@ -72,7 +72,6 @@ CREATE TABLE IF NOT EXISTS "hosts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT N
 CREATE UNIQUE INDEX "index_hosts_on_nickname" ON "hosts" ("nickname");
 CREATE TABLE IF NOT EXISTS "speaker_roles" ("name" varchar NOT NULL);
 CREATE UNIQUE INDEX "index_speaker_roles_on_name" ON "speaker_roles" ("name");
-CREATE TABLE IF NOT EXISTS "speakers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "image_path" varchar NOT NULL, "global_id" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE TABLE IF NOT EXISTS "episode_speaker_roles" ("name" varchar NOT NULL);
 CREATE UNIQUE INDEX "index_episode_speaker_roles_on_name" ON "episode_speaker_roles" ("name");
 CREATE TABLE IF NOT EXISTS "episode_speakers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "episode_number" varchar NOT NULL, "speaker_id" integer NOT NULL, "role_name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_1adb9b5693"
@@ -98,8 +97,16 @@ FROM episode_speaker_transcriptions
 INNER JOIN episode_speakers ON episode_speaker_transcriptions.episode_speaker_id = episode_speakers.id
 INNER JOIN speakers ON episode_speakers.speaker_id = speakers.id
 ORDER BY episode_number, start_at
-/* episode_transcriptions(id,episode_speaker_id,text,start_at,end_at,created_at,updated_at,"id:1",episode_number,speaker_id,role_name,"created_at:1","updated_at:1","id:2",name,image_path,global_id,"created_at:2","updated_at:2") */;
+/* episode_transcriptions(id,episode_speaker_id,text,start_at,end_at,created_at,updated_at,"id:1",episode_number,speaker_id,role_name,"created_at:1","updated_at:1","id:2",name,image_path,"created_at:2","updated_at:2",type_name) */;
+CREATE TABLE IF NOT EXISTS "speaker_types" ("name" varchar NOT NULL);
+CREATE UNIQUE INDEX "index_speaker_types_on_name" ON "speaker_types" ("name");
+CREATE TABLE IF NOT EXISTS "speakers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "image_path" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "type_name" varchar NOT NULL, CONSTRAINT "fk_rails_e72563ec8a"
+FOREIGN KEY ("type_name")
+  REFERENCES "speaker_types" ("name")
+);
 INSERT INTO "schema_migrations" (version) VALUES
+('20240412194944'),
+('20240412194255'),
 ('20240412150356'),
 ('20240411113410'),
 ('20240410151544'),

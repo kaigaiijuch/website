@@ -4,7 +4,7 @@
 #
 # Table name: episode_transcriptions
 #
-#  id                 :integer
+#  id                 :integer          primary key
 #  created_at:1       :datetime
 #  created_at:2       :datetime
 #  end_at             :string
@@ -16,12 +16,12 @@
 #  role_name          :string
 #  start_at           :string
 #  text               :text
+#  type_name          :string
 #  updated_at:1       :datetime
 #  updated_at:2       :datetime
 #  created_at         :datetime
 #  updated_at         :datetime
 #  episode_speaker_id :integer
-#  global_id          :string
 #  speaker_id         :integer
 #
 require 'test_helper'
