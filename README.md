@@ -64,17 +64,18 @@ it will trigger a build and make a pull-request on [kaigaiijuch/kaigaiijuch.gith
 ### fetch
 
 ```bash
- $ bin/data/fetch_all [rss_feed_url] [csv/directory] [answers.csv]
+ $ bin/data/fetch_all [rss_feed_url] [csv/directory] [answers.csv] [transcription/csv/directory]
 ```
 
 * `rss_feed_url`: [Spotify for podcasters](https://podcasters.spotify.com/) RSS feed is supported, it fetches the feeds data the data is stored default in `FeedsSpotifyForPodcaster`.
 
   **important convention**: the title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
 
-* `csv/directory`: (this is a temporary solution) Import data from csv files in the directory, it is compatible with google sheets exported csv format, sample file: (TBD).  **this is temporary solution**
+* `csv/directory`: (this is a temporary solution) Import data from csv files in the directory, it is compatible with google sheets exported csv format, sample file: (TBD).
 
-* `answers.csv`: (this is a temporary solution) Import answers from csv file, it is compatible with exported csv format of google forms linked spreadsheet. (this is temporary solution) The format is `#{question_number}: 【{category}】{question_original_title}`, sample file: (TBD). 
+* `answers.csv`: (this is a temporary solution) Import answers from csv file, it is compatible with exported csv format of google forms linked spreadsheet. The format is `#{question_number}: 【{category}】{question_original_title}`, sample file: (TBD).
 
+* `transcription/csv/directory`: (this is a temporary solution) Import transcriptions from csv file. The file name should be `#{episode_number}.transcription.csv`, sample file: (TBD).
 
 ### commit data
 

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+set -C # Prevent output redirection using ‘>’, ‘>&’, and ‘<>’ from overwriting existing files.
+
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -vx
+fi
+
+if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
+    echo 'Usage: ./import_transcription csv/directory
+Import data from CSV files in the directory. the csv file name should follow this pattern: "(episode_number).transcription.csv"
+'
+    exit
+fi
+
+cd "$(dirname "$0")"
+cd ../..
+
+main() {
+    csv_dir=$1
+    for csv_file in "$csv_dir"/*.transcription.csv; do
+        if [[ ! -f "$csv_file" ]]; then
+            echo "File $csv_file not found. Skip processing."
+            echo
+            continue
+        fi
+        echo "Processing file $csv_file"
+        bin/rails runner bin/data/import_transcriptions.rb "$csv_file"
+        echo ""
+    done
+}
+
+main "$@"
+
+# styleguide | Style guides for Google-originated open-source projects https://google.github.io/styleguide/shellguide.html
+# Shell Script Best Practices — The Sharat's https://sharats.me/posts/shell-script-best-practices/
