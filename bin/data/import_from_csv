@@ -28,11 +28,15 @@ main() {
         guest_interview_profiles.csv
         guest_interviews.csv
         questions.csv
+        hosts.csv
+        speakers.csv
+        episode_speakers.csv
     )
     for csv_file_name in "${base_csv_file_names[@]}"; do
-        csv_file=$(ls "$csv_dir"/*"$csv_file_name" 2> /dev/null || true)
+        csv_file=$(ls "$csv_dir"/*" $csv_file_name" 2> /dev/null || true)
         if [[ ! -f "$csv_file" ]]; then
             echo "File $csv_file not found. Skip processing."
+            echo
             continue
         fi
         echo "Processing file $csv_file"
