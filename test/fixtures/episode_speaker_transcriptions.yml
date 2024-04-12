@@ -19,14 +19,39 @@
 #  episode_speaker_id  (episode_speaker_id => episode_speakers.id)
 #
 
-one:
+
+zero_two:
+  id: 2
+  episode_speaker: zero_host
+  text: 文字起こし途中
+  start_at: '00:03:10.000'
+  end_at: '00:05:10.456'
+
+zero_three:
+  id: 3
+  episode_speaker: zero_host
+  text: 文字起こし途中
+  start_at: '00:03:10.000'
+  end_at: '00:05:10.456'
+
+zero_one:
+  id: 1
   episode_speaker: zero_host
   text: 文字起こし始め
   start_at: '00:00:17.111'
   end_at: '00:01:20.234'
 
-two:
-  episode_speaker: zero_host
-  text: 文字起こし途中
-  start_at: '00:03:10.000'
-  end_at: '00:05:10.456'
+one_two:
+  id: 5
+  episode_speaker: one_one_guest
+  text: よろしくお願いします
+  start_at: '00:10:99.432'
+  end_at: '00:12:33.321'
+
+one_one:
+  id: 4
+  episode_speaker: one_one_host
+  text: こんにちは
+  start_at: '00:01:10.123'
+  end_at: '00:02:10.456'
+

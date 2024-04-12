@@ -31,6 +31,8 @@ class Episode < ApplicationRecord
   delegate :published_at, to: :feed_spotify_for_podcasters
   has_many :speakers, class_name: 'EpisodeSpeaker', foreign_key: :episode_number, primary_key: :number,
                       inverse_of: :episode
+  has_many :transcriptions, class_name: 'EpisodeTranscription', foreign_key: :episode_number, primary_key: :number,
+                            inverse_of: :episode
   include HasGuestInterviews
   include HasReferences
   include HasChapters

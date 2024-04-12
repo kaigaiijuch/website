@@ -93,7 +93,14 @@ FOREIGN KEY ("episode_speaker_id")
   REFERENCES "episode_speakers" ("id")
 );
 CREATE INDEX "index_episode_speaker_transcriptions_on_episode_speaker_id" ON "episode_speaker_transcriptions" ("episode_speaker_id");
+CREATE VIEW "episode_transcriptions" AS SELECT *
+FROM episode_speaker_transcriptions
+INNER JOIN episode_speakers ON episode_speaker_transcriptions.episode_speaker_id = episode_speakers.id
+INNER JOIN speakers ON episode_speakers.speaker_id = speakers.id
+ORDER BY episode_number, start_at
+/* episode_transcriptions(id,episode_speaker_id,text,start_at,end_at,created_at,updated_at,"id:1",episode_number,speaker_id,role_name,"created_at:1","updated_at:1","id:2",name,image_path,global_id,"created_at:2","updated_at:2") */;
 INSERT INTO "schema_migrations" (version) VALUES
+('20240412150356'),
 ('20240411113410'),
 ('20240410151544'),
 ('20240410143909'),

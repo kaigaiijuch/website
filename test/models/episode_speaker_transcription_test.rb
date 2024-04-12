@@ -36,7 +36,7 @@ class EpisodeSpeakerTranscriptionTest < ActiveSupport::TestCase
     assert_equal 'テスト', episode_speaker_transcription.text
     assert_equal episode_speakers(:zero_host), episode_speaker_transcription.episode_speaker
 
-    episode_speaker_transcription = episode_speaker_transcriptions(:one)
+    episode_speaker_transcription = episode_speaker_transcriptions(:zero_one)
 
     assert_equal '00:00:17.111', episode_speaker_transcription.read_attribute_before_type_cast(:start_at)
     assert_equal '00:01:20.234', episode_speaker_transcription.read_attribute_before_type_cast(:end_at)
