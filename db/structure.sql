@@ -86,7 +86,8 @@ FOREIGN KEY ("role_name")
   REFERENCES "episode_speaker_roles" ("name")
 );
 CREATE INDEX "index_episode_speakers_on_speaker_id" ON "episode_speakers" ("speaker_id");
-CREATE UNIQUE INDEX "idx_on_episode_number_speaker_id_role_name_ac8e577519" ON "episode_speakers" ("episode_number", "speaker_id", "role_name");
+CREATE UNIQUE INDEX "index_episode_speakers_on_episode_number_and_speaker_id" ON "episode_speakers" ("episode_number", "speaker_id");
+CREATE UNIQUE INDEX "index_episode_speakers_on_role_name_and_episode_number" ON "episode_speakers" ("role_name", "episode_number");
 CREATE TABLE IF NOT EXISTS "episode_speaker_transcriptions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "episode_speaker_id" integer NOT NULL, "text" text NOT NULL, "start_at" varchar NOT NULL, "end_at" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_a0096161e0"
 FOREIGN KEY ("episode_speaker_id")
   REFERENCES "episode_speakers" ("id")

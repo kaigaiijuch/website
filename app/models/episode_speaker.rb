@@ -13,8 +13,9 @@
 #
 # Indexes
 #
-#  idx_on_episode_number_speaker_id_role_name_ac8e577519  (episode_number,speaker_id,role_name) UNIQUE
-#  index_episode_speakers_on_speaker_id                   (speaker_id)
+#  index_episode_speakers_on_episode_number_and_speaker_id  (episode_number,speaker_id) UNIQUE
+#  index_episode_speakers_on_role_name_and_episode_number   (role_name,episode_number) UNIQUE
+#  index_episode_speakers_on_speaker_id                     (speaker_id)
 #
 # Foreign Keys
 #

@@ -57,7 +57,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_11_113410) do
     t.string "role_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["episode_number", "speaker_id", "role_name"], name: "idx_on_episode_number_speaker_id_role_name_ac8e577519", unique: true
+    t.index ["episode_number", "speaker_id"], name: "index_episode_speakers_on_episode_number_and_speaker_id", unique: true
+    t.index ["role_name", "episode_number"], name: "index_episode_speakers_on_role_name_and_episode_number", unique: true
     t.index ["speaker_id"], name: "index_episode_speakers_on_speaker_id"
   end
 

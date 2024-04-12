@@ -12,7 +12,8 @@ class CreateEpisodeSpeakers < ActiveRecord::Migration[7.1]
       t.foreign_key :episode_speaker_roles, column: :role_name, primary_key: :name
 
       t.timestamps
-      t.index %i[episode_number speaker_id role_name], unique: true
+      t.index %i[episode_number speaker_id], unique: true
+      t.index %i[role_name episode_number], unique: true
     end
   end
 end
