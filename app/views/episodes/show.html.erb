@@ -21,7 +21,7 @@
 
   <%= render partial: "chapters", locals: { chapters: @episode.chapters } if @episode.chapters.present? %>
 
-  <%= render partial: "transcriptions", locals: {transcriptions: @episode.transcriptions } %>
+  <%= render partial: "transcriptions", locals: {transcriptions: @episode.transcriptions } if @episode.transcriptions.present? %>
 
   <br>
 
