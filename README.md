@@ -67,6 +67,8 @@ it will trigger a build and make a pull-request on [kaigaiijuch/kaigaiijuch.gith
  $ bin/data/fetch_all [rss_feed_url] [csv/directory] [answers.csv] [transcription/csv/directory]
 ```
 
+This is **idempotent** operation, it fetches the data from the sources and store it in the data repository.
+
 * `rss_feed_url`: [Spotify for podcasters](https://podcasters.spotify.com/) RSS feed is supported, it fetches the feeds data the data is stored default in `FeedsSpotifyForPodcaster`.
 
   **important convention**: the title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
