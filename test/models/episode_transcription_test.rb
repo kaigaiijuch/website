@@ -4,7 +4,7 @@
 #
 # Table name: episode_transcriptions
 #
-#  id                 :integer
+#  id                 :integer          primary key
 #  created_at:1       :datetime
 #  created_at:2       :datetime
 #  end_at             :string
