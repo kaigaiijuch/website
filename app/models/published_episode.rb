@@ -34,9 +34,10 @@
 #
 class PublishedEpisode < ApplicationRecord
   self.primary_key = 'number'
-  include HasGuestInterviews
-  include HasReferences
-  include HasChapters
+  include Episode::HasGuestInterviews
+  include Episode::HasReferences
+  include Episode::HasChapters
+  include Episode::HasTranscriptions
 
   def readonly?
     true

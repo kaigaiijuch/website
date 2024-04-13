@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_05_215143) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_12_150356) do
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
     t.date "answered_on", null: false
@@ -34,6 +34,32 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_215143) do
     t.datetime "updated_at", null: false
     t.index ["episode_number", "display_order"], name: "index_episode_references_on_episode_number_and_display_order", unique: true
     t.check_constraint "display_order > 0"
+  end
+
+  create_table "episode_speaker_roles", id: false, force: :cascade do |t|
+    t.string "name", null: false
+    t.index ["name"], name: "index_episode_speaker_roles_on_name", unique: true
+  end
+
+  create_table "episode_speaker_transcriptions", force: :cascade do |t|
+    t.integer "episode_speaker_id", null: false
+    t.text "text", null: false
+    t.string "start_at", null: false
+    t.string "end_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_speaker_id"], name: "index_episode_speaker_transcriptions_on_episode_speaker_id"
+  end
+
+  create_table "episode_speakers", force: :cascade do |t|
+    t.string "episode_number", null: false
+    t.integer "speaker_id", null: false
+    t.string "role_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_number", "speaker_id"], name: "index_episode_speakers_on_episode_number_and_speaker_id", unique: true
+    t.index ["role_name", "episode_number"], name: "index_episode_speakers_on_role_name_and_episode_number", unique: true
+    t.index ["speaker_id"], name: "index_episode_speakers_on_speaker_id"
   end
 
   create_table "episode_types", primary_key: "name", id: :string, force: :cascade do |t|
@@ -109,6 +135,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_215143) do
     t.index ["nickname"], name: "index_guests_on_nickname", unique: true
   end
 
+  create_table "hosts", force: :cascade do |t|
+    t.string "nickname", null: false
+    t.string "name", null: false
+    t.string "english_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nickname"], name: "index_hosts_on_nickname", unique: true
+  end
+
   create_table "questions", primary_key: "number", id: :string, force: :cascade do |t|
     t.text "text", null: false
     t.integer "display_order", null: false
@@ -118,6 +153,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_215143) do
     t.string "about", null: false
     t.index ["topic_code", "display_order"], name: "index_questions_on_topic_code_and_display_order", unique: true
     t.check_constraint "display_order > 0"
+  end
+
+  create_table "speakers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "image_path", null: false
+    t.string "global_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "topics", primary_key: "code", id: :string, force: :cascade do |t|
@@ -131,6 +174,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_215143) do
   add_foreign_key "answers", "guests"
   add_foreign_key "answers", "questions", column: "question_number", primary_key: "number"
   add_foreign_key "episode_references", "episodes", column: "episode_number", primary_key: "number"
+  add_foreign_key "episode_speaker_transcriptions", "episode_speakers"
+  add_foreign_key "episode_speakers", "episode_speaker_roles", column: "role_name", primary_key: "name"
+  add_foreign_key "episode_speakers", "episodes", column: "episode_number", primary_key: "number"
+  add_foreign_key "episode_speakers", "speakers"
   add_foreign_key "episodes", "episode_types", column: "type_name", primary_key: "name"
   add_foreign_key "feeds_spotify_for_podcasters", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "guest_interview_profiles", "guests"
@@ -140,15 +187,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_215143) do
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
-         *
-        FROM episodes
-        JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+     *
+    FROM episodes
+    JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
   SQL
   create_view "questions_and_answers", sql_definition: <<-SQL
       SELECT *, answers.text AS answer_text, topics.name AS topic_name, questions.text AS question_text
-  FROM answers
-  JOIN questions ON answers.question_number = questions.number
-  JOIN topics ON questions.topic_code = topics.code
-  ORDER BY topics.display_order ASC, questions.display_order ASC
+    FROM answers
+    JOIN questions ON answers.question_number = questions.number
+    JOIN topics ON questions.topic_code = topics.code
+    ORDER BY topics.display_order ASC, questions.display_order ASC
+  SQL
+  create_view "episode_transcriptions", sql_definition: <<-SQL
+      SELECT *
+    FROM episode_speaker_transcriptions
+    INNER JOIN episode_speakers ON episode_speaker_transcriptions.episode_speaker_id = episode_speakers.id
+    INNER JOIN speakers ON episode_speakers.speaker_id = speakers.id
+    ORDER BY episode_number, start_at
   SQL
 end
