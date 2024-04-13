@@ -30,7 +30,7 @@ main() {
     ./import_from_csv "$CSV_DIR"
 
     echo "## Importing answer csv to database..."
-    ../rails runner ./import_answers.rb ../../"$ANSWER_CSV"
+    ../rails runner ./upsert_answers.rb ../../"$ANSWER_CSV"
 
     echo "## Importing transcription csv to database..."
     ./import_transcription_csv "$TRANSCRIPTION_CSV_DIR"
