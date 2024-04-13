@@ -155,11 +155,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_12_150356) do
     t.check_constraint "display_order > 0"
   end
 
-  create_table "speaker_roles", id: false, force: :cascade do |t|
-    t.string "name", null: false
-    t.index ["name"], name: "index_speaker_roles_on_name", unique: true
-  end
-
   create_table "speakers", force: :cascade do |t|
     t.string "name", null: false
     t.string "image_path", null: false
@@ -192,9 +187,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_12_150356) do
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
-         *
-        FROM episodes
-        JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+   *
+  FROM episodes
+  JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
   SQL
   create_view "questions_and_answers", sql_definition: <<-SQL
       SELECT *, answers.text AS answer_text, topics.name AS topic_name, questions.text AS question_text
