@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_12_194944) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_12_150356) do
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
     t.date "answered_on", null: false
@@ -160,17 +160,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_12_194944) do
     t.index ["name"], name: "index_speaker_roles_on_name", unique: true
   end
 
-  create_table "speaker_types", id: false, force: :cascade do |t|
-    t.string "name", null: false
-    t.index ["name"], name: "index_speaker_types_on_name", unique: true
-  end
-
   create_table "speakers", force: :cascade do |t|
     t.string "name", null: false
     t.string "image_path", null: false
+    t.string "global_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type_name", null: false
   end
 
   create_table "topics", primary_key: "code", id: :string, force: :cascade do |t|
@@ -194,7 +189,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_12_194944) do
   add_foreign_key "guest_interviews", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "guest_interviews", "guest_interview_profiles"
   add_foreign_key "questions", "topics", column: "topic_code", primary_key: "code"
-  add_foreign_key "speakers", "speaker_types", column: "type_name", primary_key: "name"
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT

@@ -7,13 +7,9 @@
 #  id         :integer          not null, primary key
 #  image_path :string           not null
 #  name       :string           not null
-#  type_name  :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#
-# Foreign Keys
-#
-#  type_name  (type_name => speaker_types.name)
+#  global_id  :string           not null
 #
 require 'test_helper'
 

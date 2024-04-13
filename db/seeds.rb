@@ -25,7 +25,3 @@ end
 %w[host co-host guest guest2].each do |type_name|
   EpisodeSpeakerRole.find_or_create_by!(name: type_name)
 end
-
-%w[host guest].each do |type_name|
-  SpeakerType.find_or_create_by!(name: type_name)
-end
