@@ -22,11 +22,6 @@ class Speaker < ApplicationRecord
   end
 
   def who
-    @who ||= ::GlobalID::Locator.locate global_id
-  end
-
-  def who=(who)
-    self.global_id = who.to_global_id.to_s
-    @who = who
+    @who ||= type_name.capitalize.constantize
   end
 end
