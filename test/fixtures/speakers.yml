@@ -18,10 +18,10 @@ chikahiro:
   id: 1
   name: Chikahiro
   image_path: logos/ctokoro_mini.png
-  type_name: host
+  global_id: gid://website/Host/1
 
 test1:
   id: 2
   name: 奥田 一成
   image_path: guest_interview_profiles/1_Kazunari_Okuda.png
-  type_name: guest
+  global_id: gid://website/Guest/1
