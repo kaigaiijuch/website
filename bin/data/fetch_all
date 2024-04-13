@@ -33,7 +33,7 @@ main() {
     ../rails runner ./import_answers.rb ../../"$ANSWER_CSV"
 
     echo "## Importing transcription csv to database..."
-    ./import_transcription_csv ../../"$TRANSCRIPTION_CSV_DIR"
+    ./import_transcription_csv "$TRANSCRIPTION_CSV_DIR"
 
     echo "## Fetching RSS feed data..."
     ../rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL"]
