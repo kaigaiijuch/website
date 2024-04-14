@@ -3,7 +3,7 @@
 
 # Website
 
-This is the application for generating a **static website** for podcasts, which means output HTML/assets and can be served by just a web server.
+This is the application for generating a **static website** for podcasts, which means output HTML/assets and can be served by just a web server. it is quite inspired by unix philosophy for deployment pipeline, and functional programming for stateless. 
 it's currently used for [https://kaigaiiju.ch](https://kaigaiiju.ch).
 
 ## Design Concept
