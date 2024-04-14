@@ -71,7 +71,7 @@ This is **idempotent** operation, it fetches the data from the sources and store
 
 * `rss_feed_url`: [Spotify for podcasters](https://podcasters.spotify.com/) RSS feed is supported, it fetches the feeds data the data is stored default in `FeedsSpotifyForPodcaster`.
 
-  **important convention**: the title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
+  **important convention**: the description of the episode should be ended by formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
 
 * `csv/directory`: (this is a temporary solution) Import data from csv files in the directory, it is compatible with google sheets exported csv format, sample file: (TBD).
 
