@@ -38,7 +38,7 @@ jobs:
         # note: github.event.head_commit.message looks only available in push event
         run: |
           message="${{ github.event.head_commit.message }}" && echo "message: $message"
-          if echo "$message" | grep -q "${{ vars.RELEASE_TRRIGER_MESSAGE }}"; then
+          if echo "$message" | head -n1 | grep -q "${{ vars.RELEASE_TRRIGER_MESSAGE }}"; then
             echo "run_release=true" >> "$GITHUB_ENV"
           else
             echo "run_release=false" >> "$GITHUB_ENV"
