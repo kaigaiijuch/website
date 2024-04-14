@@ -26,7 +26,7 @@ class DataTaskTest < ActiveSupport::TestCase
         2-1: #2-1 アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター 細井 洋介さん 前半 移住の経緯や仕事の話
         1-2: #1-2 ドイツ・ベルリン ソフトウェアエンジニア 奥田 一成さん 後半 現地就職や転職の経緯・子育て環境の話など
         1-1: #1-1 ドイツ・ベルリン ソフトウェアエンジニア 奥田 一成さん 前半 移住の経緯・現地企業での仕事環境の話
-        0: #0 イントロダクション
+        0:  (no episode number) イントロダクション
     OUTPUT
 
     stub_request(:get, feed_url).to_return(body: File.read('test/files/feed_spotify_for_podcasters.rss'))
