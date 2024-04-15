@@ -1,0 +1,28 @@
+name: "build"
+on:
+  schedule:
+    - cron:  '2 22 * * 2'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: production
+      DATA_REPO_TOKEN: ${{ secrets.DEPLOY_BOT_TOKEN }}
+      SPOTIFY_FOR_PODCASTERS_RSS_URL: ${{ vars.SPOTIFY_FOR_PODCASTERS_RSS_URL }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Checkout data repo
+        uses: actions/checkout@v4
+        with:
+          repository: kaigaiijuch/website_data
+          path: data
+          token: ${{ env.DATA_REPO_TOKEN }}
+      - name: setup docker
+        run: docker compose -f docker-compose-build.yml build
+      - name: fetch data
+        run: docker compose -f docker-compose-build.yml run web bin/rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL"]
+      - name: commit data if it's changes
+        run: docker compose -f docker-compose-build.yml run web bin/commit/data
+      - name: commit message and run build
+        run: git commit -am "release! fetch rss feeds" && git push
