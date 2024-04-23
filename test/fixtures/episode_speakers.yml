@@ -24,15 +24,15 @@
 
 zero_host:
   role_name: host
-  speaker_id: 1
+  speaker: chikahiro
   episode_number: '0'
 
 one_one_host:
   role_name: host
-  speaker_id: 1
+  speaker: chikahiro
   episode_number: '1-1'
 
 one_one_guest:
   role_name: guest
-  speaker_id: 2
+  speaker: test1
   episode_number: '1-1'

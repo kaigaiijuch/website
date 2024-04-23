@@ -16,15 +16,16 @@ require 'test_helper'
 class SpeakerTest < ActiveSupport::TestCase
   test 'the relationship is correct' do
     assert_equal speakers(:chikahiro).who, hosts(:chikahiro)
-    assert_equal speakers(:test1).who, guests(:one)
+    assert_equal speakers(:test1).who, guests(:global_id_speaker)
 
     guest_speaker = Speaker.new(name: 'Guest Speaker', image_path: 'guest.jpg',
                                 global_id: guests(:one).to_global_id)
     assert_equal guest_speaker.who, guests(:one)
     guest_speaker.save!
+    guest_speaker.reload
 
-    assert_equal 'gid://website/Guest/1', guest_speaker.global_id
-    assert_equal 'gid://website/Guest/1', guest_speaker.read_attribute_before_type_cast(:global_id)
+    assert_equal "gid://website/Guest/#{guests(:one).id}", guest_speaker.global_id
+    assert_equal "gid://website/Guest/#{guests(:one).id}", guest_speaker.read_attribute_before_type_cast(:global_id)
 
     host_speaker = Speaker.new(name: 'Guest Speaker', image_path: 'guest.jpg',
                                who: hosts(:chikahiro))

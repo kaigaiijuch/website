@@ -24,8 +24,7 @@
 #
 
 one:
-  id: 1
-  guest_id: 1
+  guest: one
   guest_name: 奥田 一成
   tagline: ドイツ・ベルリン ソフトウェアエンジニア
   job_title: ソフトウェアエンジニア
@@ -37,8 +36,7 @@ one:
   image_path: guest_interview_profiles/1_Kazunari_Okuda.png
 
 two:
-  id: 2
-  guest_id: 2
+  guest: two
   guest_name: 細井 洋介
   tagline: アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター
   job_title: 映像ディレクター
@@ -48,8 +46,7 @@ two:
   image_path: guest_interview_profiles/2_Yosuke Hosoi.JPG
 
 one_second:
-  id: 3
-  guest_id: 1
+  guest: one
   guest_name: 奥田 一成
   tagline: ドイツ・ベルリン イギリス・ロンドン(予定) ソフトウェアエンジニア
   job_title: スーパーソフトウェアエンジニア
@@ -60,8 +57,7 @@ one_second:
   image_path: guest_interview_profiles/1_Kazunari_Okuda.png
 
 three:
-  id: 4
-  guest_id: 3
+  guest: three
   guest_name: 所 親宏
   tagline: インド ヨガの先生
   job_title: ヨガの先生
