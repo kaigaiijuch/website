@@ -1,5 +1,7 @@
 name: "build"
 on:
+  repository_dispatch:
+    types: [fetch_rss]
   schedule:
     - cron:  '2 22 * * 2'
 jobs:
