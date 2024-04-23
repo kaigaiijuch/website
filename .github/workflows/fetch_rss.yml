@@ -28,4 +28,4 @@ jobs:
       - name: commit data if it's changes
         run: docker compose -f docker-compose-build.yml run web bin/commit/data
       - name: commit message and run build
-        run: git commit -am "release! fetch rss feeds" && git push
+        run: cd data && git commit -am "release! fetch rss feeds at '$(date)'" && git push
