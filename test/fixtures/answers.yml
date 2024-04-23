@@ -31,7 +31,7 @@ guest1_one_one:
   text: 20代です
   answered_on: 2024-04-05
   guest_interview_profile: one
-  guest_id: 1
+  guest: one
 
 guest1_one_two:
   question_number: 1-2
@@ -39,7 +39,7 @@ guest1_one_two:
   text: こんにちは！
   answered_on: 2024-04-05
   guest_interview_profile: one
-  guest_id: 1
+  guest: one
 
 guest1_two_one:
   question_number: 2-1
@@ -47,7 +47,7 @@ guest1_two_one:
   text: ドイツです
   answered_on: 2024-04-05
   guest_interview_profile: one
-  guest_id: 1
+  guest: one
 
 guest2_one_one:
   question_number: 1-1
@@ -55,7 +55,7 @@ guest2_one_one:
   text: 10代です
   answered_on: 2024-03-05
   guest_interview_profile: two
-  guest_id: 2
+  guest: two
 
 guest2_two_one:
   question_number: 2-1
@@ -63,7 +63,7 @@ guest2_two_one:
   text: アメリカ
   answered_on: 2024-03-05
   guest_interview_profile: two
-  guest_id: 2
+  guest: two
 
 guest3_one_one:
   question_number: 1-1
@@ -71,4 +71,4 @@ guest3_one_one:
   text: 若いです！
   answered_on: 2024-02-05
   guest_interview_profile: three
-  guest_id: 3
+  guest: three

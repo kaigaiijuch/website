@@ -32,7 +32,7 @@ class GuestInterviewProfilesTest < ActiveSupport::TestCase
     assert_equal 'ドイツ・ベルリン 8年 イギリス・ロンドン(予定)', guest_interview_profile.abroad_living_summary
     assert_equal '奥田 一成', guest_interview_profile.guest_name
 
-    assert_equal Guest.find(1), guest_interview_profile.guest
-    assert_equal 2, Guest.find(1).interview_profiles.count
+    assert_equal guests(:one), guest_interview_profile.guest
+    assert_equal 2, guests(:one).interview_profiles.count
   end
 end
