@@ -38,7 +38,9 @@ if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.c
 it will trigger a build and make a pull-request on [kaigaiijuch/kaigaiijuch.github.io](https://github.com/kaigaiijuch/kaigaiijuch.github.io/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc). the trigger defined at [here](.github/workflows/build.yml)
 
 also there is [`fetch_rss` trigger scheduled](.github/workflows/fetch_rss.yml), it can trigger via curl. (you need token)
-`curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/kaigaiijuch/website/dispatches -d '{"event_type":"fetch_rss"}'`
+```bash
+curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/kaigaiijuch/website/dispatches -d '{"event_type":"fetch_rss"}'
+```
 
 ## development requirement
 
