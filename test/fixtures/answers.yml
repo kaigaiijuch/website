@@ -30,7 +30,7 @@ guest1_one_one:
   original_question_text: 年代は？
   text: 20代です
   answered_on: 2024-04-05
-  guest_interview_profile_id: 1
+  guest_interview_profile: one
   guest_id: 1
 
 guest1_one_two:
@@ -38,7 +38,7 @@ guest1_one_two:
   original_question_text: 自己紹介してください
   text: こんにちは！
   answered_on: 2024-04-05
-  guest_interview_profile_id: 1
+  guest_interview_profile: one
   guest_id: 1
 
 guest1_two_one:
@@ -46,7 +46,7 @@ guest1_two_one:
   original_question_text: どこに住んでいますか？
   text: ドイツです
   answered_on: 2024-04-05
-  guest_interview_profile_id: 1
+  guest_interview_profile: one
   guest_id: 1
 
 guest2_one_one:
@@ -54,7 +54,7 @@ guest2_one_one:
   original_question_text: 年代は？
   text: 10代です
   answered_on: 2024-03-05
-  guest_interview_profile_id: 2
+  guest_interview_profile: two
   guest_id: 2
 
 guest2_two_one:
@@ -62,7 +62,7 @@ guest2_two_one:
   original_question_text: どこに移住しましたか？
   text: アメリカ
   answered_on: 2024-03-05
-  guest_interview_profile_id: 2
+  guest_interview_profile: two
   guest_id: 2
 
 guest3_one_one:
@@ -70,5 +70,5 @@ guest3_one_one:
   original_question_text: 年代は？
   text: 若いです！
   answered_on: 2024-02-05
-  guest_interview_profile_id: 4
+  guest_interview_profile: three
   guest_id: 3
