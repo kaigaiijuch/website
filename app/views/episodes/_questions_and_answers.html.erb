@@ -13,7 +13,7 @@
             <dl>
               <% topic_questions_and_answers.each do |topic_questions_and_answer| %>
                 <dt><%= topic_questions_and_answer.question_text %></dt>
-                <dd><%= topic_questions_and_answer.answer_text %></dd>
+                <dd><%= simple_format topic_questions_and_answer.answer_text, {}, wrapper_tag: "span" %></dd>
               <% end %>
             </dl>
           </div>
