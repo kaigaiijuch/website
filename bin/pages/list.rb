@@ -8,4 +8,5 @@ Rails.application.routes.url_helpers.tap do |h|
   PublishedEpisode.find_each do |episode|
     puts h.episode_path(episode)
   end
+  puts h.not_found_path
 end
