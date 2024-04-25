@@ -1,5 +1,9 @@
 <%-
   title "ページが見つかりませんでした"
+  content_for(:meta_tags) do
+    tag.meta 'name': "robots", content: "noindex"
+  end
+
   content_for(:stylesheets) do
     stylesheet_link_tag 'home_index', media: 'all'
   end
@@ -7,7 +11,7 @@
 
 
 <% content_for(:header_contents) do %>
-  <h1>ページが見つかりませんでした</h1>
+  <h2>ページが見つかりませんでした</h2>
 <% end %>
 
 <main>
