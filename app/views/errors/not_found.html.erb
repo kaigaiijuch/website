@@ -1,0 +1,23 @@
+<%-
+  title "ページが見つかりませんでした"
+  content_for(:meta_tags) do
+    tag.meta 'name': "robots", content: "noindex"
+  end
+
+  content_for(:stylesheets) do
+    stylesheet_link_tag 'home_index', media: 'all' # temporary workaround
+  end
+%>
+
+
+<% content_for(:header_contents) do %>
+  <h2>ページが見つかりませんでした</h2>
+<% end %>
+
+<main>
+  <section id="feedback">
+    <p>
+      <%= link_to '戻る', :back %>
+    </p>
+  </section>
+</main>

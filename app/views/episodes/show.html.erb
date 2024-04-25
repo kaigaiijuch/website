@@ -23,15 +23,13 @@
 
   <%= render partial: "transcriptions", locals: {transcriptions: @episode.transcriptions } if @episode.transcriptions.present? %>
 
-  <br>
+  <%= render partial: "layouts/feedback" %>
 
   <section>
     <%= link_to 'Topに戻る', '#' %>
   </section>
 
   <br>
-
-  <%= render partial: "layouts/feedback" %>
 
 
   <section>
