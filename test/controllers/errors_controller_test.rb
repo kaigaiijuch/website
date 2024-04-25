@@ -4,7 +4,7 @@ require 'test_helper'
 
 class ErrorsControllerTest < ActionDispatch::IntegrationTest
   test 'should get not_found' do
-    get errors_not_found_url
-    assert_response :success
+    get not_found_path
+    assert_response :success # should be 404 but static page is okay to be 200
   end
 end
