@@ -51,7 +51,6 @@ module Website
       host: config.x.website_uri.host,
       protocol: config.x.website_uri.scheme
     }
-    # TODO: it does not work well with root_url in url_helpers
     Rails.application.routes.default_url_options = url_options
     Rails.application.default_url_options = url_options
   end
