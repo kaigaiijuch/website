@@ -3,7 +3,7 @@
   <a class="card_item" href="<%= episode_path(episode) %>">
     <article>
       <figure class="card_item_imgWrapper">
-        <%= image_tag(episode.image_url.to_s, alt: episode.title) %>
+        <%= image_tag(episode.image_path, alt: episode.title) %>
     </figure>
       <div class="card_item_body">
         <time datetime="<%= format_date_to_ymd episode.published_at %>" class="card_item_time">

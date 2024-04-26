@@ -4,6 +4,7 @@
 #
 # Table name: episodes
 #
+#  image_path    :string           not null
 #  long_summary  :text             not null
 #  number        :string           not null, primary key
 #  season_number :integer
@@ -73,7 +74,8 @@ class EpisodeTest < ActiveSupport::TestCase
         title: dummy_value,
         summary: dummy_value,
         long_summary: dummy_value,
-        subtitle: dummy_value
+        subtitle: dummy_value,
+        image_path: 'logos/logo_kaigaiiju-channel.png'
       )
     end
   end

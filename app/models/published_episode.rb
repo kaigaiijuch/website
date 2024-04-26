@@ -13,6 +13,7 @@
 #  episode_type    :string
 #  explicit        :boolean
 #  guid            :string
+#  image_path      :string
 #  image_url       :string
 #  long_summary    :text
 #  number          :string           primary key
