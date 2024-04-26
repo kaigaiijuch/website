@@ -27,14 +27,14 @@ class GuestInterviewTest < ActiveSupport::TestCase
   test 'should have guests and guest_interview_profiles with interview episode' do
     episode_one = Episode.find('1-1')
     assert_equal episode_one, guest_interviews(:one).episode
-    assert_equal GuestInterviewProfile.find(1), guest_interviews(:one).guest_interview_profile
-    assert_equal Guest.find(1), guest_interviews(:one).guest
+    assert_equal guest_interview_profiles(:one), guest_interviews(:one).guest_interview_profile
+    assert_equal guests(:one), guest_interviews(:one).guest
 
     assert_equal 1, episode_one.guest_interviews.count
     assert_equal 1, episode_one.guest_interview_profiles.count
-    assert_equal GuestInterviewProfile.find(1), episode_one.guest_interview_profiles.first
+    assert_equal guest_interview_profiles(:one), episode_one.guest_interview_profiles.first
     assert_equal 1, episode_one.guests.count
-    assert_equal Guest.find(1), episode_one.guests.first
+    assert_equal guests(:one), episode_one.guests.first
 
     episode_zero = Episode.find('0')
     assert_equal 0, episode_zero.guest_interview_profiles.count

@@ -651,7 +651,7 @@ font-size: 1.5em;
 
 .card_item_imgWrapper {
 position: relative;
-padding-top: 56.25%;
+padding-top: 70.25%;
 overflow: hidden;
 }
 
@@ -680,6 +680,7 @@ height: 100%;
 transform: translateY(-50%);
 -o-object-fit: cover;
 object-fit: cover;
+object-position: center top;
 }
 
 /*日時、タイトル、抜粋文テキスト部分のスタイリング*/

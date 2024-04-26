@@ -15,19 +15,22 @@
 #
 
 one:
-  id: 1
   name: 奥田 一成
   nickname: kaz
   english_name: Kazunari Okuda
 
 two:
-  id: 2
   name: 細井 洋介
   nickname: yosuke-san
   english_name: Yosuke Hosoda
 
 three:
-  id: 3
   name: 所 親宏
   nickname: chikahiro
   english_name: Chikahiro Tokoro
+
+global_id_speaker:
+  id: 10
+  name: Global Id needs to be specify the id, it currently used in Speaker model
+  nickname: global_id_speaker
+  english_name: Global Id Speaker

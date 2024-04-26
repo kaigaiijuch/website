@@ -3,9 +3,29 @@
 
 # Website
 
-This is the application for generating a static website for podcasts. it's currently used for [https://kaigaiiju.ch](https://kaigaiiju.ch).
+This is the application for generating a **static website** for podcasts, which means output HTML/assets and can be served by just a web server. it is quite inspired by unix philosophy for deployment pipeline, and functional programming for stateless. 
+it's currently used for [https://kaigaiiju.ch](https://kaigaiiju.ch).
 
-### with github workflow
+## Design Concept
+
+ * dependencies as little as possible
+
+Try to make fewer external libraries and use a more standard solution of Ruby/Rails which is a lot of maintenance. for instance, not necessary to use RSpec.
+
+ * Try to follow Rails way architecture
+
+more discussion can be found here [on wiki](https://github.com/kaigaiijuch/website/wiki)
+
+ * Use Database modeling with a DDD perspective
+
+use database constraints and modeling effectively, [ERD can be found here](docs/erd.pdf).
+
+ * (experimental) CQRS
+
+Write operation and Read Operation have different requirements, try not to mix it up.
+
+
+## Deployment pipeline with Github Action
 
 if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.com/kaigaiijuch/website/settings/variables/actions/RELEASE_TRRIGER_MESSAGE) then it will trigger the release workflow to build the website via [kaigaiijuch/release](https://github.com/kaigaiijuch/release/actions)
 
@@ -17,13 +37,12 @@ if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.c
 
 it will trigger a build and make a pull-request on [kaigaiijuch/kaigaiijuch.github.io](https://github.com/kaigaiijuch/kaigaiijuch.github.io/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc)
 
-## requirement
+## development requirement
 
  * Ruby version: check [.ruby_version](.ruby-version)
+ * sqlite3
 
-sqlite3
-
-## setup
+### setup
 
 ### local
 
@@ -45,17 +64,20 @@ sqlite3
 ### fetch
 
 ```bash
- $ bin/data/fetch_all [rss_feed_url] [csv/directory] [answers.csv]
+ $ bin/data/fetch_all [rss_feed_url] [csv/directory] [answers.csv] [transcription/csv/directory]
 ```
+
+This is **idempotent** operation, it fetches the data from the sources and store it in the data repository.
 
 * `rss_feed_url`: [Spotify for podcasters](https://podcasters.spotify.com/) RSS feed is supported, it fetches the feeds data the data is stored default in `FeedsSpotifyForPodcaster`.
 
-  **important convention**: the title should be formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
+  **important convention**: the description of the episode should be ended by formatted as `#123-a title` where `123-a` is the episode number, it can be alphanumeric.
 
-* `csv/directory`: (this is a temporary solution) Import data from csv files in the directory, it is compatible with google sheets exported csv format, sample file: (TBD).  **this is temporary solution**
+* `csv/directory`: (this is a temporary solution) Import data from csv files in the directory, it is compatible with google sheets exported csv format, sample file: (TBD).
 
-* `answers.csv`: (this is a temporary solution) Import answers from csv file, it is compatible with exported csv format of google forms linked spreadsheet. (this is temporary solution) The format is `#{question_number}: 【{category}】{question_original_title}`, sample file: (TBD). 
+* `answers.csv`: (this is a temporary solution) Import answers from csv file, it is compatible with exported csv format of google forms linked spreadsheet. The format is `#{question_number}: 【{category}】{question_original_title}`, sample file: (TBD).
 
+* `transcription/csv/directory`: (this is a temporary solution) Import transcriptions from csv file. The file name should be `#{episode_number}.transcription.csv`, sample file: (TBD).
 
 ### commit data
 
@@ -86,14 +108,6 @@ check `.env` file and satisfy the requirements, they are used in `config/applica
 ```bash
   $ bin/rake db:create db:migrate db:seed
 ```
-
-## Design
-
- * Architecture: check [wiki page](https://github.com/kaigaiijuch/website/wiki)
-
-### ERD
-
-[ERD](docs/erd.pdf)
 
 ## How to run the test suite and linter
 

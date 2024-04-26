@@ -9,7 +9,9 @@
 <% content_for(:header_contents) do %>
   <h1><%= @episode.title %></h1>
   <p>配信日: <%= format_date_to_ymd @episode.published_at %></p>
-  <iframe src="<%= embed_url(@episode) %>" height="auto" width="100%" frameborder="0" scrolling="no"></iframe>
+  <iframe src="<%= embed_url(@episode) %>" height="auto" width="100%" frameborder="0" scrolling="no">
+  </iframe>
+  <p class="related_link"><%= link_to 'Apple Podcasts / Spotify などで聴く', @episode.url, target: :_blank %></p>
 <% end %>
 
 <main>
@@ -19,13 +21,19 @@
 
   <%= render partial: "chapters", locals: { chapters: @episode.chapters } if @episode.chapters.present? %>
 
-  <%= render partial: "transcriptions" if false %>
+  <%= render partial: "transcriptions", locals: {transcriptions: @episode.transcriptions } if @episode.transcriptions.present? %>
+
+  <section>
+    <%= link_to 'Topに戻る', '#' %>
+  </section>
 
   <%= render partial: "layouts/feedback" %>
 
   <section>
     <a href="<%= episodes_path %>" class="link">エピソード一覧に戻る</a>
   </section>
+
   <br>
+
 
 </main>

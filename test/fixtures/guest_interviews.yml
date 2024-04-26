@@ -21,19 +21,19 @@
 #
 
 one:
-  guest_interview_profile_id: 1
+  guest_interview_profile: one
   episode_number: '1-1'
   display_order: 1
   interviewed_on: 2024-01-01
 
 yoga:
-  guest_interview_profile_id: 2
+  guest_interview_profile: two
   episode_number: '108'
   display_order: 2
   interviewed_on: 2024-04-01
 
 yoga2:
-  guest_interview_profile_id: 4
+  guest_interview_profile: three
   episode_number: '108'
   display_order: 1
   interviewed_on: 2024-04-01
