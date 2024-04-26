@@ -33,18 +33,9 @@ jobs:
           name: public_files_${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
           path: |
             public
-      - name: Check commit message
-        id: check_message
-        # note: github.event.head_commit.message looks only available in push event
-        run: |
-          message="${{ github.event.head_commit.message }}" && echo "message: $message"
-          if echo "$message" | head -n1 | grep -q "${{ vars.RELEASE_TRRIGER_MESSAGE }}"; then
-            echo "run_release=true" >> "$GITHUB_ENV"
-          else
-            echo "run_release=false" >> "$GITHUB_ENV"
-          fi
       - name: ping release trigger
-        if: env.run_release == 'true'
+        # note: github.event.head_commit.message looks only available in push event
+        if: contains(github.event.head_commit.message, vars.RELEASE_TRRIGER_MESSAGE)
         run: |
           curl -L \
             -X POST \
