@@ -1,7 +1,7 @@
 <%-
   title "エピソード #{@episode.title}"
   description @episode.subtitle
-  set_meta_tags image_src: image_url(@episode.image_path),
+  set_meta_tags image_src: image_url(@episode.image_path, host: Rails.application.config.x.website_uri.to_s),
     og: {
       type: "article",
       url: episode_url(@episode)
