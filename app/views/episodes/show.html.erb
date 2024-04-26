@@ -1,5 +1,6 @@
 <%-
   title "エピソード #{@episode.title}"
+  description @episode.subtitle
   content_for(:stylesheets) do
     stylesheet_link_tag 'episodes_show', media: 'all'
   end
