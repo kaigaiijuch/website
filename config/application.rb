@@ -46,10 +46,11 @@ module Website
     config.x.feedback_typeform_id = ENV.fetch('FEEDBACK_TYPEFORM_ID', nil)
 
     # Default URL Options in Ruby on Rails - Team Qameta https://qameta.com/posts/default-url-options-in-ruby-on-rails/
-    config.x.website_uri = URI.parse(ENV.fetch('WEBSITE_URI', ''))
+    config.x.website_uri = URI.parse(ENV.fetch('WEBSITE_URI'))
     url_options = {
       host: config.x.website_uri.host,
-      protocol: config.x.website_uri.scheme
+      protocol: config.x.website_uri.scheme,
+      port: config.x.website_uri.port
     }
     Rails.application.routes.default_url_options = url_options
     Rails.application.default_url_options = url_options
