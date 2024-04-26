@@ -1,12 +1,16 @@
 <%-
-  title ''
+  description '海外移住Channel は海外移住の経験者をゲストに招き、彼らのインタビューを中心に展開するポッドキャストです。主に海外での生活・仕事・子育てに関するトピックを取り上げています。リアルな生の声を届けたいと思っているので、いいことだけでなく大変なこともざっくばらんに楽しく話していきたいと思っており、リスナーからのフィードバックも大事にしたいと思っています。'
   content_for(:stylesheets) do
     stylesheet_link_tag 'home_index', media: 'all'
   end
+  set_meta_tags image_src: image_url("logos/logo_kaigaiiju-channel.png"),
+    og: {
+      url: root_url
+    }
 %>
 
 <% content_for(:header_contents) do %>
-  <h1>海外移住channel</h1>
+  <h1><%=  site_name %></h1>
   <p>海外移住Channel は海外移住の経験者をゲストに招き、彼らのインタビューを中心に展開するポッドキャストです</p>
   <p>主に海外での生活・仕事・子育てに関するトピックを取り上げています</p>
   <br>

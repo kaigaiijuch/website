@@ -1,3 +1,19 @@
+<%-
+  set_meta_tags site: site_name, reverse: true,
+    og: {
+      title: :full_title,
+      description: :description,
+      image: :image_src,
+      site_name:  site_name
+    },
+    twitter: {
+      card: "summary",
+      site: "@kaigaiijuch",
+      creator: "@kaigaiijuch",
+      image: :image_src
+    }
+-%>
+
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -8,7 +24,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','<%= google_tag_manager_id %>');</script>
     <!-- End Google Tag Manager -->
-    <title><%= yield_title %></title>
+    <%= display_meta_tags %>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -25,7 +41,6 @@
 
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= yield(:stylesheets) %>
-    <%= yield(:meta_tags) %>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

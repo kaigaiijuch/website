@@ -1,5 +1,11 @@
 <%-
   title "エピソード #{@episode.title}"
+  description @episode.subtitle
+  set_meta_tags image_src: image_url(@episode.image_url),
+    og: {
+      type: "article",
+      url: episode_url(@episode)
+    }
   content_for(:stylesheets) do
     stylesheet_link_tag 'episodes_show', media: 'all'
   end
@@ -7,7 +13,7 @@
 
 
 <% content_for(:header_contents) do %>
-  <h2><%= @episode.title %></h2>
+  <h1><%= @episode.title %></h1>
   <p>配信日: <%= format_date_to_ymd @episode.published_at %></p>
   <iframe src="<%= embed_url(@episode) %>" height="auto" width="100%" frameborder="0" scrolling="no">
   </iframe>

@@ -1,13 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  def title(title)
-    content_for :title, title
-  end
-
-  def yield_title(base_title: Rails.application.config.x.website_title.base,
-                  separator: Rails.application.config.x.website_title.separator)
-    [base_title, content_for(:title)].compact.join(separator)
+  def site_name
+    Rails.application.config.x.site_name
   end
 
   def google_tag_manager_id
