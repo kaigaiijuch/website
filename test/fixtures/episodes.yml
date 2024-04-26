@@ -2,6 +2,7 @@
 #
 # Table name: episodes
 #
+#  image_path    :string           not null
 #  long_summary  :text             not null
 #  number        :string           not null, primary key
 #  season_number :integer

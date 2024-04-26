@@ -11,17 +11,11 @@ CREATE VIEW "published_episodes" AS SELECT
  *
 FROM episodes
 JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
-/* published_episodes(number,title,summary,long_summary,subtitle,created_at,updated_at,season_number,story_number,type_name,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator,"created_at:1","updated_at:1") */;
+/* published_episodes(number,title,summary,long_summary,subtitle,created_at,updated_at,season_number,story_number,type_name,image_path,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator,"created_at:1","updated_at:1") */;
 CREATE TABLE IF NOT EXISTS "guests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar NOT NULL, "name" varchar NOT NULL, "english_name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE UNIQUE INDEX "index_guests_on_nickname" ON "guests" ("nickname");
 CREATE TABLE IF NOT EXISTS "episode_types" ("name" varchar NOT NULL PRIMARY KEY);
 CREATE UNIQUE INDEX "index_episode_types_on_name" ON "episode_types" ("name");
-CREATE TABLE IF NOT EXISTS "episodes" ("number" varchar NOT NULL PRIMARY KEY, "title" varchar(200) NOT NULL, "summary" text NOT NULL, "long_summary" text NOT NULL, "subtitle" text NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "season_number" integer DEFAULT NULL, "story_number" integer DEFAULT NULL, "type_name" varchar NOT NULL, CONSTRAINT "fk_rails_eafa210e4e"
-FOREIGN KEY ("type_name")
-  REFERENCES "episode_types" ("name")
-);
-CREATE UNIQUE INDEX "index_episodes_on_number" ON "episodes" ("number");
-CREATE UNIQUE INDEX "index_episodes_on_season_number_and_story_number" ON "episodes" ("season_number", "story_number");
 CREATE TABLE IF NOT EXISTS "episode_references" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "episode_number" varchar NOT NULL, "link" varchar NOT NULL, "caption" text NOT NULL, "display_order" integer DEFAULT 1 NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_2f98112f52"
 FOREIGN KEY ("episode_number")
   REFERENCES "episodes" ("number")
@@ -97,7 +91,14 @@ INNER JOIN episode_speakers ON episode_speaker_transcriptions.episode_speaker_id
 INNER JOIN speakers ON episode_speakers.speaker_id = speakers.id
 ORDER BY episode_number, start_at
 /* episode_transcriptions(id,episode_speaker_id,text,start_at,end_at,created_at,updated_at,"id:1",episode_number,speaker_id,role_name,"created_at:1","updated_at:1","id:2",name,image_path,global_id,"created_at:2","updated_at:2") */;
+CREATE TABLE IF NOT EXISTS "episodes" ("number" varchar NOT NULL PRIMARY KEY, "title" varchar(200) NOT NULL, "summary" text NOT NULL, "long_summary" text NOT NULL, "subtitle" text NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "season_number" integer DEFAULT NULL, "story_number" integer DEFAULT NULL, "type_name" varchar NOT NULL, "image_path" varchar NOT NULL, CONSTRAINT "fk_rails_eafa210e4e"
+FOREIGN KEY ("type_name")
+  REFERENCES "episode_types" ("name")
+);
+CREATE UNIQUE INDEX "index_episodes_on_number" ON "episodes" ("number");
+CREATE UNIQUE INDEX "index_episodes_on_season_number_and_story_number" ON "episodes" ("season_number", "story_number");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240426134120'),
 ('20240412150356'),
 ('20240411113410'),
 ('20240410151544'),
