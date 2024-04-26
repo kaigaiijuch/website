@@ -37,7 +37,7 @@ jobs:
         # note: github.event.head_commit.message looks only available in push event
         if: contains(github.event.head_commit.message, vars.RELEASE_TRRIGER_MESSAGE)
         env:
-          COMMIT_MESSGE: ${{ github.event.head_commit.message }}
+          COMMIT_MESSGE: $(echo ${{ github.event.head_commit.message }} | head -n1)
         run: |
           curl -L \
             -X POST \
@@ -46,7 +46,7 @@ jobs:
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/kaigaiijuch/release/dispatches \
             -d '{"event_type":"run_release", "client_payload": {
-              "commit_message": "$(echo "$COMMIT_MESSGE" | head -n1)",
+              "commit_message": "${COMMIT_MESSGE}",
               "commit_url": "https://github.com/kaigaiijuch/website/commits/${{ github.event.after }}"
               }
             }'
