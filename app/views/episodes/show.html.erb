@@ -1,7 +1,7 @@
 <%-
   title "エピソード #{@episode.title}"
   description @episode.subtitle
-  set_meta_tags image_src: image_path(@episode.image_url),
+  set_meta_tags image_src: image_url(@episode.image_url),
     og: {
       type: "article",
       url: episode_url(@episode)
