@@ -1,7 +1,7 @@
 <%-
   title "エピソード一覧"
   description "海外移住channel の配信中エピソード一覧です。様々なゲストをお呼びしたいと思っています。"
-  set_meta_tags image_src: image_url("logos/logo_kaigaiiju-channel.png"),
+  set_meta_tags image_src: image_url("logos/logo_kaigaiiju-channel.png", host: Rails.application.config.x.website_uri.to_s),
     og: {
       url: episodes_url
     }
