@@ -1,10 +1,10 @@
 <%-
   title "エピソード #{@episode.title}"
   description @episode.subtitle
-  set_meta_tags image_src: image_path(@episode.image_url),
+  set_meta_tags image_src: image_url(@episode.image_url),
     og: {
       type: "article",
-      url: episodes_url(@episode)
+      url: episode_url(@episode)
     }
   content_for(:stylesheets) do
     stylesheet_link_tag 'episodes_show', media: 'all'
