@@ -12,10 +12,10 @@
 
 chikahiro:
   name: Chikahiro
-  image_path: logos/ctokoro_mini.png
+  image_path: logos/ctokoro_mini.webp
   global_id: gid://website/Host/1
 
 test1:
   name: Global Id speaker
-  image_path: logos/logo_kaigaiiju-channel.png
+  image_path: logos/logo_kaigaiiju-channel.webp
   global_id: gid://website/Guest/10

@@ -37,7 +37,7 @@ one:
     第1回エピソードでは、ベルリン在住のソフトウェアエンジニアをゲストに迎え、子育てや仕事についての経験談を聞いています。今後は映画監督やダンサー、研究者など、さまざまなバックグラウンドを持つゲストを招いて、リスナーに興味深いトークを届ける予定です。海外移住チャンネルをフォローして、フィードバックをお寄せいただければ幸いです。
   subtitle: 海外移住channelの第0回エピソードでは、ちかひろが自己紹介し、ポッドキャストのコンセプトや3本柱を紹介。第1回ではベルリン在住のソフトウェアエンジニアをゲストに招き、興味深い話題が期待される。海外移住に興味がある人や経験者に価値ある情報。
   type_name: trailer
-  image_path: logos/logo_kaigaiiju-channel.png
+  image_path: logos/logo_kaigaiiju-channel.webp
 
 two:
   number: '1-1'
@@ -50,7 +50,7 @@ two:
   type_name: full
   season_number: 1
   story_number: 1
-  image_path: guest_interview_profiles/1_Kazunari_Okuda.jpg
+  image_path: guest_interview_profiles/1_Kazunari_Okuda.webp
 
 three:
   number: '1-2'
@@ -61,7 +61,7 @@ three:
     奥田さんと一緒に、ハニーポッドの求人サイトでの経験や逆求人について話し合いました。日本とドイツでの育児休暇制度の違いや、親族のサポート、出産や育児支援文化についても話し合いました。友人や公園での子育てや移住に関する議論もあり、異文化間の対話の重要性が強調されました。
   subtitle: 奥田さんとのインタビューでは、ハニーポッドの求人サイト経験や逆求人について話し合い。日本とドイツの育児休暇制度の違いや、出産・育児支援文化、友人や移住に関する議論も。異文化対話の重要性が強調された。
   type_name: full
-  image_path: guest_interview_profiles/1_Kazunari_Okuda.jpg
+  image_path: guest_interview_profiles/1_Kazunari_Okuda.webp
 
 four:
   number: '2-1'
@@ -77,7 +77,7 @@ four:
     今回のエピソードでは、映像ディレクターで俳優の細井陽介さんが登場しました。彼はアメリカでのキャリア構築中にビザの問題に直面し、それが再出発のきっかけとなりました。日本に帰国後は旅番組やドキュメンタリー制作に挑戦し、新たな方向性を見出しています。細井さんの挫折からの立ち直りや新たな一歩を踏む姿勢に勇気をもらい、海外での生活や仕事を考える上で示唆を提供しています。ホストとの対話では、細井さんの新たな挑戦を応援し、彼の作品への情熱や社会的なメッセージ伝達の重要性に焦点が当てられました。結果として、視聴者には刺激と啓発を与える内容となりました。
   subtitle: ベルリン在住の映像ディレクターである洋介さんは、アメリカでの経験を活かし、ヨーロッパで映像関連の仕事に取り組んでいます。彼は多角的なキャリアを築き、映像制作と旅を組み合わせたライフスタイルを模索し、感動的な瞬間や社会的な問題を伝える作品を制作しています。
   type_name: full
-  image_path: guest_interview_profiles/2_Yosuke Hosoi.JPG
+  image_path: guest_interview_profiles/2_Yosuke Hosoi.webp
 
 yoga:
   number: '108'
@@ -88,4 +88,4 @@ yoga:
     ヨガは哲学もあるという話をしました
   subtitle: ヨガは身体が柔らかくないとできないのでしょうか？
   type_name: full
-  image_path: logos/logo_kaigaiiju-channel.png
+  image_path: logos/logo_kaigaiiju-channel.webp

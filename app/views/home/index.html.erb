@@ -3,7 +3,7 @@
   content_for(:stylesheets) do
     stylesheet_link_tag 'home_index', media: 'all'
   end
-  set_meta_tags image_src: image_url("logos/logo_kaigaiiju-channel.png", host: Rails.application.config.x.website_uri.to_s),
+  set_meta_tags image_src: image_url("logos/logo_kaigaiiju-channel.webp", host: Rails.application.config.x.website_uri.to_s),
     og: {
       url: root_url,
       type: "website"
@@ -32,16 +32,16 @@
         <%= image_tag("logos/Icon_Apple_Podcasts.svg", class: "icon_Apple", alt: "Apple Podcast") %>
       </a>
       <a class="btn_link_podcast" href="https://open.spotify.com/show/1Jk3agw17KlViB3DgbM4Rk" target="_blank">
-        <%= image_tag("logos/Icon_Spotify_White.png", class: "icon_Spotify", alt: "Follow Spotify") %>
+        <%= image_tag("logos/Icon_Spotify_White.webp", class: "icon_Spotify", alt: "Follow Spotify") %>
       </a>
       <a class="btn_link_google" href="https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy9lYjQxY2E1OC9wb2RjYXN0L3Jzcw" target="_blank"">
-        <%= image_tag("logos/Icon_google-podcast.png", class: "icon_google-podcast", alt: "Google Podcast") %>
+        <%= image_tag("logos/Icon_google-podcast.webp", class: "icon_google-podcast", alt: "Google Podcast") %>
       </a>
       <a class="btn_link_youtube" href="https://www.youtube.com/@kaigaiiju.channel" target="_blank">
         <%= image_tag("logos/Icon_youtube.svg", class: "icon_youtube", alt: "YouTube") %>
       </a>
       <a class="btn_link_podcast" href="https://music.amazon.co.jp/podcasts/06a5cc63-6f9e-4cab-941c-1af5a5fb27da/%E6%B5%B7%E5%A4%96%E7%A7%BB%E4%BD%8Fchannel" target="_blank">
-        <%= image_tag("logos/Icon_amazon.png", class: "icon_amazon", alt: "Amazon Music") %>
+        <%= image_tag("logos/Icon_amazon.webp", class: "icon_amazon", alt: "Amazon Music") %>
       </a>
       <a class="btn_link_listen" href="https://listen.style/p/kaigaiijuch" target="_blank">
         <%= image_tag("logos/LISTEN_logo.svg", class: "icon_listen", alt: "Listen") %>
@@ -67,7 +67,7 @@
   <section >
     <header>
       <h2>ホスト</h2>
-      <%= image_tag("logos/ctokoro_mini.png", class: "logo_chikahiro") %>
+      <%= image_tag("logos/ctokoro_mini.webp", class: "logo_chikahiro") %>
       <p>メインホスト: <a href="https://chikahirotokoro.com" target="_blank">  所 親宏</a></p>
       <p>ドイツ・ベルリン在住 ソフトウェアエンジニア</p>
       <p class="non_bold"><a href="https://note.com/frepara/n/n914c9d7ae6d1" target="_blank" class="non_bold">インタビュー記事</a></p>

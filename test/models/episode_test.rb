@@ -75,7 +75,7 @@ class EpisodeTest < ActiveSupport::TestCase
         summary: dummy_value,
         long_summary: dummy_value,
         subtitle: dummy_value,
-        image_path: 'logos/logo_kaigaiiju-channel.png'
+        image_path: 'logos/logo_kaigaiiju-channel.webp'
       )
     end
   end
