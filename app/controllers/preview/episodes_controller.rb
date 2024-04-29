@@ -4,7 +4,7 @@ module Preview
   class EpisodesController < ApplicationController
     before_action :set_episode, only: %i[show]
     def index
-      @episodes = Episode.all.map { |e| e.extend(PreviewEpisode) }
+      @episodes = UnpublishedEpisode.all.map { |e| e.extend(PreviewEpisode) }
     end
 
     def show; end
@@ -13,8 +13,7 @@ module Preview
 
     # Use callbacks to share common setup or constraints between actions.
     def set_episode
-      @episode = Episode.includes(guest_interview_profiles: [:questions_and_answers]).find(params[:id])
-                        .extend(PreviewEpisode)
+      @episode = UnpublishedEpisode.find(params[:id]).extend(PreviewEpisode)
     end
 
     module PreviewEpisode
