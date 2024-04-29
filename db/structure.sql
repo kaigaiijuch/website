@@ -97,7 +97,13 @@ FOREIGN KEY ("type_name")
 );
 CREATE UNIQUE INDEX "index_episodes_on_number" ON "episodes" ("number");
 CREATE UNIQUE INDEX "index_episodes_on_season_number_and_story_number" ON "episodes" ("season_number", "story_number");
+CREATE VIEW "unpublished_episodes" AS SELECT *
+FROM episodes
+LEFT OUTER JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+WHERE feeds_spotify_for_podcasters.episode_number IS NULL
+/* unpublished_episodes(number,title,summary,long_summary,subtitle,created_at,updated_at,season_number,story_number,type_name,image_path,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator,"created_at:1","updated_at:1") */;
 INSERT INTO "schema_migrations" (version) VALUES
+('20240429192635'),
 ('20240426134120'),
 ('20240412150356'),
 ('20240411113410'),
