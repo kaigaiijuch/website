@@ -25,6 +25,10 @@ jobs:
         run: |
           git config --global user.name "${{ vars.GIT_USER_NAME }}"
           git config --global user.email "${{ vars.GIT_USER_EMAIL }}"
+          cd data
+          git config --global user.name "${{ vars.GIT_USER_NAME }}"
+          git config --global user.email "${{ vars.GIT_USER_EMAIL }}"
+          cd ..
       - name: setup docker
         run: docker compose -f docker-compose-build.yml build
       - name: fetch data
@@ -32,4 +36,4 @@ jobs:
       - name: commit data if it's changes
         run: yes | docker compose -f docker-compose-build.yml run web bin/data/commit
       - name: commit message and run build
-        run: cd data && git commit -am "release! fetch rss feeds at '$(date)'" && git push
+        run: git commit -am "release! fetch rss feeds at '$(date)'" && git push
