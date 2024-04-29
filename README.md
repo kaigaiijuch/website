@@ -3,7 +3,7 @@
 
 # Website
 
-This is the application for generating a **static website** for podcasts, which means output HTML/assets and can be served by just a web server. it is quite inspired by unix philosophy for deployment pipeline, and functional programming for stateless. 
+This is the application for generating a **static website** for podcasts, which means output HTML/assets and can be served by just a web server. it is quite inspired by unix philosophy for deployment pipeline, and functional programming for stateless.
 it's currently used for [https://kaigaiiju.ch](https://kaigaiiju.ch).
 
 ## Design Concept
@@ -27,7 +27,7 @@ Write operation and Read Operation have different requirements, try not to mix i
 
 ## Deployment pipeline with Github Action
 
-if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.com/kaigaiijuch/website/settings/variables/actions/RELEASE_TRRIGER_MESSAGE) then it will trigger the release workflow to build the website via [kaigaiijuch/release](https://github.com/kaigaiijuch/release/actions)
+if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.com/kaigaiijuch/website/settings/variables/actions/RELEASE_TRRIGER_MESSAGE) then it will trigger the release workflow to build the website via [kaigaiijuch/release](https://github.com/kaigaiijuch/release/actions).
 
 ```bash
  # e.g. with RELEASE_TRRIGER_MESSAGE=release!
@@ -35,7 +35,12 @@ if the latest commit message contains [RELEASE_TRRIGER_MESSAGE](https://github.c
  $ git push origin main
 ```
 
-it will trigger a build and make a pull-request on [kaigaiijuch/kaigaiijuch.github.io](https://github.com/kaigaiijuch/kaigaiijuch.github.io/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc)
+it will trigger a build and make a pull-request on [kaigaiijuch/kaigaiijuch.github.io](https://github.com/kaigaiijuch/kaigaiijuch.github.io/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc). the trigger defined at [here](.github/workflows/build.yml)
+
+also there is [`fetch_rss` trigger scheduled](.github/workflows/fetch_rss.yml), it can trigger via curl. (you need token)
+```bash
+curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/kaigaiijuch/website/dispatches -d '{"event_type":"fetch_rss"}'
+```
 
 ## development requirement
 

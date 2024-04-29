@@ -1,0 +1,44 @@
+name: "fetch_rss"
+on:
+  repository_dispatch:
+    types: [fetch_rss]
+  schedule:
+    - cron:  '2 21 * * 1' # target for JST 6:02 am
+jobs:
+  fetch_rss:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: production
+      DATA_REPO_TOKEN: ${{ secrets.DEPLOY_BOT_TOKEN }}
+      SPOTIFY_FOR_PODCASTERS_RSS_URL: ${{ vars.SPOTIFY_FOR_PODCASTERS_RSS_URL }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Checkout data repo
+        uses: actions/checkout@v4
+        with:
+          repository: kaigaiijuch/website_data
+          path: data
+          token: ${{ env.DATA_REPO_TOKEN }}
+      - name: setup git config
+        run: |
+          git config --global user.name "${{ vars.GIT_USER_NAME }}"
+          git config --global user.email "${{ vars.GIT_USER_EMAIL }}"
+          cd data
+          git config --global user.name "${{ vars.GIT_USER_NAME }}"
+          git config --global user.email "${{ vars.GIT_USER_EMAIL }}"
+          cd ..
+      - name: setup docker
+        run: docker compose -f docker-compose-build.yml build
+      - name: fetch data
+        run: docker compose -f docker-compose-build.yml run web bin/rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL"]
+      - name: commit data if it's changes
+        run: |
+          if yes 2>/dev/null | bin/data/commit; then
+            echo "run_build=true" >> "$GITHUB_ENV"
+          else
+            echo "run_build=false" >> "$GITHUB_ENV"
+          fi
+      - name: commit message and run build
+        if: env.run_build == 'true'
+        run: git commit --allow-empty -m "release! [auto_deploy] fetch rss feeds at '$(date)'" && git push origin HEAD:main
