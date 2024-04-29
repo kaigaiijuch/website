@@ -42,4 +42,4 @@ jobs:
           fi
       - name: commit message and run build
         if: env.run_build == 'true'
-        run: git commit --allow-empty -m "release! [auto_deploy] fetch rss feeds at '$(date)'" && git push
+        run: git commit --allow-empty -m "release! [auto_deploy] fetch rss feeds at '$(date)'" && git push origin HEAD:main
