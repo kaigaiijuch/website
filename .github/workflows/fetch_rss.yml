@@ -3,7 +3,7 @@ on:
   repository_dispatch:
     types: [fetch_rss]
   schedule:
-    - cron:  '2 22,23 * * 2' # do it for summer time
+    - cron:  '2 22 * * 1' # target for JST 6:02 am
   pull_request: # temporary
 jobs:
   fetch_rss:
@@ -34,6 +34,13 @@ jobs:
       - name: fetch data
         run: docker compose -f docker-compose-build.yml run web bin/rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL"]
       - name: commit data if it's changes
-        run: yes | bin/data/commit
+        run: |
+          yes | bin/data/commit
+          if [[ $? -ne 0 ]] ; then
+            echo "run_build=true" >> "$GITHUB_ENV"
+          else
+            echo "run_build=false" >> "$GITHUB_ENV"
+          fi
       - name: commit message and run build
+        if: env.run_build == 'true'
         run: git commit -am "release! fetch rss feeds at '$(date)'" && git push
