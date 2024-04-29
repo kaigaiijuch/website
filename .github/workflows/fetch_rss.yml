@@ -38,7 +38,7 @@ jobs:
           if yes 2>/dev/null | bin/data/commit; then
             echo "run_build=true" >> "$GITHUB_ENV"
           else
-            echo "run_build=false" >> "$GITHUB_ENV"
+            echo "run_build=true" >> "$GITHUB_ENV"
           fi
       - name: commit message and run build
         if: env.run_build == 'true'
