@@ -2,7 +2,9 @@
 
 module Preview
   class EpisodesController < ApplicationController
+    before_action :check_availability
     before_action :set_episode, only: %i[show]
+
     def index
       @episodes = UnpublishedEpisode.all.map { |e| e.extend(PreviewEpisode) }
     end
@@ -13,7 +15,16 @@ module Preview
 
     # Use callbacks to share common setup or constraints between actions.
     def set_episode
-      @episode = UnpublishedEpisode.find(params[:id]).extend(PreviewEpisode)
+      @episode = UnpublishedEpisode.includes(guest_interview_profiles: [:questions_and_answers])
+                                   .find(params[:id])
+                                   .extend(PreviewEpisode)
+    end
+
+    def check_availability
+      return if Rails.application.config.x.enable_preview
+
+      flash.now[:alert] = 'forbidden'
+      render status: :forbidden and return
     end
 
     module PreviewEpisode
