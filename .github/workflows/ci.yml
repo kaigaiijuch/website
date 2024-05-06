@@ -14,4 +14,4 @@ jobs:
       - name: setup docker
         run: docker compose -f docker-compose-ci.yml build
       - name: run test
-        run: docker compose -f docker-compose-ci.yml run web bin/rake
+        run: docker compose -f docker-compose-ci.yml run -e RAILS_ENV=$RAILS_ENV web bin/rake
