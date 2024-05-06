@@ -6,6 +6,8 @@ on:
     - cron:  '2 21 * * 1' # target for JST 6:02 am
 jobs:
   fetch_rss:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: production
@@ -41,4 +43,8 @@ jobs:
           fi
       - name: commit message and run build
         if: env.run_build == 'true'
-        run: git commit --allow-empty -m "{{ vars.RELEASE_TRRIGER_MESSAGE }} [auto_deploy] fetch rss feeds at '$(date)'" && git push origin HEAD:main
+        env:
+          RELEASE_TRRIGER_MESSAGE: vars.RELEASE_TRRIGER_MESSAGE
+        run: |
+          git commit --allow-empty -m "${RELEASE_TRRIGER_MESSAGE} [auto_deploy] fetch rss feeds at '$(date)'"
+          git push origin HEAD:main
