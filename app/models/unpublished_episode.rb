@@ -50,6 +50,10 @@ class UnpublishedEpisode < ApplicationRecord
     def url
       'https://example.com/'
     end
+
+    def preview?
+      true
+    end
   end
   include Previewable
 

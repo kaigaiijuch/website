@@ -49,5 +49,6 @@ class UnpublishedEpisodeTest < ActiveSupport::TestCase
     freeze_time { assert_equal 1.day.from_now, unpublished_episode.published_at }
     assert_nil unpublished_episode.feed_spotify_for_podcasters
     assert_equal 'https://example.com/', unpublished_episode.url
+    assert_true unpublished_episode.preview?
   end
 end
