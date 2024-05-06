@@ -40,6 +40,19 @@ class UnpublishedEpisode < ApplicationRecord
   include Episode::HasChapters
   include Episode::HasTranscriptions
 
+  module Previewable
+    def published_at
+      1.day.from_now
+    end
+
+    def feed_spotify_for_podcasters; end
+
+    def url
+      'https://example.com/'
+    end
+  end
+  include Previewable
+
   def readonly?
     true
   end

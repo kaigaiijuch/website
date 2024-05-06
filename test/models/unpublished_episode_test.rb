@@ -39,8 +39,15 @@ class UnpublishedEpisodeTest < ActiveSupport::TestCase
   test 'PublishedEpisode should be exists on the episodes but not in feeds_spotify_for_podcasters' do
     assert_equal episodes(:three, :four, :yoga).map(&:number).sort, UnpublishedEpisode.pluck(:number).sort
 
-    published_episode = UnpublishedEpisode.first
-    assert_nil published_episode.published_at
-    assert_nil published_episode.episode_number
+    unpublished_episode = UnpublishedEpisode.first
+    assert_nil unpublished_episode.episode_number
+  end
+
+  test 'PublishedEpisode should be previewable' do
+    unpublished_episode = UnpublishedEpisode.first
+
+    freeze_time { assert_equal 1.day.from_now, unpublished_episode.published_at }
+    assert_nil unpublished_episode.feed_spotify_for_podcasters
+    assert_equal 'https://example.com/', unpublished_episode.url
   end
 end

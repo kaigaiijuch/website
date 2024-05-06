@@ -6,7 +6,7 @@ module Preview
     before_action :set_episode, only: %i[show]
 
     def index
-      @episodes = UnpublishedEpisode.all.map { |e| e.extend(PreviewEpisode) }
+      @episodes = UnpublishedEpisode.all
     end
 
     def show; end
@@ -17,7 +17,6 @@ module Preview
     def set_episode
       @episode = UnpublishedEpisode.includes(guest_interview_profiles: [:questions_and_answers])
                                    .find(params[:id])
-                                   .extend(PreviewEpisode)
     end
 
     def check_availability
@@ -25,20 +24,6 @@ module Preview
 
       flash.now[:alert] = t('error.forbidden')
       render status: :forbidden and return
-    end
-
-    module PreviewEpisode
-      def published_at
-        Time.zone.now
-      end
-
-      def feed_spotify_for_podcasters
-        ''
-      end
-
-      def url
-        'https://example.com/'
-      end
     end
   end
 end
