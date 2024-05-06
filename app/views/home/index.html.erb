@@ -63,6 +63,18 @@
       <% end %>
     </p>
   </section>
+
+  <% if Rails.application.config.x.enable_preview %>
+    <section id="story_list">
+      <p class="btn_listen_more">
+        <%= link_to preview_episodes_path do %>
+          <b>プレビュー一覧(開発用)</b>
+        <% end %>
+      </p>
+    </section>
+  <% end %>
+
+
   <hr>
   <section >
     <header>
