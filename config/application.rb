@@ -44,7 +44,7 @@ module Website
     config.x.google_tag_manager_id = ENV.fetch('GOOGLE_TAG_MANAGER_ID', nil)
     config.x.feedback_google_form_id = ENV.fetch('FEEDBACK_GOOGLE_FORM_ID', nil)
     config.x.feedback_typeform_id = ENV.fetch('FEEDBACK_TYPEFORM_ID', nil)
-    config.x.enable_preview = ActiveModel::Type::Boolean.new.cast(ENV.fetch('ENABLE_PREVIEW', true))
+    config.x.enable_preview = ActiveModel::Type::Boolean.new.cast(ENV.fetch('ENABLE_PREVIEW', false))
 
     # Default URL Options in Ruby on Rails - Team Qameta https://qameta.com/posts/default-url-options-in-ruby-on-rails/
     config.x.website_uri = URI.parse(ENV.fetch('WEBSITE_URI', ''))
