@@ -23,7 +23,7 @@ module Preview
     def check_availability
       return if Rails.application.config.x.enable_preview
 
-      flash.now[:alert] = 'forbidden'
+      flash.now[:alert] = t('error.forbidden')
       render status: :forbidden and return
     end
 
