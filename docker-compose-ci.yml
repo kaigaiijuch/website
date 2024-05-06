@@ -5,4 +5,4 @@ services:
     env_file:
       - .env.test
     environment:
-      - RAILS_ENV=${RAILS_ENV:-development}
+      - RAILS_ENV=${RAILS_ENV:-test}
