@@ -20,10 +20,18 @@ module Preview
       get preview_episodes_path
       assert_response :success
     end
+  end
+
+  class EpisodesControllerAvailabilityTest < ActionDispatch::IntegrationTest
+    setup do
+      Rails.application.config.x.enable_preview = false
+    end
+
+    teardown do
+      Rails.application.config.x.enable_preview = true
+    end
 
     test 'if preview is not allowed, it shows 403 error' do
-      Rails.application.config.x.enable_preview = false
-
       get preview_episodes_path
       assert_response 403
     end
