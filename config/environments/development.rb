@@ -9,7 +9,7 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
     Bullet.bullet_logger = true
     Bullet.rails_logger = true
     Bullet.add_footer = true
-    Bullet.raise = true # raise an error if n+1 query occurs
+    # Bullet.raise = true # raise an error if n+1 query occurs
     Bullet.always_append_html_body = true
   end
 
