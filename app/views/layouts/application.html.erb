@@ -71,7 +71,14 @@
       </header>
     <% end %>
 
+    <%# temporary markup for flash %>
+    <% flash.each do |type, message| %>
+      <p style="text-align: center;color: red;font-size: large"><%= type %>: <%= message %></p>
+    <% end %>
+
     <%= yield %>
+
+    <%= render partial: 'layouts/dev_menu' %>
 
     <% if content_for?(:footer) %>
       <%= yield(:footer) %>

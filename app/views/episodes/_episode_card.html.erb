@@ -1,6 +1,6 @@
 <% episode = episode_card %>
 <li>
-  <%= link_to episode_path(episode), class: 'card_item' do %>
+  <%= link_to episode_url_for(episode), class: 'card_item' do %>
     <article>
       <figure class="card_item_imgWrapper">
         <%= image_tag(episode.image_path, alt: episode.title) %>
