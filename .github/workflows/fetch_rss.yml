@@ -42,7 +42,6 @@ jobs:
           else
             echo "run_build=false" >> "$GITHUB_ENV"
           fi
-      - uses: actions/checkout@v4
       - name: commit message and push
         if: env.run_build == 'true'
         env:
