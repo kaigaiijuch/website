@@ -17,6 +17,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        # https://github.com/ad-m/github-push-action#example-workflow-file
+        with:
+          persist-credentials: false 
+          fetch-depth: 0
       - name: Checkout data repo
         uses: actions/checkout@v4
         with:
@@ -42,11 +46,16 @@ jobs:
           else
             echo "run_build=false" >> "$GITHUB_ENV"
           fi
-      - name: commit message and push
+      - name: commit
         if: env.run_build == 'true'
         env:
           RELEASE_TRRIGER_MESSAGE: ${{ vars.RELEASE_TRRIGER_MESSAGE }}
           RELEASE_AUTOMERGE_LABEL: ${{ vars.RELEASE_AUTOMERGE_LABEL }}
         run: |
           git commit --allow-empty -m "${RELEASE_TRRIGER_MESSAGE} ${RELEASE_AUTOMERGE_LABEL} fetch rss feeds at '$(date)'"
-          git push
+      - name: push
+        uses: ad-m/github-push-action@master
+        if: env.run_build == 'true'
+        with:
+          github_token: ${{ secrets.FETCH_RSS_COMMIT_TOKEN }}
+          branch: ${{ github.ref }}
