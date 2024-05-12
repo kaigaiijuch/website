@@ -58,5 +58,5 @@ jobs:
         if: env.run_build == 'true'
         with:
           # Push from Action does not trigger subsequent action: https://github.com/orgs/community/discussions/25702
-          github_token: ${{ secrets.FETCH_RSS_COMMIT_TOKEN }}
+          github_token: ${{ secrets.FETCH_RSS_PUSH_PAT }}
           branch: ${{ github.ref }}
