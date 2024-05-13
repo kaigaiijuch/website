@@ -24,9 +24,9 @@
       <h2>ゲストQ＆A</h2>
 
       <% guest_interview_profile.questions_and_answers.by_topic.each.with_index do |(topic_name, topic_questions_and_answers), index| %>
-        <% label_number = "#{guest_interview_profile.id}-#{index}" %>
         <h4><%= topic_name %>について</h4>
         <div class="cp_box">
+          <% label_number = "#{guest_interview_profile.id}-#{index}" %>
           <input id="cp<%= label_number %>" type="checkbox">
           <label for="cp<%= label_number %>"></label>
           <div class="cp_container">
