@@ -1,11 +1,11 @@
-<section id="guest">
+<section class="guest">
   <div class="guest_img">
     <%= image_tag(guest_interview_profile.image_path, alt: guest_interview_profile.tagline) %>
   </div>
 
 <div class="PC_width_60">
-  <div id="guest_title">
-    <p>ゲスト: <span id="guest_name"><br class='sma'><%= guest_interview_profile.tagline %> <%= guest_interview_profile.guest_name %></span></p>
+  <div class="guest_title">
+    <p>ゲスト: <span class="guest_name"><br class='sma'><%= guest_interview_profile.tagline %> <%= guest_interview_profile.guest_name %></span></p>
   </div>
 
   <div id="guest_introduction">
@@ -17,4 +17,30 @@
 </div>
 </section>
 
-<%= render partial: "questions_and_answers", locals: { questions_and_answers: guest_interview_profile.questions_and_answers } if guest_interview_profile.questions_and_answers.present? %>
+<% if guest_interview_profile.questions_and_answers.present? %> 
+  <section >
+    <hr>
+    <div class="guest_info">
+      <h2>ゲストQ＆A</h2>
+
+      <% guest_interview_profile.questions_and_answers.by_topic.each.with_index do |(topic_name, topic_questions_and_answers), index| %>
+        <h4><%= topic_name %>について</h4>
+        <div class="cp_box">
+          <% label_number = "#{guest_interview_profile.id}-#{index}" %>
+          <input id="cp<%= label_number %>" type="checkbox">
+          <label for="cp<%= label_number %>"></label>
+          <div class="cp_container">
+            <div class="cp_qa">
+              <dl>
+                <% topic_questions_and_answers.each do |topic_questions_and_answer| %>
+                  <dt><%= topic_questions_and_answer.question_text %></dt>
+                  <dd><%= simple_format topic_questions_and_answer.answer_text, {}, wrapper_tag: "span" %></dd>
+                <% end %>
+              </dl>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+<% end %>
