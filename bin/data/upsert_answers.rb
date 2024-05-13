@@ -22,7 +22,7 @@ csv.each.with_index do |row, index|
   guest_id = row['guest_id']
   guest_interview_profile_id = row['guest_interview_profile_id']
 
-  if guest_id.blank? || guest_interview_profile_id.blank?
+  if guest_interview_profile_id.blank?
     puts "Skiping(empty id) row index: #{index}"
     next
   end
@@ -39,11 +39,9 @@ csv.each.with_index do |row, index|
 
     puts "  Importing  #{answer_info}"
 
-    answer = Answer.find_or_initialize_by(question_number:, guest_id:,
-                                          guest_interview_profile_id:)
+    answer = Answer.find_or_initialize_by(question_number:, guest_interview_profile_id:)
     answer.original_question_text = question_text
     answer.answered_on = row['Timestamp']
-    answer.guest_id = guest_id
     answer.guest_interview_profile_id = guest_interview_profile_id
     answer.text = row[question_number]
     answer.save!

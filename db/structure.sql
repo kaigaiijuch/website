@@ -28,19 +28,6 @@ FOREIGN KEY ("guest_id")
 CREATE INDEX "index_guest_interview_profiles_on_guest_id" ON "guest_interview_profiles" ("guest_id");
 CREATE TABLE IF NOT EXISTS "topics" ("code" varchar NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "display_order" integer NOT NULL, CONSTRAINT chk_rails_00c1af1e31 CHECK (display_order > 0));
 CREATE UNIQUE INDEX "index_topics_on_display_order" ON "topics" ("display_order");
-CREATE TABLE IF NOT EXISTS "answers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text NOT NULL, "answered_on" date NOT NULL, "question_number" varchar NOT NULL, "original_question_text" text NOT NULL, "guest_interview_profile_id" integer NOT NULL, "guest_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f5c924b3a5"
-FOREIGN KEY ("question_number")
-  REFERENCES "questions" ("number")
-, CONSTRAINT "fk_rails_068c6d77e9"
-FOREIGN KEY ("guest_interview_profile_id")
-  REFERENCES "guest_interview_profiles" ("id")
-, CONSTRAINT "fk_rails_1d84a4a538"
-FOREIGN KEY ("guest_id")
-  REFERENCES "guests" ("id")
-);
-CREATE INDEX "index_answers_on_question_number" ON "answers" ("question_number");
-CREATE INDEX "index_answers_on_guest_interview_profile_id" ON "answers" ("guest_interview_profile_id");
-CREATE INDEX "index_answers_on_guest_id" ON "answers" ("guest_id");
 CREATE TABLE IF NOT EXISTS "questions" ("number" varchar NOT NULL PRIMARY KEY, "text" text NOT NULL, "display_order" integer NOT NULL, "topic_code" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "about" varchar NOT NULL, CONSTRAINT "fk_rails_251e626c71"
 FOREIGN KEY ("topic_code")
   REFERENCES "topics" ("code")
@@ -51,7 +38,7 @@ FROM answers
 JOIN questions ON answers.question_number = questions.number
 JOIN topics ON questions.topic_code = topics.code
 ORDER BY topics.display_order ASC, questions.display_order ASC
-/* questions_and_answers(id,text,answered_on,question_number,original_question_text,guest_interview_profile_id,guest_id,created_at,updated_at,number,"text:1",display_order,topic_code,"created_at:1","updated_at:1",about,code,name,"display_order:1",answer_text,topic_name,question_text) */;
+/* questions_and_answers(id,text,answered_on,question_number,original_question_text,guest_interview_profile_id,created_at,updated_at,number,"text:1",display_order,topic_code,"created_at:1","updated_at:1",about,code,name,"display_order:1",answer_text,topic_name,question_text) */;
 CREATE TABLE IF NOT EXISTS "guest_interviews" ("episode_number" varchar NOT NULL, "guest_interview_profile_id" integer NOT NULL, "display_order" integer DEFAULT 1 NOT NULL, "interviewed_on" date NOT NULL, "id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, CONSTRAINT "fk_rails_8df479fb6d"
 FOREIGN KEY ("guest_interview_profile_id")
   REFERENCES "guest_interview_profiles" ("id")
@@ -102,7 +89,17 @@ FROM episodes
 LEFT OUTER JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
 WHERE feeds_spotify_for_podcasters.episode_number IS NULL
 /* unpublished_episodes(number,title,summary,long_summary,subtitle,created_at,updated_at,season_number,story_number,type_name,image_path,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator,"created_at:1","updated_at:1") */;
+CREATE TABLE IF NOT EXISTS "answers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text NOT NULL, "answered_on" date NOT NULL, "question_number" varchar NOT NULL, "original_question_text" text NOT NULL, "guest_interview_profile_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_068c6d77e9"
+FOREIGN KEY ("guest_interview_profile_id")
+  REFERENCES "guest_interview_profiles" ("id")
+, CONSTRAINT "fk_rails_f5c924b3a5"
+FOREIGN KEY ("question_number")
+  REFERENCES "questions" ("number")
+);
+CREATE INDEX "index_answers_on_question_number" ON "answers" ("question_number");
+CREATE UNIQUE INDEX "idx_on_guest_interview_profile_id_question_number_2d039c51c9" ON "answers" ("guest_interview_profile_id", "question_number");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240513152943'),
 ('20240429192635'),
 ('20240426134120'),
 ('20240412150356'),

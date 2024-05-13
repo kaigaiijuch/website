@@ -17,6 +17,6 @@
 #
 class Guest < ApplicationRecord
   has_many :interview_profiles, class_name: 'GuestInterviewProfile', inverse_of: :guest
-  has_many :answers, inverse_of: :guest
-  has_many :questions_and_answers, inverse_of: :guest
+  has_many :answers, inverse_of: :guest, through: :interview_profiles
+  has_many :questions_and_answers, inverse_of: :guest, through: :interview_profiles
 end
