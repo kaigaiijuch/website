@@ -16,7 +16,7 @@
 #  image_path      :string
 #  image_url       :string
 #  long_summary    :text
-#  number          :string
+#  number          :string           primary key
 #  published_at    :datetime
 #  season_number   :integer
 #  season_number:1 :string

@@ -24,13 +24,12 @@
 #  updated_at:1               :datetime
 #  created_at                 :datetime
 #  updated_at                 :datetime
-#  guest_id                   :integer
 #  guest_interview_profile_id :integer
 #
 class QuestionsAndAnswer < ApplicationRecord
   self.primary_key = :id
   belongs_to :guest_interview_profile
-  belongs_to :guest
+  has_one :guest, through: :guest_interview_profile
   belongs_to :question, foreign_key: :question_number, primary_key: :number, inverse_of: :answers
   belongs_to :topic, foreign_key: :topic_code, primary_key: :code, inverse_of: :questions
   scope :by_topic, -> { group_by(&:topic_name) }

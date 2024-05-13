@@ -24,7 +24,6 @@
 #  updated_at:1               :datetime
 #  created_at                 :datetime
 #  updated_at                 :datetime
-#  guest_id                   :integer
 #  guest_interview_profile_id :integer
 #
 require 'test_helper'
@@ -46,8 +45,6 @@ class QuestionAndAnswerTest < ActiveSupport::TestCase
   test 'questions_and_answer association of guests should have correct relation and inverse' do
     assert_equal QuestionsAndAnswer.first.guest,
                  guests(:one)
-    assert_equal QuestionsAndAnswer.where(guest: guests(:three)).all,
-                 guests(:three).questions_and_answers
   end
 
   test 'questions_and_answer should be sorted default by topic_code and display_orde of qustions' do
