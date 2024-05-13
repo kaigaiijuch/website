@@ -1,49 +1,45 @@
-<% index = 0 %>
-<% guest_interview_profiles.each.with_index do |guest_interview_profile| %> 
-  <section class="guest">
-    <div class="guest_img">
-      <%= image_tag(guest_interview_profile.image_path, alt: guest_interview_profile.tagline) %>
-    </div>
-
-  <div class="PC_width_60">
-    <div class="guest_title">
-      <p>ゲスト: <span class="guest_name"><br class='sma'><%= guest_interview_profile.tagline %> <%= guest_interview_profile.guest_name %></span></p>
-    </div>
-
-    <div id="guest_introduction">
-    <p>
-      <br class='sma'>
-      <%= simple_format_with_link_new auto_link_url(guest_interview_profile.introduction) %>
-    </p>
-    </div>
+<section class="guest">
+  <div class="guest_img">
+    <%= image_tag(guest_interview_profile.image_path, alt: guest_interview_profile.tagline) %>
   </div>
-  </section>
 
-  <% if guest_interview_profile.questions_and_answers.present? %> 
-    <section >
-      <hr>
-      <div class="guest_info">
-        <h2>ゲストQ＆A</h2>
+<div class="PC_width_60">
+  <div class="guest_title">
+    <p>ゲスト: <span class="guest_name"><br class='sma'><%= guest_interview_profile.tagline %> <%= guest_interview_profile.guest_name %></span></p>
+  </div>
 
-        <% guest_interview_profile.questions_and_answers.by_topic.each do |topic_name, topic_questions_and_answers| %>
-          <% index += 1 %>
-          <h4><%= topic_name %>について</h4>
-          <div class="cp_box">
-            <input id="cp<%= format('%03d', index) %>" type="checkbox">
-            <label for="cp<%= format('%03d', index)  %>"></label>
-            <div class="cp_container">
-              <div class="cp_qa">
-                <dl>
-                  <% topic_questions_and_answers.each do |topic_questions_and_answer| %>
-                    <dt><%= topic_questions_and_answer.question_text %></dt>
-                    <dd><%= simple_format topic_questions_and_answer.answer_text, {}, wrapper_tag: "span" %></dd>
-                  <% end %>
-                </dl>
-              </div>
+  <div id="guest_introduction">
+  <p>
+    <br class='sma'>
+    <%= simple_format_with_link_new auto_link_url(guest_interview_profile.introduction) %>
+  </p>
+  </div>
+</div>
+</section>
+
+<% if guest_interview_profile.questions_and_answers.present? %> 
+  <section >
+    <hr>
+    <div class="guest_info">
+      <h2>ゲストQ＆A</h2>
+
+      <% guest_interview_profile.questions_and_answers.by_topic.each.with_index do |(topic_name, topic_questions_and_answers), index| %>
+        <h4><%= topic_name %>について</h4>
+        <div class="cp_box">
+          <input id="cp<%= %Q|#{guest_interview_profile.id}-#{index}| %>" type="checkbox">
+          <label for="cp<%= %Q|#{guest_interview_profile.id}-#{index}| %>"></label>
+          <div class="cp_container">
+            <div class="cp_qa">
+              <dl>
+                <% topic_questions_and_answers.each do |topic_questions_and_answer| %>
+                  <dt><%= topic_questions_and_answer.question_text %></dt>
+                  <dd><%= simple_format topic_questions_and_answer.answer_text, {}, wrapper_tag: "span" %></dd>
+                <% end %>
+              </dl>
             </div>
           </div>
-        <% end %>
-      </div>
-    </section>
-  <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
 <% end %>

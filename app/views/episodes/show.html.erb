@@ -23,7 +23,7 @@
 <main>
   <%= render partial: 'summary', locals: { episode: @episode } %>
 
-  <%= render partial: 'guest_interview_profile', locals: { guest_interview_profiles: @episode.guest_interview_profiles } %>
+  <%= render partial: 'guest_interview_profile', collection: @episode.guest_interview_profiles %>
 
   <%= render partial: "chapters", locals: { chapters: @episode.chapters } if @episode.chapters.present? %>
 
