@@ -983,12 +983,12 @@ header p.related_link {
 }
 
 
-.guest .guest_title{
+/*.guest .guest_title{
     position: absolute;
     top: 0;
     bottom: 0;
 }
-
+*/
 
 .guest .guest_introduction{
     width: 100%;
