@@ -3,7 +3,8 @@ on:
   repository_dispatch:
     types: [fetch_rss]
   schedule:
-    - cron:  '2 21 * * 1' # target for JST 6:02 am
+    - cron:  '2,22,42 21 * * 1' # target for JST 6:02 am, 6:22 am, 6:42 am
+    # workaround: in some reason, the rss looks not latest version (cache?) therefore try several times
 jobs:
   fetch_rss:
     permissions:
