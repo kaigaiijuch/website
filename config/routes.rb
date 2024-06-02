@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   namespace :preview do
     resources :episodes, only: %i[index show]
   end
+  resources :descriptions, only: :index
 end
