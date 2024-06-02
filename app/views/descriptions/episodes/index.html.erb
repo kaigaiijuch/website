@@ -1,0 +1,14 @@
+<%-
+  title "Description"
+  content_for(:stylesheets) do
+    stylesheet_link_tag 'home_index', media: 'all'
+  end
+%>
+
+<main>
+  <ul>
+    <% @episodes.each do |episode| %>
+      <li><%= episode.published_at rescue nil %>: <%= link_to  episode.title, descriptions_episode_path(episode) %></li>
+    <% end %>
+  </ul>
+</main>
