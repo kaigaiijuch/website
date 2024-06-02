@@ -1,4 +1,4 @@
-<a href="<%= episode_url(episode) %>" target="_blank"><%= episode.title %></a> <a href="<%= episode_url(episode) %>" target="_blank"><%= episode_url(episode) %></a>
+<%= link_to episode.title, episode_url(episode), target: :_blank %> <%= link_to episode_url(episode), episode_url(episode), target: :_blank %>
 <p>
 <% episode.guest_interview_profiles.each do |guest_interview_profile| %>
 ゲスト: <%= guest_interview_profile.tagline %> <%= guest_interview_profile.guest_name %>
@@ -17,8 +17,9 @@
 <% episode.chapters.present? && episode.chapters.each do |chapter| %>
 <%= chapter.time.split('.').first %> <%= chapter.title %>
 <% end %>
-<p>web site: ⁠⁠<a href="https://kaigaiiju.ch/" target="_blank">海外移住channel</a> ⁠⁠
-フィードバックはこちらから！ <a href="⁠⁠https://kaigaiiju.ch/feedback" target="_blank">⁠⁠https://kaigaiiju.ch/feedback</a>⁠⁠
-ホスト: ⁠⁠⁠所 親宏⁠⁠⁠ - ドイツ・ベルリン在住 ソフトウェアエンジニア <a href="https://chikahirotokoro.com/" target="_blank">https://chikahirotokoro.com/</a></p>
+</p><p>
+web site: <%= link_to "海外移住channel", root_url, target: :_blank %>
+フィードバックはこちらから！⁠ <%= link_to new_feedback_url, new_feedback_url, target: :_blank %>
+ホスト: ⁠⁠⁠所 親宏⁠⁠⁠ - ドイツ・ベルリン在住 ソフトウェアエンジニア⁠<%= link_to "https://chikahirotokoro.com/", "https://chikahirotokoro.com/", target: :_blank %></p>
 
 #<%= episode.number %>
