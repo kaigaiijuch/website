@@ -1,0 +1,26 @@
+<a href="<%= episode_url(episode) %>" target="_blank"><%= episode.title %></a> <a href="<%= episode_url(episode) %>" target="_blank"><%= episode_url(episode) %></a>
+
+<p>
+<% episode.guest_interview_profiles.each do |guest_interview_profile| %>
+ゲスト: <%= guest_interview_profile.tagline %> <%= guest_interview_profile.guest_name %>
+<%= simple_format_with_link_new auto_link_url(guest_interview_profile.introduction) %>
+<% end %>
+</p><p>
+<%= simple_format_with_link_new auto_link_url(episode.long_summary) %>
+<% if episode.references.present? %>
+リファレンス:
+<ul>
+  <% episode.references.each do |reference| %>
+    <li><%= link_to reference.caption, reference.link, target: :_blank %></li>
+  <% end %>
+</ul>
+<% end %>
+<% episode.chapters.present? && episode.chapters.each do |chapter| %>
+  <%= chapter.time.split('.').first %> <%= chapter.title %>
+<% end %>
+
+<p>web site: ⁠⁠<a href="https://kaigaiiju.ch/" target="_blank">海外移住channel</a> ⁠⁠
+フィードバックはこちらから！ <a href="⁠⁠https://kaigaiiju.ch/feedback" target="_blank">⁠⁠https://kaigaiiju.ch/feedback</a>⁠⁠
+ホスト: ⁠⁠⁠所 親宏⁠⁠⁠ - ドイツ・ベルリン在住 ソフトウェアエンジニア <a href="https://chikahirotokoro.com/" target="_blank">https://chikahirotokoro.com/</a></p>
+
+#<%= episode.number %>

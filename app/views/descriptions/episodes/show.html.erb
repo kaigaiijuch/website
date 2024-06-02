@@ -1,2 +1,12 @@
-<h1>Descriptions::Episodes#show</h1>
-<p>Find me in app/views/descriptions/episodes/show.html.erb</p>
+<%-
+  title "Description"
+  content_for(:stylesheets) do
+    stylesheet_link_tag 'home_index', media: 'all'
+  end
+%>
+
+<main>
+  <textarea rows="200" cols="auto" readonly>
+    <%= raw render partial: 'spotify_for_podcasters_description', locals: { episode: @episode } %>
+  </textarea>
+</main>

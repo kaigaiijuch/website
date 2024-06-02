@@ -9,6 +9,9 @@ module Descriptions
                          .all
     end
 
-    def show; end
+    def show
+      @episode = Episode.includes(:guest_interview_profiles)
+                        .find(params[:id])
+    end
   end
 end
