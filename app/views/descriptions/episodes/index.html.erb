@@ -8,7 +8,7 @@
 <main>
   <ul>
     <% @episodes.each do |episode| %>
-      <li><%= episode.published_at %>: <%= link_to  episode.title, descriptions_episode_path(episode) %></li>
+      <li><%= episode.published_at %> <%= link_to  episode.title, descriptions_episode_path(episode) %></li>
     <% end %>
   </ul>
 </main>
