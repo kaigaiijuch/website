@@ -8,7 +8,7 @@
 <% if episode.references.present? %>
   リファレンス:<br />
   <% episode.references.each do |reference| %>
-    ・<%= link_to reference.caption, reference.link, target: :_blank %><br />
+    ・<%= reference.caption %> <%= link_to reference.link, reference.link, target: :_blank %><br />
   <% end %>
 <% end %>
 
@@ -17,6 +17,9 @@
   <%= chapter.time.split('.').first %> <%= chapter.title %><br />
 <% end %>
 <br />
-web site: <%= link_to "海外移住channel", root_url, target: :_blank %><br />
-フィードバックはこちらから！⁠ <%= link_to new_feedback_url, new_feedback_url, target: :_blank %>><br />
-ホスト: ⁠⁠⁠所 親宏⁠⁠⁠ - ドイツ・ベルリン在住 ソフトウェアエンジニア⁠<%= link_to "https://chikahirotokoro.com/", "https://chikahirotokoro.com/", target: :_blank %></p>
+
+#海外移住channel<br />
+<br />
+web site: 海外移住channel <%= link_to root_url, root_url, target: :_blank %><br />
+フィードバックはこちらから！⁠ <%= link_to new_feedback_url, new_feedback_url, target: :_blank %><br />
+ホスト: ⁠⁠⁠所 親宏⁠⁠⁠ - ドイツ・ベルリン在住 ソフトウェアエンジニア ⁠<%= link_to "https://chikahirotokoro.com/", "https://chikahirotokoro.com/", target: :_blank %></p>
