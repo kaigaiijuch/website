@@ -5,6 +5,10 @@
   end
 %>
 
+<% content_for(:header_contents) do %>
+  <h1>Description - エピソード一覧</h1>
+<% end %>
+
 <main>
   <ul>
     <% @episodes.each do |episode| %>
