@@ -1,5 +1,8 @@
 <% if Rails.application.config.x.enable_preview %>
-  <%= link_to preview_episodes_path, style: 'cursor: pointer;position: fixed;left: 0px;bottom: 0px;z-index: 9999;font-size: 12px;border-radius: 0px 8px 0px 0px;border: 1px solid #9b1c1c;background: #fdf2f2;' do %>
+  <%= link_to preview_episodes_path, style: 'cursor: pointer;position: fixed;left: 0px;bottom: 45px;z-index: 9999;font-size: 12px;border-radius: 0px 8px 0px 0px;border: 1px solid #9b1c1c;background: #fdf2f2;' do %>
     プレビュー一覧(開発用)
+  <% end %>
+  <%= link_to descriptions_path, style: 'cursor: pointer;position: fixed;left: 0px;bottom: 70px;z-index: 9999;font-size: 12px;border-radius: 0px 8px 0px 0px;border: 1px solid #9b1c1c;background: #fdf2f2;' do %>
+    Description
   <% end %>
 <% end %>
