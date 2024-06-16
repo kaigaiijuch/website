@@ -1,7 +1,7 @@
 <%= link_to episode.title, episode_url(episode), target: :_blank %> <%= link_to episode_url(episode), episode_url(episode), target: :_blank %><br />
 <br />
 <% episode.guest_interview_profiles.each do |guest_interview_profile| %>
-  ゲスト: <%= guest_interview_profile.tagline %> <%= guest_interview_profile.guest_name %>
+  ゲスト: <%= guest_interview_profile.abroad_living_summary %> <%= guest_interview_profile.job_title %> <%= guest_interview_profile.guest_name %>
   <%= simple_format auto_link_url(guest_interview_profile.introduction) %>
 <% end %>
 <%= simple_format episode.long_summary %>

@@ -5,7 +5,7 @@
 
 <div class="PC_width_60">
   <div class="guest_title">
-    <p>ゲスト: <span class="guest_name"><br class='sma'><%= guest_interview_profile.tagline %> <%= guest_interview_profile.guest_name %></span></p>
+    <p>ゲスト: <span class="guest_name"><br class='sma'> <%= guest_interview_profile.abroad_living_summary %> <%= guest_interview_profile.job_title %> <%= guest_interview_profile.guest_name %></span></p>
   </div>
 
   <div id="guest_introduction">
@@ -17,7 +17,7 @@
 </div>
 </section>
 
-<% if guest_interview_profile.questions_and_answers.present? %> 
+<% if guest_interview_profile.questions_and_answers.present? %>
   <section >
     <hr>
     <div class="guest_info">
