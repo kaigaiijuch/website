@@ -9,7 +9,6 @@
 #  interviewed_on        :date             not null
 #  introduction          :text             not null
 #  job_title             :string           not null
-#  tagline               :string           not null
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  guest_id              :integer          not null
@@ -26,7 +25,6 @@
 one:
   guest: one
   guest_name: 奥田 一成
-  tagline: ドイツ・ベルリン ソフトウェアエンジニア
   job_title: ソフトウェアエンジニア
   introduction: |
     子育てやクラブミュージックに興味があります。
@@ -38,7 +36,6 @@ one:
 two:
   guest: two
   guest_name: 細井 洋介
-  tagline: アメリカ・ロサンゼルス/ニューヨーク ドイツ・ベルリン 映像ディレクター
   job_title: 映像ディレクター
   introduction: ベルリン在住映像ディレクター
   abroad_living_summary: アメリカ・ロサンゼルス/ニューヨーク 8年 ドイツ・ベルリン在住 8年目
@@ -48,7 +45,6 @@ two:
 one_second:
   guest: one
   guest_name: 奥田 一成
-  tagline: ドイツ・ベルリン イギリス・ロンドン(予定) ソフトウェアエンジニア
   job_title: スーパーソフトウェアエンジニア
   introduction: |
      ロンドンに引っ越しを考えています。
@@ -59,7 +55,6 @@ one_second:
 three:
   guest: three
   guest_name: 所 親宏
-  tagline: インド ヨガの先生
   job_title: ヨガの先生
   introduction: ヨガの先生をしています
   abroad_living_summary: インド 9回目 ヨガの先生 所親宏
