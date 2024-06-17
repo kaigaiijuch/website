@@ -21,11 +21,6 @@ FOREIGN KEY ("episode_number")
   REFERENCES "episodes" ("number")
 , CONSTRAINT chk_rails_f3946b04e3 CHECK (display_order > 0));
 CREATE UNIQUE INDEX "index_episode_references_on_episode_number_and_display_order" ON "episode_references" ("episode_number", "display_order");
-CREATE TABLE IF NOT EXISTS "guest_interview_profiles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "guest_id" integer NOT NULL, "tagline" varchar NOT NULL, "job_title" varchar NOT NULL, "introduction" text NOT NULL, "abroad_living_summary" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "guest_name" varchar NOT NULL, "image_path" varchar NOT NULL, "interviewed_on" date NOT NULL, CONSTRAINT "fk_rails_f9437323b7"
-FOREIGN KEY ("guest_id")
-  REFERENCES "guests" ("id")
-);
-CREATE INDEX "index_guest_interview_profiles_on_guest_id" ON "guest_interview_profiles" ("guest_id");
 CREATE TABLE IF NOT EXISTS "topics" ("code" varchar NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "display_order" integer NOT NULL, CONSTRAINT chk_rails_00c1af1e31 CHECK (display_order > 0));
 CREATE UNIQUE INDEX "index_topics_on_display_order" ON "topics" ("display_order");
 CREATE TABLE IF NOT EXISTS "questions" ("number" varchar NOT NULL PRIMARY KEY, "text" text NOT NULL, "display_order" integer NOT NULL, "topic_code" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "about" varchar NOT NULL, CONSTRAINT "fk_rails_251e626c71"
@@ -98,7 +93,13 @@ FOREIGN KEY ("question_number")
 );
 CREATE INDEX "index_answers_on_question_number" ON "answers" ("question_number");
 CREATE UNIQUE INDEX "idx_on_guest_interview_profile_id_question_number_2d039c51c9" ON "answers" ("guest_interview_profile_id", "question_number");
+CREATE TABLE IF NOT EXISTS "guest_interview_profiles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "guest_id" integer NOT NULL, "job_title" varchar NOT NULL, "introduction" text NOT NULL, "abroad_living_summary" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "guest_name" varchar NOT NULL, "image_path" varchar NOT NULL, "interviewed_on" date NOT NULL, CONSTRAINT "fk_rails_f9437323b7"
+FOREIGN KEY ("guest_id")
+  REFERENCES "guests" ("id")
+);
+CREATE INDEX "index_guest_interview_profiles_on_guest_id" ON "guest_interview_profiles" ("guest_id");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240617180326'),
 ('20240513152943'),
 ('20240429192635'),
 ('20240426134120'),
