@@ -1080,6 +1080,10 @@ header p.related_link {
     margin-top: 2rem;
 }
 
+h1 {
+    font-size: 1.15em;
+}
+
 /*スマートフォンでは有効（改行する）*/
    .sma{
         display: block;
