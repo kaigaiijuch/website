@@ -259,6 +259,10 @@ h6 {
     text-wrap: balance;
 }
 
+h1{
+    font-size: 1.6em;
+}
+
 mark {
     padding: 0.1rem;
 }
