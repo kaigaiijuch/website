@@ -1,0 +1,17 @@
+<%-
+  title "Description"
+  content_for(:stylesheets) do
+    stylesheet_link_tag 'home_index', media: 'all'
+  end
+%>
+
+<main>
+  <code rows="70" cols="auto" readonly>
+    <%= render partial: 'description', locals: { episode: @episode } %>
+  </code>
+
+  <h2>html for Spotify For Podcasters</h2>
+  <textarea rows="70" cols="auto" readonly>
+    <%= raw render partial: 'spotify_for_podcasters_description', locals: { episode: @episode } %>
+  </textarea>
+</main>

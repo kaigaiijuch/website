@@ -20,4 +20,9 @@ Rails.application.routes.draw do
   namespace :preview do
     resources :episodes, only: %i[index show]
   end
+
+  get :descriptions, to: 'descriptions#index'
+  namespace :descriptions do
+    resources :episodes, only: %i[index show]
+  end
 end
