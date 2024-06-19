@@ -3,7 +3,6 @@
     display: none;
 }
 
-
 .width_80{
     width: 80%;
     margin: 0 auto;
@@ -17,25 +16,20 @@
     width: 40%;
 }
 
-
 .PC_width_40{
     width: 40%;
     margin: 0 auto;
 }
 
-
-
 #Available_on{
     width-content:initital;
 }
-
 
 #Available_on{
 /*    background-color: #6643b5;*/
     background: linear-gradient(140deg, #00d2ff 0%, #3a47d5 100%);
     padding-top: 2rem;
     padding-bottom: 4rem;
-
 }
 
 #Available_on h2{
@@ -53,7 +47,6 @@
     margin:0 2.5%;
     display: inline-grid;
 }
-
 
 .btn_link_listen{
     width: 11%;
@@ -73,7 +66,6 @@
     opacity: 90%;
 }
 
-
 .btn_link_podcast img{
     width: 100%;
     display: inline-grid;
@@ -84,7 +76,6 @@
     background: linear-gradient(140deg, #00d2ff 0%, #3a47d5 100%);
     color: #fff;
 }
-
 
 .btn_link_sns{
     width: 10%;
@@ -100,7 +91,6 @@
     opacity: 90%;
 }
 
-
 .btn_link_sns img{
     width: 100%;
     display: inline-grid;
@@ -115,7 +105,6 @@
  width: auto;
 }
 
-
 #footer_contents{
     margin-bottom: 3rem;
 }
@@ -127,90 +116,78 @@
 
 .non_bold{
     font-weight: normal;
-  }
-
-
+}
 
 @media (max-width: 840px) {
    /* 横幅が840px以下の場合に適用するスタイル */
+    main{
+        padding-top: 0rem;
+    }
 
-main{
-    padding-top: 0rem;
-}
+    h2{
+        font-size: 1.3em;
+    }
 
-h2{
-    font-size: 1.3em;
-}
+    p{
+        font-size: 0.95em;
+    }
 
-p{
-    font-size: 0.95em;
-}
+    li, dl {
+        font-size: 0.95em;
+    }
 
-li, dl {
-    font-size: 0.95em;
-}
-
-/*スマートフォンでは有効（改行する）*/
-   .sma{
+    /*スマートフォンでは有効（改行する）*/
+    .sma{
         display: block;
     }
 
+    #Available_on .btn_link_podcast{
+        width:20.7%;
+        margin:0 5%;
+    }
 
-#Available_on .btn_link_podcast{
-    width:20.7%;
-    margin:0 5%;
-}
+    #Available_on .btn_link_Apple, #Available_on .btn_link_google{
+        width: 21%;
+        margin:0 5%;
+    }
 
-#Available_on .btn_link_Apple, #Available_on .btn_link_google{
-    width: 21%;
-    margin:0 5%;
-}
+    #Available_on .btn_link_listen{
+        width: 23%;
+        margin:0 5%;
+    }
 
-#Available_on .btn_link_listen{
-    width: 23%;
-    margin:0 5%;
-}
+    #Available_on .btn_link_youtube {
+        width: 23%;
+        margin:auto 5%;
+    }
 
-#Available_on .btn_link_youtube {
-    width: 23%;
-    margin:auto 5%;
-}
+    #Available_on .btn_link_youtube {
+        position: relative;
+        top: -0%;
+    }
 
-#Available_on .btn_link_youtube {
-    position: relative;
-    top: -0%;
-}
+    #Available_on img{
+        margin-top: 2rem;
+    }
 
+    #Available_on header{
+        padding-bottom: 1rem;
+    }
 
-#Available_on img{
-    margin-top: 2rem;
-}
+    #Follow_us .btn_link_sns{
+        width: 20%;
+        margin: 0 4.5%;
+    }
 
+    #Follow_us .logo_x{
+        width: 17%;
+    }
 
-#Available_on header{
-    padding-bottom: 1rem;
-}
+    #Follow_us .sp_line2{
+        margin-top: 2.5rem;
+    }
 
-#Follow_us .btn_link_sns{
-    width: 20%;
-    margin:0 4.5%;
-
-}
-
-#Follow_us .logo_x{
-    width: 17%;
-}
-
-#Follow_us .sp_line2{
-    margin-top: 2.5rem;
-
-
-#Follow_us{
-    padding-bottom:9%;
-}
-
-
-
-
-
+    #Follow_us{
+        padding-bottom:9%;
+    }
 }

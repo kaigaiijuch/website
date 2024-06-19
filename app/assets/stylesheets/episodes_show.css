@@ -899,13 +899,6 @@ input[type="radio"]+label {
 }
 
 
-
-
-
-
-
-
-
 header iframe{
     width: 70%;
     margin-top: 80px;
@@ -927,174 +920,155 @@ header iframe{
         display: block;
     }
 
-nav{
-    margin-bottom: 2rem;
-}
-
-
-#header{
-   padding-top: 1rem;
-
-}
-
-#header_top{
-    width: 90%;
-    padding: 1rem;
-    padding-bottom: 0;
-}
-
-header iframe {
-    width: 75%;
-    margin-top: 1.5em;
-}
-
-header p.related_link {
-    position: initial;
-}
-
-#summary{
-    width: 90%;
-}
-
-.guest{
-    width: 90%;
-}
-
-
-.guest .guest_img{
-    width: 100%;
-    margin-right: 0%;
-}
-
-
-
-.guest img{
-    width: 30%;
-    display: block;
-   margin: 0 auto;
-
-}
-
-.guest_name{
-    line-height: 2;
-}
-
-.guest .PC_width_60{
-    margin-top: 1rem;
-    width: 95%;
-    display: inline-block;
-    position: relative;
-}
-
-
-/*.guest .guest_title{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-}
-*/
-
-.guest .guest_introduction{
-    width: 100%;
-}
-
-
-
-
-
-
-
-.guest .PC_width_60 p{
-    margin-top: 0;
-}
-
-.guest_info {
-    width: 90%;
-}
-
-.cp_box label:after {
-    line-height: var(--line-height);
-/*    line-height: 2.5rem;*/
-    position: absolute;
-    z-index: 2;
-    bottom: 0;
-    left: 50%;
-    width: 100%;
-    font-family: FontAwesome;
-    content: ' 続きを読む';
-    transform: translate(-50%, 0);
-    letter-spacing: 0.05em;
-/*    background-color: var(--color-link);*/
-/*    border: 1.5px solid var(--color-link);*/
-/*    color: var(--color-bg);*/
-    background-color:var(--color-bg) ;
-    color: var(--color-link);
-    border-radius: 5px;
-    font-size: 0.95em;
-    padding: 0.1rem 2rem;
-/*    font-weight: bold;*/
-}
-
-
-
-.cp_box label {
-    position: absolute;
-    z-index: 1;
-    bottom: 0;
-    width: 100%;
-    height: 60px; /* グラデーションの高さ */
-    cursor: pointer;
-    text-align: center;
-    /* 以下グラデーションは背景を自身のサイトに合わせて設定してください */
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, #fff 100%);
-}
-
-.cp_box .cp_container {
-    overflow: hidden;
-    height: 90px; /* 開く前に見えている部分の高さ */
-    transition: all 0.5s;
-}
-
-.cp_box input:checked ~ .cp_container {
-    height: auto;
-    padding-bottom: 40px; /* 閉じるボタンのbottomからの位置 */
-    transition: all 0.5s;
-}
-
-
-#table_contents ul {
-    padding-inline-start: 0px;
-
-}
-
-
-
-.PC_width_40, .PC_width_60{
-    width: 85%;
-}
-
-
-#writing_detail{
-    max-width: var(--width-content);
-    width: 90%;
-    margin:  0 auto 2rem auto;
-}
-
-#writing_detail #footnote{
-    margin-top: 2rem;
-}
-
-h1 {
-    font-size: 1.15em;
-}
-
-/*スマートフォンでは有効（改行する）*/
-   .sma{
-        display: block;
+    nav{
+        margin-bottom: 2rem;
     }
 
 
+    #header{
+    padding-top: 1rem;
 
+    }
+
+    #header_top{
+        width: 90%;
+        padding: 1rem;
+        padding-bottom: 0;
+    }
+
+    header iframe {
+        width: 75%;
+        margin-top: 1.5em;
+    }
+
+    header p.related_link {
+        position: initial;
+    }
+
+    #summary{
+        width: 90%;
+    }
+
+    .guest{
+        width: 90%;
+    }
+
+
+    .guest .guest_img{
+        width: 100%;
+        margin-right: 0%;
+    }
+
+    .guest img{
+        width: 30%;
+        display: block;
+    margin: 0 auto;
+
+    }
+
+    .guest_name{
+        line-height: 2;
+    }
+
+    .guest .PC_width_60{
+        margin-top: 1rem;
+        width: 95%;
+        display: inline-block;
+        position: relative;
+    }
+
+
+    /*.guest .guest_title{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
+    */
+
+    .guest .guest_introduction{
+        width: 100%;
+    }
+
+    .guest .PC_width_60 p{
+        margin-top: 0;
+    }
+
+    .guest_info {
+        width: 90%;
+    }
+
+    .cp_box label:after {
+        line-height: var(--line-height);
+    /*    line-height: 2.5rem;*/
+        position: absolute;
+        z-index: 2;
+        bottom: 0;
+        left: 50%;
+        width: 100%;
+        font-family: FontAwesome;
+        content: ' 続きを読む';
+        transform: translate(-50%, 0);
+        letter-spacing: 0.05em;
+    /*    background-color: var(--color-link);*/
+    /*    border: 1.5px solid var(--color-link);*/
+    /*    color: var(--color-bg);*/
+        background-color:var(--color-bg) ;
+        color: var(--color-link);
+        border-radius: 5px;
+        font-size: 0.95em;
+        padding: 0.1rem 2rem;
+    /*    font-weight: bold;*/
+    }
+
+    .cp_box label {
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        width: 100%;
+        height: 60px; /* グラデーションの高さ */
+        cursor: pointer;
+        text-align: center;
+        /* 以下グラデーションは背景を自身のサイトに合わせて設定してください */
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, #fff 100%);
+    }
+
+    .cp_box .cp_container {
+        overflow: hidden;
+        height: 90px; /* 開く前に見えている部分の高さ */
+        transition: all 0.5s;
+    }
+
+    .cp_box input:checked ~ .cp_container {
+        height: auto;
+        padding-bottom: 40px; /* 閉じるボタンのbottomからの位置 */
+        transition: all 0.5s;
+    }
+
+    #table_contents ul {
+        padding-inline-start: 0px;
+
+    }
+
+    .PC_width_40, .PC_width_60{
+        width: 85%;
+    }
+
+    #writing_detail{
+        max-width: var(--width-content);
+        width: 90%;
+        margin:  0 auto 2rem auto;
+    }
+
+    #writing_detail #footnote{
+        margin-top: 2rem;
+    }
+
+    h1 {
+        font-size: 1.15em;
+    }
+
+    /*スマートフォンでは有効（改行する）*/
+    .sma{
+        display: block;
+    }
 }
-
-
