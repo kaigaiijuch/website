@@ -73,12 +73,6 @@ INNER JOIN episode_speakers ON episode_speaker_transcriptions.episode_speaker_id
 INNER JOIN speakers ON episode_speakers.speaker_id = speakers.id
 ORDER BY episode_number, start_at
 /* episode_transcriptions(id,episode_speaker_id,text,start_at,end_at,created_at,updated_at,"id:1",episode_number,speaker_id,role_name,"created_at:1","updated_at:1","id:2",name,image_path,global_id,"created_at:2","updated_at:2") */;
-CREATE TABLE IF NOT EXISTS "episodes" ("number" varchar NOT NULL PRIMARY KEY, "title" varchar(200) NOT NULL, "summary" text NOT NULL, "long_summary" text NOT NULL, "subtitle" text NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "season_number" integer DEFAULT NULL, "story_number" integer DEFAULT NULL, "type_name" varchar NOT NULL, "image_path" varchar NOT NULL, CONSTRAINT "fk_rails_eafa210e4e"
-FOREIGN KEY ("type_name")
-  REFERENCES "episode_types" ("name")
-);
-CREATE UNIQUE INDEX "index_episodes_on_number" ON "episodes" ("number");
-CREATE UNIQUE INDEX "index_episodes_on_season_number_and_story_number" ON "episodes" ("season_number", "story_number");
 CREATE VIEW "unpublished_episodes" AS SELECT *
 FROM episodes
 LEFT OUTER JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
@@ -98,7 +92,14 @@ FOREIGN KEY ("guest_id")
   REFERENCES "guests" ("id")
 );
 CREATE INDEX "index_guest_interview_profiles_on_guest_id" ON "guest_interview_profiles" ("guest_id");
+CREATE TABLE IF NOT EXISTS "episodes" ("number" varchar NOT NULL PRIMARY KEY, "title" varchar(200) NOT NULL, "summary" text DEFAULT NULL, "long_summary" text NOT NULL, "subtitle" text NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "season_number" integer DEFAULT NULL, "story_number" integer DEFAULT NULL, "type_name" varchar NOT NULL, "image_path" varchar NOT NULL, CONSTRAINT "fk_rails_eafa210e4e"
+FOREIGN KEY ("type_name")
+  REFERENCES "episode_types" ("name")
+);
+CREATE UNIQUE INDEX "index_episodes_on_number" ON "episodes" ("number");
+CREATE UNIQUE INDEX "index_episodes_on_season_number_and_story_number" ON "episodes" ("season_number", "story_number");
 INSERT INTO "schema_migrations" (version) VALUES
+('20240714215055'),
 ('20240617180326'),
 ('20240513152943'),
 ('20240429192635'),

@@ -10,7 +10,7 @@
 #  season_number :integer
 #  story_number  :integer
 #  subtitle      :text             not null
-#  summary       :text             not null
+#  summary       :text
 #  title         :string(200)      not null
 #  type_name     :string           not null
 #  created_at    :datetime         not null
