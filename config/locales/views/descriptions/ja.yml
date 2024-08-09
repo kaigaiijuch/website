@@ -1,0 +1,14 @@
+ja:
+  views:
+    descriptions:
+      index_title: 説明文 - エピソード一覧
+      main_description: 配信用説明文(SNSなど)
+      html_for_spotify: Spotify For Podcasters 用 HTMLコード
+      code:
+        guest: ゲスト
+        summary: 概要
+        reference: リファレンス
+        hash_tag: '#海外移住channel'
+        website_name: 'web site: 海外移住channel'
+        feedback_message: 'フィードバックはこちらから！⁠'
+        host: 'ホスト: ⁠⁠⁠所 親宏⁠⁠⁠ - ドイツ・ベルリン在住 ソフトウェアエンジニア'

@@ -1,0 +1,25 @@
+<%= link_to episode.title, episode_url(episode), target: :_blank %> <%= link_to episode_url(episode), episode_url(episode), target: :_blank %>
+<p>
+<% episode.guest_interview_profiles.each do |guest_interview_profile| %>
+<%= t('views.descriptions.code.guest') %>: <%= guest_interview_profile.abroad_living_summary %> <%= guest_interview_profile.job_title %> <%= guest_interview_profile.guest_name %>
+<%= auto_link_url(guest_interview_profile.introduction) %>
+<% end %>
+</p><p>
+<%= t('views.descriptions.code.summary') %>: <%= episode.long_summary %>
+<% if episode.references.present? %>
+<%= t('views.descriptions.code.reference') %>:
+<ul>
+  <% episode.references.each do |reference| %>
+<li><%= link_to reference.caption, reference.link, target: :_blank %></li>
+  <% end %>
+</ul>
+<% end %>
+<% episode.chapters.present? && episode.chapters.each do |chapter| %>
+<%= chapter_time(chapter) %>  <%= chapter.title %>
+<% end %>
+</p><p>
+<%= t('views.descriptions.code.website_name') %> <%= link_to "海外移住channel", root_url, target: :_blank %>
+<%= t('views.descriptions.code.feedback_message') %>⁠ <%= link_to new_feedback_url, new_feedback_url, target: :_blank %>
+<%= t('views.descriptions.code.host') %> ⁠<%= link_to "https://chikahirotokoro.com/", "https://chikahirotokoro.com/", target: :_blank %></p>
+
+#<%= episode.number %>

@@ -1,0 +1,20 @@
+<%-
+  title "Description"
+  content_for(:stylesheets) do
+    stylesheet_link_tag 'home_index', media: 'all'
+  end
+%>
+
+<main>
+  <h2><%= t('views.descriptions.main_description') %></h2>
+  <code rows="70" cols="auto" readonly>
+    <%= render partial: 'description', locals: { episode: @episode } %>
+  </code>
+
+  <h2><%= t('views.descriptions.main_description') %></h2>
+  <textarea rows="50" cols="auto" readonly>
+    <% disable_annotate_rendered_view_with_filenames do %>
+      <%= raw render partial: 'spotify_for_podcasters_description', locals: { episode: @episode } %>
+    <% end %>
+  </textarea>
+</main>
