@@ -15,7 +15,7 @@
 </ul>
 <% end %>
 <% episode.chapters.present? && episode.chapters.each do |chapter| %>
-<%= chapter.time.split('.').first %> <%= chapter.title %>
+<%= chapter_time(chapter) %>  <%= chapter.title %>
 <% end %>
 </p><p>
 web site: <%= link_to "海外移住channel", root_url, target: :_blank %>

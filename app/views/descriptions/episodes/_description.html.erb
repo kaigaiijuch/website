@@ -15,7 +15,7 @@
 
 <br />
 <% episode.chapters.present? && episode.chapters.each do |chapter| %>
-  <%= chapter.time.split('.').first %> <%= chapter.title %><br />
+  <%= chapter_time(chapter) %> <%= chapter.title %><br />
 <% end %>
 <br />
 
