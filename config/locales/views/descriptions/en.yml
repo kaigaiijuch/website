@@ -1,0 +1,14 @@
+en:
+  views:
+    descriptions:
+      index_title: Description - List of Episodes
+      main_description: Main description
+      html_for_spotify: HTML for Spotify For Podcasters
+      code:
+        guest: guest
+        summary: summary
+        reference: reference
+        hash_tag: '(TBD)'
+        website_name: 'web site: (TBD)'
+        feedback_message: (TBD)
+        host: 'host: (TBD)'

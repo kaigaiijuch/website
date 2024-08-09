@@ -6,12 +6,12 @@
 %>
 
 <main>
-  <h2>Main desciption</h2>
+  <h2><%= t('views.descriptions.main_description') %></h2>
   <code rows="70" cols="auto" readonly>
     <%= render partial: 'description', locals: { episode: @episode } %>
   </code>
 
-  <h2>html for Spotify For Podcasters</h2>
+  <h2><%= t('views.descriptions.main_description') %></h2>
   <textarea rows="50" cols="auto" readonly>
     <% disable_annotate_rendered_view_with_filenames do %>
       <%= raw render partial: 'spotify_for_podcasters_description', locals: { episode: @episode } %>
