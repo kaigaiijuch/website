@@ -1,0 +1,4 @@
+ja:
+  hello: "Hello world"
+  error:
+    forbidden: "forbidden"
