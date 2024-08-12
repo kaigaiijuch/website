@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -vx
+fi
+
+if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
+    echo 'Usage: ./download_csvs_from_gsheet [GSHEET_WEBSITE_DATA_ID] [OUTPUT_DIR_WEBSITE_DATA] [GSHEET_ANSWERS_ID] [OUTPUT_DIR_ANSWERS]
+'
+    exit
+fi
+
+cd "$(dirname "$0")"
+
+main() {
+    if ! (which gsheet >/dev/null); then
+      echo "## gsheet is not insstalled, installing gsheet..."
+      # https://github.com/cristoper/gsheet
+      go install github.com/cristoper/gsheet/cmd/gsheet@latest
+    fi
+
+    GSHEET_WEBSITE_DATA_ID=${1}
+    OUTPUT_DIR_WEBSITE_DATA=${2}
+
+    echo "## Downloading csvs from website_data..."
+    sheet_names=(
+        episodes
+        episode_references
+        hosts
+        guests
+        guest_interview_profiles
+        guest_interviews
+        questions
+        hosts
+        speakers
+        episode_speakers
+    )
+    for sheet_name in "${sheet_names[@]}"; do
+        echo "Downloading ${sheet_name}..."
+        gsheet csv --id "$GSHEET_WEBSITE_DATA_ID" --range "$sheet_name" > "../../${OUTPUT_DIR_WEBSITE_DATA}/website_data - ${sheet_name}.csv"
+    done
+
+    echo "## Downloading csvs from answers..."
+    GSHEET_ANSWERS_ID=${3}
+    OUTPUT_DIR_ANSWERS=${4}
+
+    gsheet csv --id "$GSHEET_ANSWERS_ID" --range csv_export > "../../${OUTPUT_DIR_ANSWERS}/podcast 出演者 ヒアリングシート (Responses) - csv_export.csv"
+}
+
+main "$@"
+
+# styleguide | Style guides for Google-originated open-source projects https://google.github.io/styleguide/shellguide.html
+# Shell Script Best Practices — The Sharat's https://sharats.me/posts/shell-script-best-practices/

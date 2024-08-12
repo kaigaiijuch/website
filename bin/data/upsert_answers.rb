@@ -6,7 +6,12 @@ file_path = ARGV[0]
 
 puts "Importing to answers from #{file_path}"
 
-csv = CSV.parse(File.read(file_path), headers: true, row_sep: "\r\n")
+csv = begin
+  CSV.parse(File.read(file_path), headers: true, row_sep: "\r\n")
+rescue CSV::MalformedCSVError
+  CSV.parse(File.read(file_path), headers: true)
+end
+
 QUESTION_NUMBER_REGEXP = /^#(?<number>.+):.*【.+】(?<text>.+)$/
 
 ## change headers to match the Answer model attributes

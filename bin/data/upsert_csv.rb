@@ -15,6 +15,11 @@ puts "Importing #{csv.count} records to #{model}"
 csv.each do |row|
   find_by_pair = model.primary_key.present? ? { model.primary_key => row.fetch(model.primary_key) } : row.to_h
 
+  if find_by_pair.values.any?(&:blank?)
+    puts "skip #{model} #{find_by_pair}"
+    next
+  end
+
   model.find_or_initialize_by(find_by_pair).tap do |record|
     puts "Importing #{model} #{find_by_pair}"
     record.attributes = row.to_h
