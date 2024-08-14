@@ -35,7 +35,7 @@ class EpisodeChapter
 
   class Relation
     require 'csv'
-    BASE_PATH = Rails.root + Rails.application.config.x.static_file_root_directory
+    BASE_PATH = Rails.application.config.x.static_file_root_directory
 
     def initialize(episode_number:)
       @episode_number = episode_number
