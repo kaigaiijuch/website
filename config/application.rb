@@ -55,8 +55,5 @@ module Website
     }
     Rails.application.routes.default_url_options = url_options
     Rails.application.default_url_options = url_options
-
-    # Set the static file root directory
-    config.x.static_file_root_directory = Rails.root.join('data')
   end
 end

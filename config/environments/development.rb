@@ -79,4 +79,7 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
       system("bundle exec rubocop -A --fail-level=E #{parsable_files.shelljoin}", exception: true)
     end
   end
+
+  # Set the static file root directory
+  config.x.static_file_root_directory = Rails.root.join('data')
 end

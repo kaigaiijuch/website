@@ -59,4 +59,7 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Set the static file root directory
+  config.x.static_file_root_directory = Rails.root.join('test/data')
 end
