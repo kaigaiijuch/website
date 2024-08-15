@@ -82,6 +82,6 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
-  # default static file directory path for ActiveFile
-  config.x.static_file_root_directory = 'data'
+  # Set the static file root directory
+  config.x.static_file_root_directory = Rails.root.join('data')
 end

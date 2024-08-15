@@ -32,6 +32,7 @@ FileUtils.chdir APP_ROOT do
       system! "git clone #{ENV.fetch('DATA_REPO')} data"
     else
       Dir.mkdir("data")
+      FileUtils.mkdir_p("data/assets/images")
       puts "setup local data directory"
     end
   end
