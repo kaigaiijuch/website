@@ -1,10 +1,10 @@
 <%-
-  set_meta_tags site: site_name, reverse: true,
+  set_meta_tags site: t("site.name"), reverse: true,
     og: {
       title: :full_title,
       description: :description,
       image: :image_src,
-      site_name:  site_name
+      site_name: t("site.name")
     },
     twitter: {
       card: "summary",
@@ -28,6 +28,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%= auto_discovery_link_tag :rss, episodes_url(format: :rss) %>
     <%= favicon_link_tag %>
     <%= favicon_link_tag('apple-touch-icon.png', sizes: "180x180", rel: "apple-touch-icon") %>
     <%= favicon_link_tag('favicon-32x32.png', sizes: "32x32", rel: "apple-touch-icon", type: 'image/png') %>

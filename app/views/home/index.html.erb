@@ -11,10 +11,8 @@
 %>
 
 <% content_for(:header_contents) do %>
-  <h1><%=  site_name %></h1>
-  <p>海外移住channel は海外移住経験者へのインタビューを中心としたポッドキャストです</p>
-  <p>主に海外での生活・仕事・子育てに関するトピックを取り上げています</p>
-  <p>月2−4回 火曜朝更新</p>
+  <h1><%= t('site.name') %></h1>
+  <%= simple_format t('site.description').gsub("\n", "\n\n") %>
   <br>
   <iframe src="https://podcasters.spotify.com/pod/show/kaigaiijuch/embed" height="auto" width="100%" frameborder="0" scrolling="no">
   </iframe>

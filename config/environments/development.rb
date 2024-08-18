@@ -82,4 +82,7 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
 
   # Set the static file root directory
   config.x.static_file_root_directory = Rails.root.join('data')
+
+  # allow to access from ngrok
+  config.hosts << /.*\.ngrok-free\.app/
 end

@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  def site_name
-    Rails.application.config.x.site_name
-  end
-
   def google_tag_manager_id
     Rails.application.config.x.google_tag_manager_id
   end
