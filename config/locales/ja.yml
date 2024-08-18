@@ -1,4 +1,6 @@
 ja:
+  error:
+    forbidden: "forbidden"
   site:
     name: 海外移住channel
     description: |
