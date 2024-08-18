@@ -11,8 +11,8 @@
 %>
 
 <% content_for(:header_contents) do %>
-  <h1><%= site_name %></h1>
-  <%= simple_format t('site_description').gsub("\n", "\n\n") %>
+  <h1><%= t('site.name') %></h1>
+  <%= simple_format t('site.description').gsub("\n", "\n\n") %>
   <br>
   <iframe src="https://podcasters.spotify.com/pod/show/kaigaiijuch/embed" height="auto" width="100%" frameborder="0" scrolling="no">
   </iframe>

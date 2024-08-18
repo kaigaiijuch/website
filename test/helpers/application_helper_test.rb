@@ -3,12 +3,6 @@
 require 'test_helper'
 
 module ApplicationHelperTest
-  class SiteNameHelperTest < ActionView::TestCase
-    test 'site_name() should return site_name' do
-      assert_equal 'Site name', site_name
-    end
-  end
-
   class GoogleTagManagerIdHelperTest < ActionView::TestCase
     test 'google_tag_manager_id() should return tag id' do
       assert_equal 'GTM-XXXX', google_tag_manager_id

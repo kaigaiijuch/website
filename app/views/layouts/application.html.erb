@@ -1,10 +1,10 @@
 <%-
-  set_meta_tags site: site_name, reverse: true,
+  set_meta_tags site: t("site.name"), reverse: true,
     og: {
       title: :full_title,
       description: :description,
       image: :image_src,
-      site_name:  site_name
+      site_name: t("site.name")
     },
     twitter: {
       card: "summary",
