@@ -19,4 +19,9 @@ class EpisodesControllerTest < ActionDispatch::IntegrationTest
     get episodes_path
     assert_response :success
   end
+
+  test 'should get rss' do
+    get episodes_path(format: :rss)
+    assert_response :success
+  end
 end
