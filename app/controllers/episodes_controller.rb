@@ -4,6 +4,10 @@ class EpisodesController < ApplicationController
   before_action :set_episode, only: %i[show]
   def index
     @episodes = PublishedEpisode.order(published_at: :desc).all
+    respond_to do |format|
+      format.html
+      format.rss { render layout: false }
+    end
   end
 
   def show; end
