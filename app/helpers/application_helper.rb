@@ -29,7 +29,7 @@ module ApplicationHelper
   end
 
   def auto_link_url(text)
-    auto_link(text, html: { target: '_blank' }, link: :urls)
+    auto_link(text, html: { target: '_blank' })
   end
 
   def simple_format_with_link_new(text)
