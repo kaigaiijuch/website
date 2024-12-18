@@ -1,6 +1,18 @@
 <section id="summary">
   <p>
-    <%= simple_format_with_link_new auto_link_url(episode.long_summary) %>
+    <% if episode.long_summary.size > 1000 %>
+      <div class="cp_box">
+        <input id="cp_summary" type="checkbox">
+        <label for="cp_summary"></label>
+        <div class="cp_container summary">
+          <div class="cp_summary">
+            <%= simple_format_with_link_new auto_link_url(episode.long_summary) %>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <%= simple_format_with_link_new auto_link_url(episode.long_summary) %>
+    <% end %>
   </p>
   <% if episode.references.present? %>
     <div>
