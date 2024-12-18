@@ -26,5 +26,5 @@ class DropTimestamps < ActiveRecord::Migration[7.1]
     remove_column :speakers, :created_at, :datetime, null: false
     remove_column :speakers, :updated_at, :datetime, null: false
   end
-  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 end
