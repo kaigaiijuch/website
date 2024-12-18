@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class DropTimestamps < ActiveRecord::Migration[7.1]
+  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
   def change
     remove_column :answers, :created_at, :datetime, null: false
     remove_column :answers, :updated_at, :datetime, null: false
@@ -25,4 +26,5 @@ class DropTimestamps < ActiveRecord::Migration[7.1]
     remove_column :speakers, :created_at, :datetime, null: false
     remove_column :speakers, :updated_at, :datetime, null: false
   end
+  # rubocop:enable Metrics/MethodLength
 end
