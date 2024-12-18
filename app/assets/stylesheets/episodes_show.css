@@ -823,6 +823,11 @@ input[type="radio"]+label {
     height: 95px; /* 開く前に見えている部分の高さ */
     transition: all 0.5s;
 }
+
+.cp_box .cp_container.summary {
+    height: 250px; /* 開く前に見えている部分の高さ */
+}
+
 .cp_box input:checked + label {
     /* display: none ; 閉じるボタンを消す場合解放 */
 }
@@ -1036,6 +1041,10 @@ header iframe{
         overflow: hidden;
         height: 90px; /* 開く前に見えている部分の高さ */
         transition: all 0.5s;
+    }
+
+    .cp_box .cp_container.summary {
+        height: 300px; /* 開く前に見えている部分の高さ */
     }
 
     .cp_box input:checked ~ .cp_container {
