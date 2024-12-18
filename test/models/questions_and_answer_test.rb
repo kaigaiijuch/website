@@ -9,7 +9,6 @@
 #  answer_text                :text
 #  answered_on                :date
 #  code                       :string
-#  created_at:1               :datetime
 #  display_order              :integer
 #  display_order:1            :integer
 #  name                       :string
@@ -21,9 +20,6 @@
 #  text:1                     :text
 #  topic_code                 :string
 #  topic_name                 :string
-#  updated_at:1               :datetime
-#  created_at                 :datetime
-#  updated_at                 :datetime
 #  guest_interview_profile_id :integer
 #
 require 'test_helper'

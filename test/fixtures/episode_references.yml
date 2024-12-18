@@ -7,8 +7,6 @@
 #  display_order  :integer          default(1), not null
 #  episode_number :string           not null
 #  link           :string           not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
 #
 # Indexes
 #

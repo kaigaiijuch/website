@@ -7,8 +7,6 @@
 #  id         :integer          not null, primary key
 #  image_path :string           not null
 #  name       :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
 #  global_id  :string           not null
 #
 class Speaker < ApplicationRecord

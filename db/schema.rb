@@ -10,15 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_14_215055) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_18_203520) do
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
     t.date "answered_on", null: false
     t.string "question_number", null: false
     t.text "original_question_text", null: false
     t.integer "guest_interview_profile_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["guest_interview_profile_id", "question_number"], name: "idx_on_guest_interview_profile_id_question_number_2d039c51c9", unique: true
     t.index ["question_number"], name: "index_answers_on_question_number"
   end
@@ -28,8 +26,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_215055) do
     t.string "link", null: false
     t.text "caption", null: false
     t.integer "display_order", default: 1, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["episode_number", "display_order"], name: "index_episode_references_on_episode_number_and_display_order", unique: true
     t.check_constraint "display_order > 0"
   end
@@ -44,8 +40,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_215055) do
     t.text "text", null: false
     t.string "start_at", null: false
     t.string "end_at", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["episode_speaker_id"], name: "index_episode_speaker_transcriptions_on_episode_speaker_id"
   end
 
@@ -53,8 +47,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_215055) do
     t.string "episode_number", null: false
     t.integer "speaker_id", null: false
     t.string "role_name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["episode_number", "speaker_id"], name: "index_episode_speakers_on_episode_number_and_speaker_id", unique: true
     t.index ["role_name", "episode_number"], name: "index_episode_speakers_on_role_name_and_episode_number", unique: true
     t.index ["speaker_id"], name: "index_episode_speakers_on_speaker_id"
@@ -94,8 +86,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_215055) do
     t.string "episode_type", null: false
     t.string "guid", null: false
     t.string "creator", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["episode_number"], name: "index_feeds_spotify_for_podcasters_on_episode_number", unique: true
     t.index ["published_at"], name: "index_feeds_spotify_for_podcasters_on_published_at"
   end
@@ -105,8 +95,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_215055) do
     t.string "job_title", null: false
     t.text "introduction", null: false
     t.string "abroad_living_summary", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "guest_name", null: false
     t.string "image_path", null: false
     t.date "interviewed_on", null: false
@@ -128,8 +116,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_215055) do
     t.string "nickname", null: false
     t.string "name", null: false
     t.string "english_name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["nickname"], name: "index_guests_on_nickname", unique: true
   end
 
@@ -137,8 +123,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_215055) do
     t.string "nickname", null: false
     t.string "name", null: false
     t.string "english_name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["nickname"], name: "index_hosts_on_nickname", unique: true
   end
 
@@ -146,8 +130,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_215055) do
     t.text "text", null: false
     t.integer "display_order", null: false
     t.string "topic_code", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "about", null: false
     t.index ["topic_code", "display_order"], name: "index_questions_on_topic_code_and_display_order", unique: true
     t.check_constraint "display_order > 0"
@@ -157,8 +139,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_215055) do
     t.string "name", null: false
     t.string "image_path", null: false
     t.string "global_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "topics", primary_key: "code", id: :string, force: :cascade do |t|

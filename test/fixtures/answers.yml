@@ -7,8 +7,6 @@
 #  original_question_text     :text             not null
 #  question_number            :string           not null
 #  text                       :text             not null
-#  created_at                 :datetime         not null
-#  updated_at                 :datetime         not null
 #  guest_interview_profile_id :integer          not null
 #
 # Indexes

@@ -11,8 +11,6 @@
 #  interviewed_on        :date             not null
 #  introduction          :text             not null
 #  job_title             :string           not null
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
 #  guest_id              :integer          not null
 #
 # Indexes
