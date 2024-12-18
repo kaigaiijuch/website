@@ -6,8 +6,6 @@
 #  end_at             :string           not null
 #  start_at           :string           not null
 #  text               :text             not null
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
 #  episode_speaker_id :integer          not null
 #
 # Indexes
