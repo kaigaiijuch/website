@@ -7,8 +7,6 @@
 #  id             :integer          not null, primary key
 #  episode_number :string           not null
 #  role_name      :string           not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
 #  speaker_id     :integer          not null
 #
 # Indexes
