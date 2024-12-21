@@ -49,7 +49,7 @@ main() {
   echo "## Check changes..."
   git add "$SQLITE_DATA_FILE_NAME" "$SQLITE_DATA_FILE_NAME".sql
   git status
-  git diff --cached
+  git diff --cached || true
   ask 'Do you want to commit these changes?'
 
   echo "## Commit changes and push to repository..."
