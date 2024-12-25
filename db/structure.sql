@@ -5,7 +5,7 @@ CREATE VIEW "published_episodes" AS SELECT
  *
 FROM episodes
 JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
-/* published_episodes(number,title,summary,long_summary,subtitle,created_at,updated_at,season_number,story_number,type_name,image_path,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator) */;
+/* published_episodes(number,title,summary,long_summary,subtitle,season_number,story_number,type_name,image_path,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator) */;
 CREATE TABLE IF NOT EXISTS "episode_types" ("name" varchar NOT NULL PRIMARY KEY);
 CREATE UNIQUE INDEX "index_episode_types_on_name" ON "episode_types" ("name");
 CREATE TABLE IF NOT EXISTS "topics" ("code" varchar NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "display_order" integer NOT NULL, CONSTRAINT chk_rails_00c1af1e31 CHECK (display_order > 0));
@@ -28,13 +28,7 @@ CREATE VIEW "unpublished_episodes" AS SELECT *
 FROM episodes
 LEFT OUTER JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
 WHERE feeds_spotify_for_podcasters.episode_number IS NULL
-/* unpublished_episodes(number,title,summary,long_summary,subtitle,created_at,updated_at,season_number,story_number,type_name,image_path,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator) */;
-CREATE TABLE IF NOT EXISTS "episodes" ("number" varchar NOT NULL PRIMARY KEY, "title" varchar(200) NOT NULL, "summary" text DEFAULT NULL, "long_summary" text NOT NULL, "subtitle" text NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "season_number" integer DEFAULT NULL, "story_number" integer DEFAULT NULL, "type_name" varchar NOT NULL, "image_path" varchar NOT NULL, CONSTRAINT "fk_rails_eafa210e4e"
-FOREIGN KEY ("type_name")
-  REFERENCES "episode_types" ("name")
-);
-CREATE UNIQUE INDEX "index_episodes_on_number" ON "episodes" ("number");
-CREATE UNIQUE INDEX "index_episodes_on_season_number_and_story_number" ON "episodes" ("season_number", "story_number");
+/* unpublished_episodes(number,title,summary,long_summary,subtitle,season_number,story_number,type_name,image_path,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator) */;
 CREATE TABLE IF NOT EXISTS "answers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text NOT NULL, "answered_on" date NOT NULL, "question_number" varchar NOT NULL, "original_question_text" text NOT NULL, "guest_interview_profile_id" integer NOT NULL, CONSTRAINT "fk_rails_068c6d77e9"
 FOREIGN KEY ("guest_interview_profile_id")
   REFERENCES "guest_interview_profiles" ("id")
@@ -98,7 +92,14 @@ FOREIGN KEY ("topic_code")
 , CONSTRAINT chk_rails_3b193a7e50 CHECK (display_order > 0));
 CREATE UNIQUE INDEX "index_questions_on_topic_code_and_display_order" ON "questions" ("topic_code", "display_order");
 CREATE TABLE IF NOT EXISTS "speakers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "image_path" varchar NOT NULL, "global_id" varchar NOT NULL);
+CREATE TABLE IF NOT EXISTS "episodes" ("number" varchar NOT NULL PRIMARY KEY, "title" varchar(200) NOT NULL, "summary" text DEFAULT NULL, "long_summary" text NOT NULL, "subtitle" text NOT NULL, "season_number" integer DEFAULT NULL, "story_number" integer DEFAULT NULL, "type_name" varchar NOT NULL, "image_path" varchar NOT NULL, CONSTRAINT "fk_rails_eafa210e4e"
+FOREIGN KEY ("type_name")
+  REFERENCES "episode_types" ("name")
+);
+CREATE UNIQUE INDEX "index_episodes_on_number" ON "episodes" ("number");
+CREATE UNIQUE INDEX "index_episodes_on_season_number_and_story_number" ON "episodes" ("season_number", "story_number");
 INSERT INTO "schema_migrations" (version) VALUES
+('20241225105312'),
 ('20241218203520'),
 ('20240714215055'),
 ('20240617180326'),

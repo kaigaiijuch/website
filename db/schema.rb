@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_18_203520) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_25_105312) do
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
     t.date "answered_on", null: false
@@ -61,8 +61,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_18_203520) do
     t.text "summary"
     t.text "long_summary", null: false
     t.text "subtitle", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "season_number"
     t.integer "story_number"
     t.string "type_name", null: false
