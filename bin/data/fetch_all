@@ -23,8 +23,8 @@ ANSWER_CSV=${3}
 TRANSCRIPTION_CSV_DIR=${4}
 
 main() {
-    echo "## Truncate database..."
-    ../rake db:truncate_all
+    echo "## Drop and create database..."
+    ../rake db:drop db:create
 
     echo "## Prepare database..."
     ../rake db:prepare db:seed
