@@ -5,7 +5,6 @@
 # Table name: published_episodes
 #
 #  audio_file_url  :string
-#  created_at:1    :datetime
 #  creator         :string
 #  description     :text
 #  duration        :string
@@ -28,10 +27,7 @@
 #  title           :string(200)
 #  title:1         :string
 #  type_name       :string
-#  updated_at:1    :datetime
 #  url             :string
-#  created_at      :datetime
-#  updated_at      :datetime
 #
 class PublishedEpisode < ApplicationRecord
   self.primary_key = 'number'
