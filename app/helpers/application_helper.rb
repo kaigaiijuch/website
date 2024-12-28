@@ -35,4 +35,12 @@ module ApplicationHelper
   def simple_format_with_link_new(text)
     simple_format(text, {}, { sanitize_options: { attributes: %w[target href] } })
   end
+
+  def markdown_link(text)
+    if text.match(/\[.*\]\(.*\)/)
+      text.gsub(/\[(.*?)\]\((.*?)\)/, link_to('\1', '\2', target: '_blank', rel: 'noopener'))
+    else
+      text
+    end
+  end
 end

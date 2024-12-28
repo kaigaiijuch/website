@@ -85,4 +85,23 @@ module ApplicationHelperTest
       assert_equal expected_output, simple_format_with_link_new(text)
     end
   end
+
+  class MarkDownLinkHelperTest < ActionView::TestCase
+    test 'markdown_link() should return linked html' do
+      text = 'this is the [Link](http://example.com) for it' # markdown link
+      expected_output = 'this is the <a target="_blank" rel="noopener" href="http://example.com">Link</a> for it'
+      assert_equal expected_output, markdown_link(text)
+    end
+
+    test 'markdown_link() should return linked html for multiple links' do
+      text = 'this is the [Link](http://example.com) for it and [Another](https://example.org)' # markdown link
+      expected_output = 'this is the <a target="_blank" rel="noopener" href="http://example.com">Link</a> for it and <a target="_blank" rel="noopener" href="https://example.org">Another</a>' # rubocop:disable Layout/LineLength
+      assert_equal expected_output, markdown_link(text)
+    end
+
+    test 'markdown_link() should do nothing without links' do
+      text = 'this is the text without link'
+      assert_equal text, markdown_link(text)
+    end
+  end
 end
