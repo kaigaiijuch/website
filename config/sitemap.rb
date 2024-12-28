@@ -27,9 +27,8 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), :lastmod => article.updated_at
   #   end
 
-  add(root_path, priority: 1.0, changefreq: 'weekly')
-  add(episodes_path, priority: 1.0, changefreq: 'weekly')
+  add(episodes_path, priority: 1.0, lastmod: nil, changefreq: 'weekly')
   PublishedEpisode.find_each do |episode|
-    add episode_path(episode), priority: 1.0, changefreq: 'weekly'
+    add episode_path(episode), lastmod: nil, priority: 1.0, changefreq: 'weekly'
   end
 end
