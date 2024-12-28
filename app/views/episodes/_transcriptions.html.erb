@@ -1,6 +1,6 @@
   <section id="writing_detail">
     <% transcriptions.each do |transcription| %>
-      <p><span><%= image_tag(transcription.image_path, class: "icon_talking") %><%= transcription.name %>:  </span><%= markdown_link transcription.text %></p>
+      <p><span><%= image_tag(transcription.image_path, class: "icon_talking") %><%= transcription.name %>:  </span><%= raw markdown_link transcription.text %></p>
     <% end %>
 
     <% if false %>
