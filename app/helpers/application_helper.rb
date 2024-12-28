@@ -27,12 +27,4 @@ module ApplicationHelper
   def format_date_to_ymd(time)
     time.strftime('%Y-%m-%d')
   end
-
-  def auto_link_url(text)
-    auto_link(text, html: { target: '_blank' })
-  end
-
-  def simple_format_with_link_new(text)
-    simple_format(text, {}, { sanitize_options: { attributes: %w[target href] } })
-  end
 end
