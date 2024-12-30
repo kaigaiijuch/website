@@ -77,8 +77,14 @@ module EpisodesHelperTest
       assert_equal expected_output, markdown_link(text)
     end
 
+    test 'markdown_link() should return linked html with escaped parenthes and another is not)' do
+      text = 'the [Andy Hunt](https://en.wikipedia.org/wiki/Andy_Hunt_(author\)) and [Another](https://example.org) !'
+      expected_output = 'the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Andy_Hunt_(author)">Andy Hunt</a> and <a target="_blank" rel="noopener" href="https://example.org">Another</a> !' # rubocop:disable Layout/LineLength
+      assert_equal expected_output, markdown_link(text)
+    end
+
     test 'markdown_link() should return linked html for multiple links' do
-      text = 'this is the [Link](http://example.com) for it and [Another](https://example.org)' # markdown link
+      text = 'this is the [Link](http://example.com) for it and [Another](https://example.org)'
       expected_output = 'this is the <a target="_blank" rel="noopener" href="http://example.com">Link</a> for it and <a target="_blank" rel="noopener" href="https://example.org">Another</a>' # rubocop:disable Layout/LineLength
       assert_equal expected_output, markdown_link(text)
     end
