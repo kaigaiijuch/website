@@ -17,9 +17,14 @@ module EpisodesHelper
     simple_format(text, {}, { sanitize_options: { attributes: %w[target href] } })
   end
 
+  MARKDOWN_LINK_REGEX = /\[(.*?)\]\((.*?)\)/
+  MARKDOWN_LINK_REGEX_WITH_PARENTHESIS = /\[(.*?)\]\((.*?)\\\)\)/
   def markdown_link(text)
-    if text.match(/\[.*\]\(.*\)/)
-      text.gsub(/\[(.*?)\]\((.*?)\)/, link_to('\1', '\2', target: '_blank', rel: 'noopener'))
+    case text
+    when MARKDOWN_LINK_REGEX_WITH_PARENTHESIS
+      text.gsub(MARKDOWN_LINK_REGEX_WITH_PARENTHESIS, link_to('\1', '\2)', target: '_blank', rel: 'noopener'))
+    when MARKDOWN_LINK_REGEX
+      text.gsub(MARKDOWN_LINK_REGEX, link_to('\1', '\2', target: '_blank', rel: 'noopener'))
     else
       text
     end
