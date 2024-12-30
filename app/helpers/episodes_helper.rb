@@ -19,6 +19,8 @@ module EpisodesHelper
 
   MARKDOWN_LINK_REGEX = /\[(.*?)\]\((.*?)\)/
   MARKDOWN_LINK_REGEX_WITH_PARENTHESIS = /\[(.*?)\]\((.*?)\\\)\)/
+  # if the link has ended with a parenthesis, it needs be escaped with a backslash
+  #   e.g. https://en.wikipedia.org/wiki/Dave_Thomas_(programmer) -> [Dave Thomas](https://en.wikipedia.org/wiki/Dave_Thomas_(programmer\))
   def markdown_link(text)
     case text
     when MARKDOWN_LINK_REGEX_WITH_PARENTHESIS
