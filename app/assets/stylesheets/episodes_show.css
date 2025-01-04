@@ -627,12 +627,12 @@ header b{
 
 .episode_photo{
     text-align: center;
+    max-width: var(--width-content);
     margin: 2em auto 1em auto;
 }
 
 .episode_photo img{
-    width: 40%;
-    margin-right: 5%;
+    width: 50%;
 }
 
 
@@ -981,7 +981,7 @@ header iframe{
     }
 
     .episode_photo img{
-        width: 80%;
+        width: 75%;
     }
 
     .guest_name{
