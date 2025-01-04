@@ -17,12 +17,12 @@
 
 one:
   episode_number: '0'
-  image_path: my/image.jpg
+  image_path: logos/logo_kaigaiiju-channel.webp
 
 two:
   episode_number: '1-1'
-  image_path: my/image2.jpg
+  image_path: logos/logo_kaigaiiju-channel.webp
 
 three:
   episode_number: '1-2'
-  image_path: my/image3.jpg
+  image_path: logos/logo_kaigaiiju-channel.webp
