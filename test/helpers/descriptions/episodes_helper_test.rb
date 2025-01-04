@@ -6,7 +6,7 @@ module Descriptions
   module EpisodesHelperTest
     class ChapterTimeHelperTest < ActionView::TestCase
       test 'chapter_time() should return HH:MM:SS' do
-        chapter = EpisodeChapter.new(time: '01:02:03.456')
+        chapter = EpisodeChapter.new(time: '01:02:03.456', title: 'title', episode_number: '0')
         assert_equal '01:02:03', chapter_time(chapter)
       end
     end
