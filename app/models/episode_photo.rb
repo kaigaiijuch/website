@@ -17,4 +17,5 @@
 #  episode_number  (episode_number => episodes.number)
 #
 class EpisodePhoto < ApplicationRecord
+  belongs_to :episode, primary_key: :number, foreign_key: :episode_number, inverse_of: :photo
 end

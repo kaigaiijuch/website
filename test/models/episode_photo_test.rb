@@ -19,7 +19,12 @@
 require 'test_helper'
 
 class EpisodePhotoTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'episode should have a relation with photo' do
+    assert episode_photos(:one), Episode.find('0').photo
+    assert episode_photos(:two), PublishedEpisode.find('1-1').photo
+    assert episode_photos(:three), UnpublishedEpisode.find('1-2').photo
+    assert episodes(:one), episode_photos(:one).episode
+    assert episodes(:two), episode_photos(:two).episode
+    assert episodes(:three), episode_photos(:three).episode
+  end
 end

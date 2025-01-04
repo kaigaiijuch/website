@@ -22,3 +22,7 @@ one:
 two:
   episode_number: '1-1'
   image_path: my/image2.jpg
+
+three:
+  episode_number: '1-2'
+  image_path: my/image3.jpg
