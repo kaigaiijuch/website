@@ -35,12 +35,7 @@ class EpisodeChapter
       return [] unless file_path.exist?
 
       CSV.read(file_path, col_sep: ' ')
-         .inject([]) do |result, row|
-        result << EpisodeChapter.new(
-          time: row[0], title: row[1..-1].join(' '),
-          episode_number: @episode_number
-        )
-      end
+         .map { |row| EpisodeChapter.new(time: row[0], title: row[1..].join(' '), episode_number: @episode_number) }
          .sort_by(&:time)
     end
 
