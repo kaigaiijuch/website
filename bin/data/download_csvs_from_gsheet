@@ -28,6 +28,7 @@ main() {
     sheet_names=(
         episodes
         episode_references
+        episode_photos
         hosts
         guests
         guest_interview_profiles

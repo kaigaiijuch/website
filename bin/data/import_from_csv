@@ -23,6 +23,7 @@ main() {
     base_csv_file_names=(
         episodes.csv
         episode_references.csv
+        episode_photos.csv
         hosts.csv
         guests.csv
         guest_interview_profiles.csv

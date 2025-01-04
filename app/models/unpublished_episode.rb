@@ -35,6 +35,7 @@ class UnpublishedEpisode < ApplicationRecord
   include Episode::HasReferences
   include Episode::HasChapters
   include Episode::HasTranscriptions
+  include Episode::HasPhoto
 
   module Previewable
     def published_at

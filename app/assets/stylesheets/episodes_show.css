@@ -625,6 +625,15 @@ header b{
 
 }
 
+.episode_photo{
+    text-align: center;
+    max-width: var(--width-content);
+    margin: 2em auto 1em auto;
+}
+
+.episode_photo img{
+    width: 50%;
+}
 
 
 .guest .PC_width_60{
@@ -969,6 +978,10 @@ header iframe{
         display: block;
     margin: 0 auto;
 
+    }
+
+    .episode_photo img{
+        width: 75%;
     }
 
     .guest_name{
