@@ -1,22 +1,12 @@
 # frozen_string_literal: true
 
 class EpisodeChapter
-  attr_reader :data
+  attr_reader :time, :title, :episode_number
 
-  def initialize(data)
-    @data = data
-  end
-
-  def time
-    data[:time]
-  end
-
-  def title
-    data[:title]
-  end
-
-  def episode_number
-    data[:episode_number]
+  def initialize(time:, title:, episode_number:)
+    @time = time
+    @title = title
+    @episode_number = episode_number
   end
 
   def episode
@@ -44,9 +34,8 @@ class EpisodeChapter
     def all
       return [] unless file_path.exist?
 
-      CSV.read(file_path, col_sep: ' ', headers: %i[time title])
-         .map { |row| row.to_h.merge(episode_number: @episode_number) }
-         .inject([]) { |result, data| result << EpisodeChapter.new(data) }
+      CSV.read(file_path, col_sep: ' ')
+         .map { |row| EpisodeChapter.new(time: row[0], title: row[1..].join(' '), episode_number: @episode_number) }
          .sort_by(&:time)
     end
 

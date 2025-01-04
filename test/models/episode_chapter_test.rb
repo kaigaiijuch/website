@@ -8,7 +8,7 @@ class EpisodeChapterTest < ActiveSupport::TestCase
     assert_equal 4, episode_chapters.size
 
     episode_chapter = episode_chapters.first
-    assert_equal '海外移住channel始動', episode_chapter.title
+    assert_equal '海外移住 channel 始動', episode_chapter.title
     assert_equal '00:00:00.998', episode_chapter.time
     assert_equal episodes(:one), episode_chapter.episode
   end
