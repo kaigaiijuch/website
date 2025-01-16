@@ -29,7 +29,6 @@ main() {
         episodes
         episode_references
         episode_photos
-        hosts
         guests
         guest_interview_profiles
         guest_interviews

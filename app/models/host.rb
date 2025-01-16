@@ -4,14 +4,18 @@
 #
 # Table name: hosts
 #
-#  id           :integer          not null, primary key
-#  english_name :string           not null
-#  name         :string           not null
-#  nickname     :string           not null
+#  id          :integer          not null, primary key
+#  description :string
+#  name        :string           not null
+#  role_name   :string           not null
+#  title       :string           not null
+#  url         :string
 #
-# Indexes
+# Foreign Keys
 #
-#  index_hosts_on_nickname  (nickname) UNIQUE
+#  role_name  (role_name => host_roles.name)
 #
 class Host < ApplicationRecord
+  belongs_to :role, class_name: 'HostRole', foreign_key: :role_name, primary_key: :name,
+                    inverse_of: :hosts
 end
