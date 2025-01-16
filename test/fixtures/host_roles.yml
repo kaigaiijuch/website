@@ -1,0 +1,16 @@
+# == Schema Information
+#
+# Table name: host_roles
+#
+#  name :string           not null
+#
+# Indexes
+#
+#  index_host_roles_on_name  (name) UNIQUE
+#
+
+main:
+  name: main
+
+regular:
+  name: regular

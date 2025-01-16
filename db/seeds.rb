@@ -23,6 +23,10 @@ end
   Topic.find_or_create_by!(topic_attrs)
 end
 
-%w[host co-host guest guest2].each do |type_name|
-  EpisodeSpeakerRole.find_or_create_by!(name: type_name)
+%w[host co-host guest guest2].each do |role|
+  EpisodeSpeakerRole.find_or_create_by!(name: role)
+end
+
+%w[main regular sub trial].each do |role|
+  HostRole.find_or_create_by!(name: role)
 end
