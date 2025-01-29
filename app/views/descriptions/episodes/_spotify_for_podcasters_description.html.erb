@@ -20,6 +20,6 @@
 </p><p>
 <%= t('views.descriptions.code.website_name') %> <%= link_to "海外移住channel", root_url, target: :_blank %>
 <%= t('views.descriptions.code.feedback_message') %>⁠ <%= link_to new_feedback_url, new_feedback_url, target: :_blank %>
-<%= t('views.descriptions.code.host') %> ⁠<%= link_to "https://chikahirotokoro.com/", "https://chikahirotokoro.com/", target: :_blank %></p>
+<%= simple_format_with_link_new auto_link_url t('views.descriptions.code.host') %>
 
 #<%= episode.number %>
