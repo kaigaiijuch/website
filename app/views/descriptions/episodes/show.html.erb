@@ -6,6 +6,14 @@
 %>
 
 <main>
+  <h2>タイトル</h2>
+  <button class="" onClick="navigator.clipboard.writeText(document.getElementById('title-description').value);">
+    Copy
+  </button>
+  <textarea id="title-description" rows="1" cols="auto" readonly>
+    <%= @episode.title %>
+  </textarea>
+
   <h2><%= t('views.descriptions.main_description') %></h2>
   <code id="sns-description" rows="70" cols="auto" readonly>
     <%= render partial: 'description', locals: { episode: @episode } %>
