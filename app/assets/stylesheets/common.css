@@ -122,6 +122,10 @@
     padding-top: 10px;
 }
 
+.padding_5{
+    padding: 5px;
+}
+
 @media (max-width: 840px) {
    /* 横幅が840px以下の場合に適用するスタイル */
     main{
