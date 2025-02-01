@@ -119,7 +119,7 @@
 }
 
 .padding_top_10{
-    padding-top: 1rem;
+    padding-top: 10px;
 }
 
 @media (max-width: 840px) {
