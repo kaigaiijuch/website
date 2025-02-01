@@ -118,6 +118,10 @@
     font-weight: normal;
 }
 
+.padding_top_10{
+    padding-top: 1rem;
+}
+
 @media (max-width: 840px) {
    /* 横幅が840px以下の場合に適用するスタイル */
     main{

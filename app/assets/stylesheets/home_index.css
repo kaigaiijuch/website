@@ -563,9 +563,16 @@ blockquote footer {
     text-align: center;
 }
 
-.logo_chikahiro{
+.logo_host{
     max-width: 13%;
     margin-top: 5%;
+}
+
+@media (max-width: 840px) {
+    /* 横幅が840px以下の場合に適用するスタイル */
+    .logo_host{
+        max-width: 30%;
+    }
 }
 
 .right{
