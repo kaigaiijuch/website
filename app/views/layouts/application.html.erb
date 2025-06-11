@@ -81,6 +81,7 @@
 
     <%= render partial: 'layouts/dev_menu' %>
 
+<% if false %>
     <% if content_for?(:footer) %>
       <%= yield(:footer) %>
     <% else %>
@@ -112,5 +113,6 @@
         </p>
       </footer>
     <% end %>
+<% end %>
   </body>
 </html>
