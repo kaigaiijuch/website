@@ -35,13 +35,16 @@
     <%= link_to 'Top', '#' %>
   </section>
 
-  <%# <%= render partial: "layouts/feedback" %> %>
-
-  <section>
-    <a href="<%= root_path %>" class="link">to Home</a>
-  </section>
+<% if false%>
+  <%= render partial: "layouts/feedback" %>
+<% end %>
 
   <br>
 
+  <section>
+    <a href="<%= root_path %>" class="link">Back to Home</a>
+  </section>
+
+  <br>
 
 </main>
