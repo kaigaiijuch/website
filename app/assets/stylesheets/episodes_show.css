@@ -809,7 +809,7 @@ input[type="radio"]+label {
     left: 96%;
     width: 16rem;
     font-family: FontAwesome;
-    content: ' 続きを読む';
+    content: 'continue';
     transform: translate(-50%, 0);
     letter-spacing: 0.05em;
 /*    background-color: var(--color-link);*/
@@ -842,7 +842,7 @@ input[type="radio"]+label {
 }
 .cp_box input:checked + label:after {
     font-family: FontAwesome;
-    content: ' 閉じる';
+    content: 'close';
 }
 .cp_box input:checked ~ .cp_container {
     height: auto;

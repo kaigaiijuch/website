@@ -63,9 +63,11 @@
             <li>
               <a href="<%= root_path %>">Home</a>
             </li>
+<% if false %>
             <li>
               <a href="<%= episodes_path %>">配信中</a>
             </li>
+<% end %>
           </ul>
         </nav>
         <%= yield(:header_contents) %>
