@@ -7,7 +7,7 @@ en:
       code:
         guest: guest
         summary: summary
-        reference: reference
+        reference: references
         hash_tag: '(TBD)'
         website_name: 'web site: (TBD)'
         feedback_message: (TBD)
