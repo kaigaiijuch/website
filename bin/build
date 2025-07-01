@@ -22,10 +22,10 @@ fi
 cd "$(dirname "$0")"
 
 main() {
-    echo 'creating sitemap.xml ...'
-    rake sitemap:create
+    # echo 'creating sitemap.xml ...'
+    # rake sitemap:create
 
-    echo
+    # echo
 
     echo 'assets precompile ...'
     rake assets:precompile
