@@ -85,4 +85,7 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
 
   # allow to access from ngrok
   config.hosts << /.*\.ngrok-free\.app/
+
+  # allow to access from Cloudflare Tunnel
+  config.hosts << /.*\.trycloudflare\.com/
 end
