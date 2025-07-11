@@ -7,7 +7,7 @@
 
 <main class="feedback-container">
   <div class="feedback-iframe-wrapper">
-    <iframe src="<%= feedback_google_form_url %>" scrolling="no" class="feedback-iframe" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <iframe src="<%= feedback_google_form_url %>" class="feedback-iframe" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
   </div>
   <%# raw feedback_typeform_embed_tag %>
 </main>
@@ -28,8 +28,9 @@
 .feedback-iframe {
   width: 100%;
   max-width: 640px;
-  height: 600px;
+  height: 900px;
   border: none;
+  overflow-y: auto;
 }
 
 @media (max-width: 768px) {
