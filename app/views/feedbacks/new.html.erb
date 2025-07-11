@@ -5,11 +5,50 @@
   disable_footer
 %>
 
-<main>
-  <!--
-  <div style="text-align:center">
-    <iframe src="<%= feedback_google_form_url %>" width="640" height="2300" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+<main class="feedback-container">
+  <div class="feedback-iframe-wrapper">
+    <iframe src="<%= feedback_google_form_url %>" scrolling="no" class="feedback-iframe" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
   </div>
-  -->
-  <%= raw feedback_typeform_embed_tag %>
+  <%# raw feedback_typeform_embed_tag %>
 </main>
+
+<style>
+.feedback-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.feedback-iframe-wrapper {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.feedback-iframe {
+  width: 100%;
+  max-width: 640px;
+  height: 600px;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .feedback-container {
+    padding: 10px;
+  }
+
+  .feedback-iframe {
+    height: 700px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feedback-container {
+    padding: 5px;
+  }
+
+  .feedback-iframe {
+    height: 900px;
+  }
+}
+</style>
