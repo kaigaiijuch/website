@@ -27,4 +27,8 @@ module ApplicationHelper
   def format_date_to_ymd(time)
     time.strftime('%Y-%m-%d')
   end
+
+  def image_url_with_host(path)
+    image_url(path, host: Rails.application.config.x.website_uri.to_s)
+  end
 end
