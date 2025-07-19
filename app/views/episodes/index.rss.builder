@@ -11,7 +11,8 @@ xml.rss version: '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom' do
     @episodes.each do |episode|
       xml.item do
         xml.title episode.title
-        xml.description episode.summary
+        xml.description episode.description
+        xml.image image_url_with_host(episode.image_path)
         xml.pubDate episode.published_at.rfc822
         xml.link episode_url(episode)
         xml.guid episode_url(episode)
