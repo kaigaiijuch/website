@@ -1,22 +1,21 @@
-<%= link_to episode.title, episode_url(episode), target: :_blank %> <%= link_to episode_url(episode), episode_url(episode), target: :_blank %><br />
-<br />
+<%= episode.title %> <%= episode_url(episode) %>
+
 <% episode.guest_interview_profiles.each do |guest_interview_profile| %>
   <%= t('views.descriptions.code.guest') %>: <%= guest_interview_profile.abroad_living_summary %> <%= guest_interview_profile.job_title %> <%= guest_interview_profile.guest_name %>
-  <%= simple_format auto_link_url(guest_interview_profile.introduction) %>
+  <%= guest_interview_profile.introduction %>
 <% end %>
-<%= t('views.descriptions.code.summary') %>: <%= simple_format episode.long_summary %>
+
+<%= t('views.descriptions.code.summary') %>: <%= episode.long_summary %>
 
 <% if episode.references.present? %>
-  <%= t('views.descriptions.code.reference') %>:<br />
+  <%= t('views.descriptions.code.reference') %>:
   <% episode.references.each do |reference| %>
-    ・<%= reference.caption %> <%= link_to reference.link, reference.link, target: :_blank %><br />
+    ・<%= reference.caption %> <%= reference.link %>
   <% end %>
 <% end %>
 
-<br />
 <% episode.chapters.present? && episode.chapters.each do |chapter| %>
-  <%= chapter_time(chapter) %> <%= chapter.title %><br />
+  <%= chapter_time(chapter) %> <%= chapter.title %>
 <% end %>
-<br />
 
-<%= t('views.descriptions.code.hash_tag') %><br />
+<%= t('views.descriptions.code.hash_tag') %>
