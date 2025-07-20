@@ -5,7 +5,7 @@ module Descriptions
     def index
       @episodes = Episode.left_outer_joins(:feed_spotify_for_podcasters)
                          .includes(:feed_spotify_for_podcasters)
-                         .order(published_at: :desc)
+                         .order(:published_at)
                          .all
     end
 

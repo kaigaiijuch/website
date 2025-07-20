@@ -39,4 +39,10 @@ module ApplicationHelperTest
       assert_equal '2022-01-31', format_date_to_ymd(time)
     end
   end
+
+  class ImageURLWithHostHelperTest < ActionView::TestCase
+    test 'image_url_with_host(path) should return the image url with host' do
+      assert_equal 'http://localhost:3001/image.jpg', image_url_with_host('/image.jpg')
+    end
+  end
 end
