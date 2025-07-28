@@ -27,7 +27,7 @@ module EpisodesHelper
         .gsub(MARKDOWN_LINK_REGEX, link_to('\1', '\2', target: '_blank', rel: 'noopener'))
   end
 
-  def episode_logo_image_url(episode)
+  def episode_logo_image_url(episode) # rubocop:disable Metrics/MethodLength
     cl_image_path(
       ENV.fetch('CLOUDINARY_STORY_IMAGE'),
       transformation: [
