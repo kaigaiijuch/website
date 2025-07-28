@@ -6,6 +6,7 @@ ruby '3.3.0'
 
 gem 'active_hash' # for static data
 gem 'bootsnap', require: false
+gem 'cloudinary'
 gem 'meta-tags' # for SEO and social media meta tags
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
