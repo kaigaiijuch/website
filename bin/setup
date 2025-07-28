@@ -22,8 +22,8 @@ FileUtils.chdir APP_ROOT do
   system! "bundle binstubs --all"
 
   puts "\n== Copying sample files =="
-  unless File.exist?(".env")
-    FileUtils.cp ".env.sample", ".env"
+  unless File.exist?(".env.local")
+    FileUtils.cp ".env.local.sample", ".env.local"
   end
 
   puts "\n== Setup Data directory =="

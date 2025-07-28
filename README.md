@@ -57,6 +57,8 @@ curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bear
  $ open http://localhost:3000 # caution it's not HTTPS
 ```
 
+if you need to set local environment variables, you can create [`.env.local`](https://github.com/bkeepers/dotenv?tab=readme-ov-file#customizing-rails) file.
+
 ### docker
 
 ```bash
