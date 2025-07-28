@@ -27,7 +27,7 @@ xml.rss version: '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom' do
                 font_family: 'TakaoExGothic', font_size: 60, text_align: 'center', text: episode.title
               },
               width: 750, crop: 'fit' },
-            { flags: 'layer_apply', gravity: 'center', y: 330 }
+            { flags: 'layer_apply', gravity: 'center', y: 350 }
           ]
         )
 
