@@ -26,4 +26,22 @@ module EpisodesHelper
     text.gsub(MARKDOWN_LINK_REGEX_WITH_PARENTHESIS, link_to('\1', '\2)', target: '_blank', rel: 'noopener'))
         .gsub(MARKDOWN_LINK_REGEX, link_to('\1', '\2', target: '_blank', rel: 'noopener'))
   end
+
+  def episode_logo_image_url(episode) # rubocop:disable Metrics/MethodLength
+    cl_image_path(
+      ENV.fetch('CLOUDINARY_STORY_IMAGE'),
+      transformation: [
+        # (remote) image overlay
+        { overlay: { url: image_url_with_host(episode.image_path) } },
+        { width: 700, crop: 'scale' },
+        { flags: 'layer_apply', gravity: 'north', y: 150 },
+        # text overlay
+        { overlay: {
+            font_family: 'TakaoExGothic', font_size: 60, text_align: 'center', text: episode.title
+          },
+          width: 750, crop: 'fit' },
+        { flags: 'layer_apply', gravity: 'center', y: 350 }
+      ]
+    )
+  end
 end
