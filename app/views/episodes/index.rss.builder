@@ -15,21 +15,7 @@ xml.rss version: '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom' do
           xml.description(render(partial: 'descriptions/episodes/description', locals: { episode: }, formats: :html))
         end
         xml.image image_url_with_host(episode.image_path)
-        xml.logo_image cl_image_path(
-          ENV.fetch('CLOUDINARY_STORY_IMAGE'),
-          transformation: [
-            # (remote) image overlay
-            { overlay: { url: image_url_with_host(episode.image_path) } },
-            { width: 700, crop: 'scale' },
-            { flags: 'layer_apply', gravity: 'north', y: 150 },
-            # text overlay
-            { overlay: {
-                font_family: 'TakaoExGothic', font_size: 60, text_align: 'center', text: episode.title
-              },
-              width: 750, crop: 'fit' },
-            { flags: 'layer_apply', gravity: 'center', y: 350 }
-          ]
-        )
+        xml.logo_image episode_logo_image_url(episode)
 
         xml.pubDate episode.published_at.rfc822
         xml.link episode_url(episode)
