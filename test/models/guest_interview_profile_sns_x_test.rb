@@ -22,4 +22,8 @@ class GuestInterviewProfileSnsXTest < ActiveSupport::TestCase
   test 'should have correct attributes and relations' do
     assert_equal guest_interview_profiles(:one), guest_interview_profile_sns_xes(:one).guest_interview_profile
   end
+
+  test 'mention returns with @' do
+    assert_equal '@x_account_one', guest_interview_profile_sns_xes(:one).mention
+  end
 end

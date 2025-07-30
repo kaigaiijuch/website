@@ -18,4 +18,8 @@
 #
 class GuestInterviewProfileSnsX < ApplicationRecord
   belongs_to :guest_interview_profile
+
+  def mention
+    "@#{account}"
+  end
 end
