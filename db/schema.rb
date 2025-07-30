@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_10_083100) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_30_104305) do
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
     t.date "answered_on", null: false
@@ -94,6 +94,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_10_083100) do
     t.index ["published_at"], name: "index_feeds_spotify_for_podcasters_on_published_at"
   end
 
+  create_table "guest_interview_profile_sns_xes", force: :cascade do |t|
+    t.integer "guest_interview_profile_id", null: false
+    t.string "account", null: false
+    t.index ["guest_interview_profile_id"], name: "idx_on_guest_interview_profile_id_b309d95290"
+  end
+
   create_table "guest_interview_profiles", force: :cascade do |t|
     t.integer "guest_id", null: false
     t.string "job_title", null: false
@@ -168,6 +174,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_10_083100) do
   add_foreign_key "episode_speakers", "speakers"
   add_foreign_key "episodes", "episode_types", column: "type_name", primary_key: "name"
   add_foreign_key "feeds_spotify_for_podcasters", "episodes", column: "episode_number", primary_key: "number"
+  add_foreign_key "guest_interview_profile_sns_xes", "guest_interview_profiles"
   add_foreign_key "guest_interview_profiles", "guests"
   add_foreign_key "guest_interviews", "episodes", column: "episode_number", primary_key: "number"
   add_foreign_key "guest_interviews", "guest_interview_profiles"
@@ -176,28 +183,28 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_10_083100) do
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
-                     *
-                    FROM episodes
-                    JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+                                                                           *
+                                                                          FROM episodes
+                                                                          JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
   SQL
   create_view "questions_and_answers", sql_definition: <<-SQL
       SELECT *, answers.text AS answer_text, topics.name AS topic_name, questions.text AS question_text
-                    FROM answers
-                    JOIN questions ON answers.question_number = questions.number
-                    JOIN topics ON questions.topic_code = topics.code
-                    ORDER BY topics.display_order ASC, questions.display_order ASC
+                                                                          FROM answers
+                                                                          JOIN questions ON answers.question_number = questions.number
+                                                                          JOIN topics ON questions.topic_code = topics.code
+                                                                          ORDER BY topics.display_order ASC, questions.display_order ASC
   SQL
   create_view "episode_transcriptions", sql_definition: <<-SQL
       SELECT *
-                    FROM episode_speaker_transcriptions
-                    INNER JOIN episode_speakers ON episode_speaker_transcriptions.episode_speaker_id = episode_speakers.id
-                    INNER JOIN speakers ON episode_speakers.speaker_id = speakers.id
-                    ORDER BY episode_number, start_at
+                                                                          FROM episode_speaker_transcriptions
+                                                                          INNER JOIN episode_speakers ON episode_speaker_transcriptions.episode_speaker_id = episode_speakers.id
+                                                                          INNER JOIN speakers ON episode_speakers.speaker_id = speakers.id
+                                                                          ORDER BY episode_number, start_at
   SQL
   create_view "unpublished_episodes", sql_definition: <<-SQL
       SELECT *
-                    FROM episodes
-                    LEFT OUTER JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
-                    WHERE feeds_spotify_for_podcasters.episode_number IS NULL
+                                                                          FROM episodes
+                                                                          LEFT OUTER JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+                                                                          WHERE feeds_spotify_for_podcasters.episode_number IS NULL
   SQL
 end
