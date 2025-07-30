@@ -27,9 +27,19 @@ class GuestInterviewProfileSnsXTest < ActiveSupport::TestCase
     assert_equal '@x_account_one', guest_interview_profile_sns_xes(:one).mention
   end
 
-  test 'should not allow to start with @' do
+  test '#account should allow particulor letters' do
     sns_x = guest_interview_profile_sns_xes(:one)
+
     sns_x.account = "@#{sns_x.account} "
     assert_equal false, sns_x.valid?
+    sns_x.account = ' one'
+    assert_equal false, sns_x.valid?
+    sns_x.account = 'one '
+    assert_equal false, sns_x.valid?
+    sns_x.account = 'on e'
+    assert_equal false, sns_x.valid?
+
+    sns_x.account = 'one.1-'
+    assert sns_x.valid?
   end
 end

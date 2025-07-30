@@ -18,7 +18,7 @@
 #
 class GuestInterviewProfileSnsX < ApplicationRecord
   belongs_to :guest_interview_profile
-  validates :account, format: { with: /\A-@/ }
+  validates :account, format: { with: /\A[\w.-]+\z/ }
 
   def mention
     "@#{account}"
