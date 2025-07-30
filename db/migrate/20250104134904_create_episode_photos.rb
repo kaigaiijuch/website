@@ -2,7 +2,7 @@
 
 class CreateEpisodePhotos < ActiveRecord::Migration[7.1]
   def change
-    create_table :episode_photos do |t| # rubocop:disable Rails/CreateTableWithTimestamps
+    create_table :episode_photos do |t|
       t.string :episode_number, null: false
       t.string :image_path, null: false
 
