@@ -26,4 +26,10 @@ class GuestInterviewProfileSnsXTest < ActiveSupport::TestCase
   test 'mention returns with @' do
     assert_equal '@x_account_one', guest_interview_profile_sns_xes(:one).mention
   end
+
+  test 'should not allow to start with @' do
+    sns_x = guest_interview_profile_sns_xes(:one)
+    sns_x.account = "@#{sns_x.account} "
+    assert_equal false, sns_x.valid?
+  end
 end
