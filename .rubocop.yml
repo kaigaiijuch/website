@@ -6,3 +6,5 @@ Style/Documentation:
   Enabled: false
 Rails/HasManyOrHasOneDependent:
   Enabled: false
+Rails/CreateTableWithTimestamps:
+  Enabled: false
