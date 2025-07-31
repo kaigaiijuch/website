@@ -10,6 +10,7 @@ jobs:
     env:
       RAILS_ENV: production
       DATA_REPO_TOKEN: ${{ secrets.DEPLOY_BOT_TOKEN }}
+      TRACE: ${{ env.TRACE }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
