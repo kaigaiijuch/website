@@ -16,6 +16,7 @@ jobs:
       DATA_REPO_TOKEN: ${{ secrets.DEPLOY_BOT_TOKEN }}
       SPOTIFY_FOR_PODCASTERS_RSS_URL: ${{ vars.SPOTIFY_FOR_PODCASTERS_RSS_URL }}
       GITHUB_TOKEN: ${{ secrets.DEPLOY_BOT_TOKEN }}
+      TRACE: ${{ vars.TRACE }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -40,7 +41,7 @@ jobs:
       - name: setup docker
         run: docker compose -f docker-compose-build.yml build
       - name: fetch data
-        run: docker compose -f docker-compose-build.yml run web bin/rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL"]
+        run: docker compose -f docker-compose-build.yml run -e TRACE=$TRACE web bin/rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL"]
       - name: commit data if it's changes
         run: |
           if yes 2>/dev/null | bin/data/commit > /dev/null 2>&1 ; then

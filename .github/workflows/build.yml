@@ -10,6 +10,7 @@ jobs:
     env:
       RAILS_ENV: production
       DATA_REPO_TOKEN: ${{ secrets.DEPLOY_BOT_TOKEN }}
+      TRACE: ${{ vars.TRACE }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -22,7 +23,7 @@ jobs:
       - name: setup docker
         run: docker compose -f docker-compose-build.yml build
       - name: build static html files
-        run: docker compose -f docker-compose-build.yml run web bin/build && ls -lah public
+        run: docker compose -f docker-compose-build.yml run -e TRACE=$TRACE web bin/build && ls -lah public
       - name: save version file
         run: |
           echo "website: ${{github.event.after}}" > public/version.txt

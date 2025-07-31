@@ -32,12 +32,13 @@ main() {
   config_file=${2:-bin/pages/list.rb}
 
   process_file=$APP_ROOT/tmp/pids/static_page_server.pid
+  log_file=$APP_ROOT/log/static_page_server.log
   if [[ -f $process_file ]]; then
     echo "Already running"
     exit 1
   fi
   rails_env=${RAILS_ENV:-production}
-  server_options=${SERVER_OPTIONS:---daemon}
+  server_options=${SERVER_OPTIONS:---log-to-stdout}
   port=${PORT:-3333}
 
   echo "# Building static pages for paths:"
@@ -46,10 +47,10 @@ main() {
   echo
 
   echo "# boot rails server..."
-  $rails server -e $rails_env -P $process_file -p $port $server_options
+  $rails server -e $rails_env -P $process_file -p $port $server_options >> $log_file 2>&1 &
    # Kill the server process when the script exits
+  trap 'echo "log: $(cat $log_file)"' ERR
   trap 'echo && echo "# kill server" && kill $(cat $process_file) && echo "server killed"' EXIT
-  echo
 
   echo "# wait until the server is up..."
   while ! curl -s http://localhost:$port/up > /dev/null
@@ -75,7 +76,7 @@ main() {
     if ! curl --fail -s http://localhost:$port$path > $file$tmp_suffix; then
       echo "Failed to get: $path"
       rm $file$tmp_suffix
-      exit 1
+      false
     fi
     mv $file$tmp_suffix $file
     echo "Saved: $file"

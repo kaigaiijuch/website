@@ -139,3 +139,7 @@ for github build workflow: it needs to set [DATA_REPO_TOKEN](.github/workflows/b
 ```bash
  $ bin/rake sitemap:refresh
 ```
+
+## Debugging
+
+set `TRACE=1` in the environment variables at https://github.com/kaigaiijuch/website/settings/variables/actions/TRACE to see the logs of the github actions.
