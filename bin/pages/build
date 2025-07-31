@@ -49,8 +49,8 @@ main() {
   echo "# boot rails server..."
   $rails server -e $rails_env -P $process_file -p $port $server_options >> $log_file 2>&1 &
    # Kill the server process when the script exits
-  trap 'echo && echo "# kill server" && kill $(cat $process_file) && echo "server killed" && echo "log: $(cat $log_file)"' EXIT
-  echo
+  trap 'echo "log: $(cat $log_file)"' ERR
+  trap 'echo && echo "# kill server" && kill $(cat $process_file) && echo "server killed"' EXIT
 
   echo "# wait until the server is up..."
   while ! curl -s http://localhost:$port/up > /dev/null
@@ -76,7 +76,7 @@ main() {
     if ! curl --fail -s http://localhost:$port$path > $file$tmp_suffix; then
       echo "Failed to get: $path"
       rm $file$tmp_suffix
-      exit 1
+      false
     fi
     mv $file$tmp_suffix $file
     echo "Saved: $file"
