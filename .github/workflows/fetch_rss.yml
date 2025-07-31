@@ -16,6 +16,7 @@ jobs:
       DATA_REPO_TOKEN: ${{ secrets.DEPLOY_BOT_TOKEN }}
       SPOTIFY_FOR_PODCASTERS_RSS_URL: ${{ vars.SPOTIFY_FOR_PODCASTERS_RSS_URL }}
       GITHUB_TOKEN: ${{ secrets.DEPLOY_BOT_TOKEN }}
+      TRACE: ${{ vars.TRACE }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

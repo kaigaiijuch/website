@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
+      TRACE: ${{ vars.TRACE }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
