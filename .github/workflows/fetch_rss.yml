@@ -39,9 +39,9 @@ jobs:
           git config --global user.email "${{ vars.GIT_USER_EMAIL }}"
           cd ..
       - name: setup docker
-        run: docker compose -e TRACE=$TRACE -f docker-compose-build.yml build
+        run: docker compose -f docker-compose-build.yml build
       - name: fetch data
-        run: docker compose -e TRACE=$TRACE -f docker-compose-build.yml run web bin/rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL"]
+        run: docker compose -f docker-compose-build.yml run -e TRACE=$TRACE web bin/rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL"]
       - name: commit data if it's changes
         run: |
           if yes 2>/dev/null | bin/data/commit > /dev/null 2>&1 ; then
