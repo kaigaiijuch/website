@@ -27,6 +27,7 @@ main() {
         hosts.csv
         guests.csv
         guest_interview_profiles.csv
+        guest_interview_profile_sns_xes.csv
         guest_interviews.csv
         questions.csv
         hosts.csv

@@ -32,6 +32,7 @@ main() {
         guests
         guest_interview_profiles
         guest_interviews
+        guest_interview_profile_sns_xes
         questions
         hosts
         speakers
