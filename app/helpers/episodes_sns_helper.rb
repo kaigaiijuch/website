@@ -6,6 +6,6 @@ module EpisodesSnsHelper
   end
 
   def hashtags(_episode)
-    '#海外移住channel' # TODO: extend to episode's original hashtags
+    "##{t('site.name')}" # TODO: extend to episode's original hashtags
   end
 end
