@@ -26,6 +26,9 @@ main() {
   output_directory=${1:-public}
   config_file=${2:-bin/pages/list.rb}
 
+  echo "# clean the static server log file..."
+  rm $APP_ROOT/log/static_page_server.log
+
   echo "# target static pages for paths:"
   paths=$($rails runner "$APP_ROOT/$config_file")
   echo "${paths[@]}"
