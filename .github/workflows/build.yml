@@ -21,9 +21,9 @@ jobs:
           path: data
           token: ${{ env.DATA_REPO_TOKEN }}
       - name: setup docker
-        run: docker compose -f docker-compose-build.yml build
+        run: docker compose -e TRACE=$TRACE -f docker-compose-build.yml build
       - name: build static html files
-        run: docker compose -f docker-compose-build.yml run web bin/build && ls -lah public
+        run: docker compose -e TRACE=$TRACE -f docker-compose-build.yml run web bin/build && ls -lah public
       - name: save version file
         run: |
           echo "website: ${{github.event.after}}" > public/version.txt

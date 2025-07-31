@@ -13,6 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: setup docker
-        run: docker compose -f docker-compose-ci.yml build
+        run: docker compose -e TRACE=$TRACE-f docker-compose-ci.yml build
       - name: run test
-        run: docker compose -f docker-compose-ci.yml run -e RAILS_ENV=$RAILS_ENV web bin/rake
+        run: docker compose -e TRACE=$TRACE-f docker-compose-ci.yml run -e RAILS_ENV=$RAILS_ENV web bin/rake
