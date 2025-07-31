@@ -8,9 +8,9 @@ xml.rss version: '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom' do
         xml.title episode.title
         xml.image image_url_with_host(episode.image_path)
         xml.x [
-          episode.title,
+          [episode.title, sns_mention(episode, :sns_x)].join("\s"),
           episode_url(episode),
-          episode.guest_interview_profiles.flat_map(&:sns_x).map(&:mention).join(' ')
+          hashtags(episode)
         ].join("\n")
         xml.instagram_story_image episode_logo_image_url(episode)
 
