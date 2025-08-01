@@ -31,3 +31,8 @@ en:
   hello: "Hello world"
   error:
     forbidden: "forbidden"
+  site:
+    name: Living Overseas
+    description: |
+      Interviewing people who lives overseas, mainly Japanese. https://en.kaigaiiju.ch/
+      This is the (AI) translated version of the original japanese podcast: Kaigai-ijuh channel https://kaigaiiju.ch/
