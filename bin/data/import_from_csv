@@ -18,6 +18,8 @@ fi
 cd "$(dirname "$0")"
 cd ../..
 
+export LOCALE=en # to avoid the error of "I18n.locale is not set"
+
 main() {
     csv_dir=$1
     base_csv_file_names=(
