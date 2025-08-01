@@ -27,9 +27,10 @@ class GuestInterviewProfileSnsXTest < ActiveSupport::TestCase
     assert_equal '@alice_dev', guest_interview_profile_sns_xes(:one).mention
   end
 
-  test '#account should allow particulor letters' do
+  test '#account should follow X username rules' do
     sns_x = guest_interview_profile_sns_xes(:one)
 
+    # Invalid cases
     sns_x.account = "@#{sns_x.account} "
     assert_equal false, sns_x.valid?
     sns_x.account = ' one'
@@ -38,8 +39,19 @@ class GuestInterviewProfileSnsXTest < ActiveSupport::TestCase
     assert_equal false, sns_x.valid?
     sns_x.account = 'on e'
     assert_equal false, sns_x.valid?
+    sns_x.account = 'one.1-'  # dots and hyphens not allowed
+    assert_equal false, sns_x.valid?
+    sns_x.account = 'a' * 16  # too long (16 characters)
+    assert_equal false, sns_x.valid?
+    sns_x.account = ''  # empty string
+    assert_equal false, sns_x.valid?
 
-    sns_x.account = 'one.1-'
+    # Valid cases
+    sns_x.account = 'user_123'
+    assert sns_x.valid?
+    sns_x.account = 'a'  # minimum length
+    assert sns_x.valid?
+    sns_x.account = 'a' * 15  # maximum length
     assert sns_x.valid?
   end
 end
