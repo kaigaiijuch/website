@@ -17,12 +17,12 @@
 
 one:
   guest_interview_profile: one
-  account: x_account_one
+  account: alice_dev
 
 one_two:
   guest_interview_profile: one
-  account: x_account_one_two
+  account: alice_overseas
 
 two:
   guest_interview_profile: two
-  account: x_account_two
+  account: bob_traveler

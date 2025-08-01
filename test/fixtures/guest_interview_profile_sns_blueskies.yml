@@ -17,12 +17,12 @@
 
 one:
   guest_interview_profile: one
-  account: bluesky_account_one
+  account: alice.bsky.social
 
 one_two:
   guest_interview_profile: one
-  account: bluesky_account_one_two
+  account: alice.dev
 
 two:
   guest_interview_profile: two
-  account: bluesky_account_two
+  account: bob.bsky.social

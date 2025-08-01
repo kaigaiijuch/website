@@ -24,7 +24,7 @@ class GuestInterviewProfileSnsXTest < ActiveSupport::TestCase
   end
 
   test 'mention returns with @' do
-    assert_equal '@x_account_one', guest_interview_profile_sns_xes(:one).mention
+    assert_equal '@alice_dev', guest_interview_profile_sns_xes(:one).mention
   end
 
   test '#account should allow particulor letters' do

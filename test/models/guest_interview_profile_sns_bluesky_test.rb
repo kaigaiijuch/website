@@ -24,7 +24,7 @@ class GuestInterviewProfileSnsBlueskyTest < ActiveSupport::TestCase
   end
 
   test 'mention returns with @' do
-    assert_equal '@bluesky_account_one', guest_interview_profile_sns_blueskies(:one).mention
+    assert_equal '@alice.bsky.social', guest_interview_profile_sns_blueskies(:one).mention
   end
 
   test '#account should allow particular letters including dots' do

@@ -15,15 +15,15 @@ class EpisodesSnsHelperTest < ActionView::TestCase
     end
 
     test 'sns_mention returns mentions for episode with one guest_interview_profile with sns_x' do
-      assert_equal '@x_account_one @x_account_one_two', sns_mention(episodes(:two), :sns_x)
+      assert_equal '@alice_dev @alice_overseas', sns_mention(episodes(:two), :sns_x)
     end
 
     test 'sns_mention returns mentions for episode with multiple guest_interview_profiles with sns_x' do
-      assert_equal '@x_account_two', sns_mention(episodes(:yoga), :sns_x)
+      assert_equal '@bob_traveler', sns_mention(episodes(:yoga), :sns_x)
     end
 
     test 'sns_mention handles different target_sns symbols' do
-      assert_equal '@x_account_one @x_account_one_two', sns_mention(episodes(:two), :sns_x)
+      assert_equal '@alice_dev @alice_overseas', sns_mention(episodes(:two), :sns_x)
     end
 
     test 'sns_mention handles non-existent target_sns gracefully' do
