@@ -43,15 +43,15 @@ class GuestInterviewProfileSnsXTest < ActiveSupport::TestCase
     assert_equal false, sns_x.valid?
     sns_x.account = 'a' * 16  # too long (16 characters)
     assert_equal false, sns_x.valid?
-    sns_x.account = ''  # empty string
+    sns_x.account = '' # empty string
     assert_equal false, sns_x.valid?
 
     # Valid cases
     sns_x.account = 'user_123'
     assert sns_x.valid?
-    sns_x.account = 'a'  # minimum length
+    sns_x.account = 'a' # minimum length
     assert sns_x.valid?
-    sns_x.account = 'a' * 15  # maximum length
+    sns_x.account = 'a' * 15 # maximum length
     assert sns_x.valid?
   end
 end
