@@ -26,4 +26,5 @@ class GuestInterviewProfile < ApplicationRecord
   has_many :answers, inverse_of: :guest_interview_profile
   has_many :questions_and_answers, primary_key: :id, inverse_of: :guest_interview_profile
   has_many :sns_x, inverse_of: :guest_interview_profile, class_name: 'GuestInterviewProfileSnsX'
+  has_many :sns_bluesky, inverse_of: :guest_interview_profile, class_name: 'GuestInterviewProfileSnsBluesky'
 end
