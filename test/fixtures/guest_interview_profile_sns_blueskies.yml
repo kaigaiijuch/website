@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: guest_interview_profile_sns_xes
+# Table name: guest_interview_profile_sns_blueskies
 #
 #  id                         :integer          not null, primary key
 #  account                    :string           not null
@@ -8,7 +8,7 @@
 #
 # Indexes
 #
-#  idx_on_guest_interview_profile_id_b309d95290  (guest_interview_profile_id)
+#  idx_on_guest_interview_profile_id_c93c656b70  (guest_interview_profile_id)
 #
 # Foreign Keys
 #
@@ -17,12 +17,12 @@
 
 one:
   guest_interview_profile: one
-  account: alice_dev
+  account: alice.bsky.social
 
 one_two:
   guest_interview_profile: one
-  account: alice_overseas
+  account: alice.dev
 
 two:
   guest_interview_profile: two
-  account: bob_traveler
+  account: bob.bsky.social

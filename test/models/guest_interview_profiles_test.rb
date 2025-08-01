@@ -37,5 +37,7 @@ class GuestInterviewProfilesTest < ActiveSupport::TestCase
 
     assert_equal [guest_interview_profile_sns_xes(:one), guest_interview_profile_sns_xes(:one_two)],
                  guest_interview_profiles(:one).sns_x
+    assert_equal [guest_interview_profile_sns_blueskies(:one), guest_interview_profile_sns_blueskies(:one_two)],
+                 guest_interview_profiles(:one).sns_bluesky
   end
 end

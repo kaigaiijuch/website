@@ -33,6 +33,7 @@ main() {
         guest_interview_profiles
         guest_interviews
         guest_interview_profile_sns_xes
+        guest_interview_profile_sns_blueskies
         questions
         hosts
         speakers
