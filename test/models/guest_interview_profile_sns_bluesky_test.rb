@@ -39,9 +39,7 @@ class GuestInterviewProfileSnsBlueskyTest < ActiveSupport::TestCase
     sns_bluesky.account = 'on e'
     assert_equal false, sns_bluesky.valid?
 
-    sns_bluesky.account = 'one.1-'
-    assert sns_bluesky.valid?
-    sns_bluesky.account = 'user.bsky.social'
+    sns_bluesky.account = 'user-1.bsky.social'
     assert sns_bluesky.valid?
   end
 end
