@@ -18,7 +18,7 @@ xml.rss version: '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom' do
           episode_url(episode),
           hashtags(episode)
         ].join("\n")
-        xml.instagram_story_image episode_logo_image_url(episode)
+        xml.instagram_story_image episode_instagram_story_image_url(episode)
 
         xml.pubDate episode.published_at.rfc822
         xml.link episode_url(episode)
