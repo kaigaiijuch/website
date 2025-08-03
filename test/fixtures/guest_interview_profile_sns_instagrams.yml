@@ -4,8 +4,6 @@
 #
 #  id                         :integer          not null, primary key
 #  account                    :string           not null
-#  created_at                 :datetime         not null
-#  updated_at                 :datetime         not null
 #  guest_interview_profile_id :integer          not null
 #
 # Indexes
