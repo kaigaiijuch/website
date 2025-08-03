@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 xml.instruct! :xml, version: '1.0'
-xml.rss version: '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom' do
-  xml.channel do
+xml.rss version: '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom' do # rubocop:disable Metrics/BlockLength
+  xml.channel do # rubocop:disable Metrics/BlockLength
     xml.tag!('atom:link', href: episodes_sns_url(format: :rss), rel: 'self', type: 'application/rss+xml')
     @episodes.each do |episode|
       xml.item do
@@ -15,6 +15,11 @@ xml.rss version: '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom' do
         ].join("\n")
         xml.bluesky [
           [episode.title, sns_mention(episode, :sns_bluesky)].join("\s"),
+          episode_url(episode),
+          hashtags(episode)
+        ].join("\n")
+        xml.instagram [
+          [episode.title, sns_mention(episode, :sns_instagram)].join("\s"),
           episode_url(episode),
           hashtags(episode)
         ].join("\n")
