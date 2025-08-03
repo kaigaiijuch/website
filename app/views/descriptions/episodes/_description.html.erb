@@ -16,4 +16,4 @@
 <% episode.chapters.present? && episode.chapters.each do |chapter| -%>
 <%= chapter_time(chapter) -%> <%= chapter.title %>
 <% end -%>
-<%= t('views.descriptions.code.hash_tag') -%>
+<%= hashtags(episode) -%>
