@@ -15,7 +15,6 @@ xml.rss version: '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom' do
           xml.description(render(partial: 'descriptions/episodes/description', locals: { episode: }, formats: :html))
         end
         xml.image image_url_with_host(episode.image_path)
-        xml.logo_image episode_logo_image_url(episode)
 
         xml.pubDate episode.published_at.rfc822
         xml.link episode_url(episode)

@@ -1,5 +1,6 @@
+<% after_title_text ||= '' %>
 <%= episode.title -%> <%= episode_url(episode) %>
-
+<%= after_title_text %>
 <% episode.guest_interview_profiles.each do |guest_interview_profile| -%>
 <%= t('views.descriptions.code.guest') -%>: <%= guest_interview_profile.abroad_living_summary -%> <%= guest_interview_profile.job_title -%> <%= guest_interview_profile.guest_name %>
 <%= guest_interview_profile.introduction %>
@@ -13,9 +14,7 @@
   ・<%= reference.caption -%> <%= reference.link %>
 <% end -%>
 <% end -%>
-
 <% episode.chapters.present? && episode.chapters.each do |chapter| -%>
 <%= chapter_time(chapter) -%> <%= chapter.title %>
 <% end -%>
-
-<%= t('views.descriptions.code.hash_tag') -%>
+<%= hashtags(episode) -%>
