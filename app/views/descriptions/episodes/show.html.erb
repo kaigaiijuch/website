@@ -23,14 +23,4 @@
 <%= render partial: 'spotify_for_podcasters_description', locals: { episode: @episode } %>
 <% end -%>
   </textarea>
-
-  <h2><%= t('views.descriptions.main_description') %></h2>
-  <button class="padding_5" onClick="navigator.clipboard.writeText(document.getElementById('sns-description').innerHTML);">
-    Copy
-  </button>
-  <textarea id="sns-description" rows="30" cols="auto" readonly>
-<% disable_annotate_rendered_view_with_filenames do -%>
-<%= render partial: 'description', locals: { episode: @episode } %>
-<% end -%>
-  </textarea>
 </main>
