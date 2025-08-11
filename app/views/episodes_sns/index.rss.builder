@@ -6,7 +6,7 @@ disable_annotate_rendered_view_with_filenames do # rubocop:disable Metrics/Block
     xml.channel do # rubocop:disable Metrics/BlockLength
       xml.tag!('atom:link', href: episodes_sns_url(format: :rss), rel: 'self', type: 'application/rss+xml')
       @episodes.each do |episode| # rubocop:disable Metrics/BlockLength
-        xml.item do
+        xml.item do # rubocop:disable Metrics/BlockLength
           xml.title episode.title
           xml.image image_url_with_host(episode.image_path)
           xml.x [
