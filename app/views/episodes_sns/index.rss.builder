@@ -21,14 +21,14 @@ disable_annotate_rendered_view_with_filenames do # rubocop:disable Metrics/Block
           ].join("\n")
           xml.instagram(
             render(
-              partial: 'episodes_sns/description',
+              partial: 'episodes/description',
               locals: { episode:, after_title_text: sns_mention(episode, :sns_instagram) },
               formats: :html
             )
           )
           xml.instagram_story_image episode_instagram_story_image_url(episode)
           xml.tiktok(
-            render(partial: 'episodes_sns/description', locals: { episode: }, formats: :html)
+            render(partial: 'episodes/description', locals: { episode: }, formats: :html)
           )
           xml.tiktok_image episode_instagram_story_image_url(episode)
 
