@@ -12,7 +12,7 @@ xml.rss version: '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom' do
       xml.item do
         xml.title episode.title
         disable_annotate_rendered_view_with_filenames do
-          xml.description(render(partial: 'descriptions/episodes/description', locals: { episode: }, formats: :html))
+          xml.description(render(partial: 'episodes/description', locals: { episode: }, formats: :html))
         end
         xml.image image_url_with_host(episode.image_path)
 

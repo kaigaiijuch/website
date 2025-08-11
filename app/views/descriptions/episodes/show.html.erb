@@ -3,34 +3,17 @@
   content_for(:stylesheets) do
     stylesheet_link_tag 'home_index', media: 'all'
   end
+  disable_annotate_rendered_view_with_filenames do
 %>
 
 <main>
   <h2>タイトル</h2>
-  <button class="padding_5" onClick="navigator.clipboard.writeText(document.getElementById('title-description').value);">
-    Copy
-  </button>
-  <textarea id="title-description" rows="1" cols="auto" readonly>
-<%= @episode.title %>
-  </textarea>
-
-  <h2><%= t('views.descriptions.main_description') %></h2>
-  <button class="padding_5" onClick="navigator.clipboard.writeText(document.getElementById('sns-description').innerHTML);">
-    Copy
-  </button>
-  <textarea id="sns-description" rows="30" cols="auto" readonly>
-<% disable_annotate_rendered_view_with_filenames do -%>
-<%= render partial: 'description', locals: { episode: @episode } %>
-<% end -%>
-  </textarea>
+  <button class="padding_5" onClick="navigator.clipboard.writeText(document.getElementById('title-description').value);">Copy</button>
+  <textarea id="title-description" rows="1" cols="auto" readonly><%= @episode.title %></textarea>
 
   <h2><%= t('views.descriptions.html_for_spotify') %></h2>
-  <button class="padding_5" onClick="navigator.clipboard.writeText(document.getElementById('spotify-description').value);">
-    Copy
-  </button>
-  <textarea id="spotify-description" rows="30" cols="auto" readonly>
-<% disable_annotate_rendered_view_with_filenames do -%>
-<%= render partial: 'spotify_for_podcasters_description', locals: { episode: @episode } %>
-<% end -%>
-  </textarea>
+  <button class="padding_5" onClick="navigator.clipboard.writeText(document.getElementById('spotify-description').value);">Copy</button>
+  <textarea id="spotify-description" rows="30" cols="auto" readonly><%= render partial: 'spotify_for_podcasters_description', locals: { episode: @episode } %></textarea>
 </main>
+
+<% end -%>

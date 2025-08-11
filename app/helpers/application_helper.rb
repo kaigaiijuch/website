@@ -31,4 +31,14 @@ module ApplicationHelper
   def image_url_with_host(path)
     image_url(path, host: Rails.application.config.x.website_uri.to_s)
   end
+
+  def disable_annotate_rendered_view_with_filenames(&)
+    if ActionView::Base.annotate_rendered_view_with_filenames
+      ActionView::Base.annotate_rendered_view_with_filenames = false
+      yield
+      ActionView::Base.annotate_rendered_view_with_filenames = true
+    else
+      yield
+    end
+  end
 end
