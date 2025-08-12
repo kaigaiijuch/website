@@ -48,7 +48,7 @@ Zapier is used for triggering the `fetch_rss` workflow triggered by new episode 
 
 SLACK_WEBHOOK_URL: the webhook url for the slack channel, it can be found in the slack channel settings. https://api.slack.com/apps/xxxxxxxxx/incoming-webhooks
 
-GITHUB_TOKEN: https://github.com/organizations/kaigaiijuch/settings/personal-access-tokens/active (it needs to be `repo` scope)
+GITHUB_TOKEN: it can be generated from https://github.com/settings/tokens (it needs to be `repo` scope)
 
 ## development requirement
 
