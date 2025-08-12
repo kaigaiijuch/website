@@ -42,6 +42,14 @@ also there is [`fetch_rss` trigger scheduled](.github/workflows/fetch_rss.yml), 
 curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/kaigaiijuch/website/dispatches -d '{"event_type":"fetch_rss"}'
 ```
 
+### Zapier integration
+
+Zapier is used for triggering the `fetch_rss` workflow triggered by new episode published on Spotify for podcasters rss. the script is [here](zapier_script.js).
+
+SLACK_WEBHOOK_URL: the webhook url for the slack channel, it can be found in the slack channel settings. https://api.slack.com/apps/xxxxxxxxx/incoming-webhooks
+
+GITHUB_TOKEN: it can be generated from https://github.com/settings/tokens (it needs to be `repo` scope)
+
 ## development requirement
 
  * Ruby version: check [.ruby_version](.ruby-version)
