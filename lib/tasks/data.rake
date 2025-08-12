@@ -1,21 +1,23 @@
 # frozen_string_literal: true
 
-namespace :data do
+namespace :data do # rubocop:disable Metrics/BlockLength
   desc 'Fetch Spotify for podcasters RSS feed and save to database'
-  task :fetch_feeds_spotify_for_podcasters, %i[feed_url] => :environment do |_, args|
+  task :fetch_feeds_spotify_for_podcasters, %i[feed_url] => :environment do |_, args| # rubocop:disable Metrics/BlockLength
     require 'net/http'
 
     url = URI(args.feed_url)
     puts "Feed URL: #{url}"
 
-    response = Net::HTTP.get_response(url, {
-      'Cache-Control' => 'no-cache, no-store, must-revalidate',
-      'Pragma' => 'no-cache',
-      'Expires' => '0'
-    })
+    response = Net::HTTP.get_response(
+      url, {
+        'Cache-Control' => 'no-cache, no-store, must-revalidate',
+        'Pragma' => 'no-cache',
+        'Expires' => '0'
+      }
+    )
     rss_feed = response.body
 
-    feeds = FeedsParser.from_podcast_rss_feed(source_url: url, rss_feed: rss_feed)
+    feeds = FeedsParser.from_podcast_rss_feed(source_url: url, rss_feed:)
     puts "Total feeds: #{feeds.count}"
 
     puts 'saving feeds to database...'
