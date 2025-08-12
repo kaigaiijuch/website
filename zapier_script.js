@@ -17,12 +17,13 @@ if (!inputData.SLACK_WEBHOOK_URL.startsWith('https://hooks.slack.com/')) {
 const SLACK_WEBHOOK_URL = inputData.SLACK_WEBHOOK_URL;
 const GITHUB_TOKEN = inputData.GITHUB_TOKEN;
 const NEW_EPISODE_TITLE = inputData.NEW_EPISODE_TITLE;
+const NEW_EPISODE_URL = inputData.NEW_EPISODE_URL;
 const GITHUB_REPO_OWNER = 'kaigaiijuch';
 const GITHUB_REPO_NAME = 'website';
 
 async function postSlackMessage() {
   const slackMessage = {
-    text: `🎙️ New episode detected: \`${NEW_EPISODE_TITLE}\` \n start deploying...`,
+    text: `🎙️ New episode detected: <${NEW_EPISODE_URL}|${NEW_EPISODE_TITLE}>\nStart deploying website :rocket:...`,
   };
 
   try {
