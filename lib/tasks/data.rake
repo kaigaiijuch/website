@@ -2,12 +2,12 @@
 
 namespace :data do # rubocop:disable Metrics/BlockLength
   desc 'Fetch Spotify for podcasters RSS feed and save to database'
-  task :fetch_feeds_spotify_for_podcasters, %i[feed_url retry] => :environment do |_, args| # rubocop:disable Metrics/BlockLength
+  task :fetch_feeds_spotify_for_podcasters, %i[feed_url retry max_age_seconds retry_delay_seconds] => :environment do |_, args| # rubocop:disable Metrics/BlockLength
     require 'net/http'
 
-    # Configuration
-    max_age_seconds = 1 * 60 * 60 # 1 hour in seconds
-    retry_delay_seconds = 60
+    # Configuration with defaults
+    max_age_seconds = (args.max_age_seconds || (1 * 60 * 60)).to_i # 1 hour in seconds
+    retry_delay_seconds = (args.retry_delay_seconds || 60).to_i
     no_cache_headers = {
       'Cache-Control' => 'no-cache, no-store, must-revalidate',
       'Pragma' => 'no-cache',
@@ -35,16 +35,16 @@ namespace :data do # rubocop:disable Metrics/BlockLength
       (1..retry_count).each do |attempt| # rubocop:disable Lint/UnreachableLoop
         puts "Attempt #{attempt} of #{retry_count}"
         response = fetch_rss_response(url, headers)
-        return response if response_fresh?(response, max_age_seconds)
+        return response.body if response_fresh?(response, max_age_seconds)
 
         puts "Response is stale (max age: #{max_age_seconds}s)"
         if attempt < retry_count
           puts "Retrying in #{retry_delay} seconds..."
           sleep retry_delay
+        else
+          puts 'Max attempts reached, using last response'
+          return response.body
         end
-
-        puts 'Max attempts reached, using last response'
-        return response
       end
     end
 
@@ -74,7 +74,7 @@ namespace :data do # rubocop:disable Metrics/BlockLength
     retry_count = (args.retry || '0').to_i
 
     rss_feed = if retry_count > 1
-                 fetch_with_retry(url, retry_count, max_age_seconds, retry_delay_seconds, no_cache_headers).body
+                 fetch_with_retry(url, retry_count, max_age_seconds, retry_delay_seconds, no_cache_headers)
                else
                  fetch_rss_response(url, no_cache_headers).body
                end
