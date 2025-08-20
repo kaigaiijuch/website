@@ -36,7 +36,7 @@ jobs:
           cd ..
       - name: setup docker
         run: docker compose -f docker-compose-build.yml build
-      - name: fetch data with 5 times retry
+      - name: fetch data
         run: docker compose -f docker-compose-build.yml run -e TRACE=$TRACE web bin/rake data:fetch_feeds_spotify_for_podcasters["$SPOTIFY_FOR_PODCASTERS_RSS_URL",$RETRY_COUNT,$MAX_AGE_SECONDS,$RETRY_DELAY_SECONDS]
         env:
           RETRY_COUNT: 5
