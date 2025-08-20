@@ -36,17 +36,17 @@ namespace :data do # rubocop:disable Metrics/BlockLength
         puts "Attempt #{attempt} of #{retry_count}"
         response = fetch_rss_response(url, headers)
 
-        return response.body if response_fresh?(response, max_age_seconds)
+        return response if response_fresh?(response, max_age_seconds)
 
         puts "Response is stale (max age: #{max_age_seconds}s)"
 
         if attempt < retry_count
           puts "Retrying in #{retry_delay} seconds..."
           sleep retry_delay
-        else
-          puts 'Max attempts reached, using last response'
-          return response.body
         end
+
+        puts 'Max attempts reached, using last response'
+        return response
       end
     end
 
@@ -76,7 +76,7 @@ namespace :data do # rubocop:disable Metrics/BlockLength
     retry_count = (args.retry || '0').to_i
 
     rss_feed = if retry_count > 1
-                 fetch_with_retry(url, retry_count, max_age_seconds, retry_delay_seconds, no_cache_headers)
+                 fetch_with_retry(url, retry_count, max_age_seconds, retry_delay_seconds, no_cache_headers).body
                else
                  fetch_rss_response(url, no_cache_headers).body
                end
