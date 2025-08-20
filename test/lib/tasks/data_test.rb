@@ -3,7 +3,7 @@
 require 'test_helper'
 require 'rake'
 
-class DataTaskTest < ActiveSupport::TestCase
+class DataTaskTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength Layout/LineLength
   setup do
     Rake.application.rake_require 'tasks/data'
     Rake::Task.define_task(:environment)
@@ -68,7 +68,7 @@ class DataTaskTest < ActiveSupport::TestCase
 
     out, err = capture_io do
       Rake::Task['data:fetch_feeds_spotify_for_podcasters'].execute(
-        Rake::TaskArguments.new([:feed_url, :retry, :max_age_seconds, :retry_delay_seconds], [@feed_url, '3', '', '1'])
+        Rake::TaskArguments.new(%i[feed_url retry max_age_seconds retry_delay_seconds], [@feed_url, '3', '', '1'])
       )
     end
 
@@ -91,7 +91,7 @@ class DataTaskTest < ActiveSupport::TestCase
 
     out, err = capture_io do
       Rake::Task['data:fetch_feeds_spotify_for_podcasters'].execute(
-        Rake::TaskArguments.new([:feed_url, :retry, :max_age_seconds, :retry_delay_seconds], [@feed_url, '3', '', '1'])
+        Rake::TaskArguments.new(%i[feed_url retry max_age_seconds retry_delay_seconds], [@feed_url, '3', '', '1'])
       )
     end
 
@@ -110,7 +110,7 @@ class DataTaskTest < ActiveSupport::TestCase
 
     out, err = capture_io do
       Rake::Task['data:fetch_feeds_spotify_for_podcasters'].execute(
-        Rake::TaskArguments.new([:feed_url, :retry, :max_age_seconds, :retry_delay_seconds], [@feed_url, '3', '', '1'])
+        Rake::TaskArguments.new(%i[feed_url retry max_age_seconds retry_delay_seconds], [@feed_url, '3', '', '1'])
       )
     end
 
@@ -131,7 +131,7 @@ class DataTaskTest < ActiveSupport::TestCase
     out, err = capture_io do
       Rake::Task['data:fetch_feeds_spotify_for_podcasters'].execute(
         Rake::TaskArguments.new(
-          [:feed_url, :retry, :max_age_seconds, :retry_delay_seconds],
+          %i[feed_url retry max_age_seconds retry_delay_seconds],
           [@feed_url, '3', '1200', '1'] # 20 minutes max age, 1 second delay
         )
       )
@@ -152,7 +152,7 @@ class DataTaskTest < ActiveSupport::TestCase
     out, err = capture_io do
       Rake::Task['data:fetch_feeds_spotify_for_podcasters'].execute(
         Rake::TaskArguments.new(
-          [:feed_url, :retry, :max_age_seconds, :retry_delay_seconds],
+          %i[feed_url retry max_age_seconds retry_delay_seconds],
           [@feed_url, '2', '3600', '1'] # 2 attempts, 1 hour max age, 1 second delay
         )
       )
@@ -171,7 +171,7 @@ class DataTaskTest < ActiveSupport::TestCase
 
     out, err = capture_io do
       Rake::Task['data:fetch_feeds_spotify_for_podcasters'].execute(
-        Rake::TaskArguments.new([:feed_url, :retry, :max_age_seconds, :retry_delay_seconds], [@feed_url, '1', '', '1'])
+        Rake::TaskArguments.new(%i[feed_url retry max_age_seconds retry_delay_seconds], [@feed_url, '1', '', '1'])
       )
     end
 
