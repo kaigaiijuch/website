@@ -29,7 +29,7 @@ namespace :data do # rubocop:disable Metrics/BlockLength
       age_seconds < max_age_seconds
     end
 
-    def fetch_with_retry(url, retry_count, max_age_seconds, retry_delay, headers)
+    def fetch_with_retry(url, retry_count, max_age_seconds, retry_delay, headers) # rubocop:disable Metrics/MethodLength
       puts "Retry mode enabled: #{retry_count} attempts with #{retry_delay}s delay"
 
       (1..retry_count).each do |attempt|
@@ -38,47 +38,35 @@ namespace :data do # rubocop:disable Metrics/BlockLength
 
         return response.body if response_fresh?(response, max_age_seconds)
 
-        handle_stale_response(attempt, retry_count, max_age_seconds, retry_delay, response)
+        puts "Response is stale (max age: #{max_age_seconds}s)"
+
+        if attempt < retry_count
+          puts "Retrying in #{retry_delay} seconds..."
+          sleep retry_delay
+        else
+          puts 'Max attempts reached, using last response'
+          return response.body
+        end
       end
     end
 
-    def handle_stale_response(attempt, retry_count, max_age_seconds, retry_delay, response)
-      puts "Response is stale (max age: #{max_age_seconds}s)"
-
-      if attempt < retry_count
-        puts "Retrying in #{retry_delay} seconds..."
-        sleep retry_delay
-      else
-        puts 'Max attempts reached, using last response'
-        response.body
-      end
-    end
-
-    def save_feeds_to_database(feeds)
+    def save_feeds_to_database(feeds) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       puts 'Saving feeds to database...'
       result = []
 
       FeedsSpotifyForPodcaster.transaction do
         feeds.each do |feed|
           puts "  episode number: #{feed.episode_number}"
-          result << create_or_update_feed(feed)
+          result << FeedsSpotifyForPodcaster.find_or_initialize_by(episode_number: feed.episode_number).tap do |record|
+            record.assign_attributes(feed.to_h)
+            record.save!
+          end
         end
       end
 
-      print_saved_feeds(result)
-      result
-    end
-
-    def create_or_update_feed(feed)
-      FeedsSpotifyForPodcaster.find_or_initialize_by(episode_number: feed.episode_number).tap do |record|
-        record.assign_attributes(feed.to_h)
-        record.save!
-      end
-    end
-
-    def print_saved_feeds(feeds)
       puts 'Feeds have been saved to database'
-      feeds.each { |feed| puts "  #{feed.episode_number}: #{feed.title}" }
+      result.each { |feed| puts "  #{feed.episode_number}: #{feed.title}" }
+      result
     end
 
     # Main execution
