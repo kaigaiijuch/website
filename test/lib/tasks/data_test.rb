@@ -31,7 +31,7 @@ class DataTaskTest < ActiveSupport::TestCase
     expected_output = created_output + <<~OUTPUT
       Feed URL: #{@feed_url}
       Total feeds: 1
-      saving feeds to database...
+      Saving feeds to database...
         episode number: 0
       Feeds have been saved to database
         0: (no episode number) イントロダクション updated
@@ -65,7 +65,7 @@ class DataTaskTest < ActiveSupport::TestCase
     <<~OUTPUT
       Feed URL: #{@feed_url}
       Total feeds: 4
-      saving feeds to database...
+      Saving feeds to database...
         episode number: 2-1
         episode number: 1-2
         episode number: 1-1

@@ -32,14 +32,12 @@ namespace :data do # rubocop:disable Metrics/BlockLength
     def fetch_with_retry(url, retry_count, max_age_seconds, retry_delay, headers) # rubocop:disable Metrics/MethodLength
       puts "Retry mode enabled: #{retry_count} attempts with #{retry_delay}s delay"
 
-      (1..retry_count).each do |attempt|
+      (1..retry_count).each do |attempt| # rubocop:disable Lint/UnreachableLoop
         puts "Attempt #{attempt} of #{retry_count}"
         response = fetch_rss_response(url, headers)
-
         return response if response_fresh?(response, max_age_seconds)
 
         puts "Response is stale (max age: #{max_age_seconds}s)"
-
         if attempt < retry_count
           puts "Retrying in #{retry_delay} seconds..."
           sleep retry_delay
