@@ -2,7 +2,7 @@
 
 namespace :data do # rubocop:disable Metrics/BlockLength
   desc 'Fetch Spotify for podcasters RSS feed and save to database'
-  task :fetch_feeds_spotify_for_podcasters, %i[feed_url retry max_age_seconds retry_delay_seconds] => :environment do |_, args| # rubocop:disable Metrics/BlockLength
+  task :fetch_feeds_spotify_for_podcasters, %i[feed_url retry max_age_seconds retry_delay_seconds] => :environment do |_, args| # rubocop:disable Metrics/BlockLength, Layout/LineLength
     require 'net/http'
 
     # Configuration with defaults

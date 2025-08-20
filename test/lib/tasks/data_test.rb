@@ -3,7 +3,7 @@
 require 'test_helper'
 require 'rake'
 
-class DataTaskTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength Layout/LineLength
+class DataTaskTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength
   setup do
     Rake.application.rake_require 'tasks/data'
     Rake::Task.define_task(:environment)
