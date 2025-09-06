@@ -1,0 +1,4 @@
+<% episode.guest_interview_profiles.each do |guest_interview_profile| -%>
+<%= t('views.descriptions.code.guest') -%>: <%= guest_interview_profile.abroad_living_summary -%> <%= guest_interview_profile.job_title -%> <%= guest_interview_profile.guest_name %>
+<%= guest_interview_profile.introduction %>
+<% end -%>

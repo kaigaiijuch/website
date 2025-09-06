@@ -17,7 +17,11 @@
 
   <h2>ゲスト確認用</h2>
   <button class="padding_5" onClick="navigator.clipboard.writeText(document.getElementById('confirm-description').value);">Copy</button>
-  <textarea id="confirm-description" rows="30" cols="auto" readonly><%= render partial: 'episodes/description', locals: { episode: @episode } %></textarea>
+  <textarea id="confirm-description" rows="20" cols="auto" readonly><%= render partial: 'guest_confirm_description', locals: { episode: @episode } %></textarea>
+
+  <h2>ゲスト確認用: プロフィール</h2>
+  <button class="padding_5" onClick="navigator.clipboard.writeText(document.getElementById('profile-description').value);">Copy</button>
+  <textarea id="profile-description" rows="15" cols="auto" readonly><%= render partial: 'guest_confirm_profile', locals: { episode: @episode } %></textarea>
 </main>
 
 <% end -%>

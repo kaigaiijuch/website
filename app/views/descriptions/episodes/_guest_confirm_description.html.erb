@@ -1,0 +1,13 @@
+<%= episode.title -%>
+
+
+<%= t('views.descriptions.code.summary') -%>: <%= episode.long_summary %>
+<% if episode.references.present? -%>
+<%= t('views.descriptions.code.reference') -%>:
+<% episode.references.each do |reference| -%>
+  ・<%= reference.caption -%> <%= reference.link %>
+<% end -%>
+<% end -%>
+<% episode.chapters.present? && episode.chapters.each do |chapter| -%>
+<%= chapter_time(chapter) -%> <%= chapter.title %>
+<% end -%>
