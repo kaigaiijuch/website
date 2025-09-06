@@ -14,6 +14,10 @@
   <h2><%= t('views.descriptions.html_for_spotify') %></h2>
   <button class="padding_5" onClick="navigator.clipboard.writeText(document.getElementById('spotify-description').value);">Copy</button>
   <textarea id="spotify-description" rows="30" cols="auto" readonly><%= render partial: 'spotify_for_podcasters_description', locals: { episode: @episode } %></textarea>
+
+  <h2>ゲスト確認用</h2>
+  <button class="padding_5" onClick="navigator.clipboard.writeText(document.getElementById('confirm-description').value);">Copy</button>
+  <textarea id="confirm-description" rows="30" cols="auto" readonly><%= render partial: 'episodes/description', locals: { episode: @episode } %></textarea>
 </main>
 
 <% end -%>
