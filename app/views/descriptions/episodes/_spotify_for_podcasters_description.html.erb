@@ -4,7 +4,8 @@
 <%= t('views.descriptions.code.guest') %>: <%= guest_interview_profile.abroad_living_summary %> <%= guest_interview_profile.job_title %> <%= guest_interview_profile.guest_name %>
 <%= auto_link_url(guest_interview_profile.introduction) %>
 <% end %>
-</p><p>
+</p>
+<p>
 <%= t('views.descriptions.code.summary') %>: <%= episode.long_summary %>
 <% if episode.references.present? %>
 <%= t('views.descriptions.code.reference') %>:
@@ -17,5 +18,6 @@
 <% episode.chapters.present? && episode.chapters.each do |chapter| %>
 <%= chapter_time(chapter) %>  <%= chapter.title %>
 <% end %>
+</p>
 
 #<%= episode.number -%>
