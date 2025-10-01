@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EpisodesSnsController < ApplicationController
-  def index
+  def index # rubocop:disable Metrics/MethodLength
     @episodes = PublishedEpisode.order(published_at: :desc)
                                 .includes(
                                   :references,
