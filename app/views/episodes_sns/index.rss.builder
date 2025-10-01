@@ -10,19 +10,23 @@ disable_annotate_rendered_view_with_filenames do # rubocop:disable Metrics/Block
           xml.title episode.title
           xml.image image_url_with_host(episode.image_path)
           xml.x [
-            [episode.title, sns_mention(episode, :sns_x)].join("\s"),
+            [episode.title, guests_sns_mention(episode, :sns_x)].join("\s"),
             episode_url(episode),
-            hashtags(episode)
+            "#{hosts_sns_mention(episode, :sns_x)} #{hashtags(episode)}"
           ].join("\n")
           xml.bluesky [
-            [episode.title, sns_mention(episode, :sns_bluesky)].join("\s"),
+            [episode.title, guests_sns_mention(episode, :sns_bluesky)].join("\s"),
             episode_url(episode),
-            hashtags(episode)
+            "#{hosts_sns_mention(episode, :sns_bluesky)} #{hashtags(episode)}"
           ].join("\n")
           xml.instagram(
             render(
               partial: 'episodes/description',
-              locals: { episode:, after_title_text: sns_mention(episode, :sns_instagram) },
+              locals: {
+                episode:,
+                after_title_text: guests_sns_mention(episode, :sns_instagram),
+                before_hashtags: hosts_sns_mention(episode, :sns_instagram)
+              },
               formats: :html
             )
           )
