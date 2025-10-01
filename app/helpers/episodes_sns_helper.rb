@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module EpisodesSnsHelper
-  def guest_sns_mention(episode, target_sns)
+  def guests_sns_mention(episode, target_sns)
     episode.guest_interview_profiles.flat_map(&target_sns).map(&:mention).join(' ')
   end
 
