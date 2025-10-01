@@ -5,7 +5,7 @@ require 'test_helper'
 class EpisodesSnsHelperTest < ActionView::TestCase
   include EpisodesSnsHelper
 
-  class SnsMentionHelperTest < ActionView::TestCase
+  class GuestsSnsMentionHelperTest < ActionView::TestCase
     test 'guests_sns_mention returns empty string when episode has no guest_interview_profiles' do
       assert_equal '', guests_sns_mention(episodes(:four), :sns_x)
     end
@@ -34,6 +34,20 @@ class EpisodesSnsHelperTest < ActionView::TestCase
   class HashtagsHelperTest < ActionView::TestCase
     test 'hashtags returns the default channel hashtag' do
       assert_equal '#海外移住channel', hashtags(episodes(:one))
+    end
+  end
+
+  class HostsSnsMentionHelperTest < ActionView::TestCase
+    test 'hosts_sns_mention returns mentions for episode with one host with sns_x' do
+      assert_equal '@kibitan', hosts_sns_mention(episodes(:two), :sns_x)
+    end
+
+    test 'hosts_sns_mention returns mentions for episode with one host with sns_bluesky' do
+      assert_equal '@chikahirotokoro', hosts_sns_mention(episodes(:two), :sns_bluesky)
+    end
+
+    test 'hosts_sns_mention returns mentions for episode with one host with sns_instagram' do
+      assert_equal '@chikahirotokoro', hosts_sns_mention(episodes(:two), :sns_instagram)
     end
   end
 end

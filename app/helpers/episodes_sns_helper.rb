@@ -8,4 +8,18 @@ module EpisodesSnsHelper
   def hashtags(_episode)
     "##{t('site.name')}" # TODO: extend to episode's original hashtags
   end
+
+  def hosts_sns_mention(_episode, target_sns)
+    # currently hard coded only for main host sns
+    case target_sns
+    when :sns_x
+      '@kibitan'
+    when :sns_bluesky
+      '@chikahirotokoro'
+    when :sns_instagram
+      '@chikahirotokoro'
+    else
+      ''
+    end
+  end
 end
