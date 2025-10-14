@@ -43,11 +43,11 @@ class EpisodesSnsHelperTest < ActionView::TestCase
     end
 
     test 'hosts_sns_mention returns mentions for episode with one host with sns_bluesky' do
-      assert_equal '@chikahirotokoro', hosts_sns_mention(episodes(:two), :sns_bluesky)
+      assert_equal '@chikahirotokoro.bsky.social', hosts_sns_mention(episodes(:two), :sns_bluesky)
     end
 
     test 'hosts_sns_mention returns mentions for episode with one host with sns_instagram' do
-      assert_equal '@chikahirotokoro', hosts_sns_mention(episodes(:two), :sns_instagram)
+      assert_equal '@chikahiro.tokoro', hosts_sns_mention(episodes(:two), :sns_instagram)
     end
   end
 end

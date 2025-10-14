@@ -14,8 +14,10 @@ module EpisodesSnsHelper
     case target_sns
     when :sns_x
       '@kibitan'
-    when :sns_bluesky, :sns_instagram
-      '@chikahirotokoro'
+    when :sns_instagram
+      '@chikahiro.tokoro'
+    when :sns_bluesky
+      '@chikahirotokoro.bsky.social'
     else
       ''
     end
