@@ -34,16 +34,20 @@
   <div id="link_previous_next">
 
     <div id="link_previous">
-      <a href="<%= episodes_path %>" class="link">前へ</a>
+      <% if @episode.prev_episode %>
+        <%= link_to '前へ', episode_path(@episode.prev_episode), class: 'link' %>
+      <% end %>
     </div>
     <div id="link_next">
-      <a href="<%= episodes_path %>" class="link">次へ</a>
+      <% if @episode.next_episode %>
+        <%= link_to '次へ', episode_path(@episode.next_episode), class: 'link' %>
+      <% end %>
     </div>
   </div>
 
   <%= render partial: "layouts/feedback" %>
 
-  
+
 
   <br>
 

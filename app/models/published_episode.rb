@@ -40,4 +40,18 @@ class PublishedEpisode < ApplicationRecord
   def readonly?
     true
   end
+
+  # Returns the previous episode (older episode based on published_at)
+  def prev_episode
+    self.class.where('published_at < ?', published_at)
+        .order(published_at: :desc)
+        .first
+  end
+
+  # Returns the next episode (newer episode based on published_at)
+  def next_episode
+    self.class.where('published_at > ?', published_at)
+        .order(published_at: :asc)
+        .first
+  end
 end
