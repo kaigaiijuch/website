@@ -28,4 +28,51 @@
       <a href="<%= root_path %>" class="link"><b>戻る</b></a>
     </p>
   </section>
+  <div class="back-to-top" id="page-top">
+    <a href="#" class="gotop">T o p へ</a>
+  </div>
+
 </main>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const pageTop = document.querySelector("#page-top");
+  const scrollThreshold = 800;
+
+
+  function scrollTop() {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+  function scrollEvent() {
+    if (window.scrollY > scrollThreshold) {
+      pageTop.style.opacity = "1";
+    } else {
+      pageTop.style.opacity = "0";
+    }
+  }
+
+
+  function Position() {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollPosition = window.innerHeight + window.scrollY;
+    const footHeight = document.querySelector("footer").offsetHeight;
+  
+    if (scrollHeight - scrollPosition <= footHeight) {
+      pageTop.style.position = "absolute";
+      pageTop.style.bottom = footHeight + "px";
+      
+    } else {
+      pageTop.style.position = "fixed";
+      pageTop.style.bottom = "0";
+    }
+  }
+
+  pageTop.addEventListener("click", scrollTop);
+  window.addEventListener("scroll", scrollEvent);
+  window.addEventListener("scroll", Position);
+});
+</script>
+

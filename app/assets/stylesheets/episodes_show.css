@@ -70,7 +70,7 @@ body {
 
 header {
     margin: 0 auto;
-    max-width: var(--width-content);
+    /*max-width: var(--width-content);*/
     padding: 2em 1em 0em 1em;
 }
 
@@ -81,7 +81,7 @@ footer{
 }
 
 nav{
-     max-width: var(--width-content);
+     /*max-width: var(--width-content);*/
      margin: 0 auto;
 }
 
@@ -924,7 +924,28 @@ header iframe{
     display: none;
 }
 
+#link_previous_next{
+    position: relative;
+    overflow: hidden;
+    width: 86%;
+    max-width: var(--width-content);
+    margin: 3rem auto 2rem auto; 
+}
 
+
+#link_previous{
+    float: left;
+
+}
+
+#link_next{
+    float: right;
+    
+}
+
+section #feedback{
+    margin-top: 40px;
+}
 
 @media (max-width: 840px) {
    /* 横幅が840px以下の場合に適用するスタイル */
@@ -1093,4 +1114,8 @@ header iframe{
     .sma{
         display: block;
     }
+
+    #link_previous_next{
+    margin: 3rem auto 3rem auto; 
+}
 }

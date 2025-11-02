@@ -42,4 +42,44 @@ class PublishedEpisodeTest < ActiveSupport::TestCase
     assert_equal published_episodes[0].url, feeds_spotify_for_podcasters(:two).url
     assert_equal published_episodes[1].url, feeds_spotify_for_podcasters(:one).url
   end
+
+  test '#prev_episode returns the previous episode based on published_at' do
+    # Episode "1-1" was published on March 4, 2024
+    # Episode "0" was published on March 2, 2024
+    latest_episode = PublishedEpisode.order(published_at: :desc).first
+    oldest_episode = PublishedEpisode.order(published_at: :asc).first
+
+    # The latest episode should have a previous episode (the oldest one)
+    assert_equal oldest_episode.number, latest_episode.prev_episode.number
+
+    # The oldest episode should not have a previous episode
+    assert_nil oldest_episode.prev_episode
+  end
+
+  test '#next_episode returns the next episode based on published_at' do
+    # Episode "1-1" was published on March 4, 2024
+    # Episode "0" was published on March 2, 2024
+    latest_episode = PublishedEpisode.order(published_at: :desc).first
+    oldest_episode = PublishedEpisode.order(published_at: :asc).first
+
+    # The oldest episode should have a next episode (the latest one)
+    assert_equal latest_episode.number, oldest_episode.next_episode.number
+
+    # The latest episode should not have a next episode
+    assert_nil latest_episode.next_episode
+  end
+
+  test '#prev_episode and #next_episode work correctly with chronological order' do
+    # Get episodes in chronological order
+    oldest = PublishedEpisode.order(published_at: :asc).first
+    newest = PublishedEpisode.order(published_at: :desc).first
+
+    # Verify the chronological relationship
+    assert_equal newest.number, oldest.next_episode.number
+    assert_equal oldest.number, newest.prev_episode.number
+
+    # Verify boundaries
+    assert_nil oldest.prev_episode
+    assert_nil newest.next_episode
+  end
 end

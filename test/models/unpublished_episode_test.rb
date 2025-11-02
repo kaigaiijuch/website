@@ -47,4 +47,12 @@ class UnpublishedEpisodeTest < ActiveSupport::TestCase
     assert_equal 'https://example.com/', unpublished_episode.url
     assert unpublished_episode.preview?
   end
+
+  test '#prev_episode and #next_episode should return nil for unpublished episodes' do
+    unpublished_episode = UnpublishedEpisode.first
+
+    # Unpublished episodes don't have navigation
+    assert_nil unpublished_episode.prev_episode
+    assert_nil unpublished_episode.next_episode
+  end
 end

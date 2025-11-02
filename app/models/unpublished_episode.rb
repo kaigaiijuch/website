@@ -57,4 +57,14 @@ class UnpublishedEpisode < ApplicationRecord
   def readonly?
     true
   end
+
+  # Unpublished episodes don't have previous/next navigation
+  # since they are not part of the published chronological order
+  def prev_episode
+    nil
+  end
+
+  def next_episode
+    nil
+  end
 end

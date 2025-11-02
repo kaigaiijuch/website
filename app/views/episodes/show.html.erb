@@ -31,15 +31,23 @@
 
   <%= render partial: "transcriptions", locals: {transcriptions: @episode.transcriptions } if @episode.transcriptions.present? %>
 
-  <section>
-    <%= link_to 'Topに戻る', '#' %>
-  </section>
+  <div id="link_previous_next">
+
+    <div id="link_previous">
+      <% if @episode.prev_episode %>
+        <%= link_to "<  " + @episode.prev_episode.title.truncate(20), episode_path(@episode.prev_episode), class: 'link' %>
+      <% end %>
+    </div>
+    <div id="link_next">
+      <% if @episode.next_episode %>
+        <%= link_to @episode.next_episode.title.truncate(20) + "  >", episode_path(@episode.next_episode), class: 'link' %>
+      <% end %>
+    </div>
+  </div>
 
   <%= render partial: "layouts/feedback" %>
 
-  <section>
-    <a href="<%= episodes_path %>" class="link">エピソード一覧に戻る</a>
-  </section>
+
 
   <br>
 
