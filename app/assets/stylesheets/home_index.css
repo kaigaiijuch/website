@@ -81,7 +81,7 @@ footer{
 }
 
 nav{
-     max-width: var(--width-content);
+     /*max-width: var(--width-content);*/
      margin: 0 auto;
 }
 

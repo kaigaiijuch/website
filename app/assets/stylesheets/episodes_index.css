@@ -70,7 +70,7 @@ body {
 
 header {
   margin: 0 auto;
-  max-width: var(--width-content);
+  /*width: 100%;*/
   padding: 3rem 1rem;
 }
 
@@ -81,7 +81,7 @@ footer{
 }
 
 nav{
-   max-width: var(--width-content);
+   /*max-width: var(--width-content);*/
    margin: 0 auto;
 }
 
@@ -725,6 +725,51 @@ line-height: 1.5;
 margin-bottom: 10px;
 }
 
+/*topへ戻る固定ボタン*/
+
+html{
+    scroll-behavior: smooth;
+}
+.gotop{
+    display: block;
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    background:var(--color-link);
+    border: none;
+    padding-top: 30px;
+    text-align: center;
+    letter-spacing: -1px;
+    font-size: 85%;
+    text-decoration: none;
+    color: #fff;
+    position: fixed;
+    bottom: 400px;
+    right: 10px;
+    z-index: 10000;
+}
+.gotop::before{
+    content: "";
+    display: block;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    width: 25%;
+    height: 25%;
+    top: 25%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    transform: rotate(-45deg);
+}
+.gotop:hover{
+    opacity: 1;
+}
+
+
+
+
+
 
 
 
@@ -928,6 +973,25 @@ font-size: 0.85em;
 overflow: hidden;
 
 }
+
+/* Topに戻るボタン、スマホ用レスポンシブ調整 */
+    @media(max-width:750px){
+    .gotop{
+        width: 40px;
+        height: 40px;
+        text-indent: -9999px;
+        opacity: 0.9;
+        border: none;
+        background: #0097fc;
+        bottom: 100px;
+        right: 5px;
+    }
+    .gotop::before{
+        bottom: 0;
+    }
+}
+
+    
 
 
 

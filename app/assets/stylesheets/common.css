@@ -21,6 +21,29 @@
     margin: 0 auto;
 }
 
+
+#header nav{
+    position: fixed;
+    top:0;
+
+    width: 86%;
+    left: 50%;
+  transform: translateX(-50%);
+    background-color: white;
+    z-index: 100;
+    margin: 0 auto;
+    padding-left:  7%;
+    padding-right: 7%;
+    box-shadow: 0 .5rem .75rem #9ea3bd4d;
+}
+
+#header_contents{
+    max-width: var(--width-content);
+    margin: 140px auto 0 auto;
+
+}
+
+
 #Available_on{
     width-content:initital;
 }
@@ -143,6 +166,12 @@
     li, dl {
         font-size: 0.95em;
     }
+
+    #header_contents{
+    max-width: var(--width-content);
+    margin: 70px auto 0 auto;
+
+}
 
     /*スマートフォンでは有効（改行する）*/
     .sma{

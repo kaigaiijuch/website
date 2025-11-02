@@ -64,11 +64,13 @@
               <a href="<%= root_path %>">Home</a>
             </li>
             <li>
-              <a href="<%= episodes_path %>">配信中</a>
+              <a href="<%= episodes_path %>">エピソード一覧</a>
             </li>
           </ul>
         </nav>
-        <%= yield(:header_contents) %>
+        <div id="header_contents">
+          <%= yield(:header_contents) %>
+        </div>
       </header>
     <% end %>
 
