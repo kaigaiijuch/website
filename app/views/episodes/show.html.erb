@@ -35,12 +35,12 @@
 
     <div id="link_previous">
       <% if @episode.prev_episode %>
-        <%= link_to '前へ', episode_path(@episode.prev_episode), class: 'link' %>
+        <%= link_to "<  " + @episode.prev_episode.title.truncate(20), episode_path(@episode.prev_episode), class: 'link' %>
       <% end %>
     </div>
     <div id="link_next">
       <% if @episode.next_episode %>
-        <%= link_to '次へ', episode_path(@episode.next_episode), class: 'link' %>
+        <%= link_to @episode.next_episode.title.truncate(20) + "  >", episode_path(@episode.next_episode), class: 'link' %>
       <% end %>
     </div>
   </div>
