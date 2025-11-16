@@ -17,6 +17,7 @@ QUESTION_NUMBER_REGEXP = /^#(?<number>.+):.*【.+】(?<text>.+)$/
 ## change headers to match the Answer model attributes
 question_numbers = {}
 csv.headers.each do |header|
+  next if header.blank?
   header.match(QUESTION_NUMBER_REGEXP)&.tap do |match|
     question_numbers[match[:number]] = match[:text]
     csv[match[:number]] = csv.delete(header)
