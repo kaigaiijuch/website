@@ -8,6 +8,9 @@ ja:
         guest: ゲスト
         summary: 概要
         reference: リファレンス
+        disclaimer:
+          title: 免責事項
+          text: "海外移住channel で配信されるインタビューについて、ゲスト個人の経験や意見を共有するもので、発言・意見は出演者個人の見解であり、配信者としてその正確性・完全性を保証するものではありません。 内容は収録時点の情報に基づいており、事実関係が変わる可能性があります。また、海外移住channel として特定の政治的、宗教的、思想的立場を取るものではありません。詳細:"
         hash_tag: '#海外移住channel'
         website_name: 'web site: 海外移住channel'
         feedback_message: 'フィードバックはこちらから！⁠'
