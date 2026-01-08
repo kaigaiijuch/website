@@ -36,3 +36,31 @@ en:
     description: |
       Interviewing people who lives overseas, mainly Japanese. https://en.kaigaiiju.ch/
       This is the (AI) translated version of the original japanese podcast: Kaigai-ijuh channel https://kaigaiiju.ch/
+    disclaimer:
+      accuracy_of_information:
+        title: About Accuracy of Information
+        content: |
+          The information provided on this site and the podcast "Living Overseas" is shared based on the personal experiences and opinions of the guests, and we do not guarantee its accuracy, completeness, or usefulness as the publisher.
+          The content is based on information at the time of recording or writing, and facts may differ due to legal changes or changes in social conditions.
+      not_professional_advice:
+        title: Not Professional Advice
+        content: |
+          The content discussed on this site and in the broadcasts is intended to provide general information and does not constitute legal, medical, tax, or other professional advice.
+          For important decisions, please be sure to check primary information from public institutions or consult with experts in the relevant field.
+      operational_stance_neutrality:
+        title: About Operational Stance and Neutrality
+        content: |
+          This site and broadcast content aim to share diverse perspectives on living overseas and do not support or recommend any specific political, religious, or ideological positions.
+          Statements made by guests are personal opinions and do not reflect the official views of Living Overseas or any specific political stance.
+      liability_for_damages:
+        title: About Liability for Damages
+        content: |
+          We and the guests cannot be held responsible for any trouble, damage, or loss arising from the content of this site or broadcasts. Please use the information at your own judgment and responsibility.
+      linked_sites:
+        title: About Linked Sites
+        content: |
+          When you move to another site via links or banners from this site, we are not responsible for any information or services provided on the destination site.
+      copyright:
+        title: About Copyright
+        content: |
+          The copyright of the content (text, audio, images, videos, etc.) on this site and broadcasts belongs to "Living Overseas" in principle. Unauthorized reproduction, copying, modification, or redistribution is strictly prohibited. When quoting, please be sure to indicate the source.
