@@ -1,0 +1,17 @@
+<%-
+  title "免責事項"
+  content_for(:stylesheets) do
+    stylesheet_link_tag 'home_index', media: 'all' # temporary workaround
+  end
+%>
+
+<% content_for(:header_contents) do %>
+  <h2>免責事項</h2>
+<% end %>
+
+
+<section>
+  <header>
+    <%= simple_format t('site.disclaimer') %>
+  </header>
+</section>
