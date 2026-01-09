@@ -21,7 +21,7 @@
 </p>
 <br />
 <p>
-<%= t('views.descriptions.code.disclaimer.title') %>: <%= t('views.descriptions.code.disclaimer.text') %> <%= link_to disclaimer_url, disclaimer_url, target: :_blank %>
+<%= t('views.descriptions.code.disclaimer', link: link_to(disclaimer_url, disclaimer_url, target: :_blank)) %>
 </p>
 
 #<%= episode.number -%>
