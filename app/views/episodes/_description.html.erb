@@ -18,6 +18,6 @@
 <%= chapter_time(chapter) -%> <%= chapter.title %>
 <% end -%>
 
-<%= t('views.descriptions.code.disclaimer', link: disclaimer_url) %>
+<%= t('site.disclaimer.digest', link: disclaimer_url) %>
 <% before_hashtags ||= '' %>
 <%= [before_hashtags, hashtags(episode)].compact_blank.join(' ') -%>
