@@ -49,7 +49,7 @@
 
   <div id="disclaimer">
     <p>
-      <%= raw t('site.disclaimer.digest', link: link_to(t('site.disclaimer.title'), disclaimer_path, target: :_blank)) %>
+      <%= t('site.disclaimer.digest') %><%= link_to "詳細はこちら", disclaimer_path, target: :_blank %>
     </p>
   </div>
 
