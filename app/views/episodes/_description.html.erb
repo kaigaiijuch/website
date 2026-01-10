@@ -17,7 +17,5 @@
 <% episode.chapters.present? && episode.chapters.each do |chapter| -%>
 <%= chapter_time(chapter) -%> <%= chapter.title %>
 <% end -%>
-
-<%= t('site.disclaimer.digest', link: disclaimer_url) %>
 <% before_hashtags ||= '' %>
 <%= [before_hashtags, hashtags(episode)].compact_blank.join(' ') -%>
