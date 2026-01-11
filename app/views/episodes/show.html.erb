@@ -47,9 +47,12 @@
 
   <%= render partial: "layouts/feedback" %>
 
-
+  <div id="disclaimer">
+    <p>
+      <%= t('site.disclaimer.digest') %><%= link_to "詳細はこちら", disclaimer_path, target: :_blank %>
+    </p>
+  </div>
 
   <br>
-
 
 </main>

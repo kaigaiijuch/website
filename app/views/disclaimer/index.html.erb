@@ -1,0 +1,52 @@
+<%-
+  title "免責事項"
+  content_for(:stylesheets) do
+    stylesheet_link_tag 'home_index', media: 'all' # temporary workaround
+  end
+%>
+
+<% content_for(:header_contents) do %>
+  <h2>免責事項</h2>
+<% end %>
+
+<section>
+  <header>
+    <h3>1. <%= t('site.disclaimer.accuracy_of_information.title') %></h3>
+    <%= simple_format t('site.disclaimer.accuracy_of_information.content') %>
+  </header>
+</section>
+
+<section>
+  <header>
+    <h3>2. <%= t('site.disclaimer.not_professional_advice.title') %></h3>
+    <%= simple_format t('site.disclaimer.not_professional_advice.content') %>
+  </header>
+</section>
+
+<section>
+  <header>
+    <h3>3. <%= t('site.disclaimer.operational_stance_neutrality.title') %></h3>
+    <%= simple_format t('site.disclaimer.operational_stance_neutrality.content') %>
+  </header>
+</section>
+
+<section>
+  <header>
+    <h3>4. <%= t('site.disclaimer.liability_for_damages.title') %></h3>
+    <%= simple_format t('site.disclaimer.liability_for_damages.content') %>
+  </header>
+</section>
+
+<section>
+  <header>
+    <h3>5. <%= t('site.disclaimer.linked_sites.title') %></h3>
+    <%= simple_format t('site.disclaimer.linked_sites.content') %>
+  </header>
+</section>
+
+<section>
+  <header>
+    <h3>6. <%= t('site.disclaimer.copyright.title') %></h3>
+    <%= simple_format t('site.disclaimer.copyright.content') %>
+  </header>
+</section>

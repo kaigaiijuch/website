@@ -110,7 +110,10 @@
           </div>
         </div>
         <p class="align_center">
-          <%= link_to(root_path) do %>海外移住channel<%- end %>
+          <%= link_to("海外移住channel © #{Time.current.year}", root_path) %>
+        </p>
+        <p class="align_center" style="margin-top: 5px;">
+         <%= link_to(t('site.disclaimer.title'), disclaimer_path) %> | <%= link_to("問い合わせ先", new_feedback_path) %>
         </p>
       </footer>
     <% end %>

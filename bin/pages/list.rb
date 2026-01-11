@@ -11,4 +11,5 @@ Rails.application.routes.url_helpers.tap do |h|
     puts h.episode_path(episode)
   end
   puts h.not_found_path
+  puts h.disclaimer_path
 end

@@ -19,5 +19,9 @@
 <%= chapter_time(chapter) %>  <%= chapter.title %>
 <% end %>
 </p>
+<br />
+<p>
+<%= t('site.disclaimer.digest') %>詳細: <%= link_to disclaimer_url, disclaimer_url, target: :_blank %>
+</p>
 
 #<%= episode.number -%>
