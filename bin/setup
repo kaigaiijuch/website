@@ -15,27 +15,12 @@ FileUtils.chdir APP_ROOT do
 
   puts "== Installing dependencies =="
   system! "gem install bundler --conservative"
-
-  puts "\n== Setup Bundler =="
-  system! "bundle config set path 'vendor/bundle'"
   system("bundle check") || system!("bundle install")
-  system! "bundle binstubs --all"
 
-  puts "\n== Copying sample files =="
-  unless File.exist?(".env.local")
-    FileUtils.cp ".env.local.sample", ".env.local"
-  end
-
-  puts "\n== Setup Data directory =="
-  unless Dir.exist?("data")
-    if ENV.key?("DATA_REPO")
-      system! "git clone #{ENV.fetch('DATA_REPO')} data"
-    else
-      Dir.mkdir("data")
-      FileUtils.mkdir_p("data/assets/images")
-      puts "setup local data directory"
-    end
-  end
+  # puts "\n== Copying sample files =="
+  # unless File.exist?("config/database.yml")
+  #   FileUtils.cp "config/database.yml.sample", "config/database.yml"
+  # end
 
   puts "\n== Preparing database =="
   system! "bin/rails db:prepare"
