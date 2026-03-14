@@ -35,7 +35,7 @@ class PublishedEpisode < ApplicationRecord
   include Episode::HasReferences
   include Episode::HasChapters
   include Episode::HasTranscriptions
-  include Episode::HasPhoto
+  include Episode::HasPhotos
 
   def readonly?
     true

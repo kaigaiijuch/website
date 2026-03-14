@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Episode
-  module HasPhoto
+  module HasPhotos
     extend ActiveSupport::Concern
 
     included do
