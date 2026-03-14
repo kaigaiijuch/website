@@ -10,7 +10,7 @@
 #
 # Indexes
 #
-#  index_episode_photos_on_episode_number  (episode_number) UNIQUE
+#  index_episode_photos_on_episode_number  (episode_number)
 #
 # Foreign Keys
 #
