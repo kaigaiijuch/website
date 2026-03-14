@@ -5,6 +5,7 @@
 # Table name: episode_photos
 #
 #  id             :integer          not null, primary key
+#  caption        :text
 #  display_order  :integer          default(1), not null
 #  episode_number :string           not null
 #  image_path     :string           not null

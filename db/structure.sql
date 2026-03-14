@@ -117,13 +117,14 @@ CREATE VIEW "unpublished_episodes" AS       SELECT *
 /* unpublished_episodes(number,title,summary,long_summary,subtitle,season_number,story_number,type_name,image_path,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator) */;
 CREATE TABLE IF NOT EXISTS "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
-CREATE TABLE IF NOT EXISTS "episode_photos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "episode_number" varchar NOT NULL, "image_path" varchar NOT NULL, "display_order" integer DEFAULT 1 NOT NULL, CONSTRAINT "fk_rails_eb9cadcb0a"
+CREATE TABLE IF NOT EXISTS "episode_photos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "episode_number" varchar NOT NULL, "image_path" varchar NOT NULL, "display_order" integer DEFAULT 1 NOT NULL, "caption" text, CONSTRAINT "fk_rails_eb9cadcb0a"
 FOREIGN KEY ("episode_number")
   REFERENCES "episodes" ("number")
 , CONSTRAINT check_display_order_positive CHECK (display_order > 0));
 CREATE INDEX "index_episode_photos_on_episode_number" ON "episode_photos" ("episode_number");
 CREATE UNIQUE INDEX "index_episode_photos_on_episode_number_and_display_order" ON "episode_photos" ("episode_number", "display_order");
 INSERT INTO "schema_migrations" (version) VALUES
+('20260314192506'),
 ('20260314191138'),
 ('20260314184029'),
 ('20250803093001'),
