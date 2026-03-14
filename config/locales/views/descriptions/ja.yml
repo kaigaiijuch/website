@@ -11,3 +11,5 @@ ja:
         subtitle: 紹介文(SEO用など)
         reference: リファレンス
         hash_tag: '#海外移住channel'
+        q_and_a: ゲストQ＆A
+        topic: "%{topic_name}について"
