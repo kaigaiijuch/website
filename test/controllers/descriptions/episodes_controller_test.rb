@@ -10,7 +10,10 @@ module Descriptions
     end
 
     test 'should get show' do
-      get descriptions_episode_path(Episode.first)
+      get descriptions_episode_path(episodes(:one))
+      assert_response :success
+
+      get descriptions_episode_path(episodes(:two))
       assert_response :success
     end
   end
