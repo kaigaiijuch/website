@@ -21,11 +21,17 @@
 one:
   episode_number: '0'
   image_path: logos/logo_kaigaiiju-channel.webp
+  display_order: 1
+  caption: NULL
 
 two:
   episode_number: '1-1'
   image_path: logos/logo_kaigaiiju-channel.webp
+  display_order: 1
+  caption: nice photo!
 
 three:
   episode_number: '1-2'
   image_path: logos/logo_kaigaiiju-channel.webp
+  display_order: 1
+  caption: "[nice photo!](http://example.com) です"
