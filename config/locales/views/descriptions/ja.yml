@@ -5,7 +5,9 @@ ja:
       main_description: 配信用説明文(SNSなど)
       html_for_spotify: Spotify For Podcasters 用 HTMLコード
       code:
+        title: タイトル
         guest: ゲスト
         summary: 概要
+        subtitle: 紹介文(SEO用など)
         reference: リファレンス
         hash_tag: '#海外移住channel'
