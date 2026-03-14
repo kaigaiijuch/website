@@ -23,6 +23,8 @@ module EpisodesHelper
   #   e.g. https://en.wikipedia.org/wiki/Dave_Thomas_(programmer) -> [Dave Thomas](https://en.wikipedia.org/wiki/Dave_Thomas_(programmer\))
   # TODO: there is a bug when the parenthesis is in the middle of the link, it will not be escaped, test case is skipped
   def markdown_link(text)
+    return '' if text.blank?
+
     text.gsub(MARKDOWN_LINK_REGEX_WITH_PARENTHESIS, link_to('\1', '\2)', target: '_blank', rel: 'noopener'))
         .gsub(MARKDOWN_LINK_REGEX, link_to('\1', '\2', target: '_blank', rel: 'noopener'))
   end

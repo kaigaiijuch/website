@@ -33,7 +33,7 @@ class Episode < ApplicationRecord
   include HasReferences
   include HasChapters
   include HasTranscriptions
-  include HasPhoto
+  include HasPhotos
 
   def published_at
     feed_spotify_for_podcasters&.published_at

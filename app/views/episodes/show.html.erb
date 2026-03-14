@@ -25,7 +25,7 @@
 
   <%= render partial: 'guest_interview_profile', collection: @episode.guest_interview_profiles %>
 
-  <%= render partial: 'photo', locals: {photo: @episode.photo } if @episode.photo.present? %>
+  <%= render partial: 'photo', collection: @episode.photos, locals: { episode: @episode } %>
 
   <%= render partial: "chapters", locals: { chapters: @episode.chapters } if @episode.chapters.present? %>
 

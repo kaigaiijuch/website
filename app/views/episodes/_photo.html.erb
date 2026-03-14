@@ -1,3 +1,4 @@
-<div class="episode_photo">
-  <%= image_tag(@episode.photo.image_path, alt: @episode.title) %>
-</div>
+<figure class="episode_photo">
+  <%= image_tag(photo.image_path, alt: episode.title) %>
+  <figcaption><%= raw markdown_link photo.caption %></figcaption>
+</figure>

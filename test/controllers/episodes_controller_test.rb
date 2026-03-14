@@ -15,6 +15,16 @@ class EpisodesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'should show photo on episode show page' do
+    episode = PublishedEpisode.find('1-1')
+    get episode_path(episode)
+    assert_response :success
+    assert_select 'figure.episode_photo', 2
+    assert_select 'figure.episode_photo:nth-of-type(1) figcaption', 'nice photo!'
+    assert_select 'figure.episode_photo:nth-of-type(2) figcaption a[href="http://example.com"]', 'nice photo!'
+    assert_select 'figure.episode_photo:nth-of-type(2) figcaption', 'nice photo! です'
+  end
+
   test 'should get index' do
     get episodes_path
     assert_response :success
