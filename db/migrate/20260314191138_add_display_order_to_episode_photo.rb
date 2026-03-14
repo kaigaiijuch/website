@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AddDisplayOrderToEpisodePhoto < ActiveRecord::Migration[7.1]
-  def up
+  def up # rubocop:disable Metrics/MethodLength
     add_column :episode_photos, :display_order, :integer, null: true
 
     # Assign distinct display_order per episode so the unique index can be added
