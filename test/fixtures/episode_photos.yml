@@ -31,7 +31,7 @@ two:
   caption: nice photo!
 
 three:
-  episode_number: '1-2'
+  episode_number: '1-1'
   image_path: logos/logo_kaigaiiju-channel.webp
-  display_order: 1
+  display_order: 2
   caption: "[nice photo!](http://example.com) です"
