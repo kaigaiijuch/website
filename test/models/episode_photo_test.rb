@@ -29,4 +29,17 @@ class EpisodePhotoTest < ActiveSupport::TestCase
     assert episodes(:two), episode_photos(:two).episode
     assert episodes(:three), episode_photos(:three).episode
   end
+
+  test 'the episode_number and display_order should not be dupilicated' do
+    episode_photo = EpisodePhoto.new(
+      episode_number: episode_photos(:one).episode_number,
+      display_order: episode_photos(:one).display_order,
+      image_path: episode_photos(:one).image_path
+    )
+
+    assert_not episode_photo.valid?
+    assert_raises(ActiveRecord::RecordNotUnique) do
+      episode_photo.save!(validate: false)
+    end
+  end
 end
