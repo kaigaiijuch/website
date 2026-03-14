@@ -1,4 +1,13 @@
 <% episode.guest_interview_profiles.each do |guest_interview_profile| -%>
 <%= t('views.descriptions.code.guest') -%>: <%= guest_interview_profile.abroad_living_summary -%> <%= guest_interview_profile.job_title -%> <%= guest_interview_profile.guest_name %>
 <%= guest_interview_profile.introduction %>
+
+<% if guest_interview_profile.questions_and_answers.present? %>
+<%= t('views.descriptions.code.q_and_a') -%>:<% guest_interview_profile.questions_and_answers.by_topic.each do |topic_name, topic_questions_and_answers| %>
+  <%= t('views.descriptions.code.topic', topic_name: topic_name) -%>:
+    <% topic_questions_and_answers.each do |topic_questions_and_answer| %>
+  ・<%= topic_questions_and_answer.question_text %>: <%= topic_questions_and_answer.answer_text %>
+    <% end %>
+  <% end -%>
+  <% end -%>
 <% end -%>
