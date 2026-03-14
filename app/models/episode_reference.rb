@@ -19,11 +19,10 @@
 #  episode_number  (episode_number => episodes.number)
 #
 class EpisodeReference < ApplicationRecord
+  include DisplayOrderable.with_uniqueness_scope(:episode_number)
+
   belongs_to :episode, primary_key: :number, foreign_key: :episode_number, inverse_of: :references
 
   validates :caption, presence: true
-  validates :episode_number, presence: true, uniqueness: { scope: :display_order }
   validates :link, presence: true
-  validates :display_order, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  default_scope { order(display_order: :asc) }
 end
