@@ -15,8 +15,8 @@ module EpisodesSnsHelper
     when :sns_x
       '@kibitan'
     when :sns_instagram
-      # TEMPORARY: remove the following suffix and temporary_mention_for_host? when no longer needed.
-      '@chikahiro.tokoro' + (temporary_mention_for_host?(episode) ? ' @jirohari' : '')
+      # TEMPORARY: Remove this method after implementing proper host mention logic
+      "@chikahiro.tokoro#{temporary_mention_for_host?(episode) ? ' @jirohari' : ''}"
     when :sns_bluesky
       '@chikahirotokoro.bsky.social'
     else
@@ -26,7 +26,7 @@ module EpisodesSnsHelper
 
   private
 
-  # TEMPORARY: Remove this method, TEMPORARY_HOST_MENTION_EPISODE_NUMBERS, and the extra ' @jirohari' in :sns_instagram branch when no longer needed.
+  # TEMPORARY: Remove this method after implementing proper host mention logic
   TEMPORARY_HOST_MENTION_EPISODE_NUMBERS = %w[a-7 31-1 31-2].freeze
 
   def temporary_mention_for_host?(episode)

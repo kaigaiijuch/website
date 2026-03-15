@@ -51,7 +51,7 @@ class EpisodesSnsHelperTest < ActionView::TestCase
       assert_equal '@chikahiro.tokoro', hosts_sns_mention(episodes(:one), :sns_instagram)
     end
 
-    test 'hosts_sns_mention includes temporary host mention for sns_instagram when episode number is in list (a-7, 31-1, 31-2)' do
+    test 'hosts_sns_mention includes temporary host mention for sns_instagram when episode number is in list' do
       episode_in_list = Struct.new(:number).new('a-7')
       assert_equal '@chikahiro.tokoro @jirohari', hosts_sns_mention(episode_in_list, :sns_instagram)
     end
