@@ -14,6 +14,7 @@
 #  guid            :string
 #  image_path      :string
 #  image_url       :string
+#  introduction    :text
 #  long_summary    :text
 #  number          :string           primary key
 #  published_at    :datetime
@@ -22,7 +23,6 @@
 #  source_url      :string
 #  story_number    :integer
 #  story_number:1  :string
-#  subtitle        :text
 #  summary         :text
 #  title           :string(200)
 #  title:1         :string

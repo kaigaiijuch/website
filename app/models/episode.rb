@@ -9,7 +9,7 @@
 #  number        :string           not null, primary key
 #  season_number :integer
 #  story_number  :integer
-#  subtitle      :text             not null
+#  introduction  :text             not null
 #  summary       :text
 #  title         :string(200)      not null
 #  type_name     :string           not null

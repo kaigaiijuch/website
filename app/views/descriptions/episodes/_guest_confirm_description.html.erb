@@ -10,7 +10,7 @@
 <% end -%>
 <% end -%>
 
-<%= t('views.descriptions.code.subtitle') -%>: <%= episode.subtitle %>
+<%= t('views.descriptions.code.introduction') -%>: <%= episode.introduction %>
 
 <% episode.chapters.present? && episode.chapters.each do |chapter| -%>
 <%= chapter_time(chapter) -%> <%= chapter.title %>

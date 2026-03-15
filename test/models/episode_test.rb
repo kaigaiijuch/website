@@ -9,7 +9,7 @@
 #  number        :string           not null, primary key
 #  season_number :integer
 #  story_number  :integer
-#  subtitle      :text             not null
+#  introduction  :text             not null
 #  summary       :text
 #  title         :string(200)      not null
 #  type_name     :string           not null
@@ -35,7 +35,7 @@ class EpisodeTest < ActiveSupport::TestCase
     assert_equal '#0 イントロダクション', episode.title
     assert_equal '0', episode.number
     assert_equal '海外移住channelの第0回エピソードでは、ちかひろが自己紹介し、ポッドキャストのコンセプトや3本柱を紹介。第1回ではベルリン在住のソフトウェアエンジニアをゲストに招き、興味深い話題が期待される。海外移住に興味がある人や経験者に価値ある情報。',
-                 episode.subtitle
+                 episode.introduction
     assert_equal '海外移住チャンネルの第0回エピソードでは、チャンネルのイントロダクションとして、海外移住チャンネルの発起人でありメインホストのちかひろが自己紹介を行います。ポッドキャストのコンセプトや番組の3本柱についても紹介され、今後の展開に期待が高まります。第1回エピソードではベルリン在住のソフトウェアエンジニアをゲストに迎え、興味深い話題が期待されます。海外移住に興味がある方やすでに移住経験者にとって、貴重な情報が得られることでしょう。',
                  episode.summary
     assert_equal <<~LONG_SUMMARY, episode.long_summary
@@ -72,7 +72,7 @@ class EpisodeTest < ActiveSupport::TestCase
         title: dummy_value,
         summary: dummy_value,
         long_summary: dummy_value,
-        subtitle: dummy_value,
+        introduction: dummy_value,
         image_path: 'logos/logo_kaigaiiju-channel.webp'
       )
     end
