@@ -46,7 +46,7 @@ class EpisodesSnsHelperTest < ActionView::TestCase
       assert_equal '@chikahirotokoro.bsky.social', hosts_sns_mention(episodes(:two), :sns_bluesky)
     end
 
-    # TEMPORARY: remove this and the 2 tests below when temporary_mention_for_host? is removed.
+    # TEMPORARY: remove this and the 3 tests below when temporary_mention_for_host? is removed.
     test 'hosts_sns_mention returns mentions for sns_instagram when episode is not in temporary list' do
       assert_equal '@chikahiro.tokoro', hosts_sns_mention(episodes(:one), :sns_instagram)
     end
