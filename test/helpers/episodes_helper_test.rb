@@ -121,7 +121,7 @@ module EpisodesHelperTest
 
     test 'episode_summary() appends place suffix when place is present' do
       episode = PublishedEpisode.find('1-1')
-      expected = episode.summary + I18n.t('episodes.summary.place', place: episode.place)
+      expected = "#{episode.summary}\n\n#{I18n.t('episodes.summary.place', place: episode.place)}"
       assert_equal expected, episode_summary(episode)
     end
 
