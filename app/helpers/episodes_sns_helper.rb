@@ -9,17 +9,27 @@ module EpisodesSnsHelper
     "##{t('site.name')}" # TODO: extend to episode's original hashtags
   end
 
-  def hosts_sns_mention(_episode, target_sns)
+  def hosts_sns_mention(episode, target_sns)
     # currently hard coded only for main host sns
     case target_sns
     when :sns_x
       '@kibitan'
     when :sns_instagram
-      '@chikahiro.tokoro'
+      # TEMPORARY: Remove this method after implementing proper host mention logic
+      "@chikahiro.tokoro#{temporary_mention_for_host?(episode) ? ' @jirohari' : ''}"
     when :sns_bluesky
       '@chikahirotokoro.bsky.social'
     else
       ''
     end
+  end
+
+  private
+
+  # TEMPORARY: Remove this method after implementing proper host mention logic
+  TEMPORARY_HOST_MENTION_EPISODE_NUMBERS = %w[a-7 31-1 31-2].freeze
+
+  def temporary_mention_for_host?(episode)
+    episode.present? && TEMPORARY_HOST_MENTION_EPISODE_NUMBERS.include?(episode.number)
   end
 end
