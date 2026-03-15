@@ -3,8 +3,6 @@ CREATE TABLE IF NOT EXISTS "episode_speaker_roles" ("name" varchar NOT NULL);
 CREATE UNIQUE INDEX "index_episode_speaker_roles_on_name" ON "episode_speaker_roles" ("name");
 CREATE TABLE IF NOT EXISTS "episode_types" ("name" varchar NOT NULL PRIMARY KEY);
 CREATE UNIQUE INDEX "index_episode_types_on_name" ON "episode_types" ("name");
-CREATE TABLE IF NOT EXISTS "guests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar NOT NULL, "name" varchar NOT NULL, "english_name" varchar NOT NULL);
-CREATE UNIQUE INDEX "index_guests_on_nickname" ON "guests" ("nickname");
 CREATE TABLE IF NOT EXISTS "host_roles" ("name" varchar NOT NULL);
 CREATE UNIQUE INDEX "index_host_roles_on_name" ON "host_roles" ("name");
 CREATE TABLE IF NOT EXISTS "speakers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "image_path" varchar NOT NULL, "global_id" varchar NOT NULL);
@@ -123,7 +121,9 @@ FOREIGN KEY ("type_name")
 );
 CREATE UNIQUE INDEX "index_episodes_on_number" ON "episodes" ("number");
 CREATE UNIQUE INDEX "index_episodes_on_season_number_and_story_number" ON "episodes" ("season_number", "story_number");
+CREATE TABLE IF NOT EXISTS "guests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "english_name" varchar NOT NULL);
 INSERT INTO "schema_migrations" (version) VALUES
+('20260315080200'),
 ('20260315080100'),
 ('20260315080000'),
 ('20260315070819'),
