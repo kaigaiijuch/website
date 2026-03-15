@@ -5,7 +5,7 @@
 # Table name: episodes
 #
 #  image_path    :string           not null
-#  long_summary  :text             not null
+#  summary       :text             not null
 #  number        :string           not null, primary key
 #  season_number :integer
 #  story_number  :integer
@@ -35,11 +35,11 @@ class EpisodeTest < ActiveSupport::TestCase
     assert_equal '0', episode.number
     assert_equal '海外移住channelの第0回エピソードでは、ちかひろが自己紹介し、ポッドキャストのコンセプトや3本柱を紹介。第1回ではベルリン在住のソフトウェアエンジニアをゲストに招き、興味深い話題が期待される。海外移住に興味がある人や経験者に価値ある情報。',
                  episode.introduction
-    assert_equal <<~LONG_SUMMARY, episode.long_summary
+    assert_equal <<~SUMMARY, episode.summary
       海外移住チャンネルの第0回エピソードでは、チャンネルのイントロダクションとして、海外移住チャンネルの発起人でありメインホストのちかひろが自己紹介を行います。ちかひろは7年前に妻とともにドイツベルリンに移住し、現地のスタートアップでソフトエンジニアとして働いています。また、子育ても経験したちかひろは、現在2人の子供の父親として、育休を取得し復帰を検討しています。
       ポッドキャストのコンセプトは、海外移住経験者をゲストに招き、インタビューを通じて様々な話題を取り上げることです。海外移住に興味があるリスナーだけでなく、すでに海外に移住している方にも興味深い内容を提供したいと考えています。ちかひろは、海外生活の良い面だけでなく、困難な側面もリアルに伝えたいと述べています。
       番組の3本柱として、海外移住、仕事、子育ての話題を中心に取り上げる予定であり、ゲストの属性に合わせて柔軟にコンテンツを提供する考えです。リスナーからのフィードバックも重視し、リクエストに応じてさまざまな企画を検討しています。現在はウェブサイトの制作も進行中であり、配信スケジュールは月2から4回を目指し、火曜日の日本時間の朝に配信予定です。
-    LONG_SUMMARY
+    SUMMARY
     assert_equal 'trailer', episode.type_name
     assert_equal EpisodeType.find('trailer'), episode.type
 
@@ -67,7 +67,7 @@ class EpisodeTest < ActiveSupport::TestCase
         story_number: 1,
         type_name: 'full',
         title: dummy_value,
-        long_summary: dummy_value,
+        summary: dummy_value,
         introduction: dummy_value,
         image_path: 'logos/logo_kaigaiiju-channel.webp'
       )

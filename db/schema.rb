@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_03_15_070819) do
+ActiveRecord::Schema[7.1].define(version: 2026_03_15_080100) do
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
     t.date "answered_on", null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_15_070819) do
 
   create_table "episodes", primary_key: "number", id: :string, force: :cascade do |t|
     t.string "title", limit: 200, null: false
-    t.text "long_summary", null: false
+    t.text "summary", null: false
     t.text "introduction", null: false
     t.integer "season_number"
     t.integer "story_number"
