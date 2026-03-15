@@ -112,4 +112,31 @@ module EpisodesHelperTest
       assert_equal expected_output, markdown_link(text)
     end
   end
+
+  class EpisodeSummaryHelperTest < ActionView::TestCase
+    test 'episode_summary() returns summary only when place is blank' do
+      episode = PublishedEpisode.find('0')
+      assert_equal episode.summary, episode_summary(episode)
+    end
+
+    test 'episode_summary() appends place suffix when place is present' do
+      episode = PublishedEpisode.find('1-1')
+      expected = episode.summary + I18n.t('episodes.summary.place', place: episode.place)
+      assert_equal expected, episode_summary(episode)
+    end
+
+    test 'episode_summary() uses correct i18n for place in ja locale' do
+      I18n.with_locale(:ja) do
+        episode = PublishedEpisode.find('1-1')
+        assert_includes episode_summary(episode), '収録場所: ベルリン'
+      end
+    end
+
+    test 'episode_summary() uses correct i18n for place in en locale' do
+      I18n.with_locale(:en) do
+        episode = PublishedEpisode.find('1-1')
+        assert_includes episode_summary(episode), ' (Recorded at: ベルリン)'
+      end
+    end
+  end
 end
