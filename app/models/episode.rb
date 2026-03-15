@@ -5,12 +5,11 @@
 # Table name: episodes
 #
 #  image_path    :string           not null
-#  long_summary  :text             not null
+#  summary       :text             not null
 #  number        :string           not null, primary key
 #  season_number :integer
 #  story_number  :integer
-#  subtitle      :text             not null
-#  summary       :text
+#  introduction  :text             not null
 #  title         :string(200)      not null
 #  type_name     :string           not null
 #

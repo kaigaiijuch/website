@@ -8,7 +8,7 @@ ja:
         title: タイトル
         guest: ゲスト
         summary: 概要
-        subtitle: 紹介文(SEO用など)
+        introduction: 紹介文(SEO用など)
         reference: リファレンス
         hash_tag: '#海外移住channel'
         q_and_a: ゲストQ＆A

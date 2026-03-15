@@ -1,7 +1,7 @@
 <%= t('views.descriptions.code.title') -%>: <%= episode.title -%>
 
 
-<%= t('views.descriptions.code.summary') -%>: <%= episode.long_summary %>
+<%= t('views.descriptions.code.summary') -%>: <%= episode.summary %>
 
 <% if episode.references.present? -%>
 <%= t('views.descriptions.code.reference') -%>:
@@ -10,7 +10,7 @@
 <% end -%>
 <% end -%>
 
-<%= t('views.descriptions.code.subtitle') -%>: <%= episode.subtitle %>
+<%= t('views.descriptions.code.introduction') -%>: <%= episode.introduction %>
 
 <% episode.chapters.present? && episode.chapters.each do |chapter| -%>
 <%= chapter_time(chapter) -%> <%= chapter.title %>

@@ -5,30 +5,21 @@
 #  id           :integer          not null, primary key
 #  english_name :string           not null
 #  name         :string           not null
-#  nickname     :string           not null
-#
-# Indexes
-#
-#  index_guests_on_nickname  (nickname) UNIQUE
 #
 
 one:
   name: 奥田 一成
-  nickname: kaz
   english_name: Kazunari Okuda
 
 two:
   name: 細井 洋介
-  nickname: yosuke-san
   english_name: Yosuke Hosoda
 
 three:
   name: 所 親宏
-  nickname: chikahiro
   english_name: Chikahiro Tokoro
 
 global_id_speaker:
   id: 10
   name: Global Id needs to be specify the id, it currently used in Speaker model
-  nickname: global_id_speaker
   english_name: Global Id Speaker
