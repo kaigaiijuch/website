@@ -48,9 +48,9 @@ class GuestInterviewTest < ActiveSupport::TestCase
 
   test 'the order of guests and guest_interviews should be correct' do
     episode_yoga = Episode.find('108')
-    assert_equal Guest.find_by(nickname: 'chikahiro'), episode_yoga.guests.first
+    assert_equal guests(:three), episode_yoga.guests.first
     assert_equal 1, episode_yoga.guest_interviews.first.display_order
-    assert_equal Guest.find_by(nickname: 'yosuke-san'), episode_yoga.guests.second
+    assert_equal guests(:two), episode_yoga.guests.second
     assert_equal 2, episode_yoga.guest_interviews.second.display_order
   end
 
