@@ -46,4 +46,10 @@ module EpisodesHelper
       ]
     )
   end
+
+  def episode_summary(episode)
+    summary = episode.summary
+    summary += "\n\n#{I18n.t('episodes.summary.place', place: episode.place)}" if episode.place.present?
+    summary
+  end
 end

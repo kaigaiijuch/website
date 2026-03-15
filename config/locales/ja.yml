@@ -1,4 +1,7 @@
 ja:
+  episodes:
+    summary:
+      place: "収録場所: %{place}"
   error:
     forbidden: "forbidden"
   site:

@@ -28,6 +28,9 @@
 #       enabled: "ON"
 
 en:
+  episodes:
+    summary:
+      place: " (Recorded at: %{place})"
   hello: "Hello world"
   error:
     forbidden: "forbidden"

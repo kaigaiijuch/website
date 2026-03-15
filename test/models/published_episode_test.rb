@@ -15,14 +15,15 @@
 #  image_path      :string
 #  image_url       :string
 #  introduction    :text
-#  summary         :text
 #  number          :string           primary key
+#  place           :string
 #  published_at    :datetime
 #  season_number   :integer
 #  season_number:1 :string
 #  source_url      :string
 #  story_number    :integer
 #  story_number:1  :string
+#  summary         :text
 #  title           :string(200)
 #  title:1         :string
 #  type_name       :string

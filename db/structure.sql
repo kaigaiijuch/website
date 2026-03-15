@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS "episode_speaker_roles" ("name" varchar NOT NULL);
 CREATE UNIQUE INDEX "index_episode_speaker_roles_on_name" ON "episode_speaker_roles" ("name");
 CREATE TABLE IF NOT EXISTS "episode_types" ("name" varchar NOT NULL PRIMARY KEY);
 CREATE UNIQUE INDEX "index_episode_types_on_name" ON "episode_types" ("name");
+CREATE TABLE IF NOT EXISTS "guests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "english_name" varchar NOT NULL);
 CREATE TABLE IF NOT EXISTS "host_roles" ("name" varchar NOT NULL);
 CREATE UNIQUE INDEX "index_host_roles_on_name" ON "host_roles" ("name");
 CREATE TABLE IF NOT EXISTS "speakers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "image_path" varchar NOT NULL, "global_id" varchar NOT NULL);
@@ -46,6 +47,12 @@ FOREIGN KEY ("speaker_id")
 CREATE UNIQUE INDEX "index_episode_speakers_on_episode_number_and_speaker_id" ON "episode_speakers" ("episode_number", "speaker_id");
 CREATE UNIQUE INDEX "index_episode_speakers_on_role_name_and_episode_number" ON "episode_speakers" ("role_name", "episode_number");
 CREATE INDEX "index_episode_speakers_on_speaker_id" ON "episode_speakers" ("speaker_id");
+CREATE TABLE IF NOT EXISTS "episodes" ("number" varchar NOT NULL PRIMARY KEY, "title" varchar(200) NOT NULL, "summary" text NOT NULL, "introduction" text NOT NULL, "season_number" integer DEFAULT NULL, "story_number" integer DEFAULT NULL, "type_name" varchar NOT NULL, "image_path" varchar NOT NULL, "place" varchar, CONSTRAINT "fk_rails_eafa210e4e"
+FOREIGN KEY ("type_name")
+  REFERENCES "episode_types" ("name")
+);
+CREATE UNIQUE INDEX "index_episodes_on_number" ON "episodes" ("number");
+CREATE UNIQUE INDEX "index_episodes_on_season_number_and_story_number" ON "episodes" ("season_number", "story_number");
 CREATE TABLE IF NOT EXISTS "feeds_spotify_for_podcasters" ("episode_number" varchar NOT NULL PRIMARY KEY, "source_url" varchar NOT NULL, "title" varchar NOT NULL, "url" varchar NOT NULL, "audio_file_url" varchar NOT NULL, "image_url" varchar NOT NULL, "published_at" datetime(6) NOT NULL, "description" text NOT NULL, "duration" varchar NOT NULL, "explicit" boolean NOT NULL, "season_number" varchar DEFAULT NULL, "story_number" varchar DEFAULT NULL, "episode_type" varchar NOT NULL, "guid" varchar NOT NULL, "creator" varchar NOT NULL, CONSTRAINT "fk_rails_fac382d39c"
 FOREIGN KEY ("episode_number")
   REFERENCES "episodes" ("number")
@@ -92,37 +99,31 @@ FOREIGN KEY ("topic_code")
 , CONSTRAINT chk_rails_3b193a7e50 CHECK (display_order > 0));
 CREATE UNIQUE INDEX "index_questions_on_topic_code_and_display_order" ON "questions" ("topic_code", "display_order");
 CREATE VIEW "published_episodes" AS       SELECT
-                                                                                                             *
-                                                                                                            FROM episodes
-                                                                                                            JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
-/* published_episodes(number,title,summary,introduction,season_number,story_number,type_name,image_path,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator) */;
+                                                                                                               *
+                                                                                                              FROM episodes
+                                                                                                              JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+/* published_episodes(number,title,summary,introduction,season_number,story_number,type_name,image_path,place,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator) */;
 CREATE VIEW "questions_and_answers" AS       SELECT *, answers.text AS answer_text, topics.name AS topic_name, questions.text AS question_text
-                                                                                                            FROM answers
-                                                                                                            JOIN questions ON answers.question_number = questions.number
-                                                                                                            JOIN topics ON questions.topic_code = topics.code
-                                                                                                            ORDER BY topics.display_order ASC, questions.display_order ASC
+                                                                                                              FROM answers
+                                                                                                              JOIN questions ON answers.question_number = questions.number
+                                                                                                              JOIN topics ON questions.topic_code = topics.code
+                                                                                                              ORDER BY topics.display_order ASC, questions.display_order ASC
 /* questions_and_answers(id,text,answered_on,question_number,original_question_text,guest_interview_profile_id,number,"text:1",display_order,topic_code,about,code,name,"display_order:1",answer_text,topic_name,question_text) */;
 CREATE VIEW "episode_transcriptions" AS       SELECT *
-                                                                                                            FROM episode_speaker_transcriptions
-                                                                                                            INNER JOIN episode_speakers ON episode_speaker_transcriptions.episode_speaker_id = episode_speakers.id
-                                                                                                            INNER JOIN speakers ON episode_speakers.speaker_id = speakers.id
-                                                                                                            ORDER BY episode_number, start_at
+                                                                                                              FROM episode_speaker_transcriptions
+                                                                                                              INNER JOIN episode_speakers ON episode_speaker_transcriptions.episode_speaker_id = episode_speakers.id
+                                                                                                              INNER JOIN speakers ON episode_speakers.speaker_id = speakers.id
+                                                                                                              ORDER BY episode_number, start_at
 /* episode_transcriptions(id,episode_speaker_id,text,start_at,end_at,"id:1",episode_number,speaker_id,role_name,"id:2",name,image_path,global_id) */;
 CREATE VIEW "unpublished_episodes" AS       SELECT *
-                                                                                                            FROM episodes
-                                                                                                            LEFT OUTER JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
-                                                                                                            WHERE feeds_spotify_for_podcasters.episode_number IS NULL
-/* unpublished_episodes(number,title,summary,introduction,season_number,story_number,type_name,image_path,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator) */;
+                                                                                                              FROM episodes
+                                                                                                              LEFT OUTER JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+                                                                                                              WHERE feeds_spotify_for_podcasters.episode_number IS NULL
+/* unpublished_episodes(number,title,summary,introduction,season_number,story_number,type_name,image_path,place,episode_number,source_url,"title:1",url,audio_file_url,image_url,published_at,description,duration,explicit,"season_number:1","story_number:1",episode_type,guid,creator) */;
 CREATE TABLE IF NOT EXISTS "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
-CREATE TABLE IF NOT EXISTS "episodes" ("number" varchar NOT NULL PRIMARY KEY, "title" varchar(200) NOT NULL, "summary" text NOT NULL, "introduction" text NOT NULL, "season_number" integer DEFAULT NULL, "story_number" integer DEFAULT NULL, "type_name" varchar NOT NULL, "image_path" varchar NOT NULL, CONSTRAINT "fk_rails_eafa210e4e"
-FOREIGN KEY ("type_name")
-  REFERENCES "episode_types" ("name")
-);
-CREATE UNIQUE INDEX "index_episodes_on_number" ON "episodes" ("number");
-CREATE UNIQUE INDEX "index_episodes_on_season_number_and_story_number" ON "episodes" ("season_number", "story_number");
-CREATE TABLE IF NOT EXISTS "guests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "english_name" varchar NOT NULL);
 INSERT INTO "schema_migrations" (version) VALUES
+('20260315080201'),
 ('20260315080200'),
 ('20260315080100'),
 ('20260315070819'),

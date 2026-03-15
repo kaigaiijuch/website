@@ -103,6 +103,7 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
+    csv (3.2.8)
     date (3.3.4)
     debug (1.9.1)
       irb (~> 1.10)
@@ -306,6 +307,7 @@ DEPENDENCIES
   bootsnap
   bullet
   cloudinary
+  csv
   debug
   dotenv-rails
   meta-tags
