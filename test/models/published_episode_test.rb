@@ -23,7 +23,6 @@
 #  source_url      :string
 #  story_number    :integer
 #  story_number:1  :string
-#  summary         :text
 #  title           :string(200)
 #  title:1         :string
 #  type_name       :string

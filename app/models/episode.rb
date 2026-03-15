@@ -10,7 +10,6 @@
 #  season_number :integer
 #  story_number  :integer
 #  introduction  :text             not null
-#  summary       :text
 #  title         :string(200)      not null
 #  type_name     :string           not null
 #
