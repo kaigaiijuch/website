@@ -15,11 +15,22 @@ module EpisodesSnsHelper
     when :sns_x
       '@kibitan'
     when :sns_instagram
-      '@chikahiro.tokoro'
+      # TEMPORARY: remove the following suffix and temporary_mention_for_host? after 2026-03-31.
+      '@chikahiro.tokoro' + (temporary_mention_for_host? ? ' @jirohari' : '')
     when :sns_bluesky
       '@chikahirotokoro.bsky.social'
     else
       ''
     end
+  end
+
+  private
+
+  # TEMPORARY: Remove this method and the extra ' @jirohari' in :sns_instagram branch after 2026-03-31.
+  def temporary_mention_for_host?
+    start_at = Time.zone.parse('2026-03-15').beginning_of_day
+    end_at = Time.zone.parse('2026-03-31').end_of_day
+    now = Time.current
+    now >= start_at && now <= end_at
   end
 end
