@@ -52,4 +52,8 @@ module EpisodesHelper
     summary += "\n\n#{I18n.t('episodes.summary.place', place: episode.place)}" if episode.place.present?
     summary
   end
+
+  def episode_photo_style(photo)
+    "--episode-photo-width: #{photo.width_percent / 2.0}%;"
+  end
 end

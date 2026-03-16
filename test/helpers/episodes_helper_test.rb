@@ -139,4 +139,11 @@ module EpisodesHelperTest
       end
     end
   end
+
+  class EpisodePhotoStyleHelperTest < ActionView::TestCase
+    test 'episode_photo_style returns style value when width_percent is present' do
+      assert_equal '--episode-photo-width: 50.0%;', episode_photo_style(episode_photos(:two))
+      assert_equal '--episode-photo-width: 20.0%;', episode_photo_style(episode_photos(:three))
+    end
+  end
 end

@@ -1,4 +1,4 @@
-<figure class="episode_photo">
+<figure class="episode_photo" style="<%= episode_photo_style(photo) %>">
   <%= image_tag(photo.image_path, alt: episode.title) %>
   <figcaption><%= raw markdown_link photo.caption %></figcaption>
 </figure>
