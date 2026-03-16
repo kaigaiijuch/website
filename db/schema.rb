@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_03_15_080201) do
+ActiveRecord::Schema[7.1].define(version: 2026_03_16_000000) do
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
     t.date "answered_on", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_15_080201) do
     t.string "image_path", null: false
     t.integer "display_order", default: 1, null: false
     t.text "caption"
+    t.integer "width_percent", default: 100, null: false
     t.index ["episode_number", "display_order"], name: "index_episode_photos_on_episode_number_and_display_order", unique: true
     t.index ["episode_number"], name: "index_episode_photos_on_episode_number"
     t.check_constraint "display_order > 0", name: "check_display_order_positive"
@@ -199,28 +200,28 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_15_080201) do
 
   create_view "published_episodes", sql_definition: <<-SQL
       SELECT
-                                                                                                                 *
-                                                                                                                FROM episodes
-                                                                                                                JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+             *
+            FROM episodes
+            JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
   SQL
   create_view "questions_and_answers", sql_definition: <<-SQL
       SELECT *, answers.text AS answer_text, topics.name AS topic_name, questions.text AS question_text
-                                                                                                                FROM answers
-                                                                                                                JOIN questions ON answers.question_number = questions.number
-                                                                                                                JOIN topics ON questions.topic_code = topics.code
-                                                                                                                ORDER BY topics.display_order ASC, questions.display_order ASC
+            FROM answers
+            JOIN questions ON answers.question_number = questions.number
+            JOIN topics ON questions.topic_code = topics.code
+            ORDER BY topics.display_order ASC, questions.display_order ASC
   SQL
   create_view "episode_transcriptions", sql_definition: <<-SQL
       SELECT *
-                                                                                                                FROM episode_speaker_transcriptions
-                                                                                                                INNER JOIN episode_speakers ON episode_speaker_transcriptions.episode_speaker_id = episode_speakers.id
-                                                                                                                INNER JOIN speakers ON episode_speakers.speaker_id = speakers.id
-                                                                                                                ORDER BY episode_number, start_at
+            FROM episode_speaker_transcriptions
+            INNER JOIN episode_speakers ON episode_speaker_transcriptions.episode_speaker_id = episode_speakers.id
+            INNER JOIN speakers ON episode_speakers.speaker_id = speakers.id
+            ORDER BY episode_number, start_at
   SQL
   create_view "unpublished_episodes", sql_definition: <<-SQL
       SELECT *
-                                                                                                                FROM episodes
-                                                                                                                LEFT OUTER JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
-                                                                                                                WHERE feeds_spotify_for_podcasters.episode_number IS NULL
+            FROM episodes
+            LEFT OUTER JOIN feeds_spotify_for_podcasters ON feeds_spotify_for_podcasters.episode_number = episodes.number
+            WHERE feeds_spotify_for_podcasters.episode_number IS NULL
   SQL
 end

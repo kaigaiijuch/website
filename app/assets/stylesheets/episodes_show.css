@@ -23,6 +23,7 @@
     --width-card-medium: 460px;
     --width-card-wide: 800px;
     --width-content: 1080px;
+    --episode-photo-width: 50%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -632,7 +633,7 @@ header b{
 }
 
 .episode_photo img{
-    width: 50%;
+    width: var(--episode-photo-width);
 }
 
 .episode_photo figcaption{
@@ -934,7 +935,7 @@ header iframe{
     overflow: hidden;
     width: 86%;
     max-width: var(--width-content);
-    margin: 3rem auto 2rem auto; 
+    margin: 3rem auto 2rem auto;
 }
 
 
@@ -945,7 +946,7 @@ header iframe{
 
 #link_next{
     float: right;
-    
+
 }
 
 section #feedback{
@@ -1004,10 +1005,6 @@ section #feedback{
         display: block;
     margin: 0 auto;
 
-    }
-
-    .episode_photo img{
-        width: 75%;
     }
 
     .guest_name{
@@ -1121,6 +1118,6 @@ section #feedback{
     }
 
     #link_previous_next{
-    margin: 3rem auto 3rem auto; 
+    margin: 3rem auto 3rem auto;
 }
 }

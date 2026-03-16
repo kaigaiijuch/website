@@ -9,6 +9,7 @@
 #  display_order  :integer          default(1), not null
 #  episode_number :string           not null
 #  image_path     :string           not null
+#  width_percent  :integer          default(100), not null
 #
 # Indexes
 #
