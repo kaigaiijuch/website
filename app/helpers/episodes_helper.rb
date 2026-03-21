@@ -55,6 +55,6 @@ module EpisodesHelper
 
   def episode_photo_style(photo)
     "--episode-photo-width-pc: #{photo.width_percent * 0.5}%;" \
-      "--episode-photo-width-mobile: #{photo.width_percent * 0.75}%;"
+      "--episode-photo-width-mobile: #{photo.width_percent * 0.85}%;"
   end
 end

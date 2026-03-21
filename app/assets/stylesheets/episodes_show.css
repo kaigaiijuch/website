@@ -23,8 +23,10 @@
     --width-card-medium: 460px;
     --width-card-wide: 800px;
     --width-content: 1080px;
+    /* controlled by episode_photo_style helper in episodes_helper.rb
     --episode-photo-width-pc: 50%;
-    --episode-photo-width-mobile: 75%;
+    --episode-photo-width-mobile: 85%;
+     */
 }
 
 @media (prefers-color-scheme: dark) {
