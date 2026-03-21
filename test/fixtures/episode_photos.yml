@@ -24,18 +24,18 @@ one:
   image_path: logos/logo_kaigaiiju-channel.webp
   display_order: 1
   caption: NULL
-  width_percent: 50
+  width_percent: 100
 
 two:
   episode_number: '1-1'
   image_path: logos/logo_kaigaiiju-channel.webp
   display_order: 1
   caption: nice photo!
-  width_percent: 100
+  width_percent: 40
 
 three:
   episode_number: '1-1'
   image_path: logos/logo_kaigaiiju-channel.webp
   display_order: 2
   caption: "[nice photo!](http://example.com) です"
-  width_percent: 40
+  width_percent: 120
