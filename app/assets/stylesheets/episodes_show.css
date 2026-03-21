@@ -23,7 +23,8 @@
     --width-card-medium: 460px;
     --width-card-wide: 800px;
     --width-content: 1080px;
-    --episode-photo-width: 50%;
+    --episode-photo-width-pc: 50%;
+    --episode-photo-width-mobile: 75%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -633,7 +634,7 @@ header b{
 }
 
 .episode_photo img{
-    width: var(--episode-photo-width);
+    width: var(--episode-photo-width-pc);
 }
 
 .episode_photo figcaption{
@@ -953,6 +954,7 @@ section #feedback{
     margin-top: 40px;
 }
 
+
 @media (max-width: 840px) {
    /* 横幅が840px以下の場合に適用するスタイル */
 
@@ -1117,6 +1119,10 @@ section #feedback{
     }
 
     #link_previous_next{
-    margin: 3rem auto 3rem auto;
-}
+        margin: 3rem auto 3rem auto;
+    }
+
+    .episode_photo img{
+        width: var(--episode-photo-width-mobile);
+    }
 }
